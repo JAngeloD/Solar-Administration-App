@@ -15,7 +15,13 @@
     </head>
     <body>
         <div id="header">
-            <h1>Header</h1>
+            <div id="companyName">
+                <h1>Solar Power Administration</h1>
+            </div>
+
+            <div id="account">
+                <h1>Account</h1>
+            </div>
         </div>
 
         <div id="electricDiagram">

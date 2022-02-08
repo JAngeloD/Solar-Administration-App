@@ -3,17 +3,29 @@ body {
 }
 
 #header {
-    text-align: center;
-    background-color: #6F1D1B;
-    color: #F5F3E6;
+    background-color: #F5F3E6;
+    color: #6F1D1B;
     padding: 0.5%;
     border-radius: 1em;
+    border: 5px solid;
+    height: fit-content;
+    overflow: hidden;
 }
 
 #electricDiagram {
+    clear: both;
     float: left;
     margin-left: 2%;
     margin-top: -3%;
 }
+
+#companyName {
+    float: left;
+}
+
+#account {
+    float: right;
+}
+
 
 

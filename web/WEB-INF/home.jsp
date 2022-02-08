@@ -14,7 +14,9 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Home</h1>
+        <div id="header">
+            <h1>Header</h1>
+        </div>
 
         <div id="electricDiagram">
 

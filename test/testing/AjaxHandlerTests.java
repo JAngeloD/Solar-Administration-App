@@ -25,11 +25,11 @@ import utilities.CSVParser;
  */
 public class AjaxHandlerTests {
 
-    CSVParser csv = new CSVParser();
+    CSVParser parser = new CSVParser();
 
     @Before
     public void setUp() {
-        csv = new CSVParser();
+        parser = new CSVParser();
     }
 
     @After
@@ -46,7 +46,7 @@ public class AjaxHandlerTests {
         
         double testData = 0;
         try {
-            testData = csv.getData(fac, "getSolarIrridinaceGHI");
+            testData = parser.getData(fac, "getSolarIrridinaceGHI");
         } catch (Exception e) {
             System.out.println(e.toString());
         }

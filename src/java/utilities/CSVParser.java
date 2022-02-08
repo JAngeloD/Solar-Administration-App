@@ -72,7 +72,7 @@ public class CSVParser {
         return getData(inverter, requestedData);
     }
     
-        /**
+     /**
      * This helper method is used for calling the right getter method from the given model. 
      * 
      * @param modelType - One of 4 types of models in the system
@@ -93,7 +93,7 @@ public class CSVParser {
         //Search for the method of the object for the data being requested
         for (Method m : dataGetters) {
             if(m.getName().equals(requestData)) {
-                requestedData = (double) m.invoke(modelType, (Object) null);
+                requestedData = (double) m.invoke(modelType, null);
                 return requestedData;
             }
         }

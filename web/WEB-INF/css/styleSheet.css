@@ -11,7 +11,9 @@ body {
 }
 
 #electricDiagram {
-    text-align: center;
+    float: left;
+    margin-left: 2%;
+    margin-top: -3%;
 }
 
 

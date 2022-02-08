@@ -21,8 +21,8 @@
         <div id="electricDiagram">
 
             <svg
-                width="1280"
-                height="720"
+                width="1600"
+                height="900"
                 viewBox="0 0 338.66667 190.5"
                 version="1.1"
                 id="svg5"

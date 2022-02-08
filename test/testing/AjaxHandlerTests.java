@@ -17,6 +17,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import utilities.AjaxHandler;
+import utilities.CSVParser;
 
 /**
  *
@@ -24,7 +25,7 @@ import utilities.AjaxHandler;
  */
 public class AjaxHandlerTests {
 
-    AjaxHandler ajax = new AjaxHandler();
+    CSVParser csv = new CSVParser();
 
     @Before
     public void setUp() {
@@ -38,24 +39,21 @@ public class AjaxHandlerTests {
     @Test
     public void test() {
         
-        double actualValue = 0;
+        double actualValue = 32;
         
         Facility fac = new Facility();
         fac.setSolarIrridinaceGHI(actualValue);
         
         double testData = 0;
         try {
-            testData = ajax.getData(fac, "getSolarIrridinaceGHI");
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(AjaxHandlerTests.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(AjaxHandlerTests.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(AjaxHandlerTests.class.getName()).log(Level.SEVERE, null, ex);
+            testData = csv.getData(fac, "getSolarIrridinaceGHI");
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
         
-        System.out.println("actual value: " + actualValue);
-        System.out.println("output value: " + testData);
+        System.out.println("Testing getData() method results:" + "\n" +
+                                      "actual value: " + actualValue + "\n" +
+                                      "output value: " + testData);
         
         assertEquals(testData, actualValue, 0);
     }

@@ -36,8 +36,9 @@ public class AjaxHandler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Will store the id of the caller
-        String modelName = request.getParameter("name");
+        //Will store the id of the caller and splits it into the model type and the getter function
+        String requestedData = request.getParameter("name");
+        
         
         //Makes new SortingStrategy object
         try {
@@ -49,15 +50,10 @@ public class AjaxHandler extends HttpServlet {
             Class CSVParserClass = modelFactory.getClass();
             Method[] models = CSVParserClass.getDeclaredMethods();
             
-            //Declares the object for storing
-            Class<?> newModelReflect = Class.forName("model." +  modelName);
-            Constructor<?> newModelCons = newModelReflect.getConstructor();
-            Object newModel = newModelCons.newInstance();
-            
             //Loops through all the methods to find the right model to use
             for (Method m : models) {
-                if(m.getName().equals(modelName)) {
-                    m.invoke(newModel, models);
+                if(m.getName().equals(requestedData)) {
+                    m.invoke(modelFactory, (Object) null);
                 }
             }
             
@@ -65,38 +61,10 @@ public class AjaxHandler extends HttpServlet {
         catch (Exception e) {
             System.out.println(e.toString());
         }
+        
         //Send data back
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 
 //        response.getWriter().write(name + ": " + String.valueOf(randomNum));
-    }
-    
-    /**
-     * This method is used for calling the right getter method from the given model. 
-     * 
-     * @param modelType - One of 4 types of models in the system
-     * @param requestData - the name of the getter for the data being requested
-     * @return
-     * @throws IllegalArgumentException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException 
-     */
-    public double getData(Object modelType, String requestData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-        
-        double requestedData = 0;
-        
-        //Gets list of methods of the object being passed
-        Class<?> newModelReflect = modelType.getClass();
-        Method[] dataGetters = newModelReflect.getDeclaredMethods();
-        
-        //Search for the method of the object for the data being requested
-        for (Method m : dataGetters) {
-            if(m.getName().equals(requestData)) {
-                requestedData = (double) m.invoke(modelType, null);
-                return requestedData;
-            }
-        }
-        
-        return 0;
     }
 }

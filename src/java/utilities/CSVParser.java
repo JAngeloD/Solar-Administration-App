@@ -5,6 +5,8 @@
  */
 package utilities;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import models.*;
 
 /**
@@ -40,34 +42,63 @@ public class CSVParser {
     
     /**
      * 
-     * @return facility - returns facility object
+     * @return returns requested data from facility
      */
-    public Facility getFacility() {
-        return facility;
+    public double getFacility(String requestedData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+        return getData(facility, requestedData);
     }
 
     /**
      * 
-     * @return feeder - returns feeder object
+     * @return returns requested data from feeder
      */
-    public Feeder getFeeder() {
-        return feeder;
+    public double getFeeder(String requestedData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+        return getData(feeder, requestedData);
     }
 
     /**
      * 
-     * @return pcc - returns PCC object
+     * @return returns requested data from pcc
      */
-    public PCC getPcc() {
-        return pcc;
+    public double getPcc(String requestedData)  throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
+        return getData(pcc, requestedData);
     }
 
     /**
      * 
-     * @return inverter - returns inverter object
+     * @return returns requested data from inverter
      */
-    public Inverter getInverter() {
-        return inverter;
+    public double getInverter(String requestedData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException{
+        return getData(inverter, requestedData);
+    }
+    
+        /**
+     * This helper method is used for calling the right getter method from the given model. 
+     * 
+     * @param modelType - One of 4 types of models in the system
+     * @param requestData - the name of the getter for the data being requested
+     * @return returns the double value of the requested data 
+     * @throws IllegalArgumentException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException 
+     */
+    private double getData(Object modelType, String requestData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+        
+        double requestedData = 0;
+        
+        //Gets list of methods of the object being passed
+        Class<?> newModelReflect = modelType.getClass();
+        Method[] dataGetters = newModelReflect.getDeclaredMethods();
+        
+        //Search for the method of the object for the data being requested
+        for (Method m : dataGetters) {
+            if(m.getName().equals(requestData)) {
+                requestedData = (double) m.invoke(modelType, (Object) null);
+                return requestedData;
+            }
+        }
+        
+        return 0;
     }
     
 }

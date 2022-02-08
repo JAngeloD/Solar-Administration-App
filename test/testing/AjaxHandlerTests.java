@@ -29,7 +29,7 @@ public class AjaxHandlerTests {
 
     @Before
     public void setUp() {
-        ajax = new AjaxHandler();
+        csv = new CSVParser();
     }
 
     @After

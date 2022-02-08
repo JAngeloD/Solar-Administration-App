@@ -82,7 +82,7 @@ public class CSVParser {
      * @throws IllegalAccessException
      * @throws InvocationTargetException 
      */
-    private double getData(Object modelType, String requestData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+    public double getData(Object modelType, String requestData) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
         
         double requestedData = 0;
         

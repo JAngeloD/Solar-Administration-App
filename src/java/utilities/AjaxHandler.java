@@ -38,7 +38,11 @@ public class AjaxHandler extends HttpServlet {
         
         //Will store the id of the caller and splits it into the model type and the getter function
         String requestedData = request.getParameter("name");
+        String modelName = "get" + requestedData.substring(0, requestedData.indexOf("get"));
+        String getterMethod = requestedData.substring(requestedData.indexOf("get"));
         
+        //Data to be returned back to caller
+        double data = 0;
         
         //Makes new SortingStrategy object
         try {
@@ -52,8 +56,8 @@ public class AjaxHandler extends HttpServlet {
             
             //Loops through all the methods to find the right model to use
             for (Method m : models) {
-                if(m.getName().equals(requestedData)) {
-                    m.invoke(modelFactory, (Object) null);
+                if(m.getName().equals(modelName)) {
+                    data = (double) m.invoke(modelFactory, getterMethod);
                 }
             }
             
@@ -65,6 +69,6 @@ public class AjaxHandler extends HttpServlet {
         //Send data back
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 
-//        response.getWriter().write(name + ": " + String.valueOf(randomNum));
+        response.getWriter().write(String.valueOf(data));
     }
 }

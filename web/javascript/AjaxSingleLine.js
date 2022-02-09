@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 function triggerUpdate() {
-    var elements = document.getElementsByClassName("realtime");
+    var elements = document.getElementsByClassName("realtime"); //Change parameter into whatever class name single line data are 
     for (var i = 0; i < elements.length; i++) {
         load(elements[i].id);
     }

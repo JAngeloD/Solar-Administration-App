@@ -37,7 +37,7 @@ public class AjaxHandlerTests {
     }
     
     @Test
-    public void test() {
+    public void testGetData() {
         
         double actualValue = 32;
         
@@ -51,10 +51,24 @@ public class AjaxHandlerTests {
             System.out.println(e.toString());
         }
         
-        System.out.println("Testing getData() method results:" + "\n" +
-                                      "actual value: " + actualValue + "\n" +
-                                      "output value: " + testData);
+//        System.out.println("Testing getData() method results:" + "\n" +
+//                                      "actual value: " + actualValue + "\n" +
+//                                      "output value: " + testData);
         
         assertEquals(testData, actualValue, 0);
+    }
+    
+    @Test
+    public void testSubstring() {
+        
+        String requestedData = "FacilitygetWindSpeed";
+        String modelName = requestedData.substring(0, requestedData.indexOf("get"));
+        String getterMethod = requestedData.substring(requestedData.indexOf("get"));
+        
+        System.out.println("modelName: " + modelName + "\n" +
+                                     "getterMethod: " + getterMethod);
+        
+        assertEquals(modelName, "Facility");
+        assertEquals(getterMethod, "getWindSpeed");
     }
 }

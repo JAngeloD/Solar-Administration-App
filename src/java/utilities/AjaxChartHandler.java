@@ -65,7 +65,7 @@ public class AjaxChartHandler extends HttpServlet {
                 + "            \"fill\": \"tozeroy\",\n"
                 //                + "            \"mode\": \"none\",\n"
                 //                + "            \"name\": \"Col2\",\n"
-                + "            \"type\": \"lines\",\n"
+                + "            \"type\":\"" + type +  "\",\n"
                 + "            \"x\": " + Arrays.toString(x) + ",\n"
                 + "            \"y\": " + Arrays.toString(y) + ",\n"
                 + "            \"fillcolor\": \"rgb(224, 102, 102)\""

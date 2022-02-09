@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    setInterval(function () { displayData("myDiv")}, 6000);
+    setInterval(function () {
+        displayData("myDiv")
+    }, 6000);
 
 });
 
@@ -16,6 +18,7 @@ function displayData(chartElement) {
 
     req.done(function (data) {
         var graphData = JSON.parse(data);
-        Plotly.react(chartElement, graphData, {});
+
+        Plotly.newPlot(chartElement, graphData, {});
     });
 }

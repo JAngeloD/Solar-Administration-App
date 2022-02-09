@@ -34,8 +34,8 @@ public class AjaxChartHandlerTests {
     @Test
     public void jsonTemplateStringTest() {
 
-        int[] x
-                = new int[]{5, 3, 6, 2};
+        String[] x
+                = new String[]{"\"03:00:00\"", "\"05:00:00\"", "\"07:00:00\""};
 
         int[] y
                 = new int[]{1, 2, 3, 4};

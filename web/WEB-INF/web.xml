@@ -28,14 +28,6 @@
         <servlet-name>AjaxHandler</servlet-name>
         <servlet-class>utilities.AjaxHandler</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AjaxChartHandler</servlet-name>
-        <servlet-class>utilities.AjaxChartHandler</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AjaxDiagramHandler</servlet-name>
-        <servlet-class>utilities.AjaxDiagramHandler</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <url-pattern>/breaker</url-pattern>
@@ -63,14 +55,6 @@
     <servlet-mapping>
         <servlet-name>AjaxHandler</servlet-name>
         <url-pattern>/ajaxhandler</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AjaxChartHandler</servlet-name>
-        <url-pattern>/ajaxcharthandler</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AjaxDiagramHandler</servlet-name>
-        <url-pattern>/ajaxdiagramhandler</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

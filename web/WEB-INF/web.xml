@@ -72,6 +72,48 @@
         <servlet-name>AjaxDiagramHandler</servlet-name>
         <url-pattern>/ajaxdiagramhandler</url-pattern>
     </servlet-mapping>
+    
+        <servlet>
+        <servlet-name>InverterHomeServlet</servlet-name>
+        <servlet-class>servlets.InverterHomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InverterOneServlet</servlet-name>
+        <servlet-class>servlets.InverterOneServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InverterTwoServlet</servlet-name>
+        <servlet-class>servlets.InverterTwoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InverterThreeServlet</servlet-name>
+        <servlet-class>servlets.InverterThreeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InverterFourServlet</servlet-name>
+        <servlet-class>servlets.InverterFourServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InverterHomeServlet</servlet-name>
+        <url-pattern>/inverterhome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterOneServlet</servlet-name>
+        <url-pattern>/inverterone</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterTwoServlet</servlet-name>
+        <url-pattern>/invertertwo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterThreeServlet</servlet-name>
+        <url-pattern>/inverterthree</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterFourServlet</servlet-name>
+        <url-pattern>/inverterfour</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

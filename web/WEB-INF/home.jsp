@@ -14,6 +14,7 @@
         <title>Home</title>
     </head>
     <body>
+        <a href="inverterhome">INVERTER HOME</a>
         <div id="header">
             <div id="companyName">
                 <h1>Solar Power Administration</h1>

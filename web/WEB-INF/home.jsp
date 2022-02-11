@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF/css/styleSheet.css"%></style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="javascript/AjaxDiagram.js"></script>
         <title>Home</title>
     </head>
     <body>
@@ -825,6 +827,7 @@
                 id="g591"
                 transform="matrix(0.3771851,0,0,-0.3771851,8.503906,735.4665)">
             <path
+                class="dynamicState"
                 d="m 1568.985,686.9066 h 50 v 50 h -50 z"
                 style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 id="path593" />
@@ -833,6 +836,7 @@
                 id="g595"
                 transform="matrix(0.3771851,0,0,-0.3771851,8.503906,735.4665)">
             <path
+                class="dynamicState"
                 d="m 1568.985,813.1624 h 50 v 50 h -50 z"
                 style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 id="path597" />

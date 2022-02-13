@@ -10,10 +10,12 @@
                 border-radius: 1em;
                 border: 2px solid;
                 background-color: #F5F3E6;
-                position: absolute;
                 font: sans-serif;  
                 font-size: 10px;
                 padding: 5px;
+            }
+            .electricDiagram{
+                position: relative;
             }
             label, input{
                 font-size: 10px;
@@ -26,12 +28,12 @@
             #f1data{
                 position: absolute;
                 left: 13%;
-                top: 9%;
+                top: 7%;
             }
             #f2data{
                 position: absolute;
                 left: 13%;
-                top: 65%;
+                top: 62%;
             }
             #pccdata{
                 position: absolute;
@@ -42,28 +44,14 @@
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
-                position: absolute;
-                left: 27%;
-                top: 60%;
+                position: fixed;
+                left: 26.7%;
+                top: 57%;
             }
         </style>
     </head>
     <body>
-        <div id="f1data" class="data">
-            <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
-            <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-            <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-            <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-        </div>
-        <br>
-        <div id="pccdata" class="data">
-            <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-            <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-            <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-            <label>Voltage Vab: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-            <label>Voltage Vbc: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-            <label>Voltage Vca: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-        </div>
+        
         <div id="electricDiagram">
             <svg
                 width="1280"
@@ -483,15 +471,30 @@
                     </g>
                 </g>
             </svg>
-        </div>
-        <div>
-            <button>Breaker Control</button>
-        </div>
-        <div id="f2data" class="data">
-            <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-            <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-            <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-            <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-        </div>
+            <div id="f1data" class="data">
+                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
+                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+            </div>
+            <br>
+            <div id="pccdata" class="data">
+                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                <label>Voltage Vab: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
+                <label>Voltage Vbc: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
+                <label>Voltage Vca: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+            </div>
+            <div>
+                <button>Breaker Control</button>
+            </div>
+            <div id="f2data" class="data">
+                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+            </div>
+        </div>        
     </body>
 </html>

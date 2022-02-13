@@ -24,24 +24,27 @@
                 width: 60px;
             }
             #f1data{
-                left: 220px;
-                top: 60px;
+                position: absolute;
+                left: 13%;
+                top: 9%;
             }
             #f2data{
-                left: 220px;
-                top: 500px;
+                position: absolute;
+                left: 13%;
+                top: 65%;
             }
             #pccdata{
-                left: 700px;
-                top: 100px;
+                position: absolute;
+                left: 45%;
+                top: 13%;
             }
             button{
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
                 position: absolute;
-                left: 410px;
-                top: 440px;
+                left: 27%;
+                top: 60%;
             }
         </style>
     </head>

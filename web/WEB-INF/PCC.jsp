@@ -7,16 +7,21 @@
         <title>Home</title>
         <style>
             .data{
+                border-radius: 1em;
+                border: 2px solid;
+                background-color: #F5F3E6;
                 position: absolute;
                 font: sans-serif;  
                 font-size: 10px;
+                padding: 5px;
             }
             label, input{
                 font-size: 10px;
                 font-weight: bold;
-                
+                background-color: #F5F3E6;
                 border: 0;
                 border-width: 0;
+                width: 60px;
             }
             #f1data{
                 left: 220px;
@@ -30,11 +35,19 @@
                 left: 700px;
                 top: 100px;
             }
+            button{
+                width: 80px;
+                background-color: #6F1D1B;
+                color: whitesmoke;
+                position: absolute;
+                left: 410px;
+                top: 440px;
+            }
         </style>
     </head>
     <body>
         <div id="f1data" class="data">
-            <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+            <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
             <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
             <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
             <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
@@ -95,7 +108,7 @@
                             d="M 8.503906,104.563 H 1215.4959 V 783.4961 H 8.503906 Z"
                             id="path405" />
                     </clipPath>
-                </defs>
+                </defs>                
                 <g
                     inkscape:label="Layer 1"
                     inkscape:groupmode="layer"
@@ -226,7 +239,7 @@
                                                 </g>
                                             </g>
                                         </g>
-                                    </g>
+                                    </g>                                    
                                     <g
                                         id="g160">
                                         <g
@@ -340,7 +353,7 @@
                                             d="M 1839.919,710.2051 H 1960.71"
                                             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                                             id="path537"
-                                            transform="translate(8.186185e-6)" />
+                                            transform="translate(8.186185e-6)" />                                                                         
                                         <path
                                             d="m 748.0544,515.6173 h -2.0594 m 0,-1.8968 v 3.7937 l 8.9242,-1.8969 z"
                                             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -405,7 +418,7 @@
                             id="tspan6504-4-2"
                             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
                             x="114.30106"
-                            y="63.6819">CB-501</tspan></text>
+                            y="63.6819">CB-501</tspan></text>                        
                         <text
                             xml:space="preserve"
                             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -460,10 +473,16 @@
                             id="tspan6504-4-2-5"
                             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
                             x="114.27428"
-                            y="95.33268">CB-501</tspan></text>
+                            y="95.33268">CB-502</tspan></text>
+                    </g>
+                    <g>                    
+                        <button x="114.27428" y="95.33268">This is a button</button>                    
                     </g>
                 </g>
             </svg>
+        </div>
+        <div>
+            <button>Breaker Control</button>
         </div>
         <div id="f2data" class="data">
             <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>

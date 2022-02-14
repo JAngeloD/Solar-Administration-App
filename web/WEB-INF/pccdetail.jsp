@@ -2,51 +2,222 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>PCCdetail</title>
         <style><%@include file="/WEB-INF//css/styleSheet.css"%></style>
         <style>
+            .wrapperall{
+                text-align: center;
+                position: relative;
+
+            }
+            .wrapper {
+                text-align: center;
+
+            }
+            .wrapper1 {
+                text-align: center;
+
+            }
+            .wrapper2 {
+                text-align: center;
+
+            }
+            .wrapper3 {
+                text-align: center;
+
+            }
+            .wrapper4{
+                text-align: center;
+            }
+            .wrapper5{
+                text-align: center;
+            }
+            .wrapper6{
+                text-align: center;
+            }
+            .wrapper7{
+                text-align: center;
+            }
+            .wrapper8{
+                text-align: center;
+            }
+            .wrapper9{
+                text-align: center;
+            }
+            .wrapper10{
+                text-align: center;
+            }
+            .wrapper11{
+                text-align: center;
+            }
+            .wrapper12{
+                text-align: center;
+            }
+            .wrapper13{
+                text-align: center;
+            }
+            .wrapper14{
+                text-align: center;
+            }
+            .wrapper15{
+                text-align: center;
+            }
+            .wrapper16{
+                text-align: center;
+            }
+            .wrapper17{
+                text-align: center;
+            }
+            .wrapper18{
+                text-align: center;
+            }
+            a {
+                background-color: #555;
+                color: white;
+                padding: 1.6em 1em;
+                text-decoration: none;
+                text-transform: uppercase;
+
+                font-size: 12px;
+            }
+
+            a:hover {
+                background-color: lightgray;
+            }
+
+            a:active {
+                background-color: black;
+            }
+
+            a:visited {
+                background-color: darkgrey;
+            }
+            .button2 {
+                position: absolute;
+                top: 65%;
+                left: 50%;
+            }
+            .button14 {
+                position: absolute;
+                top: 15%;
+                left: 85%;
+                width:160px;
+            }
+            .button15 {
+                position: absolute;
+                top: 22%;
+                left: 85%;
+                width:160px;
+            }
+            .button16 {
+                position: absolute;
+                width:160px;
+                top: 29%;
+                left: 85%;
+            }
+            .button3 {
+                position: absolute;
+                top: 36%;
+                left: 85%;
+                width:160px;
+            }
+            .button4 {
+                position: absolute;
+                width:160px;
+                top: 43%;
+                left: 85%;
+            }.button5 {
+                position: absolute;
+                width:40px;
+                top: 50%;
+                left: 85%;
+            }.button6 {
+                position: absolute;
+                width:40px;
+                top: 50%;
+                left: 94%;
+            }.button7 {
+                position: absolute;
+                width:160px;
+                top: 57%;
+                left: 85%;
+            }.button8 {
+                position: absolute;
+                width:160px;
+                top: 64%;
+                left: 85%;
+            }.button9 {
+                position: absolute;
+                width:160px;
+                top: 71%;
+                left: 85%;
+            }.button10 {
+                position: absolute;
+                width:160px;
+                top: 78%;
+                left: 85%;
+            }.button11 {
+                position: absolute;
+                width:160px;
+                top: 85%;
+                left: 85%;
+            }.button12{
+                position: absolute;
+                width:160px;
+                top: 92%;
+                left: 85%;
+            }.button13 {
+                position: absolute;
+                width:160px;
+                top: 99%;
+                left: 85%;
+            }
+
+
+
             .data{
                 border-radius: 1em;
                 border: 2px solid;
                 background-color: #F5F3E6;
                 font: sans-serif;  
-                font-size: 10px;
+                font-size: 8px;
                 padding: 5px;
+                width: 140px;
             }
             .electricDiagram{
                 position: relative;
             }
             label, input{
-                font-size: 10px;
+                font-size: 8px;
                 font-weight: bold;
                 background-color: #F5F3E6;
-                border: 0;
-                border-width: 0;
-                width: 60px;
+                border: 2px;
+                border-width: 1px;
+                width: 50px;
             }
             #f1data{
                 position: absolute;
-                left: 12.5%;
-                top: 15.5%;
+                left: 14.4%;
+                top: 17.5%;
             }
             #f2data{
                 position: absolute;
-                left: 12.5%;
-                top: 60%;
+                left: 14.4%;
+                top: 53%;
             }
             #pccdata{
                 position: absolute;
-                left: 36%;
-                top: 24%;
+                left: 56%;
+                top: 17.5%;
             }
             button{
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
-                position: fixed;
-                left: 23.4%;
+                position: absolute;
+                left: 31.4%;
                 top: 56%;
             }
         </style>
@@ -60,11 +231,118 @@
                 <h1>Account</h1>
             </div>
         </div>
-        <br>
-        <div id="backHome">
-            <a href="home">Back to home</a>
-        </div>
-        <div id="electricDiagram">
+
+        <div  class="wrapperall" id="electricDiagram">
+
+            <div class="wrapper">
+                <div id="f1data" class="data">
+                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
+                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                </div>
+            </div>
+            <div class="wrapper1">
+                <div id="pccdata" class="data">
+                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage Vab: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
+                    <label>Voltage Vbc: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
+                    <label>Voltage Vca: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                </div>
+            </div>
+            <div class="wrapper2">
+
+
+                <div>
+                    <button>Breaker Control</button>
+                </div>
+            </div>
+            <div class="wrapper3">
+                <div id="f2data" class="data">
+                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                </div>
+            </div>  
+            <div>
+                <div id="backHome"class="wrapper4">
+                    <a href="home" class="button2">Back to home</a>
+                </div>
+            </div> 
+
+            <div>
+                <div class="wrapper16">
+                    <a href="home" class="button14">SELECT BREAKER</a>
+                </div>
+            </div> 
+            <div>
+                <div class="wrapper17">
+                    <a href="home" class="button15">CB-501</a>
+                </div>
+            </div> 
+            <div>
+                <div class="wrapper18">
+                    <a href="home" class="button16">CB-502</a>
+                </div>
+                </d
+                <div>
+                    <div class="wrapper5">
+                        <a href="home" class="button3">CONFIRM BREAKER</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper6">
+                        <a href="home" class="button4">CB-XXX</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper7">
+                        <a href="home" class="button5">YES</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper8">
+                        <a href="home" class="button6">NO</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper9">
+                        <a href="home" class="button7">BREAKER LOCAL/REMOTE</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper10">
+                        <a href="home" class="button8">LOCAL</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper11">
+                        <a href="home" class="button9">REMOTE</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper12">
+                        <a href="home" class="button10">OPERATE BREAKER</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper13">
+                        <a href="home" class="button11">TRIP OR CLOSE</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper14">
+                        <a href="home" class="button12">CONFIRM OPERATION</a>
+                    </div>
+                </div> 
+                <div>
+                    <div class="wrapper15">
+                        <a href="home" class="button13">TRIP/CLOSE CB-50X</a>
+                    </div>
+                </div> 
             <svg
                 width="1280"
                 height="720"
@@ -483,30 +761,7 @@
                     </g>
                 </g>
             </svg>
-            <div id="f1data" class="data">
-                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
-                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-            </div>
-            <br>
-            <div id="pccdata" class="data">
-                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                <label>Voltage Vab: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-                <label>Voltage Vbc: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-                <label>Voltage Vca: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-            </div>
-            <div>
-                <button>Breaker Control</button>
-            </div>
-            <div id="f2data" class="data">
-                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
-            </div>
+          
         </div>        
     </body>
 </html>

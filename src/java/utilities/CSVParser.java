@@ -22,16 +22,14 @@ public class CSVParser {
     
     //Data types
     private Facility facility;
-    private Feeder feeder1;
-    private Feeder feeder2;
+    private Feeder feeder;
     private PCC pcc;
     private Inverter inverter;
     
     public CSVParser() 
     {
         facility = null;
-        feeder1 = null;
-        feeder2 = null;
+        feeder = null;
         pcc = null;
         inverter = null;
     }
@@ -148,104 +146,54 @@ public class CSVParser {
                     pcc.setAcOutputPhaseCAVoltage(Double.parseDouble(lineInArray[21]));
                 }
                 if(lineInArray[22].equals("no data")) {
-                    feeder1.setAcOutputRealPower(0);
+                    feeder.setAcOutputRealPower(0);
                 } else {
-                    feeder1.setAcOutputRealPower(Double.parseDouble(lineInArray[22]));
+                    feeder.setAcOutputRealPower(Double.parseDouble(lineInArray[22]));
                 }
                 if(lineInArray[23].equals("no data")) {
-                    feeder1.setAcOutputApparentPower(0);
+                    feeder.setAcOutputApparentPower(0);
                 } else {
-                    feeder1.setAcOutputApparentPower(Double.parseDouble(lineInArray[23]));
+                    feeder.setAcOutputApparentPower(Double.parseDouble(lineInArray[23]));
                 }
                 if(lineInArray[24].equals("no data")) {
-                    feeder1.setAcOutputReactivePower (0);
+                    feeder.setAcOutputReactivePower (0);
                 } else {
-                    feeder1.setAcOutputReactivePower(Double.parseDouble(lineInArray[24]));
+                    feeder.setAcOutputReactivePower(Double.parseDouble(lineInArray[24]));
                 }
                 if(lineInArray[25].equals("no data")) {
-                    feeder1.setAcOutputPowerFactor(0);
+                    feeder.setAcOutputPowerFactor(0);
                 } else {
-                    feeder1.setAcOutputPowerFactor(Double.parseDouble(lineInArray[25]));
+                    feeder.setAcOutputPowerFactor(Double.parseDouble(lineInArray[25]));
                 }
                 if(lineInArray[26].equals("no data")) {
-                    feeder1.setAcOutputPhaseACurrent(0);
+                    feeder.setAcOutputPhaseACurrent(0);
                 } else {
-                    feeder1.setAcOutputPhaseACurrent(Double.parseDouble(lineInArray[26]));
+                    feeder.setAcOutputPhaseACurrent(Double.parseDouble(lineInArray[26]));
                 }
                 if(lineInArray[27].equals("no data")) {
-                    feeder1.setAcOutputPhaseBCurrent(0);
+                    feeder.setAcOutputPhaseBCurrent(0);
                 } else {
-                    feeder1.setAcOutputPhaseBCurrent(Double.parseDouble(lineInArray[27]));
+                    feeder.setAcOutputPhaseBCurrent(Double.parseDouble(lineInArray[27]));
                 }
                 if(lineInArray[28].equals("no data")) {
-                    feeder1.setAcOutputPhaseCCurrent(0);
+                    feeder.setAcOutputPhaseCCurrent(0);
                 } else {
-                    feeder1.setAcOutputPhaseCCurrent(Double.parseDouble(lineInArray[28]));
+                    feeder.setAcOutputPhaseCCurrent(Double.parseDouble(lineInArray[28]));
                 }
                 if(lineInArray[29].equals("no data")) {
-                    feeder1.setAcOutputPhaseABVoltage(0);
+                    feeder.setAcOutputPhaseABVoltage(0);
                 } else {
-                    feeder1.setAcOutputPhaseABVoltage(Double.parseDouble(lineInArray[29]));
+                    feeder.setAcOutputPhaseABVoltage(Double.parseDouble(lineInArray[29]));
                 }
                 if(lineInArray[30].equals("no data")) {
-                    feeder1.setAcOutputPhaseBCVoltage(0);
+                    feeder.setAcOutputPhaseBCVoltage(0);
                 } else {
-                    feeder1.setAcOutputPhaseBCVoltage(Double.parseDouble(lineInArray[30]));
+                    feeder.setAcOutputPhaseBCVoltage(Double.parseDouble(lineInArray[30]));
                 }
                 if(lineInArray[31].equals("no data")) {
-                    feeder1.setAcOutputPhaseCAVoltage(0);
+                    feeder.setAcOutputPhaseCAVoltage(0);
                 } else {
-                    feeder1.setAcOutputPhaseCAVoltage(Double.parseDouble(lineInArray[31]));
-                }
-                if(lineInArray[32].equals("no data")) {
-                    feeder2.setAcOutputRealPower(0);
-                } else {
-                    feeder2.setAcOutputRealPower(Double.parseDouble(lineInArray[32]));
-                }
-                if(lineInArray[33].equals("no data")) {
-                    feeder2.setAcOutputApparentPower(0);
-                } else {
-                    feeder2.setAcOutputApparentPower(Double.parseDouble(lineInArray[33]));
-                }
-                if(lineInArray[34].equals("no data")) {
-                    feeder2.setAcOutputReactivePower (0);
-                } else {
-                    feeder2.setAcOutputReactivePower(Double.parseDouble(lineInArray[34]));
-                }
-                if(lineInArray[35].equals("no data")) {
-                    feeder2.setAcOutputPowerFactor(0);
-                } else {
-                    feeder2.setAcOutputPowerFactor(Double.parseDouble(lineInArray[35]));
-                }
-                if(lineInArray[36].equals("no data")) {
-                    feeder2.setAcOutputPhaseACurrent(0);
-                } else {
-                    feeder2.setAcOutputPhaseACurrent(Double.parseDouble(lineInArray[36]));
-                }
-                if(lineInArray[37].equals("no data")) {
-                    feeder2.setAcOutputPhaseBCurrent(0);
-                } else {
-                    feeder2.setAcOutputPhaseBCurrent(Double.parseDouble(lineInArray[37]));
-                }
-                if(lineInArray[38].equals("no data")) {
-                    feeder2.setAcOutputPhaseCCurrent(0);
-                } else {
-                    feeder2.setAcOutputPhaseCCurrent(Double.parseDouble(lineInArray[38]));
-                }
-                if(lineInArray[39].equals("no data")) {
-                    feeder2.setAcOutputPhaseABVoltage(0);
-                } else {
-                    feeder2.setAcOutputPhaseABVoltage(Double.parseDouble(lineInArray[39]));
-                }
-                if(lineInArray[40].equals("no data")) {
-                    feeder2.setAcOutputPhaseBCVoltage(0);
-                } else {
-                    feeder2.setAcOutputPhaseBCVoltage(Double.parseDouble(lineInArray[40]));
-                }
-                if(lineInArray[41].equals("no data")) {
-                    feeder2.setAcOutputPhaseCAVoltage(0);
-                } else {
-                    feeder2.setAcOutputPhaseCAVoltage(Double.parseDouble(lineInArray[41]));
+                    feeder.setAcOutputPhaseCAVoltage(Double.parseDouble(lineInArray[31]));
                 }
                 if(lineInArray[42].equals("no data")) {
                     inverter.setAcOutputLifeTimeEnergy(0);

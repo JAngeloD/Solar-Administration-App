@@ -1,10 +1,11 @@
 
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
+        <style><%@include file="/WEB-INF//css/styleSheet.css"%></style>
         <style>
             .data{
                 border-radius: 1em;
@@ -27,31 +28,42 @@
             }
             #f1data{
                 position: absolute;
-                left: 13%;
-                top: 7%;
+                left: 12.5%;
+                top: 15.5%;
             }
             #f2data{
                 position: absolute;
-                left: 13%;
-                top: 62%;
+                left: 12.5%;
+                top: 60%;
             }
             #pccdata{
                 position: absolute;
-                left: 45%;
-                top: 13%;
+                left: 36%;
+                top: 24%;
             }
             button{
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
                 position: fixed;
-                left: 26.7%;
-                top: 57%;
+                left: 23.4%;
+                top: 56%;
             }
         </style>
     </head>
     <body>
-        
+        <div id="header">
+            <div id="companyName">
+                <h1>Solar Power Administration</h1>
+            </div>
+            <div id="account">
+                <h1>Account</h1>
+            </div>
+        </div>
+        <br>
+        <div id="backHome">
+            <a href="home">Back to home</a>
+        </div>
         <div id="electricDiagram">
             <svg
                 width="1280"

@@ -106,7 +106,7 @@ a:visited {
 </style>
     
     <body>
-      
+       <%-- 
         <div id="header">
             <div id="companyName">
                 <h1>Solar Power Administration</h1>
@@ -116,7 +116,7 @@ a:visited {
                 <h1>Account</h1>
             </div>
         </div>
-
+--%>
    <div class="wrapall" id="electricDiagram">
             
                      <div class="wrapper">

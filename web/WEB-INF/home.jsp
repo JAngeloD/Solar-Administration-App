@@ -13,8 +13,100 @@
         <style><%@include file="/WEB-INF/css/styleSheet.css"%></style>
         <title>Home</title>
     </head>
+    
+      <style>
+        
+        .wrapall{
+            text-align: center;
+            position: relative;
+          
+        }
+.wrapper {
+    text-align: center;
+   
+}
+
+.button {
+    
+   position: absolute;
+    top: 58%;
+    left: 65%;
+}
+.wrapper1 {
+    text-align: center;
+   
+}
+
+.button1 {
+    position: absolute;
+    top: 80%;
+    left: 14.1%;
+    width: 94px;
+   
+}
+
+.wrapper2 {
+    text-align: center;
+   
+}
+
+.button2 {
+    position: absolute;
+    top: 84%;
+    left: 65%;
+}
+
+a {
+  background-color: #555;
+  color: white;
+  padding: 1.6em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+ 
+      font-size: 12px;
+}
+
+a:hover {
+  background-color: lightgray;
+}
+
+a:active {
+  background-color: black;
+}
+
+a:visited {
+  background-color: darkgrey;
+}
+
+ .data{
+                border-radius: 1em;
+                border: 2px solid;
+                background-color: #F5F3E6;
+                font: sans-serif;  
+                font-size: 10px;
+                padding: 5px;
+            }
+            
+            label, input{
+                font-size: 10px;
+                font-weight: bold;
+                background-color: #F5F3E6;
+                border: 0;
+                border-width: 0;
+                width: 60px;
+            }
+      
+            #f2data{
+                position: absolute;
+                left: 64%;
+                top: 31%;
+            }
+
+
+</style>
+    
     <body>
-        <a href="inverterhome">INVERTER HOME</a>
+      
         <div id="header">
             <div id="companyName">
                 <h1>Solar Power Administration</h1>
@@ -25,7 +117,31 @@
             </div>
         </div>
 
-        <div id="electricDiagram">
+   <div class="wrapall" id="electricDiagram">
+            
+                     <div class="wrapper">
+ <a href="pccdetail" class="button">SELECT PCC DETAIL</a>
+</div>
+        
+             <div class="wrapper1">
+   <a href="inverterhome" class="button1">SELECT INVERTER PERFORMANCE</a>
+    
+</div>
+         
+                      <div class="wrapper2">
+    <a href="weather" class="button2">SELECT WEATHER DETAIL</a>
+    
+</div>
+            
+            <div class="wrapper3">
+                
+                  <div id="f2data" class="data">
+                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+            </div>
+            </div>
 
             <svg
                 width="1600"

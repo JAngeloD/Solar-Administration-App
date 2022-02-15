@@ -101,3 +101,17 @@ li a.active {
     margin-left: 10%;
     margin-top: 2%;
 }
+
+#wind {
+    float: right;
+    margin-right: 5%;
+}
+
+#power {
+    float: left;
+    margin-left: 5%;
+}
+
+#graphs {
+    margin-top: 1%;
+}

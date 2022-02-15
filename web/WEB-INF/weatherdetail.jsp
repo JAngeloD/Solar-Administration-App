@@ -16,17 +16,25 @@
             <li class="menuButton"><a href="home">Home</a></li>
             <h1 class="left">Weather Detail</h1>
         </ul>
-        
-        <div id="power">
-            
+
+        <div id="graphs">
+            <div id="power">
+                <div id="root">
+
+                </div>
+            </div>
+
+            <div id="wind">
+                <div id="windGraph">
+
+                </div>
+            </div>
         </div>
-        
-        <div id="wind">
-            
-        </div>
-        
+
+
+
         <div id="data">
-            
+
         </div>
     </body>
 </html>

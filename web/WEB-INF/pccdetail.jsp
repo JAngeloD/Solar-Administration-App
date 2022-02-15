@@ -72,7 +72,7 @@
             }
             .wrapper18{
                 text-align: center;
-            }
+            } 
             a {
                 background-color: #555;
                 color: white;
@@ -96,8 +96,8 @@
             }
             .button2 {
                 position: absolute;
-                top: 65%;
-                left: 50%;
+                top: 70%;
+                left: 48%;
             }
             .button14 {
                 position: absolute;
@@ -199,43 +199,35 @@
             }
             #f1data{
                 position: absolute;
-                left: 14.4%;
-                top: 17.5%;
+                left: 12.7%;
+                top: 28.5%;
             }
             #f2data{
                 position: absolute;
-                left: 14.4%;
-                top: 53%;
+                left: 12.7%;
+                top: 63.6%;
             }
             #pccdata{
                 position: absolute;
-                left: 56%;
-                top: 17.5%;
+                left: 46%;
+                top: 25%;
             }
             button{
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
                 position: absolute;
-                left: 31.4%;
-                top: 56%;
+                left: 27%;
+                top: 70%;
             }
         </style>
     </head>
     <body>
-        <%-- 
-        <div id="header">
-            <div id="companyName">
-                <h1>Solar Power Administration</h1>
-            </div>
-            <div id="account">
-                <h1>Account</h1>
-            </div>
+        <div>
+            <h1>&nbsp;PCC Detail</h1>
         </div
-        --%>
 
         <div  class="wrapperall" id="electricDiagram">
-
             <div class="wrapper">
                 <div id="f1data" class="data">
                     <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
@@ -275,76 +267,77 @@
                 </div>
             </div> 
 
-            <div>
-                <div class="wrapper16">
+            <div hidden="true">
+                <div class="wrapper16" hidden="true">
                     <a href="home" class="button14">SELECT BREAKER</a>
                 </div>
             </div> 
-            <div>
+            <div hidden="true">
                 <div class="wrapper17">
                     <a href="home" class="button15">CB-501</a>
                 </div>
             </div> 
-            <div>
+            <div hidden="true">
                 <div class="wrapper18">
                     <a href="home" class="button16">CB-502</a>
                 </div>
                 </d
-                <div>
+                <div hidden="true">
+                     
                     <div class="wrapper5">
                         <a href="home" class="button3">CONFIRM BREAKER</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true">
                     <div class="wrapper6">
                         <a href="home" class="button4">CB-XXX</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true">
                     <div class="wrapper7">
                         <a href="home" class="button5">YES</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true">
                     <div class="wrapper8">
                         <a href="home" class="button6">NO</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true">
                     <div class="wrapper9">
                         <a href="home" class="button7">BREAKER LOCAL/REMOTE</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper10">
                         <a href="home" class="button8">LOCAL</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper11">
                         <a href="home" class="button9">REMOTE</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper12">
                         <a href="home" class="button10">OPERATE BREAKER</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper13">
                         <a href="home" class="button11">TRIP OR CLOSE</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper14">
                         <a href="home" class="button12">CONFIRM OPERATION</a>
                     </div>
                 </div> 
-                <div>
+                <div hidden="true>
                     <div class="wrapper15">
                         <a href="home" class="button13">TRIP/CLOSE CB-50X</a>
                     </div>
-                </div> 
+                </div>
             <svg
                 width="1280"
                 height="720"

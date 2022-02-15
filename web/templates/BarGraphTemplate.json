@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "type": "bar",
+            "orientation": "h",
+            "x": #XDATA,
+            "y": #YDATA,
+            "fillcolor": "rgb(224, 102, 102)"
+        }
+    ],
+    "layout": {
+        "title": "#GRAPHTITLE",
+        "width": #WIDTH,
+        "xaxis": {
+            "title": "#XTITLE",
+            "autorange": true
+        },
+        "yaxis": {
+            "title": "#YTITLE"
+        },
+        "height": #HEIGHT,
+        "autosize": false
+    },
+    "frames": []
+}

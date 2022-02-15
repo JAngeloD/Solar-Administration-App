@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -50,56 +52,88 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * This generates a JSON description of a chart using the given parameters as a string Note: layout needs to be in this JSON string and not anywhere else since it overrides it
+     * Builds JSON description of a line graph to be built with plotly see AjaxCharting.js to see how it's used
      *
-     * @param x - x axis data as an array
-     * @param y - y axis data as an array
-     * @param type - type of graph ex: bar, line etc
-     * @return - String description of the JSON
+     * @param width - Width dimension of the graph
+     * @param height - Height dimension of the graph
+     * @param xData - Array data for x values
+     * @param yData - Array data for y values
+     * @param graphTitle - Title of the graph
+     * @param xTitle - Title of the x line
+     * @param yTitle - Title of the y line
+     * @param currentDate - Current date in YYYY-MM-DD format
+     * @param tomDate - Date tomorrow in YYYY-MM-DD format
+     * @return
      */
-    public String jsonTemplateString(String[] x, int y[], String type) {
-        String finalString = "{\n"
-                + "    \"data\": [\n"
-                + "        {\n"
-                //                + "            \"uid\": \"babced\",\n"
-                + "            \"fill\": \"tozeroy\",\n"
-                //                + "            \"mode\": \"none\",\n"
-                //                + "            \"name\": \"Col2\",\n"
-                + "            \"type\":\"" + type +  "\",\n"
-                + "            \"x\": " + Arrays.toString(x) + ",\n"
-                + "            \"y\": " + Arrays.toString(y) + ",\n"
-                + "            \"fillcolor\": \"rgb(224, 102, 102)\""
-                + "        }\n"
-                + "    ],\n"
-                + "    \"layout\": {\n"
-                + "        \"title\": \"Test Data\",\n"
-                + "        \"width\": 1000,\n"
-                + "        \"xaxis\": {\n"
-                + "            \"type\": \"date\",\n"
-                + "            \"range\": [\n"
-                + "                \"2022-02-09\",\n"
-                + "                \"2022-02-10\"\n"
-                + "            ],\n"
-                + "            \"title\": \"Time\",\n"
-                + "            \"showgrid\": false,\n"
-                + "            \"autorange\": false,\n"
-                //Check this for formating https://plotly.com/chart-studio-help/date-format-and-time-series/#:~:text=Chart%20Studio%20conversion.-,Entering%20Dates%20and%20Times%20in%20Chart%20Studio's%20Grid,through%2023%20reserved%20for%20PM.
-                + "            \"tickformat\": \"%I %p\" \n"
-                + "        },\n"
-                + "        \"yaxis\": {\n"
-                + "            \"type\": \"linear\",\n"
-                + "            \"range\": [\n"
-                + "                0,\n"
-                + "                100\n"
-                + "            ],\n"
-                + "            \"title\": \"AC Power (kW)\"\n"
-                + "        },\n"
-                + "        \"height\": 500,\n"
-                + "        \"autosize\": false\n"
-                + "    },\n"
-                + "    \"frames\": []\n"
-                + "}";
+    public String buildLineGraphFromJSON(int width, int height, String[] xData, int[] yData, String graphTitle, String xTitle, String yTitle, String currentDate, String tomDate) {
 
-        return finalString;
+        String jsonTemplate = "";
+        try {
+//            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/LineGraphTemplate.json"));
+            jsonTemplate = convertFileIntoString("web\\templates\\LineGraphTemplate.json");
+
+            jsonTemplate = jsonTemplate.replaceAll("#WIDTH", String.valueOf(width));
+            jsonTemplate = jsonTemplate.replaceAll("#HEIGHT", String.valueOf(height));
+            jsonTemplate = jsonTemplate.replaceAll("#XDATA", Arrays.toString(xData));
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA", Arrays.toString(yData));
+            jsonTemplate = jsonTemplate.replaceAll("#GRAPHTITLE", graphTitle);
+            jsonTemplate = jsonTemplate.replaceAll("#XTITLE", xTitle);
+            jsonTemplate = jsonTemplate.replaceAll("#YTITLE", yTitle);
+            jsonTemplate = jsonTemplate.replaceAll("#CURRENTDATE", currentDate);
+            jsonTemplate = jsonTemplate.replaceAll("#TOMDATE", tomDate);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return jsonTemplate;
     }
+
+    /**
+     * Builds JSON description of a line graph to be built with plotly see AjaxCharting.js to see how it's used
+     *
+     * @param width - Width dimension of the graph
+     * @param height - Height dimension of the graph
+     * @param xData - Array data for x values
+     * @param yData - Array data for y values
+     * @param graphTitle - Title of the graph
+     * @param xTitle - Title of the x line
+     * @param yTitle - Title of the y line
+     * @return
+     */
+    public String buildBarGraphFromJSON(int width, int height, int[] xData, String[] yData, String graphTitle, String xTitle, String yTitle) {
+
+        String jsonTemplate = "";
+        try {
+//            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/BarGraphTemplate.json"));
+            jsonTemplate = convertFileIntoString("web\\templates\\BarGraphTemplate.json");
+
+            jsonTemplate = jsonTemplate.replaceAll("#WIDTH", String.valueOf(width));
+            jsonTemplate = jsonTemplate.replaceAll("#HEIGHT", String.valueOf(height));
+            jsonTemplate = jsonTemplate.replaceAll("#XDATA", Arrays.toString(xData));
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA", Arrays.toString(yData));
+            jsonTemplate = jsonTemplate.replaceAll("#GRAPHTITLE", graphTitle);
+            jsonTemplate = jsonTemplate.replaceAll("#XTITLE", xTitle);
+            jsonTemplate = jsonTemplate.replaceAll("#YTITLE", yTitle);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return jsonTemplate;
+    }
+
+    /**
+     * Used to grab info from JSON template file 
+     * 
+     * @param file - file location
+     * @return - Returns file contents as a String
+     * @throws Exception 
+     */
+    public static String convertFileIntoString(String file) throws Exception {
+        String result;
+        result = new String(Files.readAllBytes(Paths.get(file)));
+        return result;
+       
+    }
+
 }

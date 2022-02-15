@@ -22,14 +22,14 @@ public class WeatherDataServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Load up a JSP
-        getServletContext().getRequestDispatcher("/WEB-INF/EXAMPLE.JSP").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/weatherdetail.jsp").forward(request,response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      getServletContext().getRequestDispatcher("/WEB-INF/EXAMPLE.jsp").forward(request, response);
+      getServletContext().getRequestDispatcher("/WEB-INF/weatherdetail.jsp").forward(request, response);
       return;
     }
 }

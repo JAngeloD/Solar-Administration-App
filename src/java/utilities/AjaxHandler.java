@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utilities;
 
 import java.io.IOException;
@@ -13,10 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import models.Facility;
 
 
 /**
@@ -46,9 +38,10 @@ public class AjaxHandler extends HttpServlet {
         
         //Makes new SortingStrategy object
         try {
-            
             //Creates a CSVParser object to use one of the getters based off of the modelName from the AJAX call
-            CSVParser modelFactory = new CSVParser();
+            System.out.println(getServletContext().getRealPath("/resources/Complied Data.csv"));
+            CSVParser modelFactory = new CSVParser(getServletContext().getRealPath("/resources/Complied Data.csv"));
+            
             
             //Gets methods of the parser class
             Class CSVParserClass = modelFactory.getClass();
@@ -60,7 +53,6 @@ public class AjaxHandler extends HttpServlet {
                     data = (double) m.invoke(modelFactory, getterMethod);
                 }
             }
-            
         }
         catch (Exception e) {
             System.out.println(e.toString());

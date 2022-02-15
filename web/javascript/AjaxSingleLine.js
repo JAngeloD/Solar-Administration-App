@@ -16,10 +16,10 @@ function load(requestType) {
         type: 'POST',
         cache: false,
         success: function (data) {
-            $('#' + requestType).text(data);
+            $('#' + requestType).attr("value", data);
         },
-        error: function () {
-            alert('error');
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
         }
     }
     );

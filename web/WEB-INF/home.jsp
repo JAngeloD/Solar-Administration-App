@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF/css/styleSheet.css"%></style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="javascript/AjaxSingleLine.js"></script>
         <title>Home</title>
     </head>
     
@@ -380,10 +382,10 @@
             <div class="wrapper3">
 
                 <div id="f2data" class="data">
-                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                    <label>Real Power: <input type="number" id="PCCgetAcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                    <label>Reactive Power: <input type="number" id="PCCgetAcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="PCCgetAcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="PCCgetAcOutputPhaseABVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> Voltage</label>
                 </div>
             </div>
 

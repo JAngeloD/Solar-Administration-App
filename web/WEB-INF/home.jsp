@@ -1431,6 +1431,6 @@
             </g>
             </svg>
         </div>
-        <a href="pccdetail">PCC Detail</a>
+      
     </body>
 </html>

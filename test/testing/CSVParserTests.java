@@ -19,7 +19,6 @@ import utilities.CSVParser;
  * @author 856622
  */
 public class CSVParserTests {
-   PCC pcc = new PCC();
     CSVParser parser = new CSVParser();
      
     @Before
@@ -40,8 +39,8 @@ public class CSVParserTests {
     public void testConstructor() {
          double actualValue = 0;
         try {
-            actualValue = pcc.getAcOutputPhaseCAVoltage();
-            System.out.println(actualValue);
+            CSVParser parser = new CSVParser("D:\\Downloads\\MFN-Solar-Admin-master\\src\\java\\utilities\\Complied Data.csv");
+            parser.getPcc("getAcOutputPhaseCAVoltage");
         }
         catch (Exception e) {
             System.out.println(e.toString());

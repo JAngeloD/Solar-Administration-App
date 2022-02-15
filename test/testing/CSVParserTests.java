@@ -19,7 +19,7 @@ import utilities.CSVParser;
  * @author 856622
  */
 public class CSVParserTests {
-   
+   PCC pcc = new PCC();
     CSVParser parser = new CSVParser();
      
     @Before
@@ -40,8 +40,8 @@ public class CSVParserTests {
     public void testConstructor() {
          double actualValue = 0;
         try {
-            parser = new CSVParser("Complied Data.csv");
-            actualValue = parser.getPcc("getAcOutputPhaseCAVoltage");
+            actualValue = pcc.getAcOutputPhaseCAVoltage();
+            System.out.println(actualValue);
         }
         catch (Exception e) {
             System.out.println(e.toString());

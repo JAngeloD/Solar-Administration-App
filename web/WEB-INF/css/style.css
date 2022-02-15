@@ -19,6 +19,7 @@ ul {
 
 li {
     float: right;
+    font-size: larger;
 }
 
 .left {
@@ -31,6 +32,7 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
 }
 
 li a:hover:not(.active) {
@@ -48,7 +50,7 @@ li a.active {
 }
 
 #bar {
-    margin-left: 20%;
+    margin-left: 15%;
     float: left;
 }
 

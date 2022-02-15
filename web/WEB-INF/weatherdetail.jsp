@@ -5,6 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF//css/style.css"%></style>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript"><%@include file="/javascript/powerGraph.js"%></script>
         <title>Weather Detail</title>
     </head>
     <body>

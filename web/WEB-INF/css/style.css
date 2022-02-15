@@ -85,7 +85,6 @@ li a.active {
     width: 15%;
     padding: 1%;
     border-radius: 0.5em;
-
 }
 
 .inverterButton:hover {
@@ -100,4 +99,5 @@ li a.active {
 .center {
     margin-right: 10%;
     margin-left: 10%;
+    margin-top: 2%;
 }

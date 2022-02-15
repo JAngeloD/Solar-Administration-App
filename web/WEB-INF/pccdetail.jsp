@@ -28,50 +28,9 @@
                 text-align: center;
 
             }
-            .wrapper4{
+            .wrapper4 {
                 text-align: center;
-            }
-            .wrapper5{
-                text-align: center;
-            }
-            .wrapper6{
-                text-align: center;
-            }
-            .wrapper7{
-                text-align: center;
-            }
-            .wrapper8{
-                text-align: center;
-            }
-            .wrapper9{
-                text-align: center;
-            }
-            .wrapper10{
-                text-align: center;
-            }
-            .wrapper11{
-                text-align: center;
-            }
-            .wrapper12{
-                text-align: center;
-            }
-            .wrapper13{
-                text-align: center;
-            }
-            .wrapper14{
-                text-align: center;
-            }
-            .wrapper15{
-                text-align: center;
-            }
-            .wrapper16{
-                text-align: center;
-            }
-            .wrapper17{
-                text-align: center;
-            }
-            .wrapper18{
-                text-align: center;
+
             } 
             a {
                 background-color: #555;
@@ -79,7 +38,6 @@
                 padding: 1.6em 1em;
                 text-decoration: none;
                 text-transform: uppercase;
-
                 font-size: 12px;
             }
 
@@ -96,87 +54,9 @@
             }
             .button2 {
                 position: absolute;
-                top: 70%;
-                left: 48%;
+                top: 65%;
+                left: 50%;
             }
-            .button14 {
-                position: absolute;
-                top: 15%;
-                left: 85%;
-                width:160px;
-            }
-            .button15 {
-                position: absolute;
-                top: 22%;
-                left: 85%;
-                width:160px;
-            }
-            .button16 {
-                position: absolute;
-                width:160px;
-                top: 29%;
-                left: 85%;
-            }
-            .button3 {
-                position: absolute;
-                top: 36%;
-                left: 85%;
-                width:160px;
-            }
-            .button4 {
-                position: absolute;
-                width:160px;
-                top: 43%;
-                left: 85%;
-            }.button5 {
-                position: absolute;
-                width:40px;
-                top: 50%;
-                left: 85%;
-            }.button6 {
-                position: absolute;
-                width:40px;
-                top: 50%;
-                left: 94%;
-            }.button7 {
-                position: absolute;
-                width:160px;
-                top: 57%;
-                left: 85%;
-            }.button8 {
-                position: absolute;
-                width:160px;
-                top: 64%;
-                left: 85%;
-            }.button9 {
-                position: absolute;
-                width:160px;
-                top: 71%;
-                left: 85%;
-            }.button10 {
-                position: absolute;
-                width:160px;
-                top: 78%;
-                left: 85%;
-            }.button11 {
-                position: absolute;
-                width:160px;
-                top: 85%;
-                left: 85%;
-            }.button12{
-                position: absolute;
-                width:160px;
-                top: 92%;
-                left: 85%;
-            }.button13 {
-                position: absolute;
-                width:160px;
-                top: 99%;
-                left: 85%;
-            }
-
-
-
             .data{
                 border-radius: 1em;
                 border: 2px solid;
@@ -199,33 +79,41 @@
             }
             #f1data{
                 position: absolute;
-                left: 12.7%;
-                top: 28.5%;
+                left: 14.4%;
+                top: 17.5%;
             }
             #f2data{
                 position: absolute;
-                left: 12.7%;
-                top: 63.6%;
+                left: 14.4%;
+                top: 53%;
             }
             #pccdata{
                 position: absolute;
-                left: 46%;
-                top: 25%;
+                left: 56%;
+                top: 17.5%;
             }
             button{
                 width: 80px;
                 background-color: #6F1D1B;
                 color: whitesmoke;
                 position: absolute;
-                left: 27%;
-                top: 70%;
+                left: 31.4%;
+                top: 56%;
             }
+            .head{
+            text-align: center;
+        }
+        .headz{
+            top:5%;
+            left:50%;
+        }
         </style>
     </head>
     <body>
-        <div>
-            <h1>&nbsp;PCC Detail</h1>
-        </div
+        
+        <div class="head">
+            <h1 class='headz'>PCC Detail</h1>
+        </div>
 
         <div  class="wrapperall" id="electricDiagram">
             <div class="wrapper">
@@ -247,8 +135,6 @@
                 </div>
             </div>
             <div class="wrapper2">
-
-
                 <div>
                     <button>Breaker Control</button>
                 </div>
@@ -267,77 +153,7 @@
                 </div>
             </div> 
 
-            <div hidden="true">
-                <div class="wrapper16" hidden="true">
-                    <a href="home" class="button14">SELECT BREAKER</a>
-                </div>
-            </div> 
-            <div hidden="true">
-                <div class="wrapper17">
-                    <a href="home" class="button15">CB-501</a>
-                </div>
-            </div> 
-            <div hidden="true">
-                <div class="wrapper18">
-                    <a href="home" class="button16">CB-502</a>
-                </div>
-                </d
-                <div hidden="true">
-                     
-                    <div class="wrapper5">
-                        <a href="home" class="button3">CONFIRM BREAKER</a>
-                    </div>
-                </div> 
-                <div hidden="true">
-                    <div class="wrapper6">
-                        <a href="home" class="button4">CB-XXX</a>
-                    </div>
-                </div> 
-                <div hidden="true">
-                    <div class="wrapper7">
-                        <a href="home" class="button5">YES</a>
-                    </div>
-                </div> 
-                <div hidden="true">
-                    <div class="wrapper8">
-                        <a href="home" class="button6">NO</a>
-                    </div>
-                </div> 
-                <div hidden="true">
-                    <div class="wrapper9">
-                        <a href="home" class="button7">BREAKER LOCAL/REMOTE</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper10">
-                        <a href="home" class="button8">LOCAL</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper11">
-                        <a href="home" class="button9">REMOTE</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper12">
-                        <a href="home" class="button10">OPERATE BREAKER</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper13">
-                        <a href="home" class="button11">TRIP OR CLOSE</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper14">
-                        <a href="home" class="button12">CONFIRM OPERATION</a>
-                    </div>
-                </div> 
-                <div hidden="true>
-                    <div class="wrapper15">
-                        <a href="home" class="button13">TRIP/CLOSE CB-50X</a>
-                    </div>
-                </div>
+            
             <svg
                 width="1280"
                 height="720"

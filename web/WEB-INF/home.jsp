@@ -15,132 +15,443 @@
     </head>
     
       <style>
-        
+
         .wrapall{
             text-align: center;
             position: relative;
-          
+
         }
-.wrapper {
-    text-align: center;
-   
-}
+        .wrapper {
+            text-align: center;
 
-.button {
-    
-   position: absolute;
-    top: 58%;
-    left: 65%;
-}
-.wrapper1 {
-    text-align: center;
-   
-}
+        }
 
-.button1 {
-    position: absolute;
-    top: 80%;
-    left: 14.1%;
-    width: 94px;
-   
-}
+        .button {
 
-.wrapper2 {
-    text-align: center;
-   
-}
+            position: absolute;
+            top: 58%;
+            left: 65%;
+        }
+        .wrapper1 {
+            text-align: center;
 
-.button2 {
-    position: absolute;
-    top: 84%;
-    left: 65%;
-}
+        }
 
-a {
-  background-color: #555;
-  color: white;
-  padding: 1.6em 1em;
-  text-decoration: none;
-  text-transform: uppercase;
- 
-      font-size: 12px;
-}
+        .button1 {
+            position: absolute;
+            top: 81.6%;
+            left: 14.2%;
+            width: 92px;
 
-a:hover {
-  background-color: lightgray;
-}
+        }
 
-a:active {
-  background-color: black;
-}
+        .wrapper2 {
+            text-align: center;
 
-a:visited {
-  background-color: darkgrey;
-}
+        }
 
- .data{
-                border-radius: 1em;
-                border: 2px solid;
-                background-color: #F5F3E6;
-                font: sans-serif;  
-                font-size: 10px;
-                padding: 5px;
-            }
-            
-            label, input{
-                font-size: 10px;
-                font-weight: bold;
-                background-color: #F5F3E6;
-                border: 0;
-                border-width: 0;
-                width: 60px;
-            }
-      
-            #f2data{
+        .button2 {
+            position: absolute;
+            top: 84%;
+            left: 65%;
+        }
+        .wrapper4 {
+            text-align: center;
+
+        }
+        .button4 {
+            position: absolute;
+            top: 18.5%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper5 {
+            text-align: center;
+
+        }
+        .button5 {
+           position: absolute;
+            top: 34%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper6 {
+            text-align: center;
+
+        }
+        .button6 {
+            position: absolute;
+          top: 62.5%;
+            left: 2%;
+            width:88px;;
+        }
+           .wrapper7 {
+            text-align: center;
+
+        }
+        .button7 {
+            position: absolute;
+           top: 77.5%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper8 {
+            text-align: center;
+
+        }
+        .button8 {
+               position: absolute;
+            top: 18.5%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper9 {
+            text-align: center;
+
+        }
+        .button9 {
+              position: absolute;
+            top: 34%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper10 {
+            text-align: center;
+
+        }
+        .button10 {
+            position: absolute;
+          top: 62.5%;
+            left: 8.2%;
+            width:88px;;
+        }
+           .wrapper11 {
+            text-align: center;
+
+        }
+        .button11 {
+               position: absolute;
+           top: 77.5%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper12 {
+            text-align: center;
+
+        }
+        .button12 {
+            position: absolute;
+            top: 18.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper13 {
+            text-align: center;
+
+        }
+        .button13 {
+          position: absolute;
+            top: 34%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper14 {
+            text-align: center;
+
+        }
+        .button14 {
+                  position: absolute;
+          top: 62.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper15 {
+            text-align: center;
+
+        }
+        .button15 {
+              position: absolute;
+           top: 77.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper16 {
+            text-align: center;
+
+        }
+        .button16 {
+              position: absolute;
+            top: 18.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper17 {
+            text-align: center;
+
+        }
+        .button17 {
+           position: absolute;
+            top: 34%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper18 {
+            text-align: center;
+
+        }
+        .button18 {
+                    position: absolute;
+          top: 62.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper19 {
+            text-align: center;
+
+        }
+        .button19 {
                 position: absolute;
-                left: 64%;
-                top: 31%;
-            }
+           top: 77.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper20 {
+            text-align: center;
+
+        }
+        .button20 {
+            position: absolute;
+            top: 29%;
+            left: 36.4%;
+        }
+           .wrapper21 {
+            text-align: center;
+
+        }
+        .button21 {
+            position: absolute;
+            top: 72.6%;
+                        left: 36.4%;
+        }
+           .wrapper22 {
+            text-align: center;
+
+        }
+        .button22 {
+            position: absolute;
+            top: 38.3%;
+            left: 56.5%;
+        }
+           .wrapper23 {
+            text-align: center;
+
+        }
+        .button23 {
+            position: absolute;
+            top: 47.2%;
+            left: 56.5%;
+        }
+           .wrapper24 {
+            text-align: center;
+
+        }
+        .button24 {
+            position: absolute;
+           top: 38.3%;
+            left: 65.5%;
+        }
+           .wrapper25 {
+            text-align: center;
+
+        }
+        .button25 {
+            position: absolute;
+            top: 47.2%;
+            left: 65.5%;
+        }
+           .wrapper26 {
+            text-align: center;
+
+        }
+        .button26 {
+            position: absolute;
+           top: 41%;
+            left: 74%;
+        }
+           .wrapper27 {
+            text-align: center;
+
+        }
+        .button27 {
+            position: absolute;
+           top: 50%;
+            left: 74%;
+        }
+        p{
+            font-size: 11px;
+        }
+
+        a {
+            background-color: #555;
+            color: white;
+            padding: 1.6em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            font-size: 12px;
+        }
+
+        a:hover {
+            background-color: lightgray;
+        }
+
+        a:active {
+            background-color: black;
+        }
+
+        a:visited {
+            background-color: darkgrey;
+        }
+
+        .data{
+            border-radius: 1em;
+            border: 2px solid;
+            background-color: #F5F3E6;
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+            background-color: #F5F3E6;
+            border: 0;
+            border-width: 0;
+            width: 60px;
+        }
+
+        #f2data{
+            position: absolute;
+            left: 64%;
+            top: 31%;
+        }
 
 
-</style>
-    
+    </style>
     <body>
-       <%-- 
-        <div id="header">
-            <div id="companyName">
-                <h1>Solar Power Administration</h1>
-            </div>
+        <%-- 
+         <div id="header">
+             <div id="companyName">
+                 <h1>Solar Power Administration</h1>
+             </div>
 
             <div id="account">
                 <h1>Account</h1>
             </div>
         </div>
---%>
-   <div class="wrapall" id="electricDiagram">
-            
-                     <div class="wrapper">
- <a href="pccdetail" class="button">SELECT PCC DETAIL</a>
-</div>
-        
-             <div class="wrapper1">
-   <a href="inverterhome" class="button1">SELECT INVERTER PERFORMANCE</a>
-    
-</div>
-         
-                      <div class="wrapper2">
-    <a href="weather" class="button2">SELECT WEATHER DETAIL</a>
-    
-</div>
-            
-            <div class="wrapper3">
-                
-                  <div id="f2data" class="data">
-                <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+        --%>
+        <div class="wrapall" id="electricDiagram">
+
+            <div class="wrapper">
+                <a href="pccdetail" class="button">SELECT PCC DETAIL</a>
             </div>
+
+            <div class="wrapper1">
+                <a href="inverterhome" class="button1">SELECT INVERTER PERFORMANCE</a>
+
+            </div>
+
+            <div class="wrapper2">
+                <a href="weather" class="button2">SELECT WEATHER DETAIL</a>
+
+            </div>
+
+            <div class="wrapper3">
+
+                <div id="f2data" class="data">
+                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
+                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                </div>
+            </div>
+
+            <div class="txt">
+
+                <div class="wrapper4">
+                    <p class="button4"a>PV Modules Strings 1-14</p>
+
+                </div>                    <div class="wrapper5">
+                    <p class="button5"a>PV Modules Strings 15-28</p>
+
+                </div>                    <div class="wrapper6">
+                    <p class="button6"a>PV Modules Strings 29-42</p>
+
+                </div>                    <div class="wrapper7">
+                    <p class="button7"a>PV Modules Strings 43-57</p>
+
+                </div>                    <div class="wrapper8">
+                    <p class="button8"a>Combiner Boxes CB 1-9</p>
+
+                </div>                    <div class="wrapper9">
+                    <p class="button9"a>Combiner Boxes CB 10-19</p>
+
+                </div>                    <div class="wrapper10">
+                    <p class="button10"a>Combiner Boxes CB 20-29</p>
+
+                </div>                    <div class="wrapper11">
+                    <p class="button11"a>Combiner Boxes CB 30-39</p>
+
+                </div>                    <div class="wrapper12">
+                    <p class="button12"a>Inverters I 1-9</p>
+
+                </div>                    <div class="wrapper13">
+                    <p class="button13"a>Inverters I 10-19</p>
+
+                </div>                    <div class="wrapper14">
+                    <p class="button14"a>Inverters I 20-29</p>
+
+                </div>                    <div class="wrapper15">
+                    <p class="button15"a>Inverters I 30-39</p>
+
+                </div>                    <div class="wrapper16">
+                    <p class="button16"a>ACC-1</p>
+
+                </div>                    <div class="wrapper17">
+                    <p class="button17"a>ACC-2</p>
+
+                </div>                    <div class="wrapper18">
+                    <p class="button18"a>ACC-3</p>
+
+                </div>                    <div class="wrapper19">
+                    <p class="button19"a>ACC-4</p>
+
+                </div>                    <div class="wrapper20">
+                    <p class="button20"a>T1</p>
+
+                </div>                    <div class="wrapper21">
+                    <p class="button21"a>T2</p>
+
+                </div>                    <div class="wrapper22">
+                    <p class="button22"a>CB-501</p>
+
+                </div>                    <div class="wrapper23">
+                    <p class="button23"a>CB-502</p>
+
+                </div>                    <div class="wrapper24">
+                    <p class="button24"a>SW-501</p>
+
+                </div>                    <div class="wrapper25">
+                    <p class="button25"a>SW-502</p>
+
+                </div>                    <div class="wrapper26">
+                    <p class="button26"a>To Fortis</p>
+
+                </div>                    <div class="wrapper27">
+                    <p class="button27"a>To Station Service</p>
+
+                </div>
             </div>
 
             <svg

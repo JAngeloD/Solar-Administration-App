@@ -52,8 +52,9 @@ function buildLineGraph() {
             title: 'Hours',
             domain: [0, 24]
         },
-        width: 750,
-        height: 500
+        width: 650,
+        height: 500,
+        automargin: true
 
     };
 
@@ -101,8 +102,9 @@ function buildWindGraph() {
             title: 'Wind Speed ( km / hr )',
             domain: [0, 24]
         },
-        width: 750,
-        height: 500
+        width: 650,
+        height: 500,
+        automargin: true
 
     };
 

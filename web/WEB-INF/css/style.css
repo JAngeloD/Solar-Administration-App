@@ -115,3 +115,16 @@ li a.active {
 #graphs {
     margin-top: 1%;
 }
+
+#data {
+    clear: both;
+    float: bottom;
+    margin-top: 30%;
+    width: 50%;
+    margin-left: 20%;
+}
+
+#weatherData {
+    border: 1px solid;
+    padding: 2%;
+}

@@ -31,9 +31,162 @@
             </div>
         </div>
 
+        <div id="data" >
+            <table id="weatherData" width="100%">
+                <tr>
+                    <td>
 
+                    </td>
+                    <td colspan="2">
+                        <b>Current</b>
+                    </td>
+                    <td colspan="2">
+                        <b>Maximum</b>
+                    </td>
+                    <td colspan="2">
+                        <b>Minimum</b>
+                    </td>
 
-        <div id="data">
+                </tr>
+                <tr>
+                    <td>
+                        <b>Solar Irradiance (POA) </b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        W / sq m
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        W / sq m
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Solar Irradiance (GHI)</b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        W / sq m
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        W / sq m
+                    </td>
+                    <td>
+                        -
+                    </td>
+                    <td>
+                        -
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Ambient Temperature</b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        xx.x
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Wind Speed</b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        km / hr
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        km / hr
+                    </td>
+                    <td>
+                        xx.x
+                    </td>
+                    <td>
+                        km / hr
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Back of Panel Temperature - 1</b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        xx.x
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Back of Panel Temperature - 2</b>
+                    </td>
+                    <td>
+                        XXX 
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        XXXX
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                    <td>
+                        xx.x
+                    </td>
+                    <td>
+                        Deg C
+                    </td>
+                </tr>
+            </table>
 
         </div>
     </body>

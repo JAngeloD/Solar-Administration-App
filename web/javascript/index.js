@@ -85,7 +85,12 @@ function buildBarGraph() {
         title: 'Energy',
         width: '700',
         height: '800',
-        xaxis: {title: 'kWh / kWAC'}
+        xaxis: {title: 'kWh / kWAC'},
+        yaxis: {title: 'Inverters',
+            side: "left",
+            automargin: true
+            
+        }
     };
 
     //doesnt matter that it has a warning

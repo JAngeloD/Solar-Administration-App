@@ -35,6 +35,7 @@ li a {
 
 li a:hover:not(.active) {
     background-color: #99582A;
+    color: #FFFFFF;
 }
 
 li a.active {
@@ -42,3 +43,61 @@ li a.active {
     background-color: #04AA6D;
 }
 
+.left {
+    margin-left: 5%;
+}
+
+#bar {
+    margin-left: 20%;
+    float: left;
+}
+
+#buttons {
+    margin-right: 25%;
+    margin-top: 100px;
+}
+
+#oneToNine {
+    float: right;
+}
+
+#tenToNineteen {
+    clear: right;
+    float: right;
+    margin-top: 100px;
+}
+
+#twentyTo29 {
+    clear: right;
+    float: right;
+    margin-top: 100px;
+}
+
+#thirtyTo39 {
+    clear: right;
+    float: right;
+    margin-top: 100px;
+}
+
+.inverterButton {
+    background-color: grey;
+    color: white;
+    width: 15%;
+    padding: 1%;
+    border-radius: 0.5em;
+
+}
+
+.inverterButton:hover {
+    border: 3px solid #99582A;
+}
+
+.menuButton {
+    width: 10%;
+    border-radius: 1em;
+}
+
+.center {
+    margin-right: 10%;
+    margin-left: 10%;
+}

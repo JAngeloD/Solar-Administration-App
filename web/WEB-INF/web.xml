@@ -72,8 +72,7 @@
         <servlet-name>AjaxDiagramHandler</servlet-name>
         <url-pattern>/ajaxdiagramhandler</url-pattern>
     </servlet-mapping>
-    
-        <servlet>
+    <servlet>
         <servlet-name>InverterHomeServlet</servlet-name>
         <servlet-class>servlets.InverterHomeServlet</servlet-class>
     </servlet>

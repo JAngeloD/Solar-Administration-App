@@ -13,10 +13,7 @@
         <style><%@include file="/WEB-INF/css/styleSheet.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/AjaxSingleLine.js"></script>
-        <title>Home</title>
-    </head>
-    
-      <style>
+        <style>
              .head{
             text-align: center;
         }
@@ -348,6 +345,10 @@
 
 
     </style>
+        <title>Home</title>
+    </head>
+    
+      
     <body>
           <div class="head">
             <h1 class="headz"> MAIN PAGE</h1>

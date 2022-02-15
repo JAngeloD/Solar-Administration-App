@@ -15,6 +15,13 @@
     </head>
     
       <style>
+             .head{
+            text-align: center;
+        }
+        .headz{
+            top:5%;
+            left:50%;
+        }
 
         .wrapall{
             text-align: center;
@@ -340,6 +347,9 @@
 
     </style>
     <body>
+          <div class="head">
+            <h1 class="headz"> MAIN PAGE</h1>
+        </div>
         <%-- 
          <div id="header">
              <div id="companyName">

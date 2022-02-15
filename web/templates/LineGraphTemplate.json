@@ -1,0 +1,33 @@
+{
+    "data": [
+        {
+            "type": "lines",
+            "x": #XDATA,
+            "y": #YDATA,
+            "fillcolor": "rgb(224, 102, 102)"
+        }
+    ],
+    "layout": {
+        "title": "#GRAPHTITLE",
+        "width": #WIDTH,
+        "xaxis": {
+            "type": "date",
+            "range": [
+                "#CURRENTDATE",
+                "#TOMDATE"
+            ],
+            "title": "#XTITLE",
+            "showgrid": false,
+            "autorange": false,
+            "tickformat": "%I %p"
+        },
+        "yaxis": {
+            "type": "linear",
+            "autorange": true,
+            "title": "#YTITLE"
+        },
+        "height": #HEIGHT,
+        "autosize": false
+    },
+    "frames": []
+}

@@ -337,7 +337,7 @@
             width: 60px;
         }
 
-        #f2data{
+        pcc{
             position: absolute;
             left: 64%;
             top: 31%;

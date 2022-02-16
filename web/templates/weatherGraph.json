@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "type": "scatter",
+            "x": #XDATA,
+            "y": #YDATA,
+            "fillcolor": "rgb(224, 102, 102)",
+            "name": "Temperature ( C )"
+        },
+        {
+            "x": #XDATA,
+            "y": #YDATA,
+            "type": "scatter",
+            "name": "Wind Speed ( km / hr )"
+        }
+    ],
+    "layout": {
+        "title": "Temperature / Wind ",
+        "plot_bgcolor": "rgba(242, 241, 239, 1)",
+                "paper_bgcolor": "rgba(236,236,236,1)",
+                "yaxis": {
+                    "title": "Temperature ( C )",
+                    "side": "left"
+                },
+                "xaxis": {
+                "title": "Wind Speed ( km / hr )",
+                        "domain": [0, 24]
+                },
+                "width": 650,
+                "height": 500,
+                "automargin": true
+        },
+                "frames": []
+        }

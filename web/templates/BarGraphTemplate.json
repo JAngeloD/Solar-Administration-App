@@ -9,16 +9,18 @@
         }
     ],
     "layout": {
-        "title": "#GRAPHTITLE",
-        "width": #WIDTH,
-        "xaxis": {
-            "title": "#XTITLE",
-            "autorange": true
+        "title_font_family": "Lato, sans-serif",
+        "font_family": "Lato, sans-serif",
+        "plot_bgcolor": "rgba(242, 241, 239, 1)",
+        "paper_bgcolor": "rgba(236, 236, 236, 1)",
+        "title": "Energy",
+        "width": "700",
+        "height": "800",
+        "xaxis": {"title": "kWh / kWAC"},
+        "yaxis": {"title": "Inverters",
+            "side": "left",
+            "automargin": true     
         },
-        "yaxis": {
-            "title": "#YTITLE"
-        },
-        "height": #HEIGHT,
         "autosize": false
     },
     "frames": []

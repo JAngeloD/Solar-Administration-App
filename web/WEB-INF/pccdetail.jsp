@@ -118,20 +118,20 @@
         <div  class="wrapperall" id="electricDiagram">
             <div class="wrapper">
                 <div id="f1data" class="data">
-                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="1" value="1000">kWatts</label><br>
-                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                    <label>Real Power: <input type="number" id="f1RealPower" class="f1D" step="1" readonly="true" size="1" value="1000">kW</label><br>
+                    <label>Reactive Power: <input type="number" id="f1ReactivePower" class="f1D" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="f1PowerFactor" class="f1D" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="f1Voltage" class="f1D" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
             <div class="wrapper1">
                 <div id="pccdata" class="data">
-                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage Vab: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-                    <label>Voltage Vbc: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label><br>
-                    <label>Voltage Vca: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                    <label>Real Power: <input type="number" id="pccRealPower" class="pccD" step="1" readonly="true" size="10" value="1000"> kW</label><br>
+                    <label>Reactive Power: <input type="number" id="pccReactivePower" class="pccD" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="pccPowerFactor" class="pccD" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage Vab: <input type="number" id="pccVab" class="pccD" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vbc: <input type="number" id="pccVbc" class="pccD" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vca: <input type="number" id="pccVca" class="pccD" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
             <div class="wrapper2">
@@ -141,10 +141,10 @@
             </div>
             <div class="wrapper3">
                 <div id="f2data" class="data">
-                    <label>Real Power: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> kWatts</label><br>
-                    <label>Reactive Power: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="" class="" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="" class="" step="1" readonly="true" size="10" value="1000"> Voltage</label>
+                    <label>Real Power: <input type="number" id="f2RealPower" class="f2D" step="1" readonly="true" size="10" value="1000"> kW</label><br>
+                    <label>Reactive Power: <input type="number" id="f2ReactivePower" class="f2D" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="f2PowerFactor" class="f2D" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="f2Voltage" class="f2D" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>  
             <div>

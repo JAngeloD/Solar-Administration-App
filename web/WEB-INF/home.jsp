@@ -13,6 +13,7 @@
         <style><%@include file="/WEB-INF/css/styleSheet.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/AjaxSingleLine.js"></script>
+    </head>
         <style>
              .head{
             text-align: center;
@@ -337,7 +338,7 @@
             width: 60px;
         }
 
-        pcc{
+        #pcc{
             position: absolute;
             left: 64%;
             top: 31%;
@@ -346,7 +347,7 @@
 
     </style>
         <title>Home</title>
-    </head>
+    
     
       
     <body>

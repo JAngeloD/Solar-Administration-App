@@ -40,13 +40,12 @@ public class CSVParserTests {
          double actualValue = 0;
         try {
             CSVParser parser = new CSVParser("web\\resources\\Complied Data.csv");
-            actualValue = parser.getPcc("getAcOutputPhaseCAVoltage");
+            actualValue = parser.getPcc("getAcOutputLifeTimeEnergy");
         }
         catch (Exception e) {
             System.out.println(e.toString());
-            e.printStackTrace();
         }
         
-        System.out.print(actualValue);
+        System.out.print(actualValue + "\n");
     }
 }

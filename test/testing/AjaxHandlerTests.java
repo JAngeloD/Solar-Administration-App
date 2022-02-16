@@ -52,14 +52,14 @@ public class AjaxHandlerTests {
             System.out.println(e.toString());
         }
         
-        System.out.println("Testing getData() method results:" + "\n" +
-                                      "actual value: " + actualValue + "\n" +
-                                      "output value: " + testData);
+//        System.out.println("Testing getData() method results:" + "\n" +
+//                                      "actual value: " + actualValue + "\n" +
+//                                      "output value: " + testData);
         
         assertEquals(testData, actualValue, 0);
     }
     
-    @Test
+//    @Test
     public void testSubstring() {
         
         String requestedData = "FacilitygetWindSpeed";
@@ -71,5 +71,19 @@ public class AjaxHandlerTests {
         
         assertEquals(modelName, "Facility");
         assertEquals(getterMethod, "getWindSpeed");
+    }
+    
+    @Test
+    public void testMatch() {
+        //Will store the id of the caller and splits it into the model type and the getter function
+        String requestedData = "FeedergetAcOutputPhaseAverageVoltage2";
+        String modelName = "get" + requestedData.substring(0, requestedData.indexOf("get"));
+        String getterMethod = requestedData.substring(requestedData.indexOf("get"));
+        
+        if(getterMethod.substring(getterMethod.length() - 1).matches("[0-9]+")) {
+            getterMethod = getterMethod.substring(0, getterMethod.length() - 1);
+        }
+        
+        System.out.println(getterMethod);
     }
 }

@@ -384,10 +384,10 @@
             <div class="wrapper3">
 
                 <div id="pcc" class="data">
-                    <label>Real Power: <input type="number" id="PCCgetAcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
-                    <label>Reactive Power: <input type="number" id="PCCgetAcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="PCCgetAcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="PCCgetAcOutputPhaseABVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label>Real Power: <input type="number" id="PccgetAcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
+                    <label>Reactive Power: <input type="number" id="PccgetAcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="PccgetAcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="PccgetAcOutputPhaseAverageVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
 

@@ -33,15 +33,17 @@ public class AjaxHandler extends HttpServlet {
         String modelName = "get" + requestedData.substring(0, requestedData.indexOf("get"));
         String getterMethod = requestedData.substring(requestedData.indexOf("get"));
         
+        if(getterMethod.substring(getterMethod.length() - 1).matches("[0-9]+")) {
+            getterMethod = getterMethod.substring(0, getterMethod.length() - 1);
+        }
+        
         //Data to be returned back to caller
         double data = 0;
         
         //Makes new SortingStrategy object
         try {
             //Creates a CSVParser object to use one of the getters based off of the modelName from the AJAX call
-            System.out.println(getServletContext().getRealPath("/resources/Complied Data.csv"));
             CSVParser modelFactory = new CSVParser(getServletContext().getRealPath("/resources/Complied Data.csv"));
-            
             
             //Gets methods of the parser class
             Class CSVParserClass = modelFactory.getClass();

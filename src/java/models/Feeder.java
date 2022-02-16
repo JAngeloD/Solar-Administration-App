@@ -184,6 +184,11 @@ public class Feeder {
     public void setAcOutputPhaseCAVoltage(double acOutputPhaseCAVoltage) {
         this.acOutputPhaseCAVoltage = acOutputPhaseCAVoltage;
     }
+    
+    public double getAcOutputPhaseAverageVoltage() {
+        
+        return (this.acOutputPhaseABVoltage + this.acOutputPhaseBCVoltage + this.acOutputPhaseCAVoltage) /3;
+    }
 
     /**
      * to trip the breaker

@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Random;
 import models.*;
 
 /**
@@ -45,8 +46,16 @@ public class CSVParser {
         pcc = new PCC();
         inverter = new Inverter();
         try (CSVReader reader = new CSVReader(new FileReader(fileLocation))) {
+            
+            Random rd = new Random();
+            int randomLine = rd.nextInt(346);
             String[] lineInArray;
-            while ((lineInArray = reader.readNext()) != null) {
+            for ( int i = 0; (lineInArray = reader.readNext()) != null; i++) {
+                
+                if(i != randomLine) {
+                    continue;
+                }
+                
                 facility.setSolarIrridinacePOA(Double.parseDouble(lineInArray[3].replaceAll(",", "")));
 
                 facility.setSolarIrridinaceGHI(Double.parseDouble(lineInArray[4].replaceAll(",", "")));

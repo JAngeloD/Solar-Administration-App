@@ -252,5 +252,13 @@ public class PCC {
     public void setAcOutputPhaseCAVoltage(double acOutputPhaseCAVoltage) {
         this.acOutputPhaseCAVoltage = acOutputPhaseCAVoltage;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
+    public double getAcOutputPhaseAverageVoltage() {
+        
+        return (this.acOutputPhaseABVoltage + this.acOutputPhaseBCVoltage + this.acOutputPhaseCAVoltage) /3;
+    }
 }

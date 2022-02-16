@@ -1,6 +1,11 @@
 $(document).ready(function () {
-    setInterval(triggerUpdate, 3000);
+    setIntervalImmediately(3000);
 });
+
+function setIntervalImmediately(interval) {
+  triggerUpdate();
+  return setInterval(triggerUpdate, interval);
+}
 
 function triggerUpdate() {
     var elements = document.getElementsByClassName("realtime"); //Change parameter into whatever class name single line data are 
@@ -16,7 +21,11 @@ function load(requestType) {
         type: 'POST',
         cache: false,
         success: function (data) {
-            $('#' + requestType).attr("value", data);
+            if($('#' + requestType).prop("tagName") == "TD") {
+                $('#' + requestType).html(data);
+            } else {
+                $('#' + requestType).attr("value", data);
+            }
         },
         error: function (xhr, status, error) {
             alert(xhr.responseText);

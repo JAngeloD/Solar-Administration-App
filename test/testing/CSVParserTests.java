@@ -39,11 +39,14 @@ public class CSVParserTests {
     public void testConstructor() {
          double actualValue = 0;
         try {
-            CSVParser parser = new CSVParser("D:\\Downloads\\MFN-Solar-Admin-master\\src\\java\\utilities\\Complied Data.csv");
-            parser.getPcc("getAcOutputPhaseCAVoltage");
+            CSVParser parser = new CSVParser("web\\resources\\Complied Data.csv");
+            actualValue = parser.getPcc("getAcOutputPhaseCAVoltage");
         }
         catch (Exception e) {
             System.out.println(e.toString());
+            e.printStackTrace();
         }
+        
+        System.out.print(actualValue);
     }
 }

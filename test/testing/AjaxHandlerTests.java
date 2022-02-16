@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Facility;
+import models.PCC;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,7 +38,7 @@ public class AjaxHandlerTests {
     }
     
     @Test
-    public void testGetData() {
+    public void testGetDataFacility() {
         
         double actualValue = 32;
         
@@ -51,9 +52,9 @@ public class AjaxHandlerTests {
             System.out.println(e.toString());
         }
         
-//        System.out.println("Testing getData() method results:" + "\n" +
-//                                      "actual value: " + actualValue + "\n" +
-//                                      "output value: " + testData);
+        System.out.println("Testing getData() method results:" + "\n" +
+                                      "actual value: " + actualValue + "\n" +
+                                      "output value: " + testData);
         
         assertEquals(testData, actualValue, 0);
     }

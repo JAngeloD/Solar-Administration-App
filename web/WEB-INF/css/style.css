@@ -49,45 +49,27 @@ li a.active {
     margin-left: 5%;
 }
 
-#bar {
-    margin-left: 15%;
+#components {
+    margin-left: 10%;
+}
+
+#buttonsBox {
     float: left;
 }
 
-#buttons {
-    margin-right: 25%;
-    margin-top: 100px;
-}
-
-#oneToNine {
-    float: right;
-}
-
-#tenToNineteen {
-    clear: right;
-    float: right;
-    margin-top: 100px;
-}
-
-#twentyTo29 {
-    clear: right;
-    float: right;
-    margin-top: 100px;
-}
-
-#thirtyTo39 {
-    clear: right;
-    float: right;
-    margin-top: 100px;
+#barBox {
+    float: left;
+    margin-right: 5%;
 }
 
 .inverterButton {
     background-color: grey;
     color: white;
-    width: 15%;
+    width: 120%;
     padding: 1%;
     border-radius: 0.5em;
     border: 3px solid #F5F3E6;
+    margin-top: 100px;
 }
 
 .inverterButton:hover {

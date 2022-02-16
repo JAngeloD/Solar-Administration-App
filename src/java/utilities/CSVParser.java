@@ -45,7 +45,12 @@ public class CSVParser {
       try (CSVReader reader = new CSVReader(new FileReader(fileLocation))){
             String[] lineInArray; 
             while ((lineInArray = reader.readNext()) != null) {
-                 facility.setSolarIrridinacePOA(Double.parseDouble(lineInArray[3].replaceAll(",", "")));
+                Facility facility = new Facility();
+                Feeder feeder = new Feeder();
+                PCC pcc = new PCC();
+                Inverter inverter = new Inverter();
+                
+                    facility.setSolarIrridinacePOA(Double.parseDouble(lineInArray[3].replaceAll(",", "")));
                     
                     facility.setSolarIrridinaceGHI(Double.parseDouble(lineInArray[4].replaceAll(",", "")));
 

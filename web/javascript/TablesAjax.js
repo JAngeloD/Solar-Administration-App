@@ -3,8 +3,10 @@ $(document).ready(function () {
 });
 
 function setIntervalImmediately(interval) {
-  triggerUpdate();
-  return setInterval(triggerUpdate, interval);
+    triggerUpdate();
+    return setInterval(function () {
+        triggerUpdate();
+    }, interval);
 }
 
 function triggerUpdate() {
@@ -14,6 +16,20 @@ function triggerUpdate() {
     }
 }
 
+function displayData(chartElement) {
+    req = $.ajax({
+        url: "ajaxcharthandler",
+        type: "POST",
+        data: {name: chartElement}
+    });
+
+    req.done(function (data) {
+        var graphData = JSON.parse(data);
+
+        Plotly.newPlot(chartElement, graphData, {});
+    });
+}
+
 function load(requestType) {
     $.ajax({
         url: 'ajaxhandler',
@@ -21,7 +37,7 @@ function load(requestType) {
         type: 'POST',
         cache: false,
         success: function (data) {
-            if($('#' + requestType).prop("tagName") == "TD") {
+            if ($('#' + requestType).prop("tagName") == "TD") {
                 $('#' + requestType).html(data);
             } else {
                 $('#' + requestType).attr("value", data);
@@ -33,5 +49,3 @@ function load(requestType) {
     }
     );
 }
-;
-

@@ -3,11 +3,9 @@ $(document).ready(function () {
 });
 
 function setIntervalImmediately(interval) {
-  displayData("windGraph");
-  displayData("root");
+  displayData("bar");
   return setInterval(function() {
-        displayData("windGraph");
-        displayData("root");
+        displayData("bar");
   } , interval);
 }
 

@@ -10,7 +10,6 @@ function setIntervalImmediately(interval) {
         displayData("windGraph");
         displayData("root");
         triggerUpdate();
-        
     }, interval);
 }
 
@@ -27,8 +26,6 @@ function displayData(chartElement) {
         Plotly.newPlot(chartElement, graphData, {});
     });
 }
-
-
 
 function triggerUpdate() {
     var elements = document.getElementsByClassName("realtime"); //Change parameter into whatever class name single line data are 

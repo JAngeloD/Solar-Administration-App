@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PCCdetail</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="javascript/AjaxSingleLine.js"></script>
+        <script src="javascript/TablesAjax.js"></script>
         <style><%@include file="/WEB-INF//css/styleSheet.css"%></style>
         <style>
             .wrapperall{

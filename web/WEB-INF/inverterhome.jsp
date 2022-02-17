@@ -5,7 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script type="text/javascript"><%@include file="/javascript/index.js"%></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="javascript/InverterGraphAjax.js"></script>
         <style><%@include file="/WEB-INF//css/style.css"%></style>
         <title>Home</title>
     </head>

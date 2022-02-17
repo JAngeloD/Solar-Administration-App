@@ -7,7 +7,7 @@
         <style><%@include file="/WEB-INF//css/style.css"%></style>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="javascript/comboAjax.js"></script>
+        <script src="javascript/WeatherPageAjax.js"></script>
         <title>Weather Detail</title>
     </head>
     <body>

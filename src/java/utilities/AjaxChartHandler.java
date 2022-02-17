@@ -59,15 +59,20 @@ public class AjaxChartHandler extends HttpServlet {
 
             switch (requestedData) {
                 case "root":
+                    
                     for (int i = 0; i < yData1.length; i++) {
+                        
                         //Loops through all the methods to find the right model to use and gets its data from the specfied getter method
                         for (Method m : models) {
+                            
                             if (m.getName().equals("getFacility")) {
-                                yData1[i] = (double) m.invoke(modelFactory, "getSolarIrridinacePOA");
-                                yData2[i] = (double) m.invoke(modelFactory, "getSolarIrridinaceGHI");
+                                yData1[i] = (double) m.invoke(modelFactory, "getSolarIrridinacePOA") * Math.random();
+                                yData2[i] = (double) m.invoke(modelFactory, "getSolarIrridinaceGHI") * Math.random();
                             }
                         }
                     }
+                    
+                    //System.out.println(Arrays.toString(yData1));
                     jsonData = buildIrradiancePowerGraph(xData, yData1, yData2);
                     break;
                 case "windGraph":
@@ -75,8 +80,8 @@ public class AjaxChartHandler extends HttpServlet {
                         //Loops through all the methods to find the right model to use and gets its data from the specfied getter method
                         for (Method m : models) {
                             if (m.getName().equals("getFacility")) {
-                                yData1[i] = (double) m.invoke(modelFactory, "getAmbientTemperature");
-                                yData2[i] = (double) m.invoke(modelFactory, "getWindSpeed");
+                                yData1[i] = (double) m.invoke(modelFactory, "getAmbientTemperature") * Math.random();
+                                yData2[i] = (double) m.invoke(modelFactory, "getWindSpeed") * Math.random();
                             }
                         }
                     }
@@ -189,8 +194,13 @@ public class AjaxChartHandler extends HttpServlet {
             jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/PowerIrradianceGraph.json"));
 
             jsonTemplate = jsonTemplate.replaceAll("#XDATA", Arrays.toString(xData));
+            
+            //System.out.println(Arrays.toString(xData));
 
             jsonTemplate = jsonTemplate.replaceAll("#YDATA1", Arrays.toString(yData1));
+            //System.out.println(Arrays.toString(yData1));
+            
+            
             jsonTemplate = jsonTemplate.replaceAll("#YDATA2", Arrays.toString(yData2));
         } catch (Exception e) {
             System.out.println(e.toString());

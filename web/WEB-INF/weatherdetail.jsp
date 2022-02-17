@@ -7,7 +7,7 @@
         <style><%@include file="/WEB-INF//css/style.css"%></style>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="javascript/AjaxCharting.js"></script>
+        <script src="javascript/comboAjax.js"></script>
         <title>Weather Detail</title>
     </head>
     <body>
@@ -61,14 +61,14 @@
                                     <td>
                                         <b>Solar Irradiance (POA) </b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetSolarIrridinacePOA" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         W / sq m
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetSolarIrridinacePOA" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         W / sq m
@@ -84,14 +84,14 @@
                                     <td>
                                         <b>Solar Irradiance (GHI)</b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetSolarIrridinaceGHI" class="realtime">
+                                         
                                     </td>
                                     <td>
                                         W / sq m
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetSolarIrridinaceGHI" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         W / sq m
@@ -107,20 +107,20 @@
                                     <td>
                                         <b>Ambient Temperature</b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetAmbientTemperature" class="realtime">
+                                         
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetAmbientTemperature" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        xx.x
+                                    <td id="FacilitygetAmbientTemperature" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
@@ -130,20 +130,20 @@
                                     <td>
                                         <b>Wind Speed</b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetWindSpeed" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         km / hr
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetWindSpeed" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         km / hr
                                     </td>
-                                    <td>
-                                        xx.x
+                                    <td id="FacilitygetWindSpeed" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         km / hr
@@ -153,20 +153,20 @@
                                     <td>
                                         <b>Back of Panel Temperature - 1</b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetBackOfPanelTemperature1" class="realtime">
+                                         
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetBackOfPanelTemperature1" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        xx.x
+                                    <td id="FacilitygetBackOfPanelTemperature1" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
@@ -176,20 +176,20 @@
                                     <td>
                                         <b>Back of Panel Temperature - 2</b>
                                     </td>
-                                    <td>
-                                        XXX 
+                                    <td id="FacilitygetBackOfPanelTemperature2" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        XXXX
+                                    <td id="FacilitygetBackOfPanelTemperature2" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td>
-                                        xx.x
+                                    <td id="FacilitygetBackOfPanelTemperature2" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C

@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF//css/style.css"%></style>
+        <style><%@include file="/WEB-INF//css/table.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/TablesAjax.js"></script>
         <title>Inverters 20 - 29</title>

@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF//css/style.css"%></style>
+        <style><%@include file="/WEB-INF//css/table.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/TablesAjax.js"></script>
         <title>Inverters 1 - 9</title>
@@ -552,67 +553,78 @@
             </table>
 
             <table>
+
                 <tr>
-                    <th colspan="10">Inverter | 5</th>
+                    <td><table><tr><td><table>
+                                        <tr>
+                                            <th colspan="10">Inverter | 5</th>
+                                        </tr>
+                                        <tr>
+                                            <th>DC Input</th>
+                                            <td>DC Power</td>
+                                            <td id="InvertergetDcRealPower5" class="realtime">XXX.X</td>
+                                            <td>kW</td>
+                                            <td>DC Voltage</td>
+                                            <td id="InvertergetDcVolts5" class="realtime">XXX</td>
+                                            <td>V</td>
+                                            <td>DC Current</td>
+                                            <td id="InvertergetDcCurrent5" class="realtime">XX.X</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="3">AC Output</th>
+                                            <td>Vab</td>
+                                            <td id="InvertergetAcOutputPhaseABVoltage5" class="realtime">XXX</td>
+                                            <td>V</td>
+                                            <td>Vbc</td>
+                                            <td id="InvertergetAcOutputPhaseBCVoltage5" class="realtime">XXX</td>
+                                            <td>V</td>
+                                            <td>Vca</td>
+                                            <td id="InvertergetAcOutputPhaseCAVoltage5" class="realtime">XXX</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A Phase Current</td>
+                                            <td id="InvertergetAcOutputPhaseACurrent5" class="realtime">XX</td>
+                                            <td>A</td>
+                                            <td>B Phase Current</td>
+                                            <td id="InvertergetAcOutputPhaseBCurrent5" class="realtime">XXX</td>
+                                            <td>A</td>
+                                            <td>C Phase Current</td>
+                                            <td id="InvertergetAcOutputPhaseCCurrent5" class="realtime">XX</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Real Power</td>
+                                            <td id="InvertergetAcOutputRealPower5" class="realtime">XXX.X</td>
+                                            <td>kW</td>
+                                            <td>Reactive Power</td>
+                                            <td id="InvertergetAcOutputReactivePower5" class="realtime">XXX.X</td>
+                                            <td>kVAr</td>
+                                            <td>Power Factor</td>
+                                            <td id="InvertergetAcOutputPowerFactor5" class="realtime">.XX</td>
+                                            <td>%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <td>Fault Code</td>
+                                            <td>XX</td>
+                                            <td></td>
+                                            <td>Efficiency</td>
+                                            <td id="InvertergetEfficiency5" class="realtime">XX.X</td>
+                                            <td>%</td>
+                                            <td>Temperature</td>
+                                            <td>XX</td>
+                                            <td>°C</td>
+                                        </tr>
+                                    </table></td></tr></table>
+                    </td>
+
+
                 </tr>
-                <tr>
-                    <th>DC Input</th>
-                    <td>DC Power</td>
-                    <td id="InvertergetDcRealPower5" class="realtime">XXX.X</td>
-                    <td>kW</td>
-                    <td>DC Voltage</td>
-                    <td id="InvertergetDcVolts5" class="realtime">XXX</td>
-                    <td>V</td>
-                    <td>DC Current</td>
-                    <td id="InvertergetDcCurrent5" class="realtime">XX.X</td>
-                    <td>A</td>
-                </tr>
-                <tr>
-                    <th rowspan="3">AC Output</th>
-                    <td>Vab</td>
-                    <td id="InvertergetAcOutputPhaseABVoltage5" class="realtime">XXX</td>
-                    <td>V</td>
-                    <td>Vbc</td>
-                    <td id="InvertergetAcOutputPhaseBCVoltage5" class="realtime">XXX</td>
-                    <td>V</td>
-                    <td>Vca</td>
-                    <td id="InvertergetAcOutputPhaseCAVoltage5" class="realtime">XXX</td>
-                    <td>V</td>
-                </tr>
-                <tr>
-                    <td>A Phase Current</td>
-                    <td id="InvertergetAcOutputPhaseACurrent5" class="realtime">XX</td>
-                    <td>A</td>
-                    <td>B Phase Current</td>
-                    <td id="InvertergetAcOutputPhaseBCurrent5" class="realtime">XXX</td>
-                    <td>A</td>
-                    <td>C Phase Current</td>
-                    <td id="InvertergetAcOutputPhaseCCurrent5" class="realtime">XX</td>
-                    <td>A</td>
-                </tr>
-                <tr>
-                    <td>Real Power</td>
-                    <td id="InvertergetAcOutputRealPower5" class="realtime">XXX.X</td>
-                    <td>kW</td>
-                    <td>Reactive Power</td>
-                    <td id="InvertergetAcOutputReactivePower5" class="realtime">XXX.X</td>
-                    <td>kVAr</td>
-                    <td>Power Factor</td>
-                    <td id="InvertergetAcOutputPowerFactor5" class="realtime">.XX</td>
-                    <td>%</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>Fault Code</td>
-                    <td>XX</td>
-                    <td></td>
-                    <td>Efficiency</td>
-                    <td id="InvertergetEfficiency5" class="realtime">XX.X</td>
-                    <td>%</td>
-                    <td>Temperature</td>
-                    <td>XX</td>
-                    <td>°C</td>
-                </tr>
+
+
+
             </table>
         </div>
     </body>

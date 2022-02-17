@@ -3,13 +3,13 @@
         {
             "type": "scatter",
             "x": #XDATA,
-            "y": #YDATA,
+            "y": #YDATA1,
             "fillcolor": "rgb(224, 102, 102)",
             "name": "Temperature ( C )"
         },
         {
             "x": #XDATA,
-            "y": #YDATA,
+            "y": #YDATA2,
             "type": "scatter",
             "name": "Wind Speed ( km / hr )"
         }
@@ -30,5 +30,5 @@
                 "height": 500,
                 "automargin": true
         },
-                "frames": []
-        }
+        "frames": []
+}

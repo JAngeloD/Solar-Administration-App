@@ -1,6 +1,15 @@
 $(document).ready(function () {
-    setInterval( function () {changeState("dynamicState")}, 2000);
+    setIntervalImmediately(3000);
 });
+
+function setIntervalImmediately(interval) {
+    changeState("dynamicState1")
+    changeState("dynamicState2")
+    return setInterval(function () {
+        changeState("dynamicState1")
+        changeState("dynamicState2")
+    }, interval);
+}
 
 function changeState(className) {
     req = $.ajax({

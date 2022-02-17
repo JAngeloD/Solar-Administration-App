@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.*;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -33,22 +34,64 @@ public class AjaxChartHandler extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //Testing only
-        Random rd = new Random();
-        int[] y = new int[9];
-        for (int i = 0; i < y.length; i++) {
-            y[i] = rd.nextInt(100);
+        //Will store the id of the caller and splits it into the model type and the getter function
+        String requestedData = request.getParameter("name");
+
+        //X data hardcoded to have contain numbers from 0 - 24
+        int[] xData = new int[25];
+        for (int i = 0; i < 25; i++) {
+            xData[i] = i;
         }
 
-        String[] x = new String[]{"\"2022-02-09 03:00:00\"", "\"2022-02-09 05:00:00\"", "\"2022-02-09 07:00:00\"", "\"2022-02-09 09:00:00\"", "\"2022-02-09 11:00:00\"",
-            "\"2022-02-09 13:00:00\"", "\"2022-02-09 15:00:00\"", "\"2022-02-09 17:00:00\"", "\"2022-02-09 19:00:00\""};
+        //Instantiating both Y lists
+        double[] yData1 = new double[25];
+        double[] yData2 = new double[25];
 
-        String jsonTest = jsonTemplateString(x, y, "lines");
+        //Instantiating JSONdata to pass back into the ajax call
+        String jsonData = "";
+        try {
+            //Creates a CSVParser object to use one of the getters based off of the modelName from the AJAX call
+            CSVParser modelFactory = new CSVParser(getServletContext().getRealPath("/resources/Complied Data.csv"));
 
+            //Gets methods of the parser class
+            Class CSVParserClass = modelFactory.getClass();
+            Method[] models = CSVParserClass.getDeclaredMethods();
+
+            switch (requestedData) {
+                case "root":
+                    for (int i = 0; i < yData1.length; i++) {
+                        //Loops through all the methods to find the right model to use and gets its data from the specfied getter method
+                        for (Method m : models) {
+                            if (m.getName().equals("getFacility")) {
+                                yData1[i] = (double) m.invoke(modelFactory, "getSolarIrridinacePOA");
+                                yData2[i] = (double) m.invoke(modelFactory, "getSolarIrridinaceGHI");
+                            }
+                        }
+                    }
+                    jsonData = buildIrradiancePowerGraph(xData, yData1, yData2);
+                    break;
+                case "windGraph":
+                    for (int i = 0; i < yData1.length; i++) {
+                        //Loops through all the methods to find the right model to use and gets its data from the specfied getter method
+                        for (Method m : models) {
+                            if (m.getName().equals("getFacility")) {
+                                yData1[i] = (double) m.invoke(modelFactory, "getAmbientTemperature");
+                                yData2[i] = (double) m.invoke(modelFactory, "getWindSpeed");
+                            }
+                        }
+                    }
+                    jsonData = buildWeatherGraph(xData, yData1, yData2);
+                    break;
+                default:
+                    return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //Send data back
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(jsonTest);
+        response.getWriter().write(jsonData);
     }
 
     /**
@@ -105,8 +148,8 @@ public class AjaxChartHandler extends HttpServlet {
 
         String jsonTemplate = "";
         try {
-//            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/BarGraphTemplate.json"));
-            jsonTemplate = convertFileIntoString("web\\templates\\BarGraphTemplate.json");
+            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/BarGraphTemplate.json"));
+//            jsonTemplate = convertFileIntoString("web\\templates\\BarGraphTemplate.json");
 
             jsonTemplate = jsonTemplate.replaceAll("#WIDTH", String.valueOf(width));
             jsonTemplate = jsonTemplate.replaceAll("#HEIGHT", String.valueOf(height));
@@ -122,18 +165,52 @@ public class AjaxChartHandler extends HttpServlet {
         return jsonTemplate;
     }
 
+    public String buildWeatherGraph(int[] xData, double[] yData1, double[] yData2) {
+
+        String jsonTemplate = "";
+        try {
+            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/weatherGraph.json"));
+
+            jsonTemplate = jsonTemplate.replaceAll("#XDATA", Arrays.toString(xData));
+
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA1", Arrays.toString(yData1));
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA2", Arrays.toString(yData2));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return jsonTemplate;
+    }
+    
+    public String buildIrradiancePowerGraph(int[] xData, double[] yData1, double[] yData2) {
+
+        String jsonTemplate = "";
+        try {
+            jsonTemplate = convertFileIntoString(getServletContext().getRealPath("/templates/PowerIrradianceGraph.json"));
+
+            jsonTemplate = jsonTemplate.replaceAll("#XDATA", Arrays.toString(xData));
+
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA1", Arrays.toString(yData1));
+            jsonTemplate = jsonTemplate.replaceAll("#YDATA2", Arrays.toString(yData2));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return jsonTemplate;
+    }
+
     /**
-     * Used to grab info from JSON template file 
-     * 
+     * Used to grab info from JSON template file
+     *
      * @param file - file location
      * @return - Returns file contents as a String
-     * @throws Exception 
+     * @throws Exception
      */
     public static String convertFileIntoString(String file) throws Exception {
         String result;
         result = new String(Files.readAllBytes(Paths.get(file)));
         return result;
-       
+
     }
 
 }

@@ -3,14 +3,14 @@
         {
             "type": "scatter",
             "x": #XDATA,
-            "y": #YDATA,
+            "y": #YDATA1,
             "yaxis": "y2",
             "fillcolor": "rgb(224, 102, 102)",
             "name": "Average Power"
         },
         {
             "x": #XDATA,
-            "y": #YDATA,
+            "y": #YDATA2,
             "type": "scatter",
             "name": "Irradiance"
 
@@ -44,4 +44,4 @@
             "automargin": true
         },
         "frames": []
-    }
+}

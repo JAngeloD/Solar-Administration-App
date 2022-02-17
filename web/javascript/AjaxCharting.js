@@ -1,12 +1,14 @@
 $(document).ready(function () {
-    setInterval(function () {
-        displayData("myDiv")
-    }, 6000);
-
+    setIntervalImmediately(3000);
 });
 
-//Implement if multiple graphs are on the page
-function triggerUpdate() {
+function setIntervalImmediately(interval) {
+  displayData("windGraph");
+  displayData("root");
+  return setInterval(function() {
+        displayData("windGraph");
+        displayData("root");
+  } , interval);
 }
 
 function displayData(chartElement) {

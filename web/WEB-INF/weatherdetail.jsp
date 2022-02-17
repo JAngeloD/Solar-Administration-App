@@ -68,7 +68,7 @@
                                         W / sq m
                                     </td>
                                     <td id="FacilitygetSolarIrridinacePOAMax" class="realtime">
-                                        XXX
+                                        
                                     </td>
                                     <td>
                                         W / sq m
@@ -90,8 +90,8 @@
                                     <td>
                                         W / sq m
                                     </td>
-                                    <td id="FacilitygetSolarIrridinaceGHIMax">
-                                        XXX
+                                    <td id="FacilitygetSolarIrridinaceGHIMax" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         W / sq m
@@ -113,13 +113,13 @@
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetAmbientTemperatureMax" >
+                                    <td id="FacilitygetAmbientTemperatureMax" class="realtime">
                                         XXX
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetAmbientTemperatureMin">
+                                    <td id="FacilitygetAmbientTemperatureMin" class="realtime">
                                         XXX
                                     </td>
                                     <td>
@@ -136,13 +136,13 @@
                                     <td>
                                         km / hr
                                     </td>
-                                    <td id="FacilitygetWindSpeed" >
+                                    <td id="FacilitygetWindSpeedMax" class="realtime">
                                         XXX
                                     </td>
                                     <td>
                                         km / hr
                                     </td>
-                                    <td id="FacilitygetWindSpeed" >
+                                    <td id="FacilitygetWindSpeedMin" class="realtime">
                                         XXX
                                     </td>
                                     <td>
@@ -159,14 +159,14 @@
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetBackOfPanelTemperature1" >
-                                        XXX
+                                    <td id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetBackOfPanelTemperature1" >
-                                        XXX
+                                    <td id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
@@ -182,14 +182,14 @@
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetBackOfPanelTemperature2" >
-                                        XXX
+                                    <td id="FacilitygetBackOfPanelTemperature2Max" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C
                                     </td>
-                                    <td id="FacilitygetBackOfPanelTemperature2" >
-                                        XXX
+                                    <td id="FacilitygetBackOfPanelTemperature2Min" class="realtime">
+                                        
                                     </td>
                                     <td>
                                         Deg C

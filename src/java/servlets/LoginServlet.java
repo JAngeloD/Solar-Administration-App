@@ -58,6 +58,8 @@ public class LoginServlet extends HttpServlet
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
+        
+        // todo: validate nonce
             
         HttpSession session = request.getSession();
         session.setAttribute( "username", username );

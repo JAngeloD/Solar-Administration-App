@@ -18,7 +18,7 @@ public class LogServlet extends HttpServlet
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException
     {
-        
+        // read, write, clear logs
     }
 
     @Override

@@ -208,7 +208,7 @@ public class CSVParser {
         //Search for the method of the object for the data being requested
         for (Method m : dataGetters) {
             if (m.getName().equals(requestData)) {
-                requestedData = (double) m.invoke(modelType, null);
+                requestedData = (double) m.invoke(modelType, (Object)null);
                 return requestedData;
             }
         }

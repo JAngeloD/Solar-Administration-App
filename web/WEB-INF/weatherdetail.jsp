@@ -12,7 +12,7 @@
     </head>
     <body>
         <ul>
-            <li class="menuButton"><a href="home">Logout</a></li>
+            <li class="menuButton"><a href="login?action=logout">Logout</a></li>
             <li class="menuButton"><a href="inverterfour">Account</a></li>
             <li class="menuButton"><a href="home">Home</a></li>
             <h1 class="left">Weather Detail</h1>

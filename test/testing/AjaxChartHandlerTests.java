@@ -47,7 +47,7 @@ public class AjaxChartHandlerTests {
         String[] x = new String[]{"\"2022-02-09 03:00:00\"", "\"2022-02-09 05:00:00\"", "\"2022-02-09 07:00:00\"", "\"2022-02-09 09:00:00\"", "\"2022-02-09 11:00:00\"",
             "\"2022-02-09 13:00:00\"", "\"2022-02-09 15:00:00\"", "\"2022-02-09 17:00:00\"", "\"2022-02-09 19:00:00\""};
         
-        output = charting.buildLineGraphFromJSON(800, 500, x, y, "GRAPH TITLE", "X TITLE", "Y TITLE", "2022-02-09", "2022-02-10");
+        //output = charting.buildLineGraphFromJSON(800, 500, x, y, "GRAPH TITLE", "X TITLE", "Y TITLE", "2022-02-09", "2022-02-10");
         
         System.out.println(output);
     }
@@ -67,7 +67,7 @@ public class AjaxChartHandlerTests {
             x[i] = rd.nextInt(100);
         }
 
-        output = charting.buildBarGraphFromJSON(800, 500, x, y, "GRAPH TITLE", "X TITLE", "Y TITLE");
+        //output = charting.buildBarGraphFromJSON(800, 500, x, y, "GRAPH TITLE", "X TITLE", "Y TITLE");
         
 //        System.out.println(output);
     }

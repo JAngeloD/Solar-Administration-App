@@ -17,7 +17,7 @@ public class FacilityDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            facilityList = em.createNamedQuery("User.findAll", Facility_1.class).getResultList();
+            facilityList = em.createNamedQuery("Facility_1.findAll", Facility_1.class).getResultList();
         } finally {
             em.close();
         }

@@ -51,7 +51,7 @@ public class CSVParser {
             int randomLine = rd.nextInt(346);
             String[] lineInArray;
             for ( int i = 0; (lineInArray = reader.readNext()) != null; i++) {
-                
+                              
                 if(i != randomLine) {
                     continue;
                 }
@@ -150,7 +150,7 @@ public class CSVParser {
 
                 inverter.setDcCurrent(Double.parseDouble(lineInArray[59].replaceAll(",", "")));
 
-                inverter.setEfficiency(Double.parseDouble(lineInArray[60].replaceAll(",", "")));
+                inverter.setEfficiency(Double.parseDouble(lineInArray[60].replaceAll(",", "")));              
             }
         }
     }
@@ -208,7 +208,7 @@ public class CSVParser {
         //Search for the method of the object for the data being requested
         for (Method m : dataGetters) {
             if (m.getName().equals(requestData)) {
-                requestedData = (double) m.invoke(modelType, null);
+                requestedData = (double) m.invoke(modelType, (Object)null);
                 return requestedData;
             }
         }

@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
 public class DBUtil {
     
     private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("Home_nVentoryPU");
+            Persistence.createEntityManagerFactory("SolarPU");
     
     public static EntityManagerFactory getEmFactory() {
         return emf;

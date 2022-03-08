@@ -51,7 +51,7 @@ public class CSVParser {
             int randomLine = rd.nextInt(346);
             String[] lineInArray;
             for ( int i = 0; (lineInArray = reader.readNext()) != null; i++) {
-                
+                              
                 if(i != randomLine) {
                     continue;
                 }
@@ -150,7 +150,7 @@ public class CSVParser {
 
                 inverter.setDcCurrent(Double.parseDouble(lineInArray[59].replaceAll(",", "")));
 
-                inverter.setEfficiency(Double.parseDouble(lineInArray[60].replaceAll(",", "")));
+                inverter.setEfficiency(Double.parseDouble(lineInArray[60].replaceAll(",", "")));              
             }
         }
     }

@@ -24,7 +24,7 @@ public class InverterDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            inverterList = em.createNamedQuery("User.findAll", Inverter_1.class).getResultList();
+            inverterList = em.createNamedQuery("Inverter_1.findAll", Inverter_1.class).getResultList();
         } finally {
             em.close();
         }

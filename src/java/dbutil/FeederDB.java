@@ -18,7 +18,7 @@ public class FeederDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            feederList = em.createNamedQuery("User.findAll", Feeder_1.class).getResultList();
+            feederList = em.createNamedQuery("Feeder_1.findAll", Feeder_1.class).getResultList();
         } finally {
             em.close();
         }

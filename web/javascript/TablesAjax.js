@@ -44,7 +44,7 @@ function load(requestType) {
             }
         },
         error: function (xhr, status, error) {
-            alert(xhr.responseText);
+            
         }
     }
     );

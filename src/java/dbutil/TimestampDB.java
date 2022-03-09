@@ -19,7 +19,7 @@ public class TimestampDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            timeList = em.createNamedQuery("User.findAll", TimestampDesc.class).getResultList();
+            timeList = em.createNamedQuery("TimestampDesc.findAll", TimestampDesc.class).getResultList();
         } finally {
             em.close();
         }
@@ -88,6 +88,5 @@ public class TimestampDB {
         } finally {
             em.close();
         }
-
     }
 }

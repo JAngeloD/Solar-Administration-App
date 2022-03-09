@@ -18,7 +18,7 @@ public class PCCDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            pccList = em.createNamedQuery("User.findAll", Pcc_1.class).getResultList();
+            pccList = em.createNamedQuery("Pcc_1.findAll", Pcc_1.class).getResultList();
         } finally {
             em.close();
         }

@@ -19,7 +19,7 @@ public class BreakersDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            breakerList = em.createNamedQuery("User.findAll", Breakers.class).getResultList();
+            breakerList = em.createNamedQuery("Breakers.findAll", Breakers.class).getResultList();
         } finally {
             em.close();
         }

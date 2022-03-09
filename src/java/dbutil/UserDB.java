@@ -19,7 +19,7 @@ public class UserDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            userList = em.createNamedQuery("User.findAll", UserDetails.class).getResultList();
+            userList = em.createNamedQuery("UserDetails.findAll", UserDetails.class).getResultList();
         } finally {
             em.close();
         }

@@ -23,7 +23,7 @@ public class AlarmsDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            facilityList = em.createNamedQuery("User.findAll", Alarms.class).getResultList();
+            facilityList = em.createNamedQuery("Alarms.findAll", Alarms.class).getResultList();
         } finally {
             em.close();
         }

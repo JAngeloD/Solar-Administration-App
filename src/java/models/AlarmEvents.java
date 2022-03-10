@@ -25,59 +25,48 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author 821320
  */
 @Entity
-@Table(name = "facility_logs")
+@Table(name = "alarm_events")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FacilityLogs.findAll", query = "SELECT f FROM FacilityLogs f")
-    , @NamedQuery(name = "FacilityLogs.findByLogId", query = "SELECT f FROM FacilityLogs f WHERE f.logId = :logId")
-    , @NamedQuery(name = "FacilityLogs.findByLogText", query = "SELECT f FROM FacilityLogs f WHERE f.logText = :logText")
-    , @NamedQuery(name = "FacilityLogs.findByTimeStampId", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId = :timeStampId")
-    , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")})
-public class FacilityLogs implements Serializable {
+    @NamedQuery(name = "AlarmEvents.findAll", query = "SELECT a FROM AlarmEvents a")
+    , @NamedQuery(name = "AlarmEvents.findByEventId", query = "SELECT a FROM AlarmEvents a WHERE a.eventId = :eventId")
+    , @NamedQuery(name = "AlarmEvents.findByTimeStampId", query = "SELECT a FROM AlarmEvents a WHERE a.timeStampId = :timeStampId")
+    , @NamedQuery(name = "AlarmEvents.findByTimeStamp", query = "SELECT a FROM AlarmEvents a WHERE a.timeStamp = :timeStamp")})
+public class AlarmEvents implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "log_id")
-    private Integer logId;
-    @Column(name = "log_text")
-    private String logText;
+    @Column(name = "event_id")
+    private Integer eventId;
     @Column(name = "time_stamp_id")
     private Integer timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
-    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JoinColumn(name = "alarm_id", referencedColumnName = "alarm_id")
     @ManyToOne
-    private Users email;
+    private AlarmInfo alarmId;
 
-    public FacilityLogs() {
+    public AlarmEvents() {
     }
 
-    public FacilityLogs(Integer logId) {
-        this.logId = logId;
+    public AlarmEvents(Integer eventId) {
+        this.eventId = eventId;
     }
 
-    public FacilityLogs(Integer logId, Date timeStamp) {
-        this.logId = logId;
+    public AlarmEvents(Integer eventId, Date timeStamp) {
+        this.eventId = eventId;
         this.timeStamp = timeStamp;
     }
 
-    public Integer getLogId() {
-        return logId;
+    public Integer getEventId() {
+        return eventId;
     }
 
-    public void setLogId(Integer logId) {
-        this.logId = logId;
-    }
-
-    public String getLogText() {
-        return logText;
-    }
-
-    public void setLogText(String logText) {
-        this.logText = logText;
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
     }
 
     public Integer getTimeStampId() {
@@ -96,29 +85,29 @@ public class FacilityLogs implements Serializable {
         this.timeStamp = timeStamp;
     }
 
-    public Users getEmail() {
-        return email;
+    public AlarmInfo getAlarmId() {
+        return alarmId;
     }
 
-    public void setEmail(Users email) {
-        this.email = email;
+    public void setAlarmId(AlarmInfo alarmId) {
+        this.alarmId = alarmId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (logId != null ? logId.hashCode() : 0);
+        hash += (eventId != null ? eventId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FacilityLogs)) {
+        if (!(object instanceof AlarmEvents)) {
             return false;
         }
-        FacilityLogs other = (FacilityLogs) object;
-        if ((this.logId == null && other.logId != null) || (this.logId != null && !this.logId.equals(other.logId))) {
+        AlarmEvents other = (AlarmEvents) object;
+        if ((this.eventId == null && other.eventId != null) || (this.eventId != null && !this.eventId.equals(other.eventId))) {
             return false;
         }
         return true;
@@ -126,7 +115,7 @@ public class FacilityLogs implements Serializable {
 
     @Override
     public String toString() {
-        return "models.FacilityLogs[ logId=" + logId + " ]";
+        return "models.AlarmEvents[ eventId=" + eventId + " ]";
     }
     
 }

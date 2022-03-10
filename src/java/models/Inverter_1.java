@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,7 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Inverter_1.findAll", query = "SELECT i FROM Inverter_1 i")
-    , @NamedQuery(name = "Inverter_1.findByComponent", query = "SELECT i FROM Inverter_1 i WHERE i.component = :component")
+    , @NamedQuery(name = "Inverter_1.findByRecordID", query = "SELECT i FROM Inverter_1 i WHERE i.recordID = :recordID")
+    , @NamedQuery(name = "Inverter_1.findByTimeStampId", query = "SELECT i FROM Inverter_1 i WHERE i.timeStampId = :timeStampId")
+    , @NamedQuery(name = "Inverter_1.findByTimeStamp", query = "SELECT i FROM Inverter_1 i WHERE i.timeStamp = :timeStamp")
     , @NamedQuery(name = "Inverter_1.findByAcOutputEnergy", query = "SELECT i FROM Inverter_1 i WHERE i.acOutputEnergy = :acOutputEnergy")
     , @NamedQuery(name = "Inverter_1.findByAcOutputRealPower", query = "SELECT i FROM Inverter_1 i WHERE i.acOutputRealPower = :acOutputRealPower")
     , @NamedQuery(name = "Inverter_1.findByAcOutputApparentPower", query = "SELECT i FROM Inverter_1 i WHERE i.acOutputApparentPower = :acOutputApparentPower")
@@ -45,8 +50,14 @@ public class Inverter_1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "component")
-    private String component;
+    @Column(name = "recordID")
+    private String recordID;
+    @Column(name = "time_stamp_id")
+    private Integer timeStampId;
+    @Basic(optional = false)
+    @Column(name = "time_stamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "ac_output_energy")
     private Double acOutputEnergy;
@@ -82,16 +93,37 @@ public class Inverter_1 implements Serializable {
     public Inverter_1() {
     }
 
-    public Inverter_1(String component) {
-        this.component = component;
+    public Inverter_1(String recordID) {
+        this.recordID = recordID;
     }
 
-    public String getComponent() {
-        return component;
+    public Inverter_1(String recordID, Date timeStamp) {
+        this.recordID = recordID;
+        this.timeStamp = timeStamp;
     }
 
-    public void setComponent(String component) {
-        this.component = component;
+    public String getRecordID() {
+        return recordID;
+    }
+
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public Integer getTimeStampId() {
+        return timeStampId;
+    }
+
+    public void setTimeStampId(Integer timeStampId) {
+        this.timeStampId = timeStampId;
+    }
+
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public Double getAcOutputEnergy() {
@@ -217,7 +249,7 @@ public class Inverter_1 implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (component != null ? component.hashCode() : 0);
+        hash += (recordID != null ? recordID.hashCode() : 0);
         return hash;
     }
 
@@ -228,7 +260,7 @@ public class Inverter_1 implements Serializable {
             return false;
         }
         Inverter_1 other = (Inverter_1) object;
-        if ((this.component == null && other.component != null) || (this.component != null && !this.component.equals(other.component))) {
+        if ((this.recordID == null && other.recordID != null) || (this.recordID != null && !this.recordID.equals(other.recordID))) {
             return false;
         }
         return true;
@@ -236,7 +268,7 @@ public class Inverter_1 implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Inverter_1[ component=" + component + " ]";
+        return "models.Inverter_1[ recordID=" + recordID + " ]";
     }
     
 }

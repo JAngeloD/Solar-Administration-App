@@ -16,6 +16,18 @@
     <class>models.Pcc_1</class>
     <class>models.Eaton</class>
     <class>models.Cachelan</class>
+    <class>dbutil.AlarmInfo</class>
+    <class>dbutil.Inverter</class>
+    <class>dbutil.Feeder</class>
+    <class>dbutil.UserType</class>
+    <class>dbutil.Facility</class>
+    <class>dbutil.Pcc</class>
+    <class>dbutil.AlarmEvents</class>
+    <class>dbutil.FacilityLogs</class>
+    <class>dbutil.Users</class>
+    <class>models.AlarmEvents</class>
+    <class>models.AlarmInfo</class>
+    <class>models.Users</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>

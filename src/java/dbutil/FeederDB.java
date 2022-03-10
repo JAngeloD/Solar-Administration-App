@@ -11,27 +11,27 @@ import models.Feeder_1;
  * @author 821320
  */
 public class FeederDB {
-    List<Feeder_1> feederList;
+    private List<Feeder_1> list;
 
     public List<Feeder_1> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            feederList = em.createNamedQuery("Feeder_1.findAll", Feeder_1.class).getResultList();
+            list = em.createNamedQuery("Feeder_1.findAll", Feeder_1.class).getResultList();
         } finally {
             em.close();
         }
 
-        return feederList;
+        return list;
     }
 
-    public Feeder_1 get(String component) {
+    public Feeder_1 get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Feeder_1 user = null;
         try {
-            user = em.find(Feeder_1.class, component);
+            user = em.find(Feeder_1.class, event);
         } finally {
             em.close();
         }
@@ -39,13 +39,14 @@ public class FeederDB {
         return user;
     }
 
-    public void insert(Feeder_1 user) throws SQLException {
+    public void insert(Feeder_1 event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -72,7 +73,7 @@ public class FeederDB {
 
     }
 
-    public void delete(String component) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -80,7 +81,7 @@ public class FeederDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Feeder_1.class, component));
+            em.remove(em.find(Feeder_1.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

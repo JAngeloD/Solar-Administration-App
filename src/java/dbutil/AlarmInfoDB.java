@@ -1,38 +1,37 @@
-
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Breakers;
+import models.AlarmInfo;
 
 /**
  *
  * @author 821320
  */
-public class BreakersDB {
-        List<Breakers> breakerList;
+public class AlarmInfoDB {
+     private List<AlarmInfo> alarmList;
 
-    public List<Breakers> getAll() throws SQLException {
+    public List<AlarmInfo> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            breakerList = em.createNamedQuery("Breakers.findAll", Breakers.class).getResultList();
+            alarmList = em.createNamedQuery("AlarmInfo.findAll", AlarmInfo.class).getResultList();
         } finally {
             em.close();
         }
 
-        return breakerList;
+        return alarmList;
     }
 
-    public Breakers get(String component) {
+    public AlarmInfo get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Breakers user = null;
+        AlarmInfo user = null;
         try {
-            user = em.find(Breakers.class, component);
+            user = em.find(AlarmInfo.class, event);
         } finally {
             em.close();
         }
@@ -40,13 +39,14 @@ public class BreakersDB {
         return user;
     }
 
-    public void insert(Breakers user) throws SQLException {
+    public void insert(AlarmInfo event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -56,7 +56,7 @@ public class BreakersDB {
 
     }
 
-    public void update(Breakers user) {
+    public void update(AlarmInfo user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -73,7 +73,7 @@ public class BreakersDB {
 
     }
 
-    public void delete(String component) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +81,7 @@ public class BreakersDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Breakers.class, component));
+            em.remove(em.find(AlarmInfo.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

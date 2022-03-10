@@ -1,42 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Alarms;
+import models.UserType;
 
 /**
  *
  * @author 821320
  */
-public class AlarmsDB {
-    List<Alarms> facilityList;
+public class UserTypeDB {
+    private List<UserType> list;
 
-    public List<Alarms> getAll() throws SQLException {
+    public List<UserType> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            facilityList = em.createNamedQuery("Alarms.findAll", Alarms.class).getResultList();
+            list = em.createNamedQuery("UserType.findAll", UserType.class).getResultList();
         } finally {
             em.close();
         }
 
-        return facilityList;
+        return list;
     }
 
-    public Alarms get(String alarmCode) {
+    public UserType get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Alarms user = null;
+        UserType user = null;
         try {
-            user = em.find(Alarms.class, alarmCode);
+            user = em.find(UserType.class, event);
         } finally {
             em.close();
         }
@@ -44,13 +40,14 @@ public class AlarmsDB {
         return user;
     }
 
-    public void insert(Alarms user) throws SQLException {
+    public void insert(UserType event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -60,7 +57,7 @@ public class AlarmsDB {
 
     }
 
-    public void update(Alarms user) {
+    public void update(UserType user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -77,7 +74,7 @@ public class AlarmsDB {
 
     }
 
-    public void delete(String alarmCode) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -85,7 +82,7 @@ public class AlarmsDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Alarms.class, alarmCode));
+            em.remove(em.find(UserType.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

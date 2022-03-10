@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,7 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Feeder_1.findAll", query = "SELECT f FROM Feeder_1 f")
-    , @NamedQuery(name = "Feeder_1.findByComponent", query = "SELECT f FROM Feeder_1 f WHERE f.component = :component")
+    , @NamedQuery(name = "Feeder_1.findByRecordID", query = "SELECT f FROM Feeder_1 f WHERE f.recordID = :recordID")
+    , @NamedQuery(name = "Feeder_1.findByTimeStampId", query = "SELECT f FROM Feeder_1 f WHERE f.timeStampId = :timeStampId")
+    , @NamedQuery(name = "Feeder_1.findByTimeStamp", query = "SELECT f FROM Feeder_1 f WHERE f.timeStamp = :timeStamp")
     , @NamedQuery(name = "Feeder_1.findByAcOutputRealPower", query = "SELECT f FROM Feeder_1 f WHERE f.acOutputRealPower = :acOutputRealPower")
     , @NamedQuery(name = "Feeder_1.findByAcOutputApparentPower", query = "SELECT f FROM Feeder_1 f WHERE f.acOutputApparentPower = :acOutputApparentPower")
     , @NamedQuery(name = "Feeder_1.findByAcOutputReactivePower", query = "SELECT f FROM Feeder_1 f WHERE f.acOutputReactivePower = :acOutputReactivePower")
@@ -40,8 +45,14 @@ public class Feeder_1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "component")
-    private String component;
+    @Column(name = "recordID")
+    private String recordID;
+    @Column(name = "time_stamp_id")
+    private Integer timeStampId;
+    @Basic(optional = false)
+    @Column(name = "time_stamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "ac_output_real_power")
     private Double acOutputRealPower;
@@ -67,16 +78,37 @@ public class Feeder_1 implements Serializable {
     public Feeder_1() {
     }
 
-    public Feeder_1(String component) {
-        this.component = component;
+    public Feeder_1(String recordID) {
+        this.recordID = recordID;
     }
 
-    public String getComponent() {
-        return component;
+    public Feeder_1(String recordID, Date timeStamp) {
+        this.recordID = recordID;
+        this.timeStamp = timeStamp;
     }
 
-    public void setComponent(String component) {
-        this.component = component;
+    public String getRecordID() {
+        return recordID;
+    }
+
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public Integer getTimeStampId() {
+        return timeStampId;
+    }
+
+    public void setTimeStampId(Integer timeStampId) {
+        this.timeStampId = timeStampId;
+    }
+
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public Double getAcOutputRealPower() {
@@ -162,7 +194,7 @@ public class Feeder_1 implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (component != null ? component.hashCode() : 0);
+        hash += (recordID != null ? recordID.hashCode() : 0);
         return hash;
     }
 
@@ -173,7 +205,7 @@ public class Feeder_1 implements Serializable {
             return false;
         }
         Feeder_1 other = (Feeder_1) object;
-        if ((this.component == null && other.component != null) || (this.component != null && !this.component.equals(other.component))) {
+        if ((this.recordID == null && other.recordID != null) || (this.recordID != null && !this.recordID.equals(other.recordID))) {
             return false;
         }
         return true;
@@ -181,7 +213,7 @@ public class Feeder_1 implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Feeder_1[ component=" + component + " ]";
+        return "models.Feeder_1[ recordID=" + recordID + " ]";
     }
     
 }

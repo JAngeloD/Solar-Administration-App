@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dbutil;
 
 import java.sql.SQLException;
@@ -16,28 +11,27 @@ import models.Inverter_1;
  * @author 821320
  */
 public class InverterDB {
-        
-    List<Inverter_1> inverterList;
+    private List<Inverter_1> list;
 
     public List<Inverter_1> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            inverterList = em.createNamedQuery("Inverter_1.findAll", Inverter_1.class).getResultList();
+            list = em.createNamedQuery("Inverter_1.findAll", Inverter_1.class).getResultList();
         } finally {
             em.close();
         }
 
-        return inverterList;
+        return list;
     }
 
-    public Inverter_1 get(String email) {
+    public Inverter_1 get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Inverter_1 user = null;
         try {
-            user = em.find(Inverter_1.class, email);
+            user = em.find(Inverter_1.class, event);
         } finally {
             em.close();
         }
@@ -45,13 +39,14 @@ public class InverterDB {
         return user;
     }
 
-    public void insert(Inverter_1 user) throws SQLException {
+    public void insert(Inverter_1 event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -78,7 +73,7 @@ public class InverterDB {
 
     }
 
-    public void delete(String email) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -86,7 +81,7 @@ public class InverterDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Inverter_1.class, email));
+            em.remove(em.find(Inverter_1.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

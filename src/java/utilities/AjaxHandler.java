@@ -44,40 +44,7 @@ public class AjaxHandler extends HttpServlet {
 
         //Data to be returned back to caller
         double data = 0;
-
-        //Makes new SortingStrategy object
-        // REMOVE
-        try {
-            //Creates a CSVParser object to use one of the getters based off of the modelName from the AJAX call
-            // 
-            CSVParser modelFactory = new CSVParser(getServletContext().getRealPath("/resources/Complied Data.csv"));
-
-            //Gets methods of the parser class
-            Class CSVParserClass = modelFactory.getClass();
-            Method[] models = CSVParserClass.getDeclaredMethods();
-
-            //Loops through all the methods to find the right model to use and gets its data from the specfied getter method
-            for (Method m : models) {
-                if (m.getName().equals(modelName)) {
-                    data = (double) m.invoke(modelFactory, getterMethod);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         
-        //TEST CODE SINCE FUCKING JUNIT DOESN'T SUPPORT IT
-        FacilityDB facdb = new FacilityDB();
-        try {
-            List<Facility_1> facility = facdb.getAll();
-            
-            for(int i = 0; i < facility.size(); i++) {
-                System.out.println(facility.get(i).toString());
-            }
-        }
-        catch(Exception e) {
-            System.out.println(e.toString());
-        }
         
 
         //Send data back

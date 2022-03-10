@@ -26,17 +26,17 @@ public class PCCDB {
         return pccList;
     }
 
-    public Pcc_1 get(String email) {
+    public Pcc_1 get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Pcc_1 user = null;
+        Pcc_1 pcc = null;
         try {
-            user = em.find(Pcc_1.class, email);
+            pcc = em.find(Pcc_1.class, timestamp);
         } finally {
             em.close();
         }
 
-        return user;
+        return pcc;
     }
 
     public void insert(Pcc_1 user) throws SQLException {

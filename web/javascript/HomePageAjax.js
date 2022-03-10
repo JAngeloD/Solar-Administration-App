@@ -23,7 +23,7 @@ function changeState(className) {
             $('.' + className).attr("style", data);
         },
         error: function () {
-            alert('error');
+            
         }
     });
 }
@@ -49,7 +49,7 @@ function load(requestType) {
             }
         },
         error: function (xhr, status, error) {
-            alert(xhr.responseText);
+            
         }
     }
     );

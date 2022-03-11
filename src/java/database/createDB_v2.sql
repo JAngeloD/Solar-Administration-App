@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS feeder (
     time_stamp_id INT,
     time_stamp TIMESTAMP,
     device_id INT,
+    breaker_status BIT,
     ac_output_real_power DOUBLE,
     ac_output_apparent_power DOUBLE,
     ac_output_reactive_power DOUBLE,

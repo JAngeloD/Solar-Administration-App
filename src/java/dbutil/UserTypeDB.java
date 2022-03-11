@@ -27,7 +27,7 @@ public class UserTypeDB {
         return list;
     }
 
-    public UserType get(String event) {
+    public UserType get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         UserType user = null;
@@ -74,7 +74,7 @@ public class UserTypeDB {
 
     }
 
-    public void delete(String event) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

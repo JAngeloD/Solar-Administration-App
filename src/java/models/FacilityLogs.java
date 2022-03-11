@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigInteger;
 
 /**
  *
@@ -43,7 +45,7 @@ public class FacilityLogs implements Serializable {
     @Column(name = "log_text")
     private String logText;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private BigInteger timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp")
     @Temporal(TemporalType.TIMESTAMP)
@@ -80,11 +82,11 @@ public class FacilityLogs implements Serializable {
         this.logText = logText;
     }
 
-    public Integer getTimeStampId() {
+    public BigInteger getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(BigInteger timeStampId) {
         this.timeStampId = timeStampId;
     }
 

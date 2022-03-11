@@ -113,9 +113,15 @@
     </head>
     <body>
         
-        <div class="head">
-            <h1 class='headz'>PCC Detail</h1>
-        </div>
+        <div id="top-container">
+    <div>
+      <ul>
+        <li class="menuButton"><a href="login">Logout</a></li>
+        <li class="menuButton"><a href="">Account</a></li>
+        <li class="menuButton"><a href="home">Home</a></li>
+        <h1 class="left">Read Logs</h1>
+      </ul>
+    </div>
 
         <div  class="wrapperall" id="electricDiagram">
             <div class="wrapper">

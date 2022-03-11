@@ -65,9 +65,7 @@ public class AjaxHandler extends HttpServlet {
         }
         
         Random rn = new Random();
-        if (data != -1 && data != 0.01) {
-            data = Math.abs(data + (rn.nextInt()));
-        }
+        
         //Send data back
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

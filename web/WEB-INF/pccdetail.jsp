@@ -131,9 +131,9 @@
                     <label>Real Power: <input type="number" id="Pcc_Get_AcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
                     <label>Reactive Power: <input type="number" id="Pcc_Get_AcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
                     <label>Power Factor: <input type="number" id="Pcc_Get_AcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage Vab: <input type="number" id="Pcc_Get_AcOutputPhaseABVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
-                    <label>Voltage Vbc: <input type="number" id="Pcc_Get_AcOutputPhaseBCVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
-                    <label>Voltage Vca: <input type="number" id="Pcc_Get_AcOutputPhaseCAVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label>Voltage Vab: <input type="number" id="Pcc_Get_AcOutputPhaseAbVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vbc: <input type="number" id="Pcc_Get_AcOutputPhaseBcVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vca: <input type="number" id="Pcc_Get_AcOutputPhaseCaVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
             <div class="wrapper2">

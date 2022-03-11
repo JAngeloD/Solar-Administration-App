@@ -6,6 +6,8 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigInteger;
 
 /**
  *
@@ -26,37 +31,47 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FacilityLogs.findAll", query = "SELECT f FROM FacilityLogs f")
-    , @NamedQuery(name = "FacilityLogs.findByLogCode", query = "SELECT f FROM FacilityLogs f WHERE f.logCode = :logCode")
+    , @NamedQuery(name = "FacilityLogs.findByLogId", query = "SELECT f FROM FacilityLogs f WHERE f.logId = :logId")
     , @NamedQuery(name = "FacilityLogs.findByLogText", query = "SELECT f FROM FacilityLogs f WHERE f.logText = :logText")
-    , @NamedQuery(name = "FacilityLogs.findByCreatedBy", query = "SELECT f FROM FacilityLogs f WHERE f.createdBy = :createdBy")})
+    , @NamedQuery(name = "FacilityLogs.findByTimeStampId", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId = :timeStampId")
+    , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")})
 public class FacilityLogs implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "log_code")
-    private Integer logCode;
+    @Column(name = "log_id")
+    private Integer logId;
     @Column(name = "log_text")
     private String logText;
-    @Column(name = "created_by")
-    private String createdBy;
-    @JoinColumn(name = "time_stamp", referencedColumnName = "time_stamp")
+    @Column(name = "time_stamp_id")
+    private BigInteger timeStampId;
+    @Basic(optional = false)
+    @Column(name = "time_stamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
+    @JoinColumn(name = "email", referencedColumnName = "email")
     @ManyToOne
-    private TimestampDesc timeStamp;
+    private Users email;
 
     public FacilityLogs() {
     }
 
-    public FacilityLogs(Integer logCode) {
-        this.logCode = logCode;
+    public FacilityLogs(Integer logId) {
+        this.logId = logId;
     }
 
-    public Integer getLogCode() {
-        return logCode;
+    public FacilityLogs(Integer logId, Date timeStamp) {
+        this.logId = logId;
+        this.timeStamp = timeStamp;
     }
 
-    public void setLogCode(Integer logCode) {
-        this.logCode = logCode;
+    public Integer getLogId() {
+        return logId;
+    }
+
+    public void setLogId(Integer logId) {
+        this.logId = logId;
     }
 
     public String getLogText() {
@@ -67,26 +82,34 @@ public class FacilityLogs implements Serializable {
         this.logText = logText;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public BigInteger getTimeStampId() {
+        return timeStampId;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setTimeStampId(BigInteger timeStampId) {
+        this.timeStampId = timeStampId;
     }
 
-    public TimestampDesc getTimeStamp() {
+    public Date getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(TimestampDesc timeStamp) {
+    public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public Users getEmail() {
+        return email;
+    }
+
+    public void setEmail(Users email) {
+        this.email = email;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (logCode != null ? logCode.hashCode() : 0);
+        hash += (logId != null ? logId.hashCode() : 0);
         return hash;
     }
 
@@ -97,7 +120,7 @@ public class FacilityLogs implements Serializable {
             return false;
         }
         FacilityLogs other = (FacilityLogs) object;
-        if ((this.logCode == null && other.logCode != null) || (this.logCode != null && !this.logCode.equals(other.logCode))) {
+        if ((this.logId == null && other.logId != null) || (this.logId != null && !this.logId.equals(other.logId))) {
             return false;
         }
         return true;
@@ -105,7 +128,7 @@ public class FacilityLogs implements Serializable {
 
     @Override
     public String toString() {
-        return "models.FacilityLogs[ logCode=" + logCode + " ]";
+        return "models.FacilityLogs[ logId=" + logId + " ]";
     }
     
 }

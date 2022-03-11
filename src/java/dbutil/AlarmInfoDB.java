@@ -1,42 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Alarms;
+import models.AlarmInfo;
 
 /**
  *
  * @author 821320
  */
-public class AlarmsDB {
-    List<Alarms> facilityList;
+public class AlarmInfoDB {
+     private List<AlarmInfo> alarmList;
 
-    public List<Alarms> getAll() throws SQLException {
+    public List<AlarmInfo> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            facilityList = em.createNamedQuery("Alarms.findAll", Alarms.class).getResultList();
+            alarmList = em.createNamedQuery("AlarmInfo.findAll", AlarmInfo.class).getResultList();
         } finally {
             em.close();
         }
 
-        return facilityList;
+        return alarmList;
     }
 
-    public Alarms get(String alarmCode) {
+    public AlarmInfo get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Alarms user = null;
+        AlarmInfo user = null;
         try {
-            user = em.find(Alarms.class, alarmCode);
+            user = em.find(AlarmInfo.class, event);
         } finally {
             em.close();
         }
@@ -44,13 +39,14 @@ public class AlarmsDB {
         return user;
     }
 
-    public void insert(Alarms user) throws SQLException {
+    public void insert(AlarmInfo event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -60,7 +56,7 @@ public class AlarmsDB {
 
     }
 
-    public void update(Alarms user) {
+    public void update(AlarmInfo user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -77,7 +73,7 @@ public class AlarmsDB {
 
     }
 
-    public void delete(String alarmCode) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -85,7 +81,7 @@ public class AlarmsDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Alarms.class, alarmCode));
+            em.remove(em.find(AlarmInfo.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

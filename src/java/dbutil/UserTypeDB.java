@@ -1,51 +1,53 @@
+
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Pcc_1;
+import models.UserType;
 
 /**
+ *
  * @author 821320
  */
-public class PCCDB {
-        
-    List<Pcc_1> pccList;
+public class UserTypeDB {
+    private List<UserType> list;
 
-    public List<Pcc_1> getAll() throws SQLException {
+    public List<UserType> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            pccList = em.createNamedQuery("Pcc_1.findAll", Pcc_1.class).getResultList();
+            list = em.createNamedQuery("UserType.findAll", UserType.class).getResultList();
         } finally {
             em.close();
         }
 
-        return pccList;
+        return list;
     }
 
-    public Pcc_1 get(String timestamp) {
+    public UserType get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Pcc_1 pcc = null;
+        UserType user = null;
         try {
-            pcc = em.find(Pcc_1.class, timestamp);
+            user = em.find(UserType.class, event);
         } finally {
             em.close();
         }
 
-        return pcc;
+        return user;
     }
 
-    public void insert(Pcc_1 user) throws SQLException {
+    public void insert(UserType event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -55,7 +57,7 @@ public class PCCDB {
 
     }
 
-    public void update(Pcc_1 user) {
+    public void update(UserType user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -72,7 +74,7 @@ public class PCCDB {
 
     }
 
-    public void delete(String email) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -80,7 +82,7 @@ public class PCCDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Pcc_1.class, email));
+            em.remove(em.find(UserType.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

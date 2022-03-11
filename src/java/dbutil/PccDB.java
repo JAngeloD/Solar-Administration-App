@@ -1,52 +1,53 @@
+
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.UserDetails;
+import models.Pcc;
 
 /**
  *
  * @author 821320
  */
-public class UserDB {
-    
-    List<UserDetails> userList;
+public class PccDB {
+    private List<Pcc> list;
 
-    public List<UserDetails> getAll() throws SQLException {
+    public List<Pcc> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            userList = em.createNamedQuery("UserDetails.findAll", UserDetails.class).getResultList();
+            list = em.createNamedQuery("Pcc.findAll", Pcc.class).getResultList();
         } finally {
             em.close();
         }
 
-        return userList;
+        return list;
     }
 
-    public UserDetails get(String email) {
+    public Pcc get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        UserDetails user = null;
+        Pcc record = null;
         try {
-            user = em.find(UserDetails.class, email);
+            record = em.createNamedQuery("Pcc.findByTimeStampId", Pcc.class).setParameter("timeStampId", Integer.parseInt(timestamp)).getSingleResult();
         } finally {
             em.close();
         }
 
-        return user;
+        return record;
     }
 
-    public void insert(UserDetails user) throws SQLException {
+    public void insert(Pcc event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -56,7 +57,7 @@ public class UserDB {
 
     }
 
-    public void update(UserDetails user) {
+    public void update(Pcc user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -73,7 +74,7 @@ public class UserDB {
 
     }
 
-    public void delete(String email) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +82,7 @@ public class UserDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(UserDetails.class, email));
+            em.remove(em.find(Pcc.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

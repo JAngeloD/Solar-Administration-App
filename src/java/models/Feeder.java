@@ -5,211 +5,231 @@
  */
 package models;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author 856622
  */
-public class Feeder {
+@Entity
+@Table(name = "feeder")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Feeder.findAll", query = "SELECT f FROM Feeder f")
+    , @NamedQuery(name = "Feeder.findByRecordID", query = "SELECT f FROM Feeder f WHERE f.recordID = :recordID")
+    , @NamedQuery(name = "Feeder.findByTimeStampId", query = "SELECT f FROM Feeder f WHERE f.timeStampId = :timeStampId")
+    , @NamedQuery(name = "Feeder.findByTimeStamp", query = "SELECT f FROM Feeder f WHERE f.timeStamp = :timeStamp")
+    , @NamedQuery(name = "Feeder.findByDeviceId", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId")
+    , @NamedQuery(name = "Feeder.findByAcOutputRealPower", query = "SELECT f FROM Feeder f WHERE f.acOutputRealPower = :acOutputRealPower")
+    , @NamedQuery(name = "Feeder.findByAcOutputApparentPower", query = "SELECT f FROM Feeder f WHERE f.acOutputApparentPower = :acOutputApparentPower")
+    , @NamedQuery(name = "Feeder.findByAcOutputReactivePower", query = "SELECT f FROM Feeder f WHERE f.acOutputReactivePower = :acOutputReactivePower")
+    , @NamedQuery(name = "Feeder.findByAcOutputPowerFactor", query = "SELECT f FROM Feeder f WHERE f.acOutputPowerFactor = :acOutputPowerFactor")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseACurrent", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseACurrent = :acOutputPhaseACurrent")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseBCurrent", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBCurrent = :acOutputPhaseBCurrent")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseCCurrent", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseAbVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseBcVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
+    ,@NamedQuery(name  = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
+public class Feeder implements Serializable {
 
-    /**
-     * Data variables
-     */
-    private double acOutputRealPower;
-    private double acOutputApparentPower;
-    private double acOutputReactivePower;
-    private double acOutputPowerFactor;
-    private double acOutputPhaseACurrent;
-    private double acOutputPhaseBCurrent;
-    private double acOutputPhaseCCurrent;
-    private double acOutputPhaseABVoltage;
-    private double acOutputPhaseBCVoltage;
-    private double acOutputPhaseCAVoltage;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "recordID", nullable = false, length = 50)
+    private String recordID;
+    @Column(name = "time_stamp_id")
+    private Integer timeStampId;
+    @Basic(optional = false)
+    @Column(name = "time_stamp", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
+    @Column(name = "device_id")
+    private Integer deviceId;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "ac_output_real_power", precision = 22)
+    private Double acOutputRealPower;
+    @Column(name = "ac_output_apparent_power", precision = 22)
+    private Double acOutputApparentPower;
+    @Column(name = "ac_output_reactive_power", precision = 22)
+    private Double acOutputReactivePower;
+    @Column(name = "ac_output_power_factor", precision = 22)
+    private Double acOutputPowerFactor;
+    @Column(name = "ac_output_phase_a_current", precision = 22)
+    private Double acOutputPhaseACurrent;
+    @Column(name = "ac_output_phase_b_current", precision = 22)
+    private Double acOutputPhaseBCurrent;
+    @Column(name = "ac_output_phase_c_current", precision = 22)
+    private Double acOutputPhaseCCurrent;
+    @Column(name = "ac_output_phase_ab_voltage", precision = 22)
+    private Double acOutputPhaseAbVoltage;
+    @Column(name = "ac_output_phase_bc_voltage", precision = 22)
+    private Double acOutputPhaseBcVoltage;
+    @Column(name = "ac_output_phase_ca_voltage", precision = 22)
+    private Double acOutputPhaseCaVoltage;
 
-    /**
-     *
-     * @return output of power in W /KW
-     */
-    public double getAcOutputRealPower() {
+    public Feeder() {
+    }
+
+    public Feeder(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public Feeder(String recordID, Date timeStamp) {
+        this.recordID = recordID;
+        this.timeStamp = timeStamp;
+    }
+
+    public String getRecordID() {
+        return recordID;
+    }
+
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
+    }
+
+    public Integer getTimeStampId() {
+        return timeStampId;
+    }
+
+    public void setTimeStampId(Integer timeStampId) {
+        this.timeStampId = timeStampId;
+    }
+
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public Double getAcOutputRealPower() {
         return acOutputRealPower;
     }
 
-    /**
-     *
-     * @param acOutputRealPower - real power value to be set
-     */
-    public void setAcOutputRealPower(double acOutputRealPower) {
+    public void setAcOutputRealPower(Double acOutputRealPower) {
         this.acOutputRealPower = acOutputRealPower;
     }
 
-    /**
-     *
-     * @return returns the Apparent power in VA
-     */
-    public double getAcOutputApparentPower() {
+    public Double getAcOutputApparentPower() {
         return acOutputApparentPower;
     }
 
-    /**
-     *
-     * @param acOutputApparentPower - apparent power value to be set
-     */
-    public void setAcOutputApparentPower(double acOutputApparentPower) {
+    public void setAcOutputApparentPower(Double acOutputApparentPower) {
         this.acOutputApparentPower = acOutputApparentPower;
     }
 
-    /**
-     *
-     * @return returns the Reactive power in VARS
-     */
-    public double getAcOutputReactivePower() {
+    public Double getAcOutputReactivePower() {
         return acOutputReactivePower;
     }
 
-    /**
-     *
-     * @param acOutputReactivePower - reactive power value to be set
-     */
-    public void setAcOutputReactivePower(double acOutputReactivePower) {
+    public void setAcOutputReactivePower(Double acOutputReactivePower) {
         this.acOutputReactivePower = acOutputReactivePower;
     }
 
-    /**
-     *
-     * @return returns the power factor
-     */
-    public double getAcOutputPowerFactor() {
+    public Double getAcOutputPowerFactor() {
         return acOutputPowerFactor;
     }
 
-    /**
-     *
-     * @param acOutputPowerFactor - power factor value to be set
-     */
-    public void setAcOutputPowerFactor(double acOutputPowerFactor) {
+    public void setAcOutputPowerFactor(Double acOutputPowerFactor) {
         this.acOutputPowerFactor = acOutputPowerFactor;
     }
 
-    /**
-     *
-     * @return returns the phase A current
-     */
-    public double getAcOutputPhaseACurrent() {
+    public Double getAcOutputPhaseACurrent() {
         return acOutputPhaseACurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseACurrent- phase A current value to be set
-     */
-    public void setAcOutputPhaseACurrent(double acOutputPhaseACurrent) {
+    public void setAcOutputPhaseACurrent(Double acOutputPhaseACurrent) {
         this.acOutputPhaseACurrent = acOutputPhaseACurrent;
     }
 
-    /**
-     *
-     * @return returns the phase B current
-     */
-    public double getAcOutputPhaseBCurrent() {
+    public Double getAcOutputPhaseBCurrent() {
         return acOutputPhaseBCurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseBCurrent - phase B current value to be set
-     */
-    public void setAcOutputPhaseBCurrent(double acOutputPhaseBCurrent) {
+    public void setAcOutputPhaseBCurrent(Double acOutputPhaseBCurrent) {
         this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
     }
 
-    /**
-     *
-     * @return returns the phase C curent
-     */
-    public double getAcOutputPhaseCCurrent() {
+    public Double getAcOutputPhaseCCurrent() {
         return acOutputPhaseCCurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseCCurrent - phase C current value to be set
-     */
-    public void setAcOutputPhaseCCurrent(double acOutputPhaseCCurrent) {
+    public void setAcOutputPhaseCCurrent(Double acOutputPhaseCCurrent) {
         this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
     }
 
-    /**
-     *
-     * @return returns the phase AB voltage
-     */
-    public double getAcOutputPhaseABVoltage() {
-        return acOutputPhaseABVoltage;
+    public Double getAcOutputPhaseAbVoltage() {
+        return acOutputPhaseAbVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseABVoltage -phase AB voltage value to be set
-     */
-    public void setAcOutputPhaseABVoltage(double acOutputPhaseABVoltage) {
-        this.acOutputPhaseABVoltage = acOutputPhaseABVoltage;
+    public void setAcOutputPhaseAbVoltage(Double acOutputPhaseAbVoltage) {
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
     }
 
-    /**
-     *
-     * @return returns phase BC voltage
-     */
-    public double getAcOutputPhaseBCVoltage() {
-        return acOutputPhaseBCVoltage;
+    public Double getAcOutputPhaseBcVoltage() {
+        return acOutputPhaseBcVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseBCVoltage - phase BC voltage value to be set
-     */
-    public void setAcOutputPhaseBCVoltage(double acOutputPhaseBCVoltage) {
-        this.acOutputPhaseBCVoltage = acOutputPhaseBCVoltage;
+    public void setAcOutputPhaseBcVoltage(Double acOutputPhaseBcVoltage) {
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
     }
 
-    /**
-     *
-     * @return returns phase CA voltage
-     */
-    public double getAcOutputPhaseCAVoltage() {
-        return acOutputPhaseCAVoltage;
+    public Double getAcOutputPhaseCaVoltage() {
+        return acOutputPhaseCaVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseCAVoltage - phase CA voltage value to be set
-     */
-    public void setAcOutputPhaseCAVoltage(double acOutputPhaseCAVoltage) {
-        this.acOutputPhaseCAVoltage = acOutputPhaseCAVoltage;
+    public void setAcOutputPhaseCaVoltage(Double acOutputPhaseCaVoltage) {
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
     
-    public double getAcOutputPhaseAverageVoltage() {
-        
-        return (this.acOutputPhaseABVoltage + this.acOutputPhaseBCVoltage + this.acOutputPhaseCAVoltage) /3;
+    public Double getAcOutputPhaseAverageVoltage() {
+        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) /3;
     }
 
-    /**
-     * to trip the breaker
-     */
-    public void tripBreaker() {
-
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (recordID != null ? recordID.hashCode() : 0);
+        return hash;
     }
 
-    /**
-     * to reset the breaker
-     */
-    public void resetBreaker() {
-
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Feeder)) {
+            return false;
+        }
+        Feeder other = (Feeder) object;
+        if ((this.recordID == null && other.recordID != null) || (this.recordID != null && !this.recordID.equals(other.recordID))) {
+            return false;
+        }
+        return true;
     }
 
-    /**
-     *
-     * @return returns breaker status
-     */
-    public double getBreakerStatus() {
-
-        return 0.0f;
+    @Override
+    public String toString() {
+        return "models.Feeder[ recordID=" + recordID + " ]";
     }
+    
 }

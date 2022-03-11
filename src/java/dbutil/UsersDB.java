@@ -5,34 +5,34 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.TimestampDesc;
+import models.Users;
 
 /**
  *
  * @author 821320
  */
-public class TimestampDB {
-    List<TimestampDesc> timeList;
+public class UsersDB {
+    private List<Users> list;
 
-    public List<TimestampDesc> getAll() throws SQLException {
+    public List<Users> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            timeList = em.createNamedQuery("TimestampDesc.findAll", TimestampDesc.class).getResultList();
+            list = em.createNamedQuery("Users.findAll", Users.class).getResultList();
         } finally {
             em.close();
         }
 
-        return timeList;
+        return list;
     }
 
-    public TimestampDesc get(String component) {
+    public Users get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        TimestampDesc user = null;
+        Users user = null;
         try {
-            user = em.find(TimestampDesc.class, component);
+            user = em.find(Users.class, event);
         } finally {
             em.close();
         }
@@ -40,13 +40,14 @@ public class TimestampDB {
         return user;
     }
 
-    public void insert(TimestampDesc user) throws SQLException {
+    public void insert(Users event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        
         try {
             trans.begin();
-            em.persist(user);
+            em.persist(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
@@ -56,7 +57,7 @@ public class TimestampDB {
 
     }
 
-    public void update(TimestampDesc user) {
+    public void update(Users user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -73,7 +74,7 @@ public class TimestampDB {
 
     }
 
-    public void delete(String component) throws SQLException {
+    public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,12 +82,13 @@ public class TimestampDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(TimestampDesc.class, component));
+            em.remove(em.find(Users.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
         } finally {
             em.close();
         }
+
     }
 }

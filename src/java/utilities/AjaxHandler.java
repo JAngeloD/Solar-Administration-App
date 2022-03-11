@@ -3,6 +3,8 @@ package utilities;
 import dbutil.FacilityDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.lang.reflect.Method;
-import java.util.List;
-import models.Facility_1;
+import services.DBAccess;
 
 /**
  *
@@ -32,21 +33,39 @@ public class AjaxHandler extends HttpServlet {
         //Will store the id of the caller and splits it into the model type and the getter function
         // Will have to chane the id later
         String requestedData = request.getParameter("name");
-        String modelName = "get" + requestedData.substring(0, requestedData.indexOf("get"));
-        String getterMethod = requestedData.substring(requestedData.indexOf("get"));
-
-        if (getterMethod.substring(getterMethod.length() - 1).matches("[0-9]+")) {
-            getterMethod = getterMethod.substring(0, getterMethod.length() - 1);
-            if (getterMethod.substring(getterMethod.length() - 1).matches("[0-9]+")) {
-                getterMethod = getterMethod.substring(0, getterMethod.length() - 1);
-            }
-        }
-
+        String modelName = requestedData.substring(0, requestedData.indexOf("_"));
+        String operation = requestedData.substring(requestedData.indexOf("_") + 1, requestedData.lastIndexOf("_"));
+        String attribute = requestedData.substring(requestedData.lastIndexOf("_") + 1);
+        String timestamp = "4821";
+        
         //Data to be returned back to caller
-        double data = 0;
-        
-        
+        double data = -1;
+        try {
+            DBAccess db = new DBAccess();
+            Method[] models = db.getClass().getDeclaredMethods();
 
+            switch (operation) {
+                case "Get":
+                    for (Method m : models) {
+                        if (m.getName().equals(modelName + operation)) {
+                            Object[] args = {attribute, timestamp};
+                            data = (double) m.invoke(db, args);
+                        }
+                    }
+                    break;
+                case "Set":
+                    break;
+            }
+        } 
+        catch (InvocationTargetException e) {
+            data = 0.01;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        Random rn = new Random();
+        
         //Send data back
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

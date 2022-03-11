@@ -1,24 +1,25 @@
+
 package dbutil;
 
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Facility;
+import models.FacilityLogs;
 
 /**
  *
  * @author 821320
  */
-public class FacilityDB {
-    private List<Facility> list;
+public class FacilityLogsDB {
+    private List<FacilityLogs> list;
 
-    public List<Facility> getAll() throws SQLException {
+    public List<FacilityLogs> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            list = em.createNamedQuery("Facility.findAll", Facility.class).getResultList();
+            list = em.createNamedQuery("FacilityLogs.findAll", FacilityLogs.class).getResultList();
         } finally {
             em.close();
         }
@@ -26,12 +27,12 @@ public class FacilityDB {
         return list;
     }
 
-    public Facility get(String event) {
+    public FacilityLogs get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Facility user = null;
+        FacilityLogs user = null;
         try {
-            user = em.find(Facility.class, event);
+            user = em.find(FacilityLogs.class, event);
         } finally {
             em.close();
         }
@@ -39,7 +40,7 @@ public class FacilityDB {
         return user;
     }
 
-    public void insert(Facility event) throws SQLException {
+    public void insert(FacilityLogs event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -56,7 +57,7 @@ public class FacilityDB {
 
     }
 
-    public void update(Facility user) {
+    public void update(FacilityLogs user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -73,7 +74,7 @@ public class FacilityDB {
 
     }
 
-    public void delete(String event) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +82,7 @@ public class FacilityDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Facility.class, event));
+            em.remove(em.find(FacilityLogs.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

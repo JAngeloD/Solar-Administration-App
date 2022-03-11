@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "UserType.findAll", query = "SELECT u FROM UserType u")
-    , @NamedQuery(name = "UserType.findByTypeOfUser", query = "SELECT u FROM UserType u WHERE u.typeOfUser = :typeOfUser")
+    , @NamedQuery(name = "UserType.findByTypeId", query = "SELECT u FROM UserType u WHERE u.typeId = :typeId")
     , @NamedQuery(name = "UserType.findByAccessLevel", query = "SELECT u FROM UserType u WHERE u.accessLevel = :accessLevel")
     , @NamedQuery(name = "UserType.findByTypeName", query = "SELECT u FROM UserType u WHERE u.typeName = :typeName")})
 public class UserType implements Serializable {
@@ -35,28 +35,28 @@ public class UserType implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "type_of_user")
-    private Integer typeOfUser;
+    @Column(name = "type_id")
+    private Integer typeId;
     @Column(name = "access_level")
     private Integer accessLevel;
     @Column(name = "type_name")
     private String typeName;
-    @OneToMany(mappedBy = "typeOfUser")
-    private List<UserDetails> userDetailsList;
+    @OneToMany(mappedBy = "typeId")
+    private List<Users> usersList;
 
     public UserType() {
     }
 
-    public UserType(Integer typeOfUser) {
-        this.typeOfUser = typeOfUser;
+    public UserType(Integer typeId) {
+        this.typeId = typeId;
     }
 
-    public Integer getTypeOfUser() {
-        return typeOfUser;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setTypeOfUser(Integer typeOfUser) {
-        this.typeOfUser = typeOfUser;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Integer getAccessLevel() {
@@ -76,18 +76,18 @@ public class UserType implements Serializable {
     }
 
     @XmlTransient
-    public List<UserDetails> getUserDetailsList() {
-        return userDetailsList;
+    public List<Users> getUsersList() {
+        return usersList;
     }
 
-    public void setUserDetailsList(List<UserDetails> userDetailsList) {
-        this.userDetailsList = userDetailsList;
+    public void setUsersList(List<Users> usersList) {
+        this.usersList = usersList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (typeOfUser != null ? typeOfUser.hashCode() : 0);
+        hash += (typeId != null ? typeId.hashCode() : 0);
         return hash;
     }
 
@@ -98,7 +98,7 @@ public class UserType implements Serializable {
             return false;
         }
         UserType other = (UserType) object;
-        if ((this.typeOfUser == null && other.typeOfUser != null) || (this.typeOfUser != null && !this.typeOfUser.equals(other.typeOfUser))) {
+        if ((this.typeId == null && other.typeId != null) || (this.typeId != null && !this.typeId.equals(other.typeId))) {
             return false;
         }
         return true;
@@ -106,7 +106,7 @@ public class UserType implements Serializable {
 
     @Override
     public String toString() {
-        return "models.UserType[ typeOfUser=" + typeOfUser + " ]";
+        return "models.UserType[ typeId=" + typeId + " ]";
     }
     
 }

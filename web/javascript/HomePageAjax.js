@@ -3,12 +3,12 @@ $(document).ready(function () {
 });
 
 function setIntervalImmediately(interval) {
-    changeState("dynamicState1");
-    changeState("dynamicState2");
+    changeState("dynamicState01");
+    changeState("dynamicState02");
     triggerUpdate();
     return setInterval(function () {
-        changeState("dynamicState1")
-        changeState("dynamicState2")
+        changeState("dynamicState01");
+        changeState("dynamicState02");
         triggerUpdate();
     }, interval);
 }
@@ -16,7 +16,8 @@ function setIntervalImmediately(interval) {
 function changeState(className) {
     req = $.ajax({
         url: "ajaxdiagramhandler",
-        data: {style: $('.' + className).attr("style")},
+        data: {style: $('.' + className).attr("style"),
+                  deviceID: className.substring(className.length, className.length - 2)},
         type: 'POST',
         cache: false,
         success: function (data) {
@@ -53,19 +54,5 @@ function load(requestType) {
         }
     }
     );
-}
-
-function displayData(chartElement) {
-    req = $.ajax({
-        url: "ajaxcharthandler",
-        type: "POST",
-        data: {name: chartElement}
-    });
-
-    req.done(function (data) {
-        var graphData = JSON.parse(data);
-
-        Plotly.newPlot(chartElement, graphData, {});
-    });
 }
 

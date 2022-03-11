@@ -72,7 +72,7 @@ public class DBAccess {
             Method[] models = record.getClass().getDeclaredMethods();
             for (Method m : models) {
                 if (m.getName().equals("get" + attribute)) {
-                    data = (double) m.invoke(record);
+                    data = Double.valueOf(m.invoke(record).toString());
                 }
             }
         } catch (Exception e) {

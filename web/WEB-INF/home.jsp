@@ -1266,7 +1266,7 @@
             <g
                 id="g591"
                 transform="matrix(0.3771851,0,0,-0.3771851,8.503906,735.4665)">
-            <path class="dynamicState1"
+            <path class="dynamicState01"
                 d="m 1568.985,686.9066 h 50 v 50 h -50 z"
                 style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 id="path593" />
@@ -1274,7 +1274,7 @@
             <g
                 id="g595"
                 transform="matrix(0.3771851,0,0,-0.3771851,8.503906,735.4665)">
-            <path class="dynamicState2"
+            <path class="dynamicState02"
                 d="m 1568.985,813.1624 h 50 v 50 h -50 z"
                 style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 id="path597" />

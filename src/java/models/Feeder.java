@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feeder.findByTimeStampId", query = "SELECT f FROM Feeder f WHERE f.timeStampId = :timeStampId")
     , @NamedQuery(name = "Feeder.findByTimeStamp", query = "SELECT f FROM Feeder f WHERE f.timeStamp = :timeStamp")
     , @NamedQuery(name = "Feeder.findByDeviceId", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId")
+    , @NamedQuery(name = "Feeder.findByBreakerStatus", query = "SELECT f FROM Feeder f WHERE f.breakerStatus = :breakerStatus")
     , @NamedQuery(name = "Feeder.findByAcOutputRealPower", query = "SELECT f FROM Feeder f WHERE f.acOutputRealPower = :acOutputRealPower")
     , @NamedQuery(name = "Feeder.findByAcOutputApparentPower", query = "SELECT f FROM Feeder f WHERE f.acOutputApparentPower = :acOutputApparentPower")
     , @NamedQuery(name = "Feeder.findByAcOutputReactivePower", query = "SELECT f FROM Feeder f WHERE f.acOutputReactivePower = :acOutputReactivePower")
@@ -57,6 +58,8 @@ public class Feeder implements Serializable {
     private Date timeStamp;
     @Column(name = "device_id")
     private Integer deviceId;
+    @Column(name = "breaker_status")
+    private Boolean breakerStatus;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "ac_output_real_power", precision = 22)
     private Double acOutputRealPower;
@@ -121,6 +124,14 @@ public class Feeder implements Serializable {
 
     public void setDeviceId(Integer deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public Double getBreakerStatus() {
+        return (breakerStatus) ? 1.0 : 0;
+    }
+
+    public void setBreakerStatus(Boolean breakerStatus) {
+        this.breakerStatus = breakerStatus;
     }
 
     public Double getAcOutputRealPower() {

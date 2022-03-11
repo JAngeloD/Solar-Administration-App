@@ -4,21 +4,21 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Facility_1;
+import models.Facility;
 
 /**
  *
  * @author 821320
  */
 public class FacilityDB {
-    private List<Facility_1> list;
+    private List<Facility> list;
 
-    public List<Facility_1> getAll() throws SQLException {
+    public List<Facility> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            list = em.createNamedQuery("Facility_1.findAll", Facility_1.class).getResultList();
+            list = em.createNamedQuery("Facility.findAll", Facility.class).getResultList();
         } finally {
             em.close();
         }
@@ -26,12 +26,12 @@ public class FacilityDB {
         return list;
     }
 
-    public Facility_1 get(String event) {
+    public Facility get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Facility_1 user = null;
+        Facility user = null;
         try {
-            user = em.find(Facility_1.class, event);
+            user = em.find(Facility.class, event);
         } finally {
             em.close();
         }
@@ -39,7 +39,7 @@ public class FacilityDB {
         return user;
     }
 
-    public void insert(Facility_1 event) throws SQLException {
+    public void insert(Facility event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -56,7 +56,7 @@ public class FacilityDB {
 
     }
 
-    public void update(Facility_1 user) {
+    public void update(Facility user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +81,7 @@ public class FacilityDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Facility_1.class, event));
+            em.remove(em.find(Facility.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

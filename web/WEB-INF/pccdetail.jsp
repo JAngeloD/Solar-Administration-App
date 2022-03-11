@@ -120,20 +120,20 @@
         <div  class="wrapperall" id="electricDiagram">
             <div class="wrapper">
                 <div id="f1data" class="data">
-                    <label>Real Power: <input type="number" id="FeedergetAcOutputRealPower" class="realtime" step="1" readonly="true" size="1" value="1000">kW</label><br>
-                    <label>Reactive Power: <input type="number" id="FeedergetAcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="FeedergetAcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="FeedergetAcOutputPhaseAverageVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label>Real Power: <input type="number" id="Feeder_Get_AcOutputRealPower01" class="realtime" step="1" readonly="true" size="1" value="1000">kW</label><br>
+                    <label>Reactive Power: <input type="number" id="Feeder_Get_AcOutputReactivePower01" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="Feeder_Get_AcOutputPowerFactor01" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="Feeder_Get_AcOutputPhaseAverageVoltage01" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
             <div class="wrapper1">
                 <div id="pccdata" class="data">
-                    <label>Real Power: <input type="number" id="PccgetAcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
-                    <label>Reactive Power: <input type="number" id="PccgetAcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="PccgetAcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage Vab: <input type="number" id="PccgetAcOutputPhaseABVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
-                    <label>Voltage Vbc: <input type="number" id="PccgetAcOutputPhaseBCVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
-                    <label>Voltage Vca: <input type="number" id="PccgetAcOutputPhaseCAVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label>Real Power: <input type="number" id="Pcc_Get_AcOutputRealPower" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
+                    <label>Reactive Power: <input type="number" id="Pcc_Get_AcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="Pcc_Get_AcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage Vab: <input type="number" id="Pcc_Get_AcOutputPhaseABVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vbc: <input type="number" id="Pcc_Get_AcOutputPhaseBCVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label><br>
+                    <label>Voltage Vca: <input type="number" id="Pcc_Get_AcOutputPhaseCAVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
             <div class="wrapper2">
@@ -143,10 +143,10 @@
             </div>
             <div class="wrapper3">
                 <div id="f2data" class="data">
-                    <label>Real Power: <input type="number" id="FeedergetAcOutputRealPower2" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
-                    <label>Reactive Power: <input type="number" id="FeedergetAcOutputReactivePower2" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="FeedergetAcOutputPowerFactor2" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="FeedergetAcOutputPhaseAverageVoltage2" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label>Real Power: <input type="number" id="Feeder_Get_AcOutputRealPower02" class="realtime" step="1" readonly="true" size="10" value="1000"> kW</label><br>
+                    <label>Reactive Power: <input type="number" id="Feeder_Get_AcOutputReactivePower02" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label>Power Factor: <input type="number" id="Feeder_Get_AcOutputPowerFactor02" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                    <label>Voltage: <input type="number" id="Feeder_Get_AcOutputPhaseAverageVoltage02" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>  
             <div>

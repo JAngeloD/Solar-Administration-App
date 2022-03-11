@@ -5,21 +5,21 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Pcc_1;
+import models.Pcc;
 
 /**
  *
  * @author 821320
  */
 public class PccDB {
-    private List<Pcc_1> list;
+    private List<Pcc> list;
 
-    public List<Pcc_1> getAll() throws SQLException {
+    public List<Pcc> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            list = em.createNamedQuery("Pcc_1.findAll", Pcc_1.class).getResultList();
+            list = em.createNamedQuery("Pcc.findAll", Pcc.class).getResultList();
         } finally {
             em.close();
         }
@@ -27,20 +27,20 @@ public class PccDB {
         return list;
     }
 
-    public Pcc_1 get(String event) {
+    public Pcc get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Pcc_1 user = null;
+        Pcc record = null;
         try {
-            user = em.find(Pcc_1.class, event);
+            record = em.createNamedQuery("Pcc.findByTimeStampId", Pcc.class).setParameter("timeStampId", Integer.parseInt(timestamp)).getSingleResult();
         } finally {
             em.close();
         }
 
-        return user;
+        return record;
     }
 
-    public void insert(Pcc_1 event) throws SQLException {
+    public void insert(Pcc event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -57,7 +57,7 @@ public class PccDB {
 
     }
 
-    public void update(Pcc_1 user) {
+    public void update(Pcc user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -82,7 +82,7 @@ public class PccDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Pcc_1.class, event));
+            em.remove(em.find(Pcc.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

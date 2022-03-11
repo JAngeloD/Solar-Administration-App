@@ -4,21 +4,21 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Inverter_1;
+import models.Inverter;
 
 /**
  *
  * @author 821320
  */
 public class InverterDB {
-    private List<Inverter_1> list;
+    private List<Inverter> list;
 
-    public List<Inverter_1> getAll() throws SQLException {
+    public List<Inverter> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            list = em.createNamedQuery("Inverter_1.findAll", Inverter_1.class).getResultList();
+            list = em.createNamedQuery("Inverter.findAll", Inverter.class).getResultList();
         } finally {
             em.close();
         }
@@ -26,12 +26,12 @@ public class InverterDB {
         return list;
     }
 
-    public Inverter_1 get(String event) {
+    public Inverter get(String event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Inverter_1 user = null;
+        Inverter user = null;
         try {
-            user = em.find(Inverter_1.class, event);
+            user = em.find(Inverter.class, event);
         } finally {
             em.close();
         }
@@ -39,7 +39,7 @@ public class InverterDB {
         return user;
     }
 
-    public void insert(Inverter_1 event) throws SQLException {
+    public void insert(Inverter event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -56,7 +56,7 @@ public class InverterDB {
 
     }
 
-    public void update(Inverter_1 user) {
+    public void update(Inverter user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +81,7 @@ public class InverterDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Inverter_1.class, event));
+            em.remove(em.find(Inverter.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

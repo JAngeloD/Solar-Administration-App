@@ -28,6 +28,10 @@
     <class>models.AlarmEvents</class>
     <class>models.AlarmInfo</class>
     <class>models.Users</class>
+    <class>models.Feeder</class>
+    <class>models.Inverter</class>
+    <class>models.Pcc</class>
+    <class>models.Facility</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>

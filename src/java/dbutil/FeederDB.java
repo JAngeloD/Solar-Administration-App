@@ -4,21 +4,22 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import models.Feeder_1;
+import javax.persistence.Query;
+import models.Feeder;
 
 /**
  *
  * @author 821320
  */
 public class FeederDB {
-    private List<Feeder_1> list;
+    private List<Feeder> list;
 
-    public List<Feeder_1> getAll() throws SQLException {
+    public List<Feeder> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
-            list = em.createNamedQuery("Feeder_1.findAll", Feeder_1.class).getResultList();
+            list = em.createNamedQuery("Feeder.findAll", Feeder.class).getResultList();
         } finally {
             em.close();
         }
@@ -26,20 +27,24 @@ public class FeederDB {
         return list;
     }
 
-    public Feeder_1 get(String event) {
+    public Feeder get(String timestamp, String deviceID) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Feeder_1 user = null;
+        Feeder record = null;
         try {
-            user = em.find(Feeder_1.class, event);
+            Query q = em.createNamedQuery("Feeder.findByTimeStampAndDeviceID", Feeder.class);
+            q.setParameter("deviceId", Integer.parseInt(deviceID));
+            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            
+            record = (Feeder) q.getSingleResult();
         } finally {
             em.close();
         }
 
-        return user;
+        return record;
     }
 
-    public void insert(Feeder_1 event) throws SQLException {
+    public void insert(Feeder event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -56,7 +61,7 @@ public class FeederDB {
 
     }
 
-    public void update(Feeder_1 user) {
+    public void update(Feeder user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
@@ -81,7 +86,7 @@ public class FeederDB {
         //delete user
         try {
             trans.begin();
-            em.remove(em.find(Feeder_1.class, event));
+            em.remove(em.find(Feeder.class, event));
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

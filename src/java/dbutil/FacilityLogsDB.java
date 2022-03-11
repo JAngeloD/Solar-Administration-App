@@ -27,7 +27,7 @@ public class FacilityLogsDB {
         return list;
     }
 
-    public FacilityLogs get(String event) {
+    public FacilityLogs get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         FacilityLogs user = null;
@@ -74,7 +74,7 @@ public class FacilityLogsDB {
 
     }
 
-    public void delete(String event) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

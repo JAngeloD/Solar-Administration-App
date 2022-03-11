@@ -26,7 +26,7 @@ public class AlarmInfoDB {
         return alarmList;
     }
 
-    public AlarmInfo get(String event) {
+    public AlarmInfo get(int event) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         AlarmInfo user = null;
@@ -73,7 +73,7 @@ public class AlarmInfoDB {
 
     }
 
-    public void delete(String event) throws SQLException {
+    public void delete(int event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

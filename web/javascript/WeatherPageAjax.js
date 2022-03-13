@@ -1,23 +1,25 @@
 $(document).ready(function () {
-    setIntervalImmediately(3000);
+    setIntervalImmediately(9000);
 });
 
 function setIntervalImmediately(interval) {
     displayData("windGraph");
     displayData("root");
-    triggerUpdate();
+//    triggerUpdate();
     return setInterval(function () {
         displayData("windGraph");
         displayData("root");
-        triggerUpdate();
+//        triggerUpdate();
     }, interval);
 }
 
 function displayData(chartElement) {
+    var gd = document.getElementById(chartElement);
     req = $.ajax({
         url: "ajaxcharthandler",
         type: "POST",
-        data: {name: chartElement}
+        data: {name: chartElement,
+                  graphData: JSON.stringify(gd.data)}
     });
 
     req.done(function (data) {
@@ -35,6 +37,7 @@ function triggerUpdate() {
 }
 
 function load(requestType) {
+    alert(JSON.stringify(gd.data));
     $.ajax({
         url: 'ajaxhandler',
         data: {name: requestType},
@@ -48,7 +51,7 @@ function load(requestType) {
             }
         },
         error: function (xhr, status, error) {
-            
+
         }
     }
     );

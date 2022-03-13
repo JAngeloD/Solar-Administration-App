@@ -37,7 +37,7 @@
             },
             "xaxis": {
                 "title": "Hours",
-                "domain": [0, 24]
+                "range": [0, 24]
             },
             "width": 650,
             "height": 500,

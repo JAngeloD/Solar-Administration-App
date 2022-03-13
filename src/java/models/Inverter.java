@@ -45,7 +45,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inverter.findByDcRealPower", query = "SELECT i FROM Inverter i WHERE i.dcRealPower = :dcRealPower")
     , @NamedQuery(name = "Inverter.findByDcVolt", query = "SELECT i FROM Inverter i WHERE i.dcVolt = :dcVolt")
     , @NamedQuery(name = "Inverter.findByDcCurrent", query = "SELECT i FROM Inverter i WHERE i.dcCurrent = :dcCurrent")
-    , @NamedQuery(name = "Inverter.findByEfficiency", query = "SELECT i FROM Inverter i WHERE i.efficiency = :efficiency")})
+    , @NamedQuery(name = "Inverter.findByEfficiency", query = "SELECT i FROM Inverter i WHERE i.efficiency = :efficiency")
+    , @NamedQuery(name = "Inverter.findByTimeStampAndDeviceID", query = "SELECT i FROM Inverter i WHERE i.deviceId = :deviceId AND i.timeStampId = :timeStampId")})
 public class Inverter implements Serializable {
 
     private static final long serialVersionUID = 1L;

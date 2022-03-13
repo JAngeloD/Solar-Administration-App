@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    setIntervalImmediately(3000);
+    setIntervalImmediately(9000);
 });
 
 function setIntervalImmediately(interval) {
-  displayData("bar");
-  return setInterval(function() {
+    displayData("bar");
+    return setInterval(function () {
         displayData("bar");
-  } , interval);
+    }, interval);
 }
 
 function displayData(chartElement) {
@@ -18,7 +18,6 @@ function displayData(chartElement) {
 
     req.done(function (data) {
         var graphData = JSON.parse(data);
-        
         Plotly.newPlot(chartElement, graphData, {});
     });
 }

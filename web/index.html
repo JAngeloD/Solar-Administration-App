@@ -5,10 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
-        <script src="javascript/AjaxCharting.js"></script>
+        <script src="javascript/WeatherPageAjax.js"></script>
 
     </head>
     <body>
         <div id='myDiv'></div>
+        <script>
+            var trace1 = {
+                x: [1, 2, 3, 4],
+                y: [10, 15, 13],
+                type: 'scatter'
+            };
+
+            var trace2 = {
+                x: [1, 2, 3, 4],
+                y: [16, 5, 11],
+                type: 'scatter'
+            };
+
+            var layout = {
+                autoscale: false,
+                xaxis: {autorange: false, range: [0, 4]},
+            };
+
+            var data = [trace1, trace2];
+
+            Plotly.newPlot('myDiv', data, layout);
+        </script>
     </body>
 </html>

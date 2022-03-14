@@ -7,7 +7,10 @@ package services;
 
 import dbutil.*;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 import models.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -19,7 +22,7 @@ public class DBAccess {
 
         //Initializes the database and retrieves the data based on the parameters given
         PccDB db = new PccDB();
-        Pcc record = db.get(timestamp);
+        PCC record = db.get(timestamp);
 
         //Goes through the assoicated model and invokes the correct getter method
         double data = 0;
@@ -160,8 +163,38 @@ public class DBAccess {
         return data;
     }
     
-    public static void FacilityInsert() {
+    public static Users UsersGet( String email )
+    {
+        UsersDB db = new UsersDB();
+        Users user = db.get( email );
+        
+        return user;
+    }
 
+    public static void FacilityInsert( String email, int logType, String logText ) {
+        FacilityLogsDB db = new FacilityLogsDB();
+        FacilityLogs log = new FacilityLogs();
+        
+        Users user = UsersGet( email );     
+        //if( user == null )
+        //    return;
+
+        log.setEmail( user );
+        log.setLogType( logType );
+        log.setLogText( logText );
+        
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        Date date = new Date( ts.getTime() );
+        
+        log.setTimeStamp( date );
+        
+        try
+        {
+            db.insert( log );
+        } catch( SQLException ex )
+        {
+            System.out.println( ex.toString() );
+        }
     }
 
     public static void FacilityUpdate() {

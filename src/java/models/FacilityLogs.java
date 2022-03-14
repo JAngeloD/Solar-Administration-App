@@ -6,7 +6,6 @@
 package models;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,7 +19,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigInteger;
 
 /**
  *
@@ -37,6 +35,11 @@ import java.math.BigInteger;
     , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")})
 public class FacilityLogs implements Serializable {
 
+    @Column( name = "log_type" )
+    private Integer logType;
+    @Column( name = "time_stamp_id" )
+    private Integer timeStampId;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -44,8 +47,6 @@ public class FacilityLogs implements Serializable {
     private Integer logId;
     @Column(name = "log_text")
     private String logText;
-    @Column(name = "time_stamp_id")
-    private BigInteger timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp")
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,11 +83,11 @@ public class FacilityLogs implements Serializable {
         this.logText = logText;
     }
 
-    public BigInteger getTimeStampId() {
+    public Integer getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(BigInteger timeStampId) {
+    public void setTimeStampId(Integer timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -130,5 +131,14 @@ public class FacilityLogs implements Serializable {
     public String toString() {
         return "models.FacilityLogs[ logId=" + logId + " ]";
     }
-    
+
+    public Integer getLogType()
+    {
+        return logType;
+    }
+
+    public void setLogType( Integer logType )
+    {
+        this.logType = logType;
+    }  
 }

@@ -26,9 +26,10 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE = INNODB;
 
 CREATE TABLE IF NOT EXISTS facility_logs (
-    log_id INT PRIMARY KEY,
+    log_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100), 
     log_text VARCHAR(500),
+    log_type INT,
     time_stamp_id INT,
     time_stamp TIMESTAMP,
     CONSTRAINT fk_email_author

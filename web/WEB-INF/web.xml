@@ -60,6 +60,14 @@
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>BreakerControllerServlet</servlet-name>
     </filter-mapping>
+        <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>WriteLogServlet</servlet-name>
+    </filter-mapping>
+        <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>ReadLogServlet</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <servlet-class>servlets.BreakerControllerServlet</servlet-class>
@@ -103,6 +111,14 @@
     <servlet>
         <servlet-name>LogServlet</servlet-name>
         <servlet-class>servlets.LogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WriteLogServlet</servlet-name>
+        <servlet-class>servlets.WriteLogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReadLogServlet</servlet-name>
+        <servlet-class>servlets.ReadLogServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
@@ -187,6 +203,14 @@
     <servlet-mapping>
         <servlet-name>LogServlet</servlet-name>
         <url-pattern>/logs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WriteLogServlet</servlet-name>
+        <url-pattern>/writelog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReadLogServlet</servlet-name>
+        <url-pattern>/readlog</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

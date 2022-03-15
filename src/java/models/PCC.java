@@ -5,260 +5,230 @@
  */
 package models;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author 856622
  */
-public class PCC {
+@Entity
+@Table(name = "pcc")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Pcc.findAll", query = "SELECT p FROM Pcc p")
+    , @NamedQuery(name = "Pcc.findByRecordID", query = "SELECT p FROM Pcc p WHERE p.recordID = :recordID")
+    , @NamedQuery(name = "Pcc.findByTimeStampId", query = "SELECT p FROM Pcc p WHERE p.timeStampId = :timeStampId")
+    , @NamedQuery(name = "Pcc.findByTimeStamp", query = "SELECT p FROM Pcc p WHERE p.timeStamp = :timeStamp")
+    , @NamedQuery(name = "Pcc.findByAcOutputEnergy", query = "SELECT p FROM Pcc p WHERE p.acOutputEnergy = :acOutputEnergy")
+    , @NamedQuery(name = "Pcc.findByAcOutputRealPower", query = "SELECT p FROM Pcc p WHERE p.acOutputRealPower = :acOutputRealPower")
+    , @NamedQuery(name = "Pcc.findByAcOutputApparentPower", query = "SELECT p FROM Pcc p WHERE p.acOutputApparentPower = :acOutputApparentPower")
+    , @NamedQuery(name = "Pcc.findByAcOutputReactivePower", query = "SELECT p FROM Pcc p WHERE p.acOutputReactivePower = :acOutputReactivePower")
+    , @NamedQuery(name = "Pcc.findByAcOutputPowerFactor", query = "SELECT p FROM Pcc p WHERE p.acOutputPowerFactor = :acOutputPowerFactor")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseACurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseACurrent = :acOutputPhaseACurrent")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseBCurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseBCurrent = :acOutputPhaseBCurrent")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseCCurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseAbVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseBcVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
+    , @NamedQuery(name = "Pcc.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
+public class PCC implements Serializable {
 
-    /**
-     * Data variables
-     */
-    private double acOutputLifeTimeEnergy;
-    private double acOutputYearToDateEnergy;
-    private double acOutputMonthToDateEnergy;
-    private double acOutputDailyEnergy;
-    private double acOutputRealPower;
-    private double acOutputApparentPower;
-    private double acOutputReactivePower;
-    private double acOutputPowerFactor;
-    private double acOutputPhaseACurrent;
-    private double acOutputPhaseBCurrent;
-    private double acOutputPhaseCCurrent;
-    private double acOutputPhaseABVoltage;
-    private double acOutputPhaseBCVoltage;
-    private double acOutputPhaseCAVoltage;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "recordID", nullable = false, length = 50)
+    private String recordID;
+    @Column(name = "time_stamp_id")
+    private Integer timeStampId;
+    @Basic(optional = false)
+    @Column(name = "time_stamp", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timeStamp;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "ac_output_energy", precision = 22)
+    private Double acOutputEnergy;
+    @Column(name = "ac_output_real_power", precision = 22)
+    private Double acOutputRealPower;
+    @Column(name = "ac_output_apparent_power", precision = 22)
+    private Double acOutputApparentPower;
+    @Column(name = "ac_output_reactive_power", precision = 22)
+    private Double acOutputReactivePower;
+    @Column(name = "ac_output_power_factor", precision = 22)
+    private Double acOutputPowerFactor;
+    @Column(name = "ac_output_phase_a_current", precision = 22)
+    private Double acOutputPhaseACurrent;
+    @Column(name = "ac_output_phase_b_current", precision = 22)
+    private Double acOutputPhaseBCurrent;
+    @Column(name = "ac_output_phase_c_current", precision = 22)
+    private Double acOutputPhaseCCurrent;
+    @Column(name = "ac_output_phase_ab_voltage", precision = 22)
+    private Double acOutputPhaseAbVoltage;
+    @Column(name = "ac_output_phase_bc_voltage", precision = 22)
+    private Double acOutputPhaseBcVoltage;
+    @Column(name = "ac_output_phase_ca_voltage", precision = 22)
+    private Double acOutputPhaseCaVoltage;
 
-    /**
-     *
-     * @return returns the life time energy output
-     */
-    public double getAcOutputLifeTimeEnergy() {
-        return acOutputLifeTimeEnergy;
+    public PCC() {
     }
 
-    /**
-     *
-     * @param acOutputLifeTimeEnergy life time energy to be set
-     */
-    public void setAcOutputLifeTimeEnergy(double acOutputLifeTimeEnergy) {
-        this.acOutputLifeTimeEnergy = acOutputLifeTimeEnergy;
+    public PCC(String recordID) {
+        this.recordID = recordID;
     }
 
-    /**
-     *
-     * @return returns the year to date energy output
-     */
-    public double getAcOutputYearToDateEnergy() {
-        return acOutputYearToDateEnergy;
+    public PCC(String recordID, Date timeStamp) {
+        this.recordID = recordID;
+        this.timeStamp = timeStamp;
     }
 
-    /**
-     *
-     * @param acOutputYearToDateEnergy year to date energy value to be set
-     */
-    public void setAcOutputYearToDateEnergy(double acOutputYearToDateEnergy) {
-        this.acOutputYearToDateEnergy = acOutputYearToDateEnergy;
+    public String getRecordID() {
+        return recordID;
     }
 
-    /**
-     *
-     * @return returns month to date energy output
-     */
-    public double getAcOutputMonthToDateEnergy() {
-        return acOutputMonthToDateEnergy;
+    public void setRecordID(String recordID) {
+        this.recordID = recordID;
     }
 
-    /**
-     *
-     * @param acOutputMonthToDateEnergy month to date energy value to be set
-     */
-    public void setAcOutputMonthToDateEnergy(double acOutputMonthToDateEnergy) {
-        this.acOutputMonthToDateEnergy = acOutputMonthToDateEnergy;
+    public Integer getTimeStampId() {
+        return timeStampId;
     }
 
-    /**
-     *
-     * @return returns daily energy ouput
-     */
-    public double getAcOutputDailyEnergy() {
-        return acOutputDailyEnergy;
+    public void setTimeStampId(Integer timeStampId) {
+        this.timeStampId = timeStampId;
     }
 
-    /**
-     *
-     * @param acOutputDailyEnergy daily energy value to be set
-     */
-    public void setAcOutputDailyEnergy(double acOutputDailyEnergy) {
-        this.acOutputDailyEnergy = acOutputDailyEnergy;
+    public Date getTimeStamp() {
+        return timeStamp;
     }
 
-    /**
-     *
-     * @return output of power in W /KW
-     */
-    public double getAcOutputRealPower() {
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Double getAcOutputEnergy() {
+        return acOutputEnergy;
+    }
+
+    public void setAcOutputEnergy(Double acOutputEnergy) {
+        this.acOutputEnergy = acOutputEnergy;
+    }
+
+    public Double getAcOutputRealPower() {
         return acOutputRealPower;
     }
 
-    /**
-     *
-     * @param acOutputRealPower - real power value to be set
-     */
-    public void setAcOutputRealPower(double acOutputRealPower) {
+    public void setAcOutputRealPower(Double acOutputRealPower) {
         this.acOutputRealPower = acOutputRealPower;
     }
 
-    /**
-     *
-     * @return returns the Apparent power in VA
-     */
-    public double getAcOutputApparentPower() {
+    public Double getAcOutputApparentPower() {
         return acOutputApparentPower;
     }
 
-    /**
-     *
-     * @param acOutputApparentPower - apparent power value to be set
-     */
-    public void setAcOutputApparentPower(double acOutputApparentPower) {
+    public void setAcOutputApparentPower(Double acOutputApparentPower) {
         this.acOutputApparentPower = acOutputApparentPower;
     }
 
-    /**
-     *
-     * @return returns the Reactive power in VARS
-     */
-    public double getAcOutputReactivePower() {
+    public Double getAcOutputReactivePower() {
         return acOutputReactivePower;
     }
 
-    /**
-     *
-     * @param acOutputReactivePower - reactive power value to be set
-     */
-    public void setAcOutputReactivePower(double acOutputReactivePower) {
+    public void setAcOutputReactivePower(Double acOutputReactivePower) {
         this.acOutputReactivePower = acOutputReactivePower;
     }
 
-    /**
-     *
-     * @return returns the power factor
-     */
-    public double getAcOutputPowerFactor() {
+    public Double getAcOutputPowerFactor() {
         return acOutputPowerFactor;
     }
 
-    /**
-     *
-     * @param acOutputPowerFactor - power factor value to be set
-     */
-    public void setAcOutputPowerFactor(double acOutputPowerFactor) {
+    public void setAcOutputPowerFactor(Double acOutputPowerFactor) {
         this.acOutputPowerFactor = acOutputPowerFactor;
     }
 
-    /**
-     *
-     * @return returns the phase A current
-     */
-    public double getAcOutputPhaseACurrent() {
+    public Double getAcOutputPhaseACurrent() {
         return acOutputPhaseACurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseACurrent- phase A current value to be set
-     */
-    public void setAcOutputPhaseACurrent(double acOutputPhaseACurrent) {
+    public void setAcOutputPhaseACurrent(Double acOutputPhaseACurrent) {
         this.acOutputPhaseACurrent = acOutputPhaseACurrent;
     }
 
-    /**
-     *
-     * @return returns the phase B current
-     */
-    public double getAcOutputPhaseBCurrent() {
+    public Double getAcOutputPhaseBCurrent() {
         return acOutputPhaseBCurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseBCurrent - phase B current value to be set
-     */
-    public void setAcOutputPhaseBCurrent(double acOutputPhaseBCurrent) {
+    public void setAcOutputPhaseBCurrent(Double acOutputPhaseBCurrent) {
         this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
     }
 
-    /**
-     *
-     * @return returns the phase C curent
-     */
-    public double getAcOutputPhaseCCurrent() {
+    public Double getAcOutputPhaseCCurrent() {
         return acOutputPhaseCCurrent;
     }
 
-    /**
-     *
-     * @param acOutputPhaseCCurrent - phase C current value to be set
-     */
-    public void setAcOutputPhaseCCurrent(double acOutputPhaseCCurrent) {
+    public void setAcOutputPhaseCCurrent(Double acOutputPhaseCCurrent) {
         this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
     }
 
-    /**
-     *
-     * @return returns the phase AB voltage
-     */
-    public double getAcOutputPhaseABVoltage() {
-        return acOutputPhaseABVoltage;
+    public Double getAcOutputPhaseAbVoltage() {
+        return acOutputPhaseAbVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseABVoltage -phase AB voltage value to be set
-     */
-    public void setAcOutputPhaseABVoltage(double acOutputPhaseABVoltage) {
-        this.acOutputPhaseABVoltage = acOutputPhaseABVoltage;
+    public void setAcOutputPhaseAbVoltage(Double acOutputPhaseAbVoltage) {
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
     }
 
-    /**
-     *
-     * @return returns phase BC voltage
-     */
-    public double getAcOutputPhaseBCVoltage() {
-        return acOutputPhaseBCVoltage;
+    public Double getAcOutputPhaseBcVoltage() {
+        return acOutputPhaseBcVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseBCVoltage - phase BC voltage value to be set
-     */
-    public void setAcOutputPhaseBCVoltage(double acOutputPhaseBCVoltage) {
-        this.acOutputPhaseBCVoltage = acOutputPhaseBCVoltage;
+    public void setAcOutputPhaseBcVoltage(Double acOutputPhaseBcVoltage) {
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
     }
 
-    /**
-     *
-     * @return returns phase CA voltage
-     */
-    public double getAcOutputPhaseCAVoltage() {
-        return acOutputPhaseCAVoltage;
+    public Double getAcOutputPhaseCaVoltage() {
+        return acOutputPhaseCaVoltage;
     }
 
-    /**
-     *
-     * @param acOutputPhaseCAVoltage - phase CA voltage value to be set
-     */
-    public void setAcOutputPhaseCAVoltage(double acOutputPhaseCAVoltage) {
-        this.acOutputPhaseCAVoltage = acOutputPhaseCAVoltage;
+    public void setAcOutputPhaseCaVoltage(Double acOutputPhaseCaVoltage) {
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
     
-    /**
-     * 
-     * @return 
-     */
-    public double getAcOutputPhaseAverageVoltage() {
-        
-        return (this.acOutputPhaseABVoltage + this.acOutputPhaseBCVoltage + this.acOutputPhaseCAVoltage) /3;
+    public Double getAcOutputPhaseAverageVoltage() {
+        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) /3;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (recordID != null ? recordID.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof PCC)) {
+            return false;
+        }
+        PCC other = (PCC) object;
+        if ((this.recordID == null && other.recordID != null) || (this.recordID != null && !this.recordID.equals(other.recordID))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "models.Pcc[ recordID=" + recordID + " ]";
+    }
+    
 }

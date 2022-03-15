@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import services.DBAccess;
 
 public class WriteLogServlet extends HttpServlet
@@ -36,7 +37,9 @@ public class WriteLogServlet extends HttpServlet
         if( logType == -1 )
             return;
         
-        DBAccess.FacilityInsert( "admin@localhost", logType, log );
+        HttpSession session = request.getSession( false );
+        
+        DBAccess.FacilityInsert( (String)session.getAttribute( "email" ), logType, log );
         getServletContext().getRequestDispatcher("/WEB-INF/writelog.jsp").forward(request, response);
     }
 }

@@ -45,7 +45,7 @@ public class AjaxDiagramHandler extends HttpServlet {
         //Data to be returned back to caller
         try {
             DBAccess db = new DBAccess();
-            int breakerStatus = (int) db.FeederGet("BreakerStatus" + deviceID, "3239");
+            int breakerStatus = (int) db.FeederGet("BreakerStatus" + deviceID, "3239"); //TIMESTAMP IS TEMPORARY
             
             switch (breakerStatus) {
                 case 0:

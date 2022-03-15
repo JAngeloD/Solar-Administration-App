@@ -25,7 +25,12 @@ public class LoginServlet extends HttpServlet
         if( action != null && action.equals( "logout" ) )
         {
             HttpSession session = request.getSession( false );
-            session.invalidate();
+            if( session != null )
+            {
+                String email = (String)session.getAttribute( "email" );
+                if( email != null && !email.isEmpty() )
+                    session.invalidate();
+            }
             
             response.sendRedirect( "login" );    
         }
@@ -56,19 +61,19 @@ public class LoginServlet extends HttpServlet
         
         if( nonce == null || nonce.isEmpty() || !nonce.equals( (String)session.getAttribute( "nonce" ) ) )
         {
-            request.setAttribute( "form_feedback", "Security error" );
+            request.setAttribute( "formFeedback", "Security error" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
         
         if( email == null || email.isEmpty() || password == null || password.isEmpty() || DBAccess.UsersGet( email ) == null )
         {
-            request.setAttribute( "form_feedback", "Invalid username or password" );
+            request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
-        }       
+        }
 
-        session.setAttribute( "email", email ); 
+        session.setAttribute( "email", email );
         response.sendRedirect( "home" );
     }
 }

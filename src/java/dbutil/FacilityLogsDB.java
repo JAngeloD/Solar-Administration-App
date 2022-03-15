@@ -48,6 +48,7 @@ public class FacilityLogsDB {
         try {
             trans.begin();
             em.persist(event);
+            em.merge(event);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

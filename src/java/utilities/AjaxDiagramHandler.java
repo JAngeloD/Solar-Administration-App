@@ -57,7 +57,7 @@ public class AjaxDiagramHandler extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         

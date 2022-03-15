@@ -28,7 +28,7 @@
     <br />
     <br />
     <div id="form">
-      <form method="POST" action="">
+      <form method="POST" action="writelog">
         <div>
               <label><b>Choose log type:</b></label>
               <select name="logType" id="logType">

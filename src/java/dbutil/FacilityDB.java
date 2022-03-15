@@ -26,17 +26,17 @@ public class FacilityDB {
         return list;
     }
 
-    public Facility get(String event) {
+    public Facility get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        Facility user = null;
+        Facility record = null;
         try {
-            user = em.find(Facility.class, event);
+            record = em.createNamedQuery("Facility.findByTimeStampId", Facility.class).setParameter("timeStampId", Integer.parseInt(timestamp)).getSingleResult();
         } finally {
             em.close();
         }
 
-        return user;
+        return record;
     }
 
     public void insert(Facility event) throws SQLException {

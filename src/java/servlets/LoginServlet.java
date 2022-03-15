@@ -27,15 +27,15 @@ public class LoginServlet extends HttpServlet
             HttpSession session = request.getSession( false );
             session.invalidate();
             
-            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            response.sendRedirect( "login" );    
         }
         else
         {
             HttpSession session = request.getSession();
             session.setAttribute( "nonce", UUID.randomUUID().toString() );
             
-            String username = (String)session.getAttribute( "username" );
-            if( username != null && !username.isEmpty() )
+            String email = (String)session.getAttribute( "email" );
+            if( email != null && !email.isEmpty() )
             {
                 response.sendRedirect( "home" );
             }
@@ -51,27 +51,24 @@ public class LoginServlet extends HttpServlet
     {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
+        String nonce = request.getParameter( "nonce" );
+        HttpSession session = request.getSession( false );
         
-        // temporary until there is some sort of database or API request for the user account
-        if( email == null || email.isEmpty() || password == null || password.isEmpty() )
+        if( nonce == null || nonce.isEmpty() || !nonce.equals( (String)session.getAttribute( "nonce" ) ) )
         {
-            request.setAttribute( "form_feedback", "Invalid username or password" );
+            request.setAttribute( "form_feedback", "Security error" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
         
-        if( DBAccess.UsersGet( email ) == null )
+        if( email == null || email.isEmpty() || password == null || password.isEmpty() || DBAccess.UsersGet( email ) == null )
         {
             request.setAttribute( "form_feedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
-        }
-        
-        // todo: validate nonce
-            
-        HttpSession session = request.getSession();
-        session.setAttribute( "email", email );
-        
+        }       
+
+        session.setAttribute( "email", email ); 
         response.sendRedirect( "home" );
     }
 }

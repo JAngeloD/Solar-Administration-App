@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Users;
+import services.DBAccess;
 
 public class LoginServlet extends HttpServlet
 {
@@ -47,12 +49,18 @@ public class LoginServlet extends HttpServlet
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
-        String username = request.getParameter( "username" );
+        String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
         
         // temporary until there is some sort of database or API request for the user account
-        if( username == null || username.isEmpty() || password == null || password.isEmpty()
-                || !username.equals( "admin" ) && !password.equals( "password" ) )
+        if( email == null || email.isEmpty() || password == null || password.isEmpty() )
+        {
+            request.setAttribute( "form_feedback", "Invalid username or password" );
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            return;
+        }
+        
+        if( DBAccess.UsersGet( email ) == null )
         {
             request.setAttribute( "form_feedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -62,7 +70,7 @@ public class LoginServlet extends HttpServlet
         // todo: validate nonce
             
         HttpSession session = request.getSession();
-        session.setAttribute( "username", username );
+        session.setAttribute( "email", email );
         
         response.sendRedirect( "home" );
     }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import models.*;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.time.Instant;
 
 /**
  *
@@ -176,8 +177,8 @@ public class DBAccess {
         FacilityLogs log = new FacilityLogs();
         
         Users user = UsersGet( email );     
-        //if( user == null )
-        //    return;
+        if( user == null )
+            return;
 
         log.setEmail( user );
         log.setLogType( logType );
@@ -187,6 +188,7 @@ public class DBAccess {
         Date date = new Date( ts.getTime() );
         
         log.setTimeStamp( date );
+        log.setTimeStampId( (int)Instant.now().getEpochSecond() );
         
         try
         {

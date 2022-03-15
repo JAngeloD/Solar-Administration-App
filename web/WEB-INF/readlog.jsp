@@ -45,7 +45,7 @@
               <option value="5">Other</option>
             </select>
             <br />
-
+            <input type="submit" value="Submit">
       </form>
     </div>
     <div id="logList">
@@ -61,7 +61,7 @@
       <input type="text" id="date" value="selectedLog.logId" />
       <br />
       <label>Log Type:</label>
-      <input type="text" id="date" value="selectedLog.logId" />
+      <input type="text" id="date" value="selectedLog.logType" />
       <br />
       <label>By:</label>
       <input type="text" id="date" value="selectedLog.created_by" />

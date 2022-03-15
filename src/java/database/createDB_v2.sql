@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS user_type (
     type_name VARCHAR(20)
 ) ENGINE = INNODB;
 
-
 CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100) PRIMARY KEY,
     type_id INT,

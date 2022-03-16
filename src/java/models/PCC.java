@@ -26,21 +26,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "pcc")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pcc.findAll", query = "SELECT p FROM Pcc p")
-    , @NamedQuery(name = "Pcc.findByRecordID", query = "SELECT p FROM Pcc p WHERE p.recordID = :recordID")
-    , @NamedQuery(name = "Pcc.findByTimeStampId", query = "SELECT p FROM Pcc p WHERE p.timeStampId = :timeStampId")
-    , @NamedQuery(name = "Pcc.findByTimeStamp", query = "SELECT p FROM Pcc p WHERE p.timeStamp = :timeStamp")
-    , @NamedQuery(name = "Pcc.findByAcOutputEnergy", query = "SELECT p FROM Pcc p WHERE p.acOutputEnergy = :acOutputEnergy")
-    , @NamedQuery(name = "Pcc.findByAcOutputRealPower", query = "SELECT p FROM Pcc p WHERE p.acOutputRealPower = :acOutputRealPower")
-    , @NamedQuery(name = "Pcc.findByAcOutputApparentPower", query = "SELECT p FROM Pcc p WHERE p.acOutputApparentPower = :acOutputApparentPower")
-    , @NamedQuery(name = "Pcc.findByAcOutputReactivePower", query = "SELECT p FROM Pcc p WHERE p.acOutputReactivePower = :acOutputReactivePower")
-    , @NamedQuery(name = "Pcc.findByAcOutputPowerFactor", query = "SELECT p FROM Pcc p WHERE p.acOutputPowerFactor = :acOutputPowerFactor")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseACurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseACurrent = :acOutputPhaseACurrent")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseBCurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseBCurrent = :acOutputPhaseBCurrent")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseCCurrent", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseAbVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseBcVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
-    , @NamedQuery(name = "Pcc.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM Pcc p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
+    @NamedQuery(name = "PCC.findAll", query = "SELECT p FROM PCC p")
+    , @NamedQuery(name = "PCC.findByRecordID", query = "SELECT p FROM PCC p WHERE p.recordID = :recordID")
+    , @NamedQuery(name = "PCC.findByTimeStampId", query = "SELECT p FROM PCC p WHERE p.timeStampId = :timeStampId")
+    , @NamedQuery(name = "PCC.findByTimeStamp", query = "SELECT p FROM PCC p WHERE p.timeStamp = :timeStamp")
+    , @NamedQuery(name = "PCC.findByAcOutputEnergy", query = "SELECT p FROM PCC p WHERE p.acOutputEnergy = :acOutputEnergy")
+    , @NamedQuery(name = "PCC.findByAcOutputRealPower", query = "SELECT p FROM PCC p WHERE p.acOutputRealPower = :acOutputRealPower")
+    , @NamedQuery(name = "PCC.findByAcOutputApparentPower", query = "SELECT p FROM PCC p WHERE p.acOutputApparentPower = :acOutputApparentPower")
+    , @NamedQuery(name = "PCC.findByAcOutputReactivePower", query = "SELECT p FROM PCC p WHERE p.acOutputReactivePower = :acOutputReactivePower")
+    , @NamedQuery(name = "PCC.findByAcOutputPowerFactor", query = "SELECT p FROM PCC p WHERE p.acOutputPowerFactor = :acOutputPowerFactor")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseACurrent", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseACurrent = :acOutputPhaseACurrent")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseBCurrent", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseBCurrent = :acOutputPhaseBCurrent")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseCCurrent", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseAbVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseBcVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
 public class PCC implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -228,7 +228,7 @@ public class PCC implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Pcc[ recordID=" + recordID + " ]";
+        return "models.PCC[ recordID=" + recordID + " ]";
     }
     
 }

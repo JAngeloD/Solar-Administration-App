@@ -13,6 +13,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
 /**
@@ -166,16 +168,38 @@ public class DBAccess {
         return data;
     }
 
-    public String getAll(String email) throws Exception {
+    public static List<FacilityLogs> FacilityGetAll() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
             FacilityLogsDB db = new FacilityLogsDB();
-            FacilityLogs log = new FacilityLogs();
-            return log.getLogText();
-        } finally {
+            return db.getAll();
+        }
+        catch( SQLException ex )
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
             em.close();
         }
+        
+        return null;
+    }
+    
+    // maybe accept a Log object then get the attribute that isnt null so we can pass
+    // email, or timestamp, or whatever
+    public static FacilityLogs FacilityGetLog( String logType, int dateFrom, int dateTo ) throws Exception {
+        /*EntityManager em = DBUtil.getEmFactory().createEntityManager();
+
+        try {
+            FacilityLogsDB db = new FacilityLogsDB();
+            return db.getAll();
+        } finally {
+            em.close();
+        }*/
+        
+        return null;
     }
 
     public static Users UsersGet(String email) {

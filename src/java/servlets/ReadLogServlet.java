@@ -21,7 +21,7 @@ public class ReadLogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        DBAccess access = new DBAccess();
+        /*DBAccess access = new DBAccess();
         HttpSession session = request.getSession();
         String logId = (String) session.getAttribute("logId");
         Date createdBy = (Date) session.getAttribute("created_by");
@@ -45,7 +45,14 @@ public class ReadLogServlet extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(ReadLogServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
+        
+        HttpSession session = request.getSession( false );
+
+        List<FacilityLogs> logs = DBAccess.FacilityGetAll();
+        //request.setAttribute( "logs", logs );
+        session.setAttribute( "logList", logs );
+        request.setAttribute( "logList", logs);
 
         getServletContext().getRequestDispatcher("/WEB-INF/readlog.jsp").forward(request, response);
     }
@@ -53,7 +60,16 @@ public class ReadLogServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        // Pass log type to DBAccess.FacilityGetLogs( ... ) to get the proper logs
+        String logType = request.getParameter("logType");
+        String from = request.getParameter("from");
+        String to = request.getParameter("to");
+        
+        // convert from date and to date, to a timestamp (int) and pass it to FacilityGetLog
+        //DBAccess.FacilityGetLog( logType, );
+        
+        // Now use session.setAttribute to change the logList to show your log results
         getServletContext().getRequestDispatcher("/WEB-INF/readlog.jsp").forward(request, response);
     }
 }

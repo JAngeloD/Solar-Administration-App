@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -51,20 +52,37 @@
     <div id="logList">
       <h3>RESULTS</h3>
       <ul>
-          <c:forEach items="${logs}" var="log">
-            <li><a href="logs?action=view&amp;logId=${log.logId}">${log.Id} ${log.logType} )</a><br></li>
+          <c:forEach var="log" items="${logList}" >
+              <table>
+                  <thead>
+                      <tr>
+                          <td>ID</td>
+                          <td>Type</td>
+                          <td>Text</td>
+                          <td></td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>${log.getLogId()}</td>
+                          <td>${log.getLogType()}</td>
+                          <td>${log.getLogText()}</td>
+                          <td><a href="readlog?action=view&amp;logId=${log.getLogId()}">Select</a></td>
+                      </tr>
+                  </tbody>
+              </table>
           </c:forEach>
       </ul>
     </div>
     <div id="logDetail">
       <label>Date and time:</label>
-      <input type="text" id="date" value="selectedLog.logId" />
+      <input type="text" id="date" value="${selectedLog.logId}" />
       <br />
       <label>Log Type:</label>
-      <input type="text" id="date" value="selectedLog.logType" />
+      <input type="text" id="date" value="${selectedLog.logType}" />
       <br />
       <label>By:</label>
-      <input type="text" id="date" value="selectedLog.created_by" />
+      <input type="text" id="date" value="${selectedLog.created_by}" />
       <br />
       <textarea name="contents" rows="20" cols="75">${selectedLog.log_text}</textarea><br>
     </div>

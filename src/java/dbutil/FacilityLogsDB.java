@@ -37,28 +37,28 @@ public class FacilityLogsDB {
         return list;
     }
 
-    public FacilityLogs get(int event) {
+    public FacilityLogs get(int logid) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        FacilityLogs user = null;
+        FacilityLogs log = null;
         try {
-            user = em.find(FacilityLogs.class, event);
+            log = em.find(FacilityLogs.class, logid);
         } finally {
             em.close();
         }
 
-        return user;
+        return log;
     }
 
-    public void insert(FacilityLogs event) throws SQLException {
+    public void insert(FacilityLogs log) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
 
         try {
             trans.begin();
-            em.persist(event);
-            em.merge(event);
+            em.persist(log);
+            em.merge(log);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

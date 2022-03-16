@@ -215,11 +215,10 @@ public class DBAccess {
     //        return log;
     //
     //    }
-    public static FacilityLogs FacilityGetLog(String logId, String logType, Date timeStamp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public static FacilityLogs FacilityGetLog(int logId) {
 
-        FacilityLogsDB facilitydb = new FacilityLogsDB( logId,  logType, timeStamp);
-        FacilityLogs log = facilitydb.get(logId);
+        FacilityLogsDB facilitydb = new FacilityLogsDB();
+        FacilityLogs log = facilitydb.get(logId); 
 
         return log;
 

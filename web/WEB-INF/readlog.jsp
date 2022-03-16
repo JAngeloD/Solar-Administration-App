@@ -100,15 +100,6 @@
                 </div>
             </div>
 
-            <label>Date and time:</label>
-            <input type="text" id="date" name="logId" value="${selectedLog.timeStamp}" />
-            <br/>
-            <label>Log Type:</label>
-            <input type="text" id="date" value="${selectedLog.logType}" />
-            <br/>
-            <label>By:</label>
-            <input type="text" id="date" value="${selectedLog.email}" />
-            <br/>
-            <textarea name="contents" rows="20" cols="75">${selectedLog.logText}</textarea>
+
     </body>
 </html>

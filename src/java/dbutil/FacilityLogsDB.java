@@ -1,4 +1,3 @@
-
 package dbutil;
 
 import java.sql.SQLException;
@@ -12,6 +11,7 @@ import models.FacilityLogs;
  * @author 821320
  */
 public class FacilityLogsDB {
+
     private List<FacilityLogs> list;
 
     public List<FacilityLogs> getAll() throws SQLException {
@@ -24,6 +24,16 @@ public class FacilityLogsDB {
             em.close();
         }
 
+        return list;
+    }
+
+    public List<FacilityLogs> getAll(String logId) throws Exception {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        try {
+            list = em.createNamedQuery("FacilityLogs.findAll", FacilityLogs.class).getResultList();
+        } finally {
+            em.close();
+        }
         return list;
     }
 
@@ -44,7 +54,7 @@ public class FacilityLogsDB {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        
+
         try {
             trans.begin();
             em.persist(event);

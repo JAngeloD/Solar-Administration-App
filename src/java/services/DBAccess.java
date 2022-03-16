@@ -174,34 +174,47 @@ public class DBAccess {
         try {
             FacilityLogsDB db = new FacilityLogsDB();
             return db.getAll();
-        }
-        catch( SQLException ex )
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        finally
-        {
+        } finally {
             em.close();
         }
-        
+
         return null;
     }
-    
-    // maybe accept a Log object then get the attribute that isnt null so we can pass
-    // email, or timestamp, or whatever
-    public static FacilityLogs FacilityGetLog( String logType, int dateFrom, int dateTo ) throws Exception {
-        /*EntityManager em = DBUtil.getEmFactory().createEntityManager();
+
+    public static List<FacilityLogs> FacilityGetAll(int logId) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
         try {
             FacilityLogsDB db = new FacilityLogsDB();
             return db.getAll();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         } finally {
             em.close();
-        }*/
-        
+        }
+
         return null;
     }
 
+    public List<FacilityLogs> getAll(String logId) throws Exception {
+        FacilityLogsDB logDB = new FacilityLogsDB();
+        List<FacilityLogs> logs = logDB.getAll(logId);
+        return logs;
+    }
+
+    // maybe accept a Log object then get the attribute that isnt null so we can pass
+    // email, or timestamp, or whatever
+    //    public static FacilityLogs FacilityGetLog(Integer logId, String logType, Date timeStamp) {
+    //        throw new UnsupportedOperationException("Not supported yet.");
+    //        
+    //        FacilityLogsDB facilitydb = new FacilityLogsDB();
+    //        FacilityLogs log = facilitydb.get(logId);
+    //        
+    //        return log;
+    //
+    //    }
     public static Users UsersGet(String email) {
         UsersDB db = new UsersDB();
         Users user = db.get(email);
@@ -246,4 +259,5 @@ public class DBAccess {
     public DBAccess get(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

@@ -12,6 +12,10 @@ import models.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.time.Instant;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -141,9 +145,9 @@ public class DBAccess {
     public static void InverterDelete() {
 
     }
-    
+
     public static Double FacilityGet(String attribute, String timestamp) {
-        
+
         //Initializes the database and retrieves the data based on the parameters given
         FacilityDB db = new FacilityDB();
         Facility record = db.get(timestamp);
@@ -163,39 +167,84 @@ public class DBAccess {
 
         return data;
     }
-    
-    public static Users UsersGet( String email )
-    {
+
+    public static List<FacilityLogs> FacilityGetAll() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+
+        try {
+            FacilityLogsDB db = new FacilityLogsDB();
+            return db.getAll();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            em.close();
+        }
+
+        return null;
+    }
+
+    public static List<FacilityLogs> FacilityGetAll(int logId) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+
+        try {
+            FacilityLogsDB db = new FacilityLogsDB();
+            return db.getAll();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            em.close();
+        }
+
+        return null;
+    }
+
+    public List<FacilityLogs> getAll(String logId) throws Exception {
+        FacilityLogsDB logDB = new FacilityLogsDB();
+        List<FacilityLogs> logs = logDB.getAll(logId);
+        return logs;
+    }
+
+    // maybe accept a Log object then get the attribute that isnt null so we can pass
+    // email, or timestamp, or whatever
+    //    public static FacilityLogs FacilityGetLog(Integer logId, String logType, Date timeStamp) {
+    //        throw new UnsupportedOperationException("Not supported yet.");
+    //        
+    //        FacilityLogsDB facilitydb = new FacilityLogsDB();
+    //        FacilityLogs log = facilitydb.get(logId);
+    //        
+    //        return log;
+    //
+    //    }
+    public static Users UsersGet(String email) {
         UsersDB db = new UsersDB();
-        Users user = db.get( email );
-        
+        Users user = db.get(email);
+
         return user;
     }
 
-    public static void FacilityInsert( String email, int logType, String logText ) {
+    public static void FacilityInsert(String email, int logType, String logText) {
         FacilityLogsDB db = new FacilityLogsDB();
         FacilityLogs log = new FacilityLogs();
-        
-        Users user = UsersGet( email );     
-        if( user == null )
-            return;
 
-        log.setEmail( user );
-        log.setLogType( logType );
-        log.setLogText( logText );
-        
+        Users user = UsersGet(email);
+        if (user == null) {
+            return;
+        }
+
+        log.setEmail(user);
+        log.setLogType(logType);
+        log.setLogText(logText);
+
         Timestamp ts = new Timestamp(System.currentTimeMillis());
-        Date date = new Date( ts.getTime() );
-        
-        log.setTimeStamp( date );
-        log.setTimeStampId( (int)Instant.now().getEpochSecond() );
-        
-        try
-        {
-            db.insert( log );
-        } catch( SQLException ex )
-        {
-            System.out.println( ex.toString() );
+        Date date = new Date(ts.getTime());
+
+        log.setTimeStamp(date);
+        log.setTimeStampId((int) Instant.now().getEpochSecond());
+
+        try {
+            db.insert(log);
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
         }
     }
 
@@ -206,4 +255,9 @@ public class DBAccess {
     public static void FacilityDelete() {
 
     }
+
+    public DBAccess get(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

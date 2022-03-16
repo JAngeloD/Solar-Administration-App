@@ -30,47 +30,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower30" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower30" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts30" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts30" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent30" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent30" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage30" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage30" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage30" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage30" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage30" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage30" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent30" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent30" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent30" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent30" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent30" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent30" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower30" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower30" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower30" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower30" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor30" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor30" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -79,7 +79,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency30" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency30" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -94,47 +94,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower35" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower35" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts35" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts35" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent35" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent35" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage35" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage35" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage35" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage35" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage35" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage35" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent35" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent35" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent35" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent35" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent35" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent35" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower35" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower35" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower35" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower35" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor35" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor35" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -143,7 +143,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency35" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency35" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -163,47 +163,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower31" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower31" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts31" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts31" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent31" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent31" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage31" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage31" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage31" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage31" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage31" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage31" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent31" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent31" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent31" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent31" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent31" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent31" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower31" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower31" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower31" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower31" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor31" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor31" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -212,7 +212,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency31" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency31" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -227,47 +227,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower36" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower36" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts36" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts36" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent36" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent36" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage36" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage36" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage36" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage36" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage36" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage36" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent36" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent36" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent36" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent36" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent36" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent36" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower36" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower36" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower36" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower36" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor36" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor36" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -276,7 +276,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency36" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency36" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -295,47 +295,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower32" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower32" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts32" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts32" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent32" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent32" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage32" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage32" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage32" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage32" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage32" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage32" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent32" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent32" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent32" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent32" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent32" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent32" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower32" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower32" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower32" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower32" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor32" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor32" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -344,7 +344,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency32" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency32" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -359,47 +359,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower37" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower37" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts37" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts37" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent37" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent37" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage37" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage37" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage37" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage37" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage37" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage37" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent37" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent37" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent37" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent37" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent37" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent37" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower37" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower37" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower37" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower37" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor37" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor37" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -408,7 +408,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency37" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency37" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -427,47 +427,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower33" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower33" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts33" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts33" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent33" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent33" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage33" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage33" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage33" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage33" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage33" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage33" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent33" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent33" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent33" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent33" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent33" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent33" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower33" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower33" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower33" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower33" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor33" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor33" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -476,7 +476,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency33" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency33" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -491,47 +491,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower38" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower38" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts38" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts38" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent38" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent38" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage38" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage38" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage38" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage38" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage38" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage38" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent38" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent38" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent38" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent38" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent38" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent38" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower38" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower38" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower38" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower38" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor38" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor38" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -540,7 +540,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency38" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency38" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -559,47 +559,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower34" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower34" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts34" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts34" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent34" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent34" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage34" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage34" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage34" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage34" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage34" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage34" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent34" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent34" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent34" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent34" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent34" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent34" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower34" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower34" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower34" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower34" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor34" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor34" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -608,7 +608,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency34" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency34" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>
@@ -623,47 +623,47 @@
                                         <tr>
                                             <th>DC Input</th>
                                             <td>DC Power</td>
-                                            <td id="InvertergetDcRealPower39" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_DcRealPower39" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>DC Voltage</td>
-                                            <td id="InvertergetDcVolts39" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_DcVolts39" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>DC Current</td>
-                                            <td id="InvertergetDcCurrent39" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_DcCurrent39" class="realtime">XX.X</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <th rowspan="3">AC Output</th>
                                             <td>Vab</td>
-                                            <td id="InvertergetAcOutputPhaseABVoltage39" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseABVoltage39" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vbc</td>
-                                            <td id="InvertergetAcOutputPhaseBCVoltage39" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCVoltage39" class="realtime">XXX</td>
                                             <td>V</td>
                                             <td>Vca</td>
-                                            <td id="InvertergetAcOutputPhaseCAVoltage39" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCAVoltage39" class="realtime">XXX</td>
                                             <td>V</td>
                                         </tr>
                                         <tr>
                                             <td>A Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseACurrent39" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseACurrent39" class="realtime">XX</td>
                                             <td>A</td>
                                             <td>B Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseBCurrent39" class="realtime">XXX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseBCurrent39" class="realtime">XXX</td>
                                             <td>A</td>
                                             <td>C Phase Current</td>
-                                            <td id="InvertergetAcOutputPhaseCCurrent39" class="realtime">XX</td>
+                                            <td id="Inverter_Get_AcOutputPhaseCCurrent39" class="realtime">XX</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
                                             <td>Real Power</td>
-                                            <td id="InvertergetAcOutputRealPower39" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputRealPower39" class="realtime">XXX.X</td>
                                             <td>kW</td>
                                             <td>Reactive Power</td>
-                                            <td id="InvertergetAcOutputReactivePower39" class="realtime">XXX.X</td>
+                                            <td id="Inverter_Get_AcOutputReactivePower39" class="realtime">XXX.X</td>
                                             <td>kVAr</td>
                                             <td>Power Factor</td>
-                                            <td id="InvertergetAcOutputPowerFactor39" class="realtime">.XX</td>
+                                            <td id="Inverter_Get_AcOutputPowerFactor39" class="realtime">.XX</td>
                                             <td>%</td>
                                         </tr>
                                         <tr>
@@ -672,7 +672,7 @@
                                             <td>XX</td>
                                             <td></td>
                                             <td>Efficiency</td>
-                                            <td id="InvertergetEfficiency39" class="realtime">XX.X</td>
+                                            <td id="Inverter_Get_Efficiency39" class="realtime">XX.X</td>
                                             <td>%</td>
                                             <td>Temperature</td>
                                             <td>XX</td>

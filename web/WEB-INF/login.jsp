@@ -14,6 +14,6 @@
             <input type="hidden" name="nonce" value="<%=session.getAttribute( "nonce" )%>"/>
             <input type="submit" value="Login"/>
         </form>
-            <p>${form_feedback}</p>
+            <p>${formFeedback}</p>
     </body>
 </html>

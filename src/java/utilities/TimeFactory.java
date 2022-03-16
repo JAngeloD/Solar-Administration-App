@@ -3,9 +3,11 @@ package utilities;
 
 import java.sql.Timestamp;
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- *
  * @author 821320
  */
 public class TimeFactory {
@@ -13,7 +15,10 @@ public class TimeFactory {
     public TimeFactory() {
     }
 
-    public static Timestamp getCurrentTime() {
+    /*
+     * Gets a timestamp rounded down to the nearest 10 minute interval
+     */
+    public static Timestamp getCurrentTimestamp() {
 
         Timestamp sqlTimestamp = new Timestamp(System.currentTimeMillis());
 
@@ -27,90 +32,23 @@ public class TimeFactory {
                 roundedDown += stringTime.charAt(i);
             }
         }
+        
         return Timestamp.valueOf(roundedDown);
     }
 
     /*
-     * The int order return is YearMonthDayHourMinuteSecond
-     * The data type for the timestampID will have to be BIGINT instead of INT
+     * Converts a timestamp to a long
      */
-    public static BigInteger convertToID(Timestamp ts) {
+    public static Long convertToID(Timestamp ts) {
 
-        String timeStamp = ts.toString();
-        String esotericInt = "";
-        for (int i = 0; i < timeStamp.length(); i++) {
-            char inQuestion = timeStamp.charAt(i);
-            if ('-' == inQuestion || '.' == inQuestion || ':' == inQuestion || ' ' == inQuestion) {
-                continue;
-            }
-            esotericInt += inQuestion;
-        }
-        //System.out.println(esotericInt);
-        
-        int random = (int) (Math.random() * 1000000);
-        String randomString = Integer.toString(random);
-
-        return new BigInteger(esotericInt + randomString);
+        return ts.getTime();
     }
 
     /*
-     * Converts a bigdecimal back into a timestamp
-     * The timestamp loses its uniqueness so dont put it back in
+     * Converts a long to a timestamp
      */
-    public static Timestamp convertToTimestamp(BigInteger ID) {
+    public static Timestamp convertToTimestamp(Long ID) throws ParseException {
 
-        String id = ID.toString();
-        String forConversion = "";
-
-        // year
-        for (int i = 0; i < 4; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += "-";
-
-        // month
-        for (int i = 4; i < 6; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += "-";
-
-        // day
-        for (int i = 6; i < 8; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += " ";
-
-        // hour
-        for (int i = 8; i < 10; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += ":";
-
-        // minute
-        for (int i = 10; i < 12; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += ":";
-
-        // second
-        for (int i = 10; i < 12; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        forConversion += ".";
-
-        // nanosecond
-        for (int i = 12; i < 15; i++) {
-            forConversion += id.charAt(i);
-        }
-
-        //System.out.println(forConversion);
-
-        return Timestamp.valueOf(forConversion);
+        return new Timestamp(ID);
     }
 }

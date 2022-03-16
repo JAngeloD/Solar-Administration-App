@@ -36,7 +36,7 @@ public class AjaxHandler extends HttpServlet {
         String modelName = requestedData.substring(0, requestedData.indexOf("_"));
         String operation = requestedData.substring(requestedData.indexOf("_") + 1, requestedData.lastIndexOf("_"));
         String attribute = requestedData.substring(requestedData.lastIndexOf("_") + 1);
-        String timestamp = "4821"; //TEMPORARY
+        String timestamp = "4192"; //TEMPORARY
         
         //Data to be returned back to caller
         double data = -1;

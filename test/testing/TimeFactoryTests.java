@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import utilities.TimeFactory;
 import java.math.BigInteger;
+import java.text.ParseException;
 
 /**
  *
@@ -23,18 +24,36 @@ public class TimeFactoryTests {
     }
 
     @Test
-    public void testCurrentTime() {
+    public void testCurrentTime() throws ParseException {
         
         //Test for current Time
-        //System.out.println(TimeFactory.getCurrentTime());
+        System.out.println("1. " + TimeFactory.getCurrentTimestamp());
         
         //Test for convertToID
-        //System.out.println(TimeFactory.convertToID(TimeFactory.getCurrentTime()));
+        System.out.println("2. " + TimeFactory.convertToID(TimeFactory.getCurrentTimestamp()));
 
         //Test for convertToTimestamp
         // Big Integer needs the value as a string when creating one
         // but if big int is stored as the datatype in the database we should be good
-        BigInteger bi = new BigInteger("202203141440000496606");
-        System.out.println(TimeFactory.convertToTimestamp(bi));
+        System.out.println("3. " + TimeFactory.convertToTimestamp(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));
+        
+        System.out.println("");
+        System.out.println("");
+        
+        //switch the order
+        
+        
+        //Test for current Time
+        System.out.println("4. " + TimeFactory.getCurrentTimestamp());
+        
+        //Test for convertToTimestamp
+        // Big Integer needs the value as a string when creating one
+        // but if big int is stored as the datatype in the database we should be good
+        System.out.println("5. " + TimeFactory.convertToTimestamp(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));
+        
+        //Test for convertToID
+        System.out.println("6. " + TimeFactory.convertToID(TimeFactory.getCurrentTimestamp()));
+
+        
     }
 }

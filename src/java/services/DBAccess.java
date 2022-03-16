@@ -215,6 +215,16 @@ public class DBAccess {
     //        return log;
     //
     //    }
+    public static FacilityLogs FacilityGetLog(String logId, String logType, Date timeStamp) {
+        throw new UnsupportedOperationException("Not supported yet.");
+
+        FacilityLogsDB facilitydb = new FacilityLogsDB( logId,  logType, timeStamp);
+        FacilityLogs log = facilitydb.get(logId);
+
+        return log;
+
+    }
+
     public static Users UsersGet(String email) {
         UsersDB db = new UsersDB();
         Users user = db.get(email);
@@ -254,10 +264,6 @@ public class DBAccess {
 
     public static void FacilityDelete() {
 
-    }
-
-    public DBAccess get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -46,10 +46,11 @@ public class ReadLogServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        String logId = request.getParameter("logId");
+        String logId = request.getParameter("logID");
         String logType = request.getParameter("logType");
         String timeStamp = request.getParameter("timeStamp");
         String logText = request.getParameter("logText");
+        String email = request.getParameter("email");
 
         // Pass log type to DBAccess.FacilityGetLogs( ... ) to get the proper logs
         String from = request.getParameter("from");
@@ -68,16 +69,16 @@ public class ReadLogServlet extends HttpServlet {
         DBAccess access = new DBAccess();
 
         try {
-            List<FacilityLogs> loggerID = access.getAll(logId);
-            request.setAttribute("readlog", loggerID);
+            List<FacilityLogs> logs = access.getAll(logId);
+            request.setAttribute("readlog", logs);
         } catch (Exception ex) {
             Logger.getLogger(ReadLogServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "error");
         }
 
         HttpSession session = request.getSession(false);
-        List<FacilityLogs> logs = access.FacilityGetAll();
-        session.setAttribute("logList", logs);
+
+        //session.setAttribute("logList", logs);
         getServletContext().getRequestDispatcher("/WEB-INF/readlog.jsp").forward(request, response);
     }
 }

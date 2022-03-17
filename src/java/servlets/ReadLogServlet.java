@@ -2,7 +2,6 @@ package servlets;
 
 import dbutil.FacilityLogsDB;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -25,13 +24,32 @@ public class ReadLogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         DBAccess access = new DBAccess();
         HttpSession session = request.getSession();
-        List<FacilityLogs> logs = access.FacilityGetAll();
+        List<FacilityLogs> logs = DBAccess.FacilityGetAll();
         session.setAttribute("logList", logs);
         request.setAttribute("logList", logs);
-        
+
+        String typeLog = request.getParameter("typeLog");
+        switch (typeLog) {
+            case "1":
+                request.setAttribute(typeLog,"Inspection" );
+                break;
+            case "2":
+                request.setAttribute(typeLog, "Maintenance" );
+                break;
+            case "3":
+                request.setAttribute(typeLog, "Planner Outage" );
+                break;
+            case "4":
+                request.setAttribute(typeLog, "Forced Outage" );
+                break;
+            case "5":
+                request.setAttribute(typeLog, "Other" );
+                break;
+        }
+
         String action = request.getParameter("action");
         if (action != null && action.equals("view")) {
             try {
@@ -49,15 +67,15 @@ public class ReadLogServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String action = request.getParameter("action");
+
+        HttpSession session = request.getSession(false);
         String logId = request.getParameter("logID");
         String logType = request.getParameter("logType");
         String timeStamp = request.getParameter("timeStamp");
         String logText = request.getParameter("logText");
         String email = request.getParameter("email");
-        
-        // Pass log type to DBAccess.FacilityGetLogs( ... ) to get the proper logs
+
+        int logTypeInt = Integer.parseInt(logType);
         String from = request.getParameter("from");
         String to = request.getParameter("to");
 
@@ -65,29 +83,27 @@ public class ReadLogServlet extends HttpServlet {
         LocalDateTime localFrom = LocalDateTime.from(formatDateTime.parse(from));
         LocalDateTime localTo = LocalDateTime.from(formatDateTime.parse(to));
 
-        try {
-            Timestamp fromTimeStamp = Timestamp.valueOf(localFrom);
-            Timestamp toTimeStamp = Timestamp.valueOf(localTo);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        // convert from date and to date, to a timestamp (int) and pass it to FacilityGetLog
-        // DBAccess.FacilityGetLog( logType );
-        // Now use session.setAttribute to change the logList to show your log results
         DBAccess access = new DBAccess();
 
         try {
-            List<FacilityLogs> logs = access.getAll(logId);
-            request.setAttribute("test", logs);
-        } catch (Exception ex) {
-            Logger.getLogger(ReadLogServlet.class.getName()).log(Level.SEVERE, null, ex);
-            request.setAttribute("message", "error");
+            Timestamp fromTimeStamp = Timestamp.valueOf(localFrom);
+            Timestamp toTimeStamp = Timestamp.valueOf(localTo);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        HttpSession session = request.getSession(false);
+        // Pass log type to DBAccess.FacilityGetLogs( ... ) to get the proper log
+        // convert from date and to date, to a timestamp (int) and pass it to FacilityGetLog
+        // DBAccess.FacilityGetLog( logType );
+        // Now use session.setAttribute to change the logList to show your log results
+        try {
+            List<FacilityLogs> logs = access.getAll(logId);
+            session.setAttribute("test", logs);
+        } catch (Exception ex) {
+            Logger.getLogger(ReadLogServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        //session.setAttribute("logList", logs);
         getServletContext().getRequestDispatcher("/WEB-INF/readlog.jsp").forward(request, response);
     }
+
 }

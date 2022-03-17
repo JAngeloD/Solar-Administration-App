@@ -216,12 +216,9 @@ public class DBAccess {
     //
     //    }
     public static FacilityLogs FacilityGetLog(int logId) {
-
         FacilityLogsDB facilitydb = new FacilityLogsDB();
-        FacilityLogs log = facilitydb.get(logId); 
-
+        FacilityLogs log = facilitydb.get(logId);
         return log;
-
     }
 
     public static Users UsersGet(String email) {

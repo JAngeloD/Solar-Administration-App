@@ -12,6 +12,7 @@
         <meta charset="utf-8">
         <title>Write Logs</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="searchlogs.js"></script>
 
     </head>
 
@@ -54,7 +55,7 @@
                         <table>
                             <tr>
                                 <th>ID</th>
-                                <th>Type</th>
+                                <th>Log Type</th>
                                 <th>Log Date</th>
                                 <!--<th>Text</th>-->
                                 <th></th>
@@ -65,33 +66,29 @@
                                     <td>${log.getLogType()}</td>
                                     <td>${log.getTimeStamp()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
-                                    <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">Select</a></td>
+                                    <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
                                     <td>                                
                                         <form action="readlog" method="POST">
-                                            <td><input type="submit" value="Edit" class="regButton"></td>
                                             <input type="hidden" name="action" value="view">
                                             <input type="hidden" name="logID" value="${log.getLogId()}"/>
                                         </form></td>
                                 </tr>
                             </c:forEach>
                         </table>
-
                     </ul>
                 </div>
                 <div>
                     <c:if test="${selectedLog ne null}">
                         <h2>View</h2>
                         <form action="readlog" method="POST">
-                            <label>Log ID:</label>
-                            <input type="text" id="date" value="${selectedLog.logId}" />
                             <label>Date and time:</label>
-                            <input type="text" id="date" value="${selectedLog.timeStamp}" />
+                            <input type="text" id="date" value="${selectedLog.timeStamp}" size="25"/>
                             <br />
                             <label>Log Type:</label>
-                            <input type="text" id="date" value="${selectedLog.logType}" />
+                            <input type="text" id="typeLog" value="${selectedLog.logType}" />
                             <br />
                             <label>By:</label>
-                            <input type="text" id="date" value="${selectedLog.email}" />
+                            <input type="text" id="selectedEmail"  value='${selectedLog.email}' />
                             <br/>
                             <textarea name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
                         </form>

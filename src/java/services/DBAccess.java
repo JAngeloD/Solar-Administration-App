@@ -7,6 +7,7 @@ package services;
 
 import dbutil.*;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import models.*;
 import java.sql.Timestamp;
@@ -245,7 +246,7 @@ public class DBAccess {
         Date date = new Date(ts.getTime());
 
         log.setTimeStamp(date);
-        log.setTimeStampId((int) Instant.now().getEpochSecond());
+        log.setTimeStampId(BigInteger.valueOf(Instant.now().getEpochSecond()) );
 
         try {
             db.insert(log);

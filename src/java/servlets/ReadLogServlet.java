@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import models.FacilityLogs;
 import models.Users;
 import services.DBAccess;
+import utilities.TimeFactory;
 
 public class ReadLogServlet extends HttpServlet {
 
@@ -27,29 +28,13 @@ public class ReadLogServlet extends HttpServlet {
 
         DBAccess access = new DBAccess();
         HttpSession session = request.getSession();
-        List<FacilityLogs> logs = DBAccess.FacilityGetAll();
-        session.setAttribute("logList", logs);
-        request.setAttribute("logList", logs);
 
-        String typeLog = request.getParameter("typeLog");
-        switch (typeLog) {
-            case "1":
-                request.setAttribute(typeLog,"Inspection" );
-                break;
-            case "2":
-                request.setAttribute(typeLog, "Maintenance" );
-                break;
-            case "3":
-                request.setAttribute(typeLog, "Planner Outage" );
-                break;
-            case "4":
-                request.setAttribute(typeLog, "Forced Outage" );
-                break;
-            case "5":
-                request.setAttribute(typeLog, "Other" );
-                break;
-        }
+        // Uncomment to show every log 
+//        List<FacilityLogs> logs = DBAccess.FacilityGetAll();
+//        session.setAttribute("logList", logs);
+//        request.setAttribute("logList", logs);
 
+        //Triggers when the "View" link is clicked in the read logs page 
         String action = request.getParameter("action");
         if (action != null && action.equals("view")) {
             try {
@@ -67,8 +52,36 @@ public class ReadLogServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         HttpSession session = request.getSession(false);
+        
+        
+        String action = request.getParameter("action");
+        switch (action) {
+            //Currently retrieves record using start date and end date (Will need to implement logType + additional paramters)
+            case "datesearch":
+                String logType = request.getParameter("logType");
+                String start = request.getParameter("from");
+                String end = request.getParameter("to");
+                
+                List<FacilityLogs> logs = null;
+                if((start != null && end != null) && (!start.equals("")  && !end.equals(""))) {
+                    FacilityLogsDB logdb = new FacilityLogsDB();
+                    logs = logdb.getInBetween(TimeFactory.atStartOfDay(start), TimeFactory.atEndOfDay(end), Integer.parseInt(logType));
+                }
+                else {
+                    System.out.println("Could not find log");
+                }
+                
+                if(logs != null) {
+                    session.setAttribute("logList", logs);
+                    request.setAttribute("logList", logs);
+                }
+                
+                doGet(request, response);
+                break;
+        }
+        
         String logId = request.getParameter("logID");
         String logType = request.getParameter("logType");
         String timeStamp = request.getParameter("timeStamp");

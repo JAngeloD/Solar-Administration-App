@@ -54,6 +54,12 @@ public class TimeFactoryTests {
         //Test for convertToID
         System.out.println("6. " + TimeFactory.convertToID(TimeFactory.getCurrentTimestamp()));
 
-        
+        //Test for start of day ID
+        System.out.println("\n\n7. " +  TimeFactory.atStartOfDay());
+        System.out.println("8. " + TimeFactory.convertToTimestamp(TimeFactory.atStartOfDay()));
+       
+        //Test for end of day ID
+        System.out.println("\n\n9. " +  TimeFactory.atEndOfDay());
+        System.out.println("10. " + TimeFactory.convertToTimestamp(TimeFactory.atEndOfDay()));
     }
 }

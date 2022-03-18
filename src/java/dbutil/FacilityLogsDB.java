@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import models.FacilityLogs;
 
 /**
@@ -31,6 +32,21 @@ public class FacilityLogsDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
             list = em.createNamedQuery("FacilityLogs.findAll", FacilityLogs.class).getResultList();
+        } finally {
+            em.close();
+        }
+        return list;
+    }
+    
+    public List<FacilityLogs> getInBetween(long start, long end, int logId) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        try {
+            Query q = em.createNamedQuery("FacilityLogs.findBetweenTimeStamp", FacilityLogs.class);
+            q.setParameter("start", start);
+            q.setParameter("end", end);
+            q.setParameter("logId", logId);
+            
+            list = q.getResultList();
         } finally {
             em.close();
         }

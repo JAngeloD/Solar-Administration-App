@@ -30,12 +30,12 @@
             <br />
             <div id="form">
                 <div>
-                    <form method="POST" action="">
+                    <form method="POST" action="readlog">
                         <label>Select dates</label><br />
                         <label>From: </label>
-                        <input type="datetime-local" id="from" name="from" value="" min="" max="">
+                        <input type="date" id="from" name="from" value="" min="" max="">
                         <label>To: </label>
-                        <input type="datetime-local" id="to" name="to" value="" min="" max="">
+                        <input type="date" id="to" name="to" value="" min="" max="">
                         <br />
                         <label>Select log type:</label>
                         <select name="logType" id="logType">
@@ -46,6 +46,7 @@
                             <option value="5">Other</option>
                         </select>
                         <br/>
+                        <input type="hidden" name="action" value="datesearch">
                         <input type="submit" value="Submit">
                     </form>
                 </div>
@@ -85,10 +86,10 @@
                             <input type="text" id="date" value="${selectedLog.timeStamp}" size="25"/>
                             <br />
                             <label>Log Type:</label>
-                            <input type="text" id="typeLog" value="${selectedLog.logType}" />
+                            <input type="text" id="typeLog" value="${selectedLog.logTypeToString()}" />
                             <br />
                             <label>By:</label>
-                            <input type="text" id="selectedEmail"  value='${selectedLog.email}' />
+                            <input type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
                             <br/>
                             <textarea name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
                         </form>

@@ -63,7 +63,7 @@
                             <c:forEach var="log" items="${logList}" >
                                 <tr>
                                     <td>${log.getLogId()}</td>
-                                    <td>${log.getLogType()}</td>
+                                    <td>${log.logTypeToString()}</td>
                                     <td>${log.getTimeGST()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
                                     <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>

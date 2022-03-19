@@ -12,11 +12,10 @@
         <meta charset="utf-8">
         <title>Write Logs</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script type="text/javascript" src="searchlogs.js"></script>
-
+        <script src="javascript/readlog.js" type="text/javascript"></script>
     </head>
 
-    <body>
+    <body onload="SetDate()">
         <div id="top-container">
             <div>
                 <ul>
@@ -33,9 +32,9 @@
                     <form method="POST" action="readlog">
                         <label>Select dates</label><br />
                         <label>From: </label>
-                        <input type="date" id="from" name="from" value="" min="" max="">
+                        <input type="date" id="fromDate" name="from" value="">
                         <label>To: </label>
-                        <input type="date" id="to" name="to" value="" min="" max="">
+                        <input type="date" id="toDate" name="to" value="">
                         <br />
                         <label>Select log type:</label>
                         <select name="logType" id="logType">

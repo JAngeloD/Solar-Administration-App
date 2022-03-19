@@ -11,12 +11,18 @@ import java.math.BigInteger;
 import java.sql.SQLException;
 import models.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import utilities.TimeFactory;
 
 /**
  *
@@ -241,13 +247,10 @@ public class DBAccess {
         log.setEmail(user);
         log.setLogType(logType);
         log.setLogText(logText);
-
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
-        Date date = new Date(ts.getTime());
-
-        log.setTimeStamp(date);
-        log.setTimeStampId(BigInteger.valueOf(Instant.now().getEpochSecond()) );
-
+        
+        log.setTimeStamp(TimeFactory.getCurrentTimestamp());
+        log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
+        
         try {
             db.insert(log);
         } catch (SQLException ex) {

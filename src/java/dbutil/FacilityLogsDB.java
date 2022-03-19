@@ -38,18 +38,21 @@ public class FacilityLogsDB {
         return list;
     }
     
-    public List<FacilityLogs> getInBetween(long start, long end, int logId) {
+    public List<FacilityLogs> getInBetween(long start, long end, int logType) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
             Query q = em.createNamedQuery("FacilityLogs.findBetweenTimeStamp", FacilityLogs.class);
             q.setParameter("start", start);
             q.setParameter("end", end);
-            q.setParameter("logId", logId);
+            q.setParameter("logType", logType);
             
             list = q.getResultList();
         } finally {
             em.close();
         }
+        
+        System.out.println("SIZE: " +list.size());
+        
         return list;
     }
 
@@ -70,7 +73,7 @@ public class FacilityLogsDB {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-
+        
         try {
             trans.begin();
             em.persist(log);
@@ -81,7 +84,7 @@ public class FacilityLogsDB {
         } finally {
             em.close();
         }
-
+        
     }
 
     public void update(FacilityLogs user) {

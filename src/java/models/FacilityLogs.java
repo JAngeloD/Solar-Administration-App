@@ -7,6 +7,7 @@ package models;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,9 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FacilityLogs.findAll", query = "SELECT f FROM FacilityLogs f")
     , @NamedQuery(name = "FacilityLogs.findByLogId", query = "SELECT f FROM FacilityLogs f WHERE f.logId = :logId")
     , @NamedQuery(name = "FacilityLogs.findByLogText", query = "SELECT f FROM FacilityLogs f WHERE f.logText = :logText")
+    , @NamedQuery(name = "FacilityLogs.findByLogType", query = "SELECT f FROM FacilityLogs f WHERE f.logType = :logType")
     , @NamedQuery(name = "FacilityLogs.findByTimeStampId", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId = :timeStampId")
     , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")
-    , @NamedQuery(name = "FacilityLogs.findBetweenTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId BETWEEN :start AND :end AND f.logId = :logId")})
+    , @NamedQuery(name = "FacilityLogs.findBetweenTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId BETWEEN :start AND :end AND f.logType = :logType")})
 public class FacilityLogs implements Serializable {
 
     @Column(name = "time_stamp_id")
@@ -141,6 +143,11 @@ public class FacilityLogs implements Serializable {
 
     public void setLogType(Integer logType) {
         this.logType = logType;
+    }
+    
+    public String getTimeGST() {
+        SimpleDateFormat gmtDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return gmtDateFormat.format(timeStamp);
     }
 
     public String logTypeToString() {

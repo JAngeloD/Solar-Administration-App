@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -33,7 +34,6 @@ public class ReadLogServlet extends HttpServlet {
 //        List<FacilityLogs> logs = DBAccess.FacilityGetAll();
 //        session.setAttribute("logList", logs);
 //        request.setAttribute("logList", logs);
-
         //Triggers when the "View" link is clicked in the read logs page 
         String action = request.getParameter("action");
         if (action != null && action.equals("view")) {
@@ -52,10 +52,9 @@ public class ReadLogServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
-        
-        
+
         String action = request.getParameter("action");
         switch (action) {
             //Currently retrieves record using start date and end date (Will need to implement logType + additional paramters)
@@ -63,25 +62,25 @@ public class ReadLogServlet extends HttpServlet {
                 String logType = request.getParameter("logType");
                 String start = request.getParameter("from");
                 String end = request.getParameter("to");
-                
+
+
                 List<FacilityLogs> logs = null;
-                if((start != null && end != null) && (!start.equals("")  && !end.equals(""))) {
+                if ((start != null && end != null) && (!start.equals("") && !end.equals(""))) {
                     FacilityLogsDB logdb = new FacilityLogsDB();
                     logs = logdb.getInBetween(TimeFactory.atStartOfDay(start), TimeFactory.atEndOfDay(end), Integer.parseInt(logType));
-                }
-                else {
+                } else {
                     System.out.println("Could not find log");
                 }
-                
-                if(logs != null) {
+
+                if (logs != null) {
                     session.setAttribute("logList", logs);
                     request.setAttribute("logList", logs);
                 }
-                
+
                 doGet(request, response);
                 break;
         }
-        
+
         String logId = request.getParameter("logID");
         String logType = request.getParameter("logType");
         String timeStamp = request.getParameter("timeStamp");

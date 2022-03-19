@@ -65,7 +65,7 @@
                                 <tr>
                                     <td>${log.getLogId()}</td>
                                     <td>${log.getLogType()}</td>
-                                    <td>${log.getTimeStamp()}</td>                          
+                                    <td>${log.getTimeGST()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
                                     <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
                                     <td>                                
@@ -83,7 +83,7 @@
                         <h2>View</h2>
                         <form action="readlog" method="POST">
                             <label>Date and time:</label>
-                            <input type="text" id="date" value="${selectedLog.timeStamp}" size="25"/>
+                            <input type="text" id="date" value="${selectedLog.getTimeGST()}" size="25"/>
                             <br />
                             <label>Log Type:</label>
                             <input type="text" id="typeLog" value="${selectedLog.logTypeToString()}" />

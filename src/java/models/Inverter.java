@@ -97,6 +97,28 @@ public class Inverter implements Serializable {
     public Inverter() {
     }
 
+    public Inverter(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.deviceId = deviceId;
+        this.acOutputEnergy = acOutputEnergy;
+        this.acOutputRealPower = acOutputRealPower;
+        this.acOutputApparentPower = acOutputApparentPower;
+        this.acOutputReactivePower = acOutputReactivePower;
+        this.acOutputPowerFactor = acOutputPowerFactor;
+        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
+        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
+        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
+        this.dcRealPower = dcRealPower;
+        this.dcVolt = dcVolt;
+        this.dcCurrent = dcCurrent;
+        this.efficiency = efficiency;
+    }
+
     public Inverter(String recordID) {
         this.recordID = recordID;
     }

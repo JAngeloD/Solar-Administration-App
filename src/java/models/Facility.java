@@ -66,6 +66,18 @@ public class Facility implements Serializable {
     public Facility() {
     }
 
+    public Facility(String recordID, Integer timeStampId, Date timeStamp, Double solarirridiancePOA, Double solarirridianceGHI, Double backOfPanelTemperature1, Double ambientTemperature, Double backOfPanelTemperature2, Double windSpeed) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.solarirridiancePOA = solarirridiancePOA;
+        this.solarirridianceGHI = solarirridianceGHI;
+        this.backOfPanelTemperature1 = backOfPanelTemperature1;
+        this.ambientTemperature = ambientTemperature;
+        this.backOfPanelTemperature2 = backOfPanelTemperature2;
+        this.windSpeed = windSpeed;
+    }
+
     public Facility(String recordID) {
         this.recordID = recordID;
     }
@@ -169,7 +181,7 @@ public class Facility implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Facility[ recordID=" + recordID + " ]";
+        return "models.Facility[ recordID=" + recordID + timeStampId + timeStamp + solarirridiancePOA + solarirridianceGHI + backOfPanelTemperature1 +  ambientTemperature  + backOfPanelTemperature2 + windSpeed + " ]";
     }
-    
+
 }

@@ -197,7 +197,7 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * Turns string array returned by plotly into a double array and return that
+     * Turns string array returned by plotly in the JSP into a double array and return that
      *
      * @param rawPlotArray - Raw plotly array
      * @param first - If true it will return the y array in for the first trace

@@ -6,6 +6,8 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,14 +33,17 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FacilityLogs.findAll", query = "SELECT f FROM FacilityLogs f")
     , @NamedQuery(name = "FacilityLogs.findByLogId", query = "SELECT f FROM FacilityLogs f WHERE f.logId = :logId")
     , @NamedQuery(name = "FacilityLogs.findByLogText", query = "SELECT f FROM FacilityLogs f WHERE f.logText = :logText")
+    , @NamedQuery(name = "FacilityLogs.findByLogType", query = "SELECT f FROM FacilityLogs f WHERE f.logType = :logType")
     , @NamedQuery(name = "FacilityLogs.findByTimeStampId", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId = :timeStampId")
-    , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")})
+    , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")
+    , @NamedQuery(name = "FacilityLogs.findBetweenTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId BETWEEN :start AND :end AND f.logType = :logType")})
 public class FacilityLogs implements Serializable {
 
-    @Column( name = "log_type" )
+    @Column(name = "time_stamp_id")
+    private BigInteger timeStampId;
+
+    @Column(name = "log_type")
     private Integer logType;
-    @Column( name = "time_stamp_id" )
-    private Integer timeStampId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -83,11 +88,11 @@ public class FacilityLogs implements Serializable {
         this.logText = logText;
     }
 
-    public Integer getTimeStampId() {
+    public BigInteger getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(BigInteger timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -132,13 +137,33 @@ public class FacilityLogs implements Serializable {
         return "models.FacilityLogs[ logId=" + logId + " ]";
     }
 
-    public Integer getLogType()
-    {
+    public Integer getLogType() {
         return logType;
     }
 
-    public void setLogType( Integer logType )
-    {
+    public void setLogType(Integer logType) {
         this.logType = logType;
-    }  
+    }
+    
+    public String getTimeGST() {
+        SimpleDateFormat gmtDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return gmtDateFormat.format(timeStamp);
+    }
+
+    public String logTypeToString() {
+        switch (logType) {
+            case 1:
+                return "Inspection";
+            case 2:
+                return "Maintenance";
+            case 3:
+                return "Planner Outage";
+            case 4:
+                return "Forced Outage";
+            case 5:
+                return "Other";
+            default:
+                return "Undefined";
+        }
+    }
 }

@@ -7,15 +7,22 @@ package services;
 
 import dbutil.*;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import models.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import utilities.TimeFactory;
 
 /**
  *
@@ -215,6 +222,12 @@ public class DBAccess {
     //        return log;
     //
     //    }
+    public static FacilityLogs FacilityGetLog(int logId) {
+        FacilityLogsDB facilitydb = new FacilityLogsDB();
+        FacilityLogs log = facilitydb.get(logId);
+        return log;
+    }
+
     public static Users UsersGet(String email) {
         UsersDB db = new UsersDB();
         Users user = db.get(email);
@@ -234,13 +247,10 @@ public class DBAccess {
         log.setEmail(user);
         log.setLogType(logType);
         log.setLogText(logText);
-
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
-        Date date = new Date(ts.getTime());
-
-        log.setTimeStamp(date);
-        log.setTimeStampId((int) Instant.now().getEpochSecond());
-
+        
+        log.setTimeStamp(TimeFactory.getCurrentTimestamp());
+        log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
+        
         try {
             db.insert(log);
         } catch (SQLException ex) {
@@ -254,10 +264,6 @@ public class DBAccess {
 
     public static void FacilityDelete() {
 
-    }
-
-    public DBAccess get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

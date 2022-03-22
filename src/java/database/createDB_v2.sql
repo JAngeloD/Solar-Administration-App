@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS facility_logs (
     email VARCHAR(100), 
     log_text VARCHAR(500),
     log_type INT,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     CONSTRAINT fk_email_author
     FOREIGN KEY (email)
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS facility_logs (
 
 CREATE TABLE IF NOT EXISTS pcc (
     recordID VARCHAR(50) PRIMARY KEY,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     ac_output_energy DOUBLE,
     ac_output_real_power DOUBLE,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS pcc (
 -- Same issue as PCC
 CREATE TABLE IF NOT EXISTS feeder (
     recordID VARCHAR(50) PRIMARY KEY,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     device_id INT,
     breaker_status BIT,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS feeder (
 
 CREATE TABLE IF NOT EXISTS facility (
     recordID VARCHAR(50) PRIMARY KEY,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     solar_irridiance_POA DOUBLE,
     solar_irridiance_GHI DOUBLE,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS facility (
 
 CREATE TABLE IF NOT EXISTS inverter (
     recordID VARCHAR(50) PRIMARY KEY,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     device_id INT,
     ac_output_energy DOUBLE,
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS alarm_info (
 CREATE TABLE IF NOT EXISTS alarm_events (
     event_id INT PRIMARY KEY,
     alarm_id INT,
-    time_stamp_id INT,
+    time_stamp_id BIGINT,
     time_stamp TIMESTAMP,
     CONSTRAINT fk_alarm_id
     FOREIGN KEY (alarm_id)

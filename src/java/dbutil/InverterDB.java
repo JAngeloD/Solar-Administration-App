@@ -36,7 +36,6 @@ public class InverterDB {
             q.setParameter("deviceId", Integer.parseInt(deviceID));
             q.setParameter("timeStampId", Integer.parseInt(timestamp));
             
-            
             record = (Inverter) q.getSingleResult();
         } finally {
             em.close();

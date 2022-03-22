@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import models.FacilityLogs;
 
 /**
@@ -36,36 +37,54 @@ public class FacilityLogsDB {
         }
         return list;
     }
+    
+    public List<FacilityLogs> getInBetween(long start, long end, int logType) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        try {
+            Query q = em.createNamedQuery("FacilityLogs.findBetweenTimeStamp", FacilityLogs.class);
+            q.setParameter("start", start);
+            q.setParameter("end", end);
+            q.setParameter("logType", logType);
+            
+            list = q.getResultList();
+        } finally {
+            em.close();
+        }
+        
+        System.out.println("SIZE: " +list.size());
+        
+        return list;
+    }
 
-    public FacilityLogs get(int event) {
+    public FacilityLogs get(int logid) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        FacilityLogs user = null;
+        FacilityLogs log = null;
         try {
-            user = em.find(FacilityLogs.class, event);
+            log = em.find(FacilityLogs.class, logid);
         } finally {
             em.close();
         }
 
-        return user;
+        return log;
     }
 
-    public void insert(FacilityLogs event) throws SQLException {
+    public void insert(FacilityLogs log) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-
+        
         try {
             trans.begin();
-            em.persist(event);
-            em.merge(event);
+            em.persist(log);
+            em.merge(log);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();
         } finally {
             em.close();
         }
-
+        
     }
 
     public void update(FacilityLogs user) {

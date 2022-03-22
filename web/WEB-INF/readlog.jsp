@@ -12,11 +12,10 @@
         <meta charset="utf-8">
         <title>Write Logs</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script type="text/javascript" src="searchlogs.js"></script>
-
+        <script src="javascript/readlog.js" type="text/javascript"></script>
     </head>
 
-    <body>
+    <body onload="SetDate()">
         <div id="top-container">
             <div>
                 <ul>
@@ -33,9 +32,9 @@
                     <form method="POST" action="readlog">
                         <label>Select dates</label><br />
                         <label>From: </label>
-                        <input type="date" id="from" name="from" value="" min="" max="">
+                        <input type="date" id="fromDate" name="from" value="">
                         <label>To: </label>
-                        <input type="date" id="to" name="to" value="" min="" max="">
+                        <input type="date" id="toDate" name="to" value="">
                         <br />
                         <label>Select log type:</label>
                         <select name="logType" id="logType">
@@ -64,7 +63,7 @@
                             <c:forEach var="log" items="${logList}" >
                                 <tr>
                                     <td>${log.getLogId()}</td>
-                                    <td>${log.getLogType()}</td>
+                                    <td>${log.logTypeToString()}</td>
                                     <td>${log.getTimeGST()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
                                     <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>

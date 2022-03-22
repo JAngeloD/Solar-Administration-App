@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseAbVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseBcVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
-    ,@NamedQuery(name  = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
+    ,@NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
 public class Feeder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -83,6 +83,24 @@ public class Feeder implements Serializable {
     private Double acOutputPhaseCaVoltage;
 
     public Feeder() {
+    }
+
+    public Feeder(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Boolean breakerStatus, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.deviceId = deviceId;
+        this.breakerStatus = breakerStatus;
+        this.acOutputRealPower = acOutputRealPower;
+        this.acOutputApparentPower = acOutputApparentPower;
+        this.acOutputReactivePower = acOutputReactivePower;
+        this.acOutputPowerFactor = acOutputPowerFactor;
+        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
+        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
+        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
 
     public Feeder(String recordID) {
@@ -213,9 +231,9 @@ public class Feeder implements Serializable {
     public void setAcOutputPhaseCaVoltage(Double acOutputPhaseCaVoltage) {
         this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
-    
+
     public Double getAcOutputPhaseAverageVoltage() {
-        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) /3;
+        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) / 3;
     }
 
     @Override
@@ -242,5 +260,5 @@ public class Feeder implements Serializable {
     public String toString() {
         return "models.Feeder[ recordID=" + recordID + " ]";
     }
-    
+
 }

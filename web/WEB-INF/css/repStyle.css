@@ -1,0 +1,190 @@
+.csvOptions{
+    padding-left: 30px;
+    
+}
+
+#pccBlock{
+    display: none;
+    border: 2px solid black;
+    box-shadow: inset 1px 1px 1px 1px rgba(255,255,255, .46), inset -1px -1px 1px 1px rgba(0,0,0, .26);
+    width: 60%;
+    height: auto;
+    background-color: aqua;
+    padding: 20px;
+}
+
+#fdrs{
+    display: none;
+}
+
+#fdr1{
+    display: none;
+}
+
+#fdr2{
+    display: none;
+}
+
+#invtrs{
+    display: none;
+}
+
+#inv1{
+    display: none;
+}
+
+#inv2{
+    display: none;
+}
+
+#inv3{
+    display: none;
+}
+
+#inv4{
+    display: none;
+}
+
+#inv5{
+    display: none;
+}
+
+#inv6{
+    display: none;
+}
+
+#inv7{
+    display: none;
+}
+
+#inv8{
+    display: none;
+}
+
+#inv9{
+    display: none;
+}
+
+#inv10{
+    display: none;
+}
+
+#inv11{
+    display: none;
+}
+
+#inv12{
+    display: none;
+}
+
+#inv13{
+    display: none;
+}
+
+#inv14{
+    display: none;
+}
+
+#inv15{
+    display: none;
+}
+
+#inv16{
+    display: none;
+}
+
+#inv17{
+    display: none;
+}
+
+#inv18{
+    display: none;
+}
+
+#inv19{
+    display: none;
+}
+
+#inv20{
+    display: none;
+}
+
+#inv21{
+    display: none;
+}
+
+#inv22{
+    display: none;
+}
+
+#inv23{
+    display: none;
+}
+
+#inv24{
+    display: none;
+}
+
+#inv25{
+    display: none;
+}
+
+#inv26{
+    display: none;
+}
+
+#inv27{
+    display: none;
+}
+
+#inv28{
+    display: none;
+}
+
+#inv29{
+    display: none;
+}
+
+#inv30{
+    display: none;
+}
+
+#inv31{
+    display: none;
+}
+
+#inv32{
+    display: none;
+}
+
+#inv33{
+    display: none;
+}
+
+#inv34{
+    display: none;
+}
+
+#inv35{
+    display: none;
+}
+
+#inv36{
+    display: none;
+}
+
+#inv37{
+    display: none;
+}
+
+#inv38{
+    display: none;
+}
+
+#inv39{
+    display: none;
+}
+
+#wthr{
+    display: none;
+}

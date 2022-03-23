@@ -60,11 +60,11 @@
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>BreakerControllerServlet</servlet-name>
     </filter-mapping>
-        <filter-mapping>
+    <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>WriteLogServlet</servlet-name>
     </filter-mapping>
-        <filter-mapping>
+    <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>ReadLogServlet</servlet-name>
     </filter-mapping>
@@ -119,6 +119,14 @@
     <servlet>
         <servlet-name>ReadLogServlet</servlet-name>
         <servlet-class>servlets.ReadLogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>servlets.ReportServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlotTest</servlet-name>
+        <servlet-class>servlets.PlotTest</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
@@ -211,6 +219,14 @@
     <servlet-mapping>
         <servlet-name>ReadLogServlet</servlet-name>
         <url-pattern>/readlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/reports</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlotTest</servlet-name>
+        <url-pattern>/plottest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

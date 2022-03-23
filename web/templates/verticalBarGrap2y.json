@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+            "x": #XDATA,
+            "y": #YDATA2,
+            "type": "scatter"
+        },
+        {
+            "type": "bar",
+            "x": #XDATA,
+            "y": #YDATA1,
+            "yaxis": "y2",
+            "fillcolor": "rgb(224, 102, 102)"
+        }
+        
+        ],
+        "layout": {
+            "title": "Annual Report - 1",
+            "plot_bgcolor": "rgba(242, 241, 239, 1)",
+            "paper_bgcolor": "rgba(236, 236, 236, 1)",
+            "yaxis": {
+                "title": "Monthly Energy",
+                "side": "left"
+            },
+            "yaxis2": {
+                "title": "Cumulative Energy",
+                "titlefont": {
+                    "color": "rgb(148, 103, 189)"
+                },
+                "tickfont": {
+                    "color": "rgb(148, 103, 189)"
+                },
+                "overlaying": "y",
+                "side": "right"
+            },
+            "xaxis": {
+                "title": "Month",
+                "range": [0, 12]
+            },
+            "width": 650,
+            "height": 500,
+            "automargin": true
+        },
+        "frames": []
+}

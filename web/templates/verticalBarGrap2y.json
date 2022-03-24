@@ -1,17 +1,16 @@
 {
     "data": [
         {
-            "x": #XDATA,
-            "y": #YDATA2,
-            "type": "scatter"
-            
-        },
-        {
             "type": "bar",
             "x": #XDATA,
             "y": #YDATA1,
             "yaxis": "y2",
             "fillcolor": "rgb(224, 102, 102)"
+        },
+        {
+            "x": #XDATA,
+            "y": #YDATA2,
+            "type": "scatter"
         }
         ],
         "layout": {

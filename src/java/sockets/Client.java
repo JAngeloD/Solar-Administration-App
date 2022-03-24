@@ -27,11 +27,6 @@ public class Client {
     private ObjectInputStream ois = null;
     private ObjectOutputStream oos = null;
     private boolean isConnected = false;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
-    private String recordID = "100000000";
-    private Integer timeStampID = 4193;
-    private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-    private Date timeStamp = new Date(System.currentTimeMillis());
 
     public Client() {
 
@@ -43,20 +38,21 @@ public class Client {
             System.out.println("connected");
             isConnected = true;
             oos = new ObjectOutputStream(socket.getOutputStream());
+            DataGenerator dataGenerator = new DataGenerator();
             Facility facility = new Facility();
-            facility.setRecordID(recordID);
-            facility.setTimeStampId(timeStampID);
-            facility.setTimeStamp(timeStamp);
-            facility.setSolarirridiancePOA(new Random().nextDouble() * (1071 - -5) + -5);
-            facility.setSolarirridianceGHI(new Random().nextDouble() * (3248));
-            facility.setBackOfPanelTemperature1(new Random().nextDouble() * (39.3 - -13.6) + -13.6);
-            facility.setBackOfPanelTemperature2(new Random().nextDouble() * (30.7 - -10.9) + -10.9);
-            facility.setAmbientTemperature(new Random().nextDouble() * (39.5 - -15.3) + -15.3);
-            facility.setWindSpeed(new Random().nextDouble() * (10.3));
+            facility.setAmbientTemperature(dataGenerator.randomAmbientTemp());
+            facility.setBackOfPanelTemperature1(dataGenerator.randomTemp());
+            facility.setBackOfPanelTemperature2(dataGenerator.randomTemp());
+            facility.setRecordID(dataGenerator.recordID());
+            facility.setTimeStampId(dataGenerator.timeStampId());
+            facility.setTimeStamp(dataGenerator.timeStamp());
+            facility.setWindSpeed(dataGenerator.randomWindSpeed());
+            facility.setSolarirridianceGHI(dataGenerator.randomGHI());
+            facility.setSolarirridiancePOA(dataGenerator.randomPOA());
+
             facility = new Facility(facility.getRecordID(), facility.getTimeStampId(), facility.getTimeStamp(), facility.getSolarirridiancePOA(), facility.getSolarirridianceGHI(), facility.getBackOfPanelTemperature1(), facility.getAmbientTemperature(), facility.getBackOfPanelTemperature2(), facility.getWindSpeed());
-            TestObject testObject = new TestObject(1, "test");
             System.out.println("object to be written = " + facility);
-            oos.writeObject(testObject);
+            oos.writeObject(facility);
         } catch (SocketException se) {
             se.printStackTrace();
         } catch (IOException e) {

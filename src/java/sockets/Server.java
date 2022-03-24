@@ -29,14 +29,14 @@ public class Server {
             socket = serverSocket.accept();
             System.out.println("connected");
             ois = new ObjectInputStream(socket.getInputStream());
-
-            TestObject testObject = (TestObject) ois.readObject();
             Facility facility = (Facility) ois.readObject();
-            System.out.println("Object receieved = " + testObject);
+            System.out.println("Object receieved = " + facility);
             socket.close();
 
         } catch (SocketException se) {
+            se.printStackTrace();
             System.exit(0);
+            
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

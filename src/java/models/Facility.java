@@ -181,7 +181,7 @@ public class Facility implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Facility[ recordID=" + recordID + timeStampId + timeStamp + solarirridiancePOA + solarirridianceGHI + backOfPanelTemperature1 +  ambientTemperature  + backOfPanelTemperature2 + windSpeed + " ]";
+        return "models.Facility[ recordID=" + recordID + " " + timeStampId + " " + timeStamp + " " + solarirridiancePOA + " " + solarirridianceGHI + " " + backOfPanelTemperature1 + " " +  ambientTemperature  + " " + backOfPanelTemperature2 + " " + windSpeed + " ]";
     }
 
 }

@@ -16,7 +16,7 @@ public class CSVParser
      * @return true if operation was successful, false otherwise
      */
     public boolean writeToCSV( ArrayList<String[]> list, String fileName )
-    {
+    {   
         // todo: consult with group to see if file naming matters, if not, just randomly generate a file name to avoid duplicates and sanitizing
         try
         {
@@ -34,5 +34,17 @@ public class CSVParser
         }
 
         return false;
+    }
+    
+    /**
+     * 
+     * @param options - 
+     * @return 
+     */
+    private static ArrayList<String[]> getData(String[] options) {
+        
+        
+        
+        return null;
     }
 }

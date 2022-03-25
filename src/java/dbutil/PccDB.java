@@ -2,6 +2,7 @@
 package dbutil;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,6 +25,20 @@ public class PccDB {
             em.close();
         }
 
+        return list;
+    }
+    
+    public List<PCC> getMonthSearchResults(Date start, Date end) throws SQLException {
+        
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        
+        try {
+            list = em.createNamedQuery("PCC.findByTimeStampRange", PCC.class).setParameter("startTimeStampId", start)
+                    .setParameter("endTimeStampId", end).getResultList();
+        } finally {
+            em.close();
+        }
+        
         return list;
     }
 

@@ -1,14 +1,9 @@
 package utilities;
 
 import java.sql.Timestamp;
-import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -80,5 +75,37 @@ public class TimeFactory {
     public static Timestamp convertToTimestamp(Long ID) throws ParseException {
 
         return new Timestamp(ID);
+    }
+    
+    /*
+    * Get the beginning value of the long range
+    *
+    */
+    public static Date getRangeBeginning(int year, int month) throws ParseException {
+        
+        Date begin = new SimpleDateFormat("yyyy-MM-dd").parse(year + "-" + month + "-01");
+        Timestamp beginTs = new Timestamp(begin.getTime());
+ 
+        return beginTs;
+    }
+    
+    /*
+    * Get the end value of the long range
+    *
+    */
+    public static Date getRangeEnd(int year, int month) throws ParseException {
+        
+        //get the end of the month by getting the start of the next month
+        if (month == 12) {
+            month = 1;
+            year++;
+        } else {
+            month++;
+        }
+        
+        Date end = new SimpleDateFormat("yyyy-MM-dd").parse(year + "-" + month + "-01");
+        Timestamp endTs = new Timestamp(end.getTime());
+ 
+        return endTs;
     }
 }

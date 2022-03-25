@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 856622
+ * @author 821320
  */
 @Entity
 @Table(name = "pcc")
@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PCC.findByRecordID", query = "SELECT p FROM PCC p WHERE p.recordID = :recordID")
     , @NamedQuery(name = "PCC.findByTimeStampId", query = "SELECT p FROM PCC p WHERE p.timeStampId = :timeStampId")
     , @NamedQuery(name = "PCC.findByTimeStamp", query = "SELECT p FROM PCC p WHERE p.timeStamp = :timeStamp")
+    , @NamedQuery(name = "PCC.findByTimeStampRange", query = "SELECT p FROM PCC p WHERE p.timeStamp BETWEEN :startTimeStampId AND :endTimeStampId")
     , @NamedQuery(name = "PCC.findByAcOutputEnergy", query = "SELECT p FROM PCC p WHERE p.acOutputEnergy = :acOutputEnergy")
     , @NamedQuery(name = "PCC.findByAcOutputRealPower", query = "SELECT p FROM PCC p WHERE p.acOutputRealPower = :acOutputRealPower")
     , @NamedQuery(name = "PCC.findByAcOutputApparentPower", query = "SELECT p FROM PCC p WHERE p.acOutputApparentPower = :acOutputApparentPower")
@@ -46,56 +47,39 @@ public class PCC implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "recordID", nullable = false, length = 50)
+    @Column(name = "recordID")
     private String recordID;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private long timeStampId;
     @Basic(optional = false)
-    @Column(name = "time_stamp", nullable = false)
+    @Column(name = "time_stamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "ac_output_energy", precision = 22)
+    @Column(name = "ac_output_energy")
     private Double acOutputEnergy;
-    @Column(name = "ac_output_real_power", precision = 22)
+    @Column(name = "ac_output_real_power")
     private Double acOutputRealPower;
-    @Column(name = "ac_output_apparent_power", precision = 22)
+    @Column(name = "ac_output_apparent_power")
     private Double acOutputApparentPower;
-    @Column(name = "ac_output_reactive_power", precision = 22)
+    @Column(name = "ac_output_reactive_power")
     private Double acOutputReactivePower;
-    @Column(name = "ac_output_power_factor", precision = 22)
+    @Column(name = "ac_output_power_factor")
     private Double acOutputPowerFactor;
-    @Column(name = "ac_output_phase_a_current", precision = 22)
+    @Column(name = "ac_output_phase_a_current")
     private Double acOutputPhaseACurrent;
-    @Column(name = "ac_output_phase_b_current", precision = 22)
+    @Column(name = "ac_output_phase_b_current")
     private Double acOutputPhaseBCurrent;
-    @Column(name = "ac_output_phase_c_current", precision = 22)
+    @Column(name = "ac_output_phase_c_current")
     private Double acOutputPhaseCCurrent;
-    @Column(name = "ac_output_phase_ab_voltage", precision = 22)
+    @Column(name = "ac_output_phase_ab_voltage")
     private Double acOutputPhaseAbVoltage;
-    @Column(name = "ac_output_phase_bc_voltage", precision = 22)
+    @Column(name = "ac_output_phase_bc_voltage")
     private Double acOutputPhaseBcVoltage;
-    @Column(name = "ac_output_phase_ca_voltage", precision = 22)
+    @Column(name = "ac_output_phase_ca_voltage")
     private Double acOutputPhaseCaVoltage;
 
     public PCC() {
-    }
-
-    public PCC(String recordID, Integer timeStampId, Date timeStamp, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
-        this.recordID = recordID;
-        this.timeStampId = timeStampId;
-        this.timeStamp = timeStamp;
-        this.acOutputEnergy = acOutputEnergy;
-        this.acOutputRealPower = acOutputRealPower;
-        this.acOutputApparentPower = acOutputApparentPower;
-        this.acOutputReactivePower = acOutputReactivePower;
-        this.acOutputPowerFactor = acOutputPowerFactor;
-        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
-        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
-        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
-        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
-        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
-        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
 
     public PCC(String recordID) {
@@ -115,11 +99,11 @@ public class PCC implements Serializable {
         this.recordID = recordID;
     }
 
-    public Integer getTimeStampId() {
+    public long getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(long timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -217,10 +201,6 @@ public class PCC implements Serializable {
 
     public void setAcOutputPhaseCaVoltage(Double acOutputPhaseCaVoltage) {
         this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
-    }
-    
-    public Double getAcOutputPhaseAverageVoltage() {
-        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) /3;
     }
 
     @Override

@@ -6,10 +6,12 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utilities.CSVParser;
 
 /**
  *
@@ -43,10 +45,19 @@ public class ReportServlet extends HttpServlet {
             case "csvReport":
                 String[] csvRequestList = request.getParameterValues("csvValue");
                 
-                for (String csvRequestList1 : csvRequestList) {
-                    System.out.println(csvRequestList1);
-                }
+//                for (String csvRequestList1 : csvRequestList) {
+//                    System.out.println(csvRequestList1);
+//                }
                 
+                ArrayList<String[]> list = CSVParser.getData(csvRequestList);
+                
+                //TESTING ONLY
+                System.out.println(list.size());
+                for(int i = 0; i < list.size(); i ++) {
+                    for (int j = 0; j < list.get(i).length; j++) {
+                        System.out.println(list.get(i)[j] + " :row" + i + " ");
+                    }
+                }
                 
                 break;
         }

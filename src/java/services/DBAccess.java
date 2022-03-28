@@ -120,7 +120,7 @@ public class DBAccess {
                 deviceID = deviceID.substring(1);
             }
         }
-
+        
         //Initializes the database and retrieves the data based on the parameters given
         InverterDB db = new InverterDB();
         Inverter record = db.get(timestamp, deviceID);

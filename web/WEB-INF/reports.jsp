@@ -135,41 +135,41 @@
                             <label>Inverter <c:out value = "${i}"/></label><br>
                                 <div id="inv<c:out value = "${i}"/>">
                                     <h2>Inverter <c:out value = "${i}"/> Parameters</h2>
-                                    <input type="checkbox" id="i1ACOutputLifetime" name="csvValue" value="Facility_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ACOutputLifetime" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> AC Output Lifetime</label><br>
-                                    <input type="checkbox" id="i1ACOutputYTD" name="csvValue" value="Facility_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ACOutputYTD" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> AC Output YTD</label><br>
-                                    <input type="checkbox" id="i1ACOutputMTD" name="csvValue" value="Facility_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ACOutputMTD" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> AC MTD</label><br>
-                                    <input type="checkbox" id="i1ACOutputDay" name="csvValue" value="Facility_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ACOutputDay" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> AC Output Daily</label><br>
-                                    <input type="checkbox" id="i1ACOutputRealPower" name="csvValue" value="Facility_Get_AcOutputRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ACOutputRealPower" name="csvValue" value="Inverter_Get_AcOutputRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> AC Output Real Power</label><br>
-                                    <input type="checkbox" id="i1ApparentPower" name="csvValue" value="Facility_Get_AcOutputApparentPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ApparentPower" name="csvValue" value="Inverter_Get_AcOutputApparentPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Apparent Power</label><br>
-                                    <input type="checkbox" id="i1ReactivePower" name="csvValue" value="Facility_Get_AcOutputReactivePower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1ReactivePower" name="csvValue" value="Inverter_Get_AcOutputReactivePower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Reactive Power</label><br>
-                                    <input type="checkbox" id="i1PowerFactor" name="csvValue" value="Facility_Get_AcOutputPowerFactor<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PowerFactor" name="csvValue" value="Inverter_Get_AcOutputPowerFactor<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Power Factor</label><br>
-                                    <input type="checkbox" id="i1PhaseACurrent" name="csvValue" value="Facility_Get_AcOutputPhaseACurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseACurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseACurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase A Current</label><br>
-                                    <input type="checkbox" id="i1PhaseBCurrent" name="csvValue" value="Facility_Get_AcOutputPhaseBCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseBCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseBCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase B Current</label><br>
-                                    <input type="checkbox" id="i1PhaseCCurrent" name="csvValue" value="Facility_Get_AcOutputPhaseCCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseCCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseCCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase C Current</label><br>
-                                    <input type="checkbox" id="i1PhaseABVoltage" name="csvValue" value="Facility_Get_AcOutputPhaseAbVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseABVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseAbVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase AB Voltage</label><br>
-                                    <input type="checkbox" id="i1PhaseBCVoltage" name="csvValue" value="Facility_Get_AcOutputPhaseBcVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseBCVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseBcVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase BC Voltage</label><br>                                
-                                    <input type="checkbox" id="i1PhaseCAVoltage" name="csvValue" value="Facility_Get_AcOutputPhaseCaVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1PhaseCAVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseCaVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Phase CA Voltage</label><br>
-                                    <input type="checkbox" id="i1DCRealPower" name="csvValue" value="Facility_Get_DcRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />"> 
+                                    <input type="checkbox" id="i1DCRealPower" name="csvValue" value="Inverter_Get_DcRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />"> 
                                     <label>Inverter <c:out value = "${i}"/> DC Real Power</label><br>
-                                    <input type="checkbox" id="i1DCVolts" name="csvValue" value="Facility_Get_DcVolt<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1DCVolts" name="csvValue" value="Inverter_Get_DcVolt<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> DC Volts</label><br>
-                                    <input type="checkbox" id="i1DCCurrent" name="csvValue" value="Facility_Get_DcCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1DCCurrent" name="csvValue" value="Inverter_Get_DcCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> DC Current</label><br>
-                                    <input type="checkbox" id="i1Efficiency" name="csvValue" value="Facility_Get_Efficiency<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                    <input type="checkbox" id="i1Efficiency" name="csvValue" value="Inverter_Get_Efficiency<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                     <label>Inverter <c:out value = "${i}"/> Efficiency</label><br><br>
                                     <button type="button" onclick="closeInverter<c:out value = "${i}"/>()">Done selecting Inverter <c:out value = "${i}"/> parameters</button>
                                 </div>

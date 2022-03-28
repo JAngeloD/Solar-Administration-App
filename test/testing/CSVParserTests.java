@@ -6,6 +6,7 @@ package testing;
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,10 +20,11 @@ import utilities.CSVParser;
  * @author 856622
  */
 public class CSVParserTests {
-    CSVParser parser = new CSVParser();
+    CSVParser parser = null;
      
     @Before
     public void setUp() {
+        CSVParser parser = new CSVParser();
 //        try {
 //            parser = new CSVParser("Complied Data.csv");
 //        }
@@ -35,17 +37,23 @@ public class CSVParserTests {
     public void tearDown() {
     }
 
+//    @Test
+//    public void testConstructor() {
+//         double actualValue = 0;
+//        try {
+//            CSVParser parser = new CSVParser("web\\resources\\Complied Data.csv");
+//            actualValue = parser.getPcc("getAcOutputLifeTimeEnergy");
+//        }
+//        catch (Exception e) {
+//            System.out.println(e.toString());
+//        }
+//        
+//        System.out.print(actualValue + "\n");
+//    }
+    
     @Test
-    public void testConstructor() {
-         double actualValue = 0;
-        try {
-            CSVParser parser = new CSVParser("web\\resources\\Complied Data.csv");
-            actualValue = parser.getPcc("getAcOutputLifeTimeEnergy");
-        }
-        catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        
-        System.out.print(actualValue + "\n");
+    public void testGetData() {
+        String[] test = {"Pcc_Get_AcOutputRealPower", "Pcc_Get_AcOutputPhaseCCurrent", "Facility_Get_BackOfPanelTemperature1"};
+        ArrayList<String[]> list = CSVParser.getData(test);
     }
 }

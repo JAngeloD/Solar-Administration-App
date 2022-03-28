@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style><%@include file="/WEB-INF//css/style.css"%></style>
+<!--        <style><%@include file="/WEB-INF//css/style.css"%></style>-->
            <style><%@include file="/WEB-INF//css/table.css"%></style>
          <style><%@include file="/WEB-INF//css/header.css"%></style>
         <style><%@include file="/WEB-INF//css/inverterhome.css"%></style>

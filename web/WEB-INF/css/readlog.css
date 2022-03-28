@@ -1,0 +1,151 @@
+body {
+    background-color : #F5F3E6;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    text-align: right;
+}
+
+li {
+    float: right;
+    font-size: larger;
+}
+
+.left {
+    float: left;
+}
+
+/*
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    text-align: right;
+}
+
+li {
+    float: right;
+    font-size: larger;
+}
+
+.left {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+}
+
+li a:hover:not(.active) {
+    background-color: #99582A;
+    color: #FFFFFF;
+}
+
+li a.active {
+    color: white;
+    background-color: #04AA6D;
+}
+
+.left {
+    margin-left: 5%;
+}
+*/
+/*
+#components {
+    margin-left: 10%;
+}
+
+#buttonsBox {
+    float: left;
+}
+
+#barBox {
+    float: left;
+    margin-right: 5%;
+}
+
+.inverterButton {
+    background-color: grey;
+    color: white;
+    width: 120%;
+    padding: 5%;
+    border-radius: 0.5em;
+    border: 3px solid #F5F3E6;
+    margin-top: 100px;
+}
+
+.inverterButton:hover {
+    border: 3px solid #99582A;
+}
+
+.menuButton {
+    width: 10%;
+    border-radius: 1em;
+}
+
+.center {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+*/
+#graphs {
+   width: 60%;
+}
+
+#mainTable {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+}
+
+#data {
+   width: 50%;
+   margin-left: 25%;
+   margin-right: 25%;
+}
+
+#weatherData {
+    border: 1px solid;
+    padding: 2%;
+    
+}
+
+
+p{
+    font-size: 11px;
+}
+a {
+           
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 12px;
+}
+
+.wrapall{
+    text-align: center;
+    position: relative;
+
+}

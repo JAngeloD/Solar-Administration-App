@@ -10,23 +10,26 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Write Logs</title>
+        <title>Read Logs</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="javascript/readlog.js" type="text/javascript"></script>
+             <style><%@include file="/WEB-INF//css/readlog.css"%></style>
+          <style><%@include file="/WEB-INF//css/header.css"%></style>
     </head>
 
     <body onload="SetDate()">
-        <div id="top-container">
-            <div>
-                <ul>
-                    <li class="menuButton"><a href="login">Logout</a></li>
-                    <li class="menuButton"><a href="">Account</a></li>
-                    <li class="menuButton"><a href="home">Home</a></li>
-                    <h1 class="left">Read Logs</h1>
-                </ul>
-            </div>
-            <br />
-            <br />
+         <div class="headerS">
+        <ul  id="navigation" class="nav">
+  
+          <li class="menuButton1"><a class="buttonMenu1" href="login">Logout</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+          <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Read Logs</a></li>
+      
+          <h1 class="left">OPERATOR LOGS - READ LOGS</h1>
+        </ul>
+      </div>
+         <div class="wrapall" id="electricDiagram">
             <div id="form">
                 <div>
                     <form method="POST" action="readlog">
@@ -97,6 +100,6 @@
                 </div>
             </div>
 
-
+         </div>
     </body>
 </html>

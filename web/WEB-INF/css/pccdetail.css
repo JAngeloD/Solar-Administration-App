@@ -1,0 +1,158 @@
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapperall{
+    text-align: center;
+    position: relative;
+
+}
+.wrapper {
+    text-align: center;
+
+}
+.wrapper1 {
+    text-align: center;
+
+}
+.wrapper2 {
+    text-align: center;
+
+}
+.wrapper3 {
+    text-align: center;
+
+}
+.wrapper4 {
+    text-align: center;
+
+} 
+/*
+a {
+    background-color: #555;
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+a:hover {
+    background-color: lightgray;
+}
+
+a:active {
+    background-color: black;
+}
+
+a:visited {
+    background-color: darkgrey;
+}
+/*/
+
+
+a {
+           
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 12px;
+}
+
+.button2 {
+  width: 67px;
+    color: whitesmoke; 
+    left: 31%;
+    top: 55%;
+    border-radius: 15px;
+    background-color:#3A2318;
+    position: absolute;
+}
+
+.button2:hover {
+    background-color: darkgray;
+    color:black;
+}
+
+.data{
+    border-radius: 1em;
+    border: 2px solid;
+    background-color: #F5F3E6;
+    font: sans-serif;  
+    font-size: 8px;
+    padding: 5px;
+    width: 140px;
+}
+.electricDiagram{
+    position: relative;
+}
+label, input{
+    font-size: 8px;
+    font-weight: bold;
+    background-color: #F5F3E6;
+    border: 2px;
+    border-width: 1px;
+    width: 50px;
+}
+#f1data{
+    position: absolute;
+    left: 14.4%;
+    top: 17.5%;
+}
+#f2data{
+    position: absolute;
+    left: 14.4%;
+    top: 53%;
+}
+#pccdata{
+    position: absolute;
+    left: 56%;
+    top: 17.5%;
+}
+
+/*
+button{
+    width: 80px;
+    background-color: #6F1D1B;
+    color: whitesmoke;
+    position: absolute;
+    left: 31.4%;
+    top: 56%;
+}
+.head{
+text-align: center;
+}
+.headz{
+top:5%;
+left:50%;
+}
+
+*/
+body {
+    background-color: #F5F3E6;
+    
+}
+/*
+#header {
+    background-color: #F5F3E6;
+    color: black;
+    padding: 0.5%;
+    border-radius: 1em;
+    border: 5px solid;
+    height: fit-content;
+    overflow: hidden;
+}
+*/
+#electricDiagram {
+    clear: both;
+    float: left;
+    margin-left: 2%;
+    margin-top: -3%;
+}
+
+p{
+    font-size: 11px;
+}

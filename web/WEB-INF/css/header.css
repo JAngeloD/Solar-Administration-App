@@ -22,9 +22,6 @@ li {
     font-size: larger;
 }
 
-.left {
-    float: left;
-}
 
 li a {
     display: block;
@@ -58,7 +55,7 @@ a.buttonMenu1:hover {
 }
 
 .left {
-    margin-left: 5%;
+    margin-left: 0%;
     float: left;
 }
 
@@ -75,4 +72,10 @@ a.buttonMenu1:hover {
     width: 10%;
   margin-left: 20px;
   background-color: red;
+}
+
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+ 
 }

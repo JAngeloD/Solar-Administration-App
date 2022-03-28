@@ -24,6 +24,8 @@
           <li class="menuButton1"><a class="buttonMenu1" href="login">Logout</a></li>
           <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
           <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                  <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
           <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Read Logs</a></li>
       
           <h1 class="left">OPERATOR LOGS - READ LOGS</h1>

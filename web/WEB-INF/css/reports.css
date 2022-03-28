@@ -27,11 +27,11 @@ body {
 background-color : #F5F3E6;
 font-family: 'Lato', sans-serif;
 }
-
+/*
 h1 {
 font-family: 'Roboto', sans-serif;
 }
-
+*/
 ul {
 list-style-type: none;
 margin: 0;
@@ -71,10 +71,11 @@ color: white;
 background-color: #04AA6D;
 }
 */
+/*
 .left {
 margin-left: 5%;
 }
-
+*/
 #components {
 margin-left: 10%;
 }

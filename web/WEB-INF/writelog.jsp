@@ -11,24 +11,26 @@
 <head>
   <meta charset="utf-8">
   <title>Write Logs</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-
+     <style><%@include file="/WEB-INF//css/writelog.css"%></style>
+          <style><%@include file="/WEB-INF//css/header.css"%></style>
 </head>
 
 <body>
-  <div id="top-container">
-    <div>
-      <ul>
-        <li class="menuButton"><a href="home">Home</a></li>
-        <li class="menuButton"><a href="">Account</a></li>
-        <li class="menuButton"><a href="login">Logout</a></li>
-        <h1 class="left">Operator Logs</h1>
-      </ul>
-    </div>
-    <br />
-    <br />
-    <div id="form">
-      <form method="POST" action="writelog">
+  <div class="headerS">
+        <ul  id="navigation" class="nav">
+  
+          <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+          <li class="menuButton1"> <a href="readlog" class="buttonMenu1">READ LOGS</a></li>
+          <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Write Logs</a></li>
+      
+          <h1 class="left">OPERATOR LOGS - WRITE LOGS</h1>
+        </ul>
+      </div>
+    <div class="wrapall" id="electricDiagram">
+    <div id="form"class="logForm">
+      <form method="POST" action="writelog"class="logFormz">
         <div>
               <label><b>Choose log type:</b></label>
               <select name="logType" id="logType">
@@ -44,6 +46,7 @@
         <br />
         <input type="submit" value="Save Log">
       </form>
+    </div>
     </div>
 </body>
 

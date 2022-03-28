@@ -1,0 +1,362 @@
+
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+body {
+    background-color: #F5F3E6;
+}
+
+#electricDiagram {
+    clear: both;
+    float: left;
+    margin-left: 2%;
+    margin-top: -3%;
+}
+
+#companyName {
+    float: left;
+}
+
+#account {
+    float: right;
+}
+
+        .wrapall{
+            text-align: center;
+            position: relative;
+
+        }
+        .wrapper {
+            text-align: center;
+
+        }
+
+        .button {
+            background-color:#3A2318;
+            position: absolute;
+            top: 58%;
+            left: 65%;
+            border-radius: 15px;
+        }
+        .wrapper1 {
+            text-align: center;
+
+        }
+
+        .button1 {
+            position: absolute;
+            top: 81.6%;
+            left: 14.2%;
+            width: 92px;
+            background-color:#3A2318;
+            border-radius: 15px;
+        }
+
+        .wrapper2 {
+            text-align: center;
+
+        }
+
+        .button2 {
+            position: absolute;
+            top: 84%;
+            left: 65%;
+            background-color:#3A2318;
+            border-radius: 15px;
+        }
+        .wrapper4 {
+            text-align: center;
+
+        }
+        .button4 {
+            position: absolute;
+            top: 18.5%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper5 {
+            text-align: center;
+
+        }
+        .button5 {
+           position: absolute;
+            top: 34%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper6 {
+            text-align: center;
+
+        }
+        .button6 {
+            position: absolute;
+          top: 62.5%;
+            left: 2%;
+            width:88px;;
+        }
+           .wrapper7 {
+            text-align: center;
+
+        }
+        .button7 {
+            position: absolute;
+           top: 77.5%;
+            left: 2%;
+            width:88px;
+        }
+           .wrapper8 {
+            text-align: center;
+
+        }
+        .button8 {
+               position: absolute;
+            top: 18.5%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper9 {
+            text-align: center;
+
+        }
+        .button9 {
+              position: absolute;
+            top: 34%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper10 {
+            text-align: center;
+
+        }
+        .button10 {
+            position: absolute;
+          top: 62.5%;
+            left: 8.2%;
+            width:88px;;
+        }
+           .wrapper11 {
+            text-align: center;
+
+        }
+        .button11 {
+               position: absolute;
+           top: 77.5%;
+            left: 8.2%;
+            width:88px;
+        }
+           .wrapper12 {
+            text-align: center;
+
+        }
+        .button12 {
+            position: absolute;
+            top: 18.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper13 {
+            text-align: center;
+
+        }
+        .button13 {
+          position: absolute;
+            top: 34%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper14 {
+            text-align: center;
+
+        }
+        .button14 {
+                  position: absolute;
+          top: 62.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper15 {
+            text-align: center;
+
+        }
+        .button15 {
+              position: absolute;
+           top: 77.5%;
+            left: 16.4%;
+            width:45px;
+        }
+           .wrapper16 {
+            text-align: center;
+
+        }
+        .button16 {
+              position: absolute;
+            top: 18.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper17 {
+            text-align: center;
+
+        }
+        .button17 {
+           position: absolute;
+            top: 34%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper18 {
+            text-align: center;
+
+        }
+        .button18 {
+                    position: absolute;
+          top: 62.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper19 {
+            text-align: center;
+
+        }
+        .button19 {
+                position: absolute;
+           top: 77.5%;
+            left: 22.4%;
+            width:45px;
+        }
+           .wrapper20 {
+            text-align: center;
+
+        }
+        .button20 {
+            position: absolute;
+            top: 29%;
+            left: 36.4%;
+        }
+           .wrapper21 {
+            text-align: center;
+
+        }
+        .button21 {
+            position: absolute;
+            top: 72.6%;
+                        left: 36.4%;
+        }
+           .wrapper22 {
+            text-align: center;
+
+        }
+        .button22 {
+            position: absolute;
+            top: 38.3%;
+            left: 56.5%;
+        }
+           .wrapper23 {
+            text-align: center;
+
+        }
+        .button23 {
+            position: absolute;
+            top: 47.2%;
+            left: 56.5%;
+        }
+           .wrapper24 {
+            text-align: center;
+
+        }
+        .button24 {
+            position: absolute;
+           top: 38.3%;
+            left: 65.5%;
+        }
+           .wrapper25 {
+            text-align: center;
+
+        }
+        .button25 {
+            position: absolute;
+            top: 47.2%;
+            left: 65.5%;
+        }
+           .wrapper26 {
+            text-align: center;
+
+        }
+        .button26 {
+            position: absolute;
+           top: 41%;
+            left: 74%;
+        }
+           .wrapper27 {
+            text-align: center;
+
+        }
+        .button27 {
+            position: absolute;
+           top: 50%;
+            left: 74%;
+        }
+        p{
+            font-size: 11px;
+        }
+
+        a {
+           
+            color: white;
+            padding: 1.6em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            font-size: 12px;
+        }
+
+        .button1:hover {
+            background-color: darkgray;
+            color:black;
+        }
+        .button2:hover {
+            background-color: darkgray;
+            color:black;
+        }
+        
+        .button:hover {
+            background-color: darkgray;
+            color:black;
+        }
+        
+        
+
+        a:active {
+            background-color: black;
+        }
+
+       
+
+        .data{
+            border-radius: 1em;
+            border: 2px solid;
+            background-color: #F5F3E6;
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+            background-color: #F5F3E6;
+            border: 0;
+            border-width: 0;
+            width: 60px;
+        }
+
+        #pcc{
+            position: absolute;
+            left: 64%;
+            top: 31%;
+        }
+
+

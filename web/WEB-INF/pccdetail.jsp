@@ -3,125 +3,28 @@
 <!DOCTYPE html>
 <html>
    <head>
+       <title>PCCdetail</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PCCdetail</title>
+             <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/HomePageAjax.js"></script>
-        <style><%@include file="/WEB-INF//css/styleSheet.css"%></style>
-        <style>
-            .wrapperall{
-                text-align: center;
-                position: relative;
-
-            }
-            .wrapper {
-                text-align: center;
-
-            }
-            .wrapper1 {
-                text-align: center;
-
-            }
-            .wrapper2 {
-                text-align: center;
-
-            }
-            .wrapper3 {
-                text-align: center;
-
-            }
-            .wrapper4 {
-                text-align: center;
-
-            } 
-            a {
-                background-color: #555;
-                color: white;
-                padding: 1.6em 1em;
-                text-decoration: none;
-                text-transform: uppercase;
-                font-size: 12px;
-            }
-
-            a:hover {
-                background-color: lightgray;
-            }
-
-            a:active {
-                background-color: black;
-            }
-
-            a:visited {
-                background-color: darkgrey;
-            }
-            .button2 {
-                position: absolute;
-                top: 65%;
-                left: 50%;
-            }
-            .data{
-                border-radius: 1em;
-                border: 2px solid;
-                background-color: #F5F3E6;
-                font: sans-serif;  
-                font-size: 8px;
-                padding: 5px;
-                width: 140px;
-            }
-            .electricDiagram{
-                position: relative;
-            }
-            label, input{
-                font-size: 8px;
-                font-weight: bold;
-                background-color: #F5F3E6;
-                border: 2px;
-                border-width: 1px;
-                width: 50px;
-            }
-            #f1data{
-                position: absolute;
-                left: 14.4%;
-                top: 17.5%;
-            }
-            #f2data{
-                position: absolute;
-                left: 14.4%;
-                top: 53%;
-            }
-            #pccdata{
-                position: absolute;
-                left: 56%;
-                top: 17.5%;
-            }
-            button{
-                width: 80px;
-                background-color: #6F1D1B;
-                color: whitesmoke;
-                position: absolute;
-                left: 31.4%;
-                top: 56%;
-            }
-            .head{
-            text-align: center;
-        }
-        .headz{
-            top:5%;
-            left:50%;
-        }
-        </style>
+        <style><%@include file="/WEB-INF//css/pccdetail.css"%></style>
+          <style><%@include file="/WEB-INF//css/header.css"%></style>
     </head>
     <body>
         
-        <div id="top-container">
-    <div>
-      <ul>
-        <li class="menuButton"><a href="login">Logout</a></li>
-        <li class="menuButton"><a href="">Account</a></li>
-        <li class="menuButton"><a href="home">Home</a></li>
-        <h1 class="left">Read Logs</h1>
-      </ul>
-    </div>
+     <div class="headerS">
+            <ul  id="navigation" class="nav">
+      
+              <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="home" >Home</a></li>
+              <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >PCC Detail</a></li>
+          
+              <h1 class="left">PCC DETAIL</h1>
+            </ul>
+          </div>
 
         <div  class="wrapperall" id="electricDiagram">
             <div class="wrapper">
@@ -142,9 +45,10 @@
                     <label>Voltage Vca: <input type="number" id="Pcc_Get_AcOutputPhaseCaVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
-            <div class="wrapper2">
+           <div class="wrapper2">
                 <div>
-                    <button>Breaker Control</button>
+                    <a href="breaker"class="button2">BREAKER CONTROL</a>
+                      
                 </div>
             </div>
             <div class="wrapper3">
@@ -155,11 +59,7 @@
                     <label>Voltage: <input type="number" id="Feeder_Get_AcOutputPhaseAverageVoltage02" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>  
-            <div>
-                <div id="backHome"class="wrapper4">
-                    <a href="home" class="button2">Back to home</a>
-                </div>
-            </div> 
+            
 
             
             <svg

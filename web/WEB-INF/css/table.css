@@ -1,9 +1,25 @@
 table, td, th {
     border-collapse: collapse;
     table-layout: fixed;
-    border: 1px solid;
+    border: 2px solid;
 }
 
-td {
-    width: 600px;
+td{
+    text-align:left;
+     width: 600px;
+               
+                border:2px solid black;
+                padding:15px
 }
+
+  th {
+               background-color: #99582A;
+                Color:white;
+            }
+            th {
+                 width: 600px;
+                text-align:center;
+                border:2px solid black;
+                padding:15px
+              
+            }

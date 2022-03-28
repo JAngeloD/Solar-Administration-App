@@ -28,7 +28,7 @@
           </div>
         
         
-       
+      <div class="wrapall" id="electricDiagram">
 
         <div class="center">
 
@@ -554,7 +554,7 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    <</table>
+                                    </table>
                     </td>
                 </tr>
             </table>
@@ -634,5 +634,6 @@
 
             </table>
         </div>
+      </div>
     </body>
 </html>

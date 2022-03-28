@@ -3,19 +3,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style><%@include file="/WEB-INF//css/style.css"%></style>
+<!--        <style><%@include file="/WEB-INF//css/style.css"%></style>-->
+           <style><%@include file="/WEB-INF//css/table.css"%></style>
+         <style><%@include file="/WEB-INF//css/header.css"%></style>
+        <style><%@include file="/WEB-INF//css/inverterhome.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/TablesAjax.js"></script>
         <title>Inverters 10 - 19</title>
     </head>
     <body>
-        <ul>
-            <li class="menuButton"><a href="login?action=logout">Logout</a></li>
-            <li class="menuButton"><a href="inverterfour">Account</a></li>
-            <li class="menuButton"><a href="home">Home</a></li>
-            <li><a href="inverterhome">Back to Inverter Home</a></li>
-            <h1 class="left">Inverter Performance</h1>
-        </ul>
+        
+       <div class="headerS">
+            <ul  id="navigation" class="nav">
+      
+              <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                      <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="inverterhome">Inverter Home</a></li>
+              <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Inverters 10-19</a></li>
+          
+              <h1 class="left">INVERTER 10-19</h1>
+            </ul>
+          </div>
 
         <div class="center">  
 

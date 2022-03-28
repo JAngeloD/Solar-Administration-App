@@ -3,26 +3,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style><%@include file="/WEB-INF//css/style.css"%></style>
+<!--        <style><%@include file="/WEB-INF//css/style.css"%></style>-->
         <style><%@include file="/WEB-INF//css/table.css"%></style>
+         <style><%@include file="/WEB-INF//css/header.css"%></style>
+        <style><%@include file="/WEB-INF//css/inverterhome.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/TablesAjax.js"></script>
         <title>Inverters 1 - 9</title>
     </head>
     <body>
-        <ul>
-            <li class="menuButton"><a href="login?action=logout">Logout</a></li>
-            <li class="menuButton"><a href="inverterfour">Account</a></li>
-            <li class="menuButton"><a href="home">Home</a></li>
-            <li><a href="inverterhome">Back to Inverter Home</a></li>
-            <h1 class="left">Inverter Performance</h1>
-        </ul>
+        <div class="headerS">
+            <ul  id="navigation" class="nav">
+      
+              <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                      <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
+              <li class="menuButton1"><a class="buttonMenu1" href="inverterhome">Inverter Home</a></li>
+              <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Inverters 1-9</a></li>
+          
+              <h1 class="left">INVERTER 1-9</h1>
+            </ul>
+          </div>
+        
+        
+      <div class="wrapall" id="electricDiagram">
 
         <div class="center">
 
             <table>
-                <tr>
-                    <td><table><tr><td><table>
+               <tr><td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 1</th>
                                         </tr>
@@ -83,10 +94,9 @@
                                             <td>Temperature</td>
                                             <td>XX</td>
                                             <td>°C</td>
-                                        </tr>
-                                    </table></td></tr></table>
+                                     </tr></table>
                     </td>
-                    <td><table><tr><td><table>
+                    <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 6</th>
                                         </tr>
@@ -148,14 +158,13 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
                 </tr>
             </table>
 
             <table>
-                <tr>
-                    <td><table><tr><td><table>
+                <tr><td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 2</th>
                                         </tr>
@@ -216,10 +225,9 @@
                                             <td>Temperature</td>
                                             <td>XX</td>
                                             <td>°C</td>
-                                        </tr>
-                                    </table></td></tr></table>
+                                       </tr></table>
                     </td>
-                    <td><table><tr><td><table>
+                    <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 7</th>
                                         </tr>
@@ -281,14 +289,13 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
                 </tr>
             </table>
 
             <table>
-                <tr>
-                    <td><table><tr><td><table>
+                <tr><td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 3</th>
                                         </tr>
@@ -350,9 +357,9 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
-                    <td><table><tr><td><table>
+                   <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 8</th>
                                         </tr>
@@ -414,14 +421,14 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                   </table>
                     </td>
                 </tr>
             </table>
 
             <table>
                 <tr>
-                    <td><table><tr><td><table>
+                    <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 4</th>
                                         </tr>
@@ -483,9 +490,9 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
-                    <td><table><tr><td><table>
+                    <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 9</th>
                                         </tr>
@@ -547,7 +554,7 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
                 </tr>
             </table>
@@ -555,7 +562,7 @@
             <table>
 
                 <tr>
-                    <td><table><tr><td><table>
+                    <td><table>
                                         <tr>
                                             <th colspan="10">Inverter | 5</th>
                                         </tr>
@@ -617,7 +624,7 @@
                                             <td>XX</td>
                                             <td>°C</td>
                                         </tr>
-                                    </table></td></tr></table>
+                                    </table>
                     </td>
 
 
@@ -627,5 +634,6 @@
 
             </table>
         </div>
+      </div>
     </body>
 </html>

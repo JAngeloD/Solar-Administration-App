@@ -2,11 +2,11 @@ body {
     background-color : #F5F3E6;
     font-family: 'Lato', sans-serif;
 }
-
+/*
 h1 {
     font-family: 'Roboto', sans-serif;
 }
-
+*/
 ul {
     list-style-type: none;
     margin: 0;
@@ -21,11 +21,11 @@ li {
     float: right;
     font-size: larger;
 }
-
+/*
 .left {
     float: left;
 }
-
+*/
 /*
 ul {
     list-style-type: none;

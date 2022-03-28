@@ -19,6 +19,8 @@
               <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
               <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
               <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                      <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
               <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Inverter Home</a></li>
           
               <h1 class="left">INVERTER PERFORMANCE</h1>

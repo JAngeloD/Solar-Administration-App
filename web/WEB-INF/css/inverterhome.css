@@ -2,11 +2,11 @@ body {
     background-color : #F5F3E6;
     font-family: 'Lato', sans-serif;
 }
-
+/*
 h1 {
     font-family: 'Roboto', sans-serif;
 }
-
+*/
 ul {
     list-style-type: none;
     margin: 0;
@@ -45,10 +45,11 @@ li a.active {
     background-color: #04AA6D;
 }
 */
+/*
 .left {
     margin-left: 5%;
 }
-
+*/
 #components {
     margin-left: 10%;
 }
@@ -63,17 +64,19 @@ li a.active {
 }
 
 .inverterButton {
-    background-color: grey;
+    background-color:#3A2318;
+            border-radius: 15px;
     color: white;
     width: 120%;
     padding: 5%;
-    border-radius: 0.5em;
+   
     border: 3px solid #F5F3E6;
     margin-top: 100px;
 }
 
 .inverterButton:hover {
-    border: 3px solid #99582A;
+    background-color: darkgray;
+    color:black;
 }
 
 .menuButton {

@@ -20,6 +20,7 @@ public class ReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request,response);
     }
 
     @Override
@@ -27,19 +28,28 @@ public class ReportServlet extends HttpServlet {
             throws ServletException, IOException {
 
         //Data will be retrieved from the JSP
+        String reportType = request.getParameter("reportType");
         
-        //Logic for the CSV Parser (If chosen)
-        
-        
-        //Logic for handling report builder (If chosen)
-        
-            //Based on what the user has chosen on the dropdown
-            
-                //Invokes the report builders method (out of 4 methods) and stores it into variables
+        switch(reportType) {
+            case "graphReport":
+                String graphChoice = request.getParameter("reportChoice");
                 
-            //Organizes the variables and put them into the JSP using setAttribute()
-            
-            //Redirect using getRequestDispatcher().foward() 
+                
+                request.setAttribute(graphChoice, this); //Table data
+                request.setAttribute(graphChoice, this); //Graph data
+                
+                getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request,response); //Change to target jsp
+                break;
+            case "csvReport":
+                String[] csvRequestList = request.getParameterValues("csvValue");
+                
+                for (String csvRequestList1 : csvRequestList) {
+                    System.out.println(csvRequestList1);
+                }
+                
+                
+                break;
+        }
     }
 
     /**

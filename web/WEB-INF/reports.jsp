@@ -5,19 +5,27 @@
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reports</title>
         <style><%@include file="/WEB-INF/css/repStyle.css"%></style>
+              <style><%@include file="/WEB-INF/css/reports.css"%></style>
+          <style><%@include file="/WEB-INF/css/header.css"%></style>
         <script src="javascript/reports.js"></script>
         <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
         <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
    </head>
    <body>
-    <div>
-        <ul>
-          <li class="menuButton"><a href="login">Logout</a></li>
-          <li class="menuButton"><a href="">Account</a></li>
-          <li class="menuButton"><a href="home">Home</a></li>
+         <div class="headerS">
+        <ul  id="navigation" class="nav">
+  
+          <li class="menuButton1"><a class="buttonMenu1" href="login">Logout</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                  <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
+          <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Reports</a></li>
+      
           <h1 class="left">REPORTS</h1>
         </ul>
-    </div>
+      </div>
+        <div class="wrapall" id="electricDiagram">
     <div>
         <form method="POST" action="reports">
             <h3>Please select the dates</h3>
@@ -36,6 +44,7 @@
                     <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
                 </select>
             </div>
+           
             <div>
                 <input type="radio" id="csvReport" value="csvReport" name="reportType" required>
                 <label>Export raw data as csv file. Choose variables:</label>
@@ -194,5 +203,7 @@
             <input type="submit" value="Create Report">
         </form>
     </div>  
+            </div>
+      
    </body>
 </html>

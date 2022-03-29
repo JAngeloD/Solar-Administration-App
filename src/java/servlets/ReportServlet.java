@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -100,24 +102,28 @@ public class ReportServlet extends HttpServlet {
                     }
                 }
                 
-                if( CSVParser.writeToCSV(list, getServletContext().getRealPath("/resources/"), "testData") )
+                String fileName = UUID.randomUUID().toString();
+                if( CSVParser.writeToCSV(list, getServletContext().getRealPath("/resources/"), fileName) )
                 {
-                    String filePath = "/resources/testData.csv";
+                    String filePath = String.format( "/resources/%s.csv", fileName );
                     
-                    response.setContentType("text/plain");
-                    response.setHeader("Content-disposition", "attachment; filename=testData.csv");
+                    response.setContentType( "text/csv" );
+                    response.setHeader( "Content-disposition", String.format( "attachment; filename=%s.csv", fileName ) );
 
-                    try(InputStream in = getServletContext().getResourceAsStream(filePath);
-                      OutputStream out = response.getOutputStream()) {
-
-                        byte[] buffer = new byte[1048];
+                    try( InputStream in = getServletContext().getResourceAsStream( filePath );
+                            OutputStream out = response.getOutputStream() )
+                    {
+                        byte[] buffer = new byte[4096];
 
                         int numBytesRead;
-                        while ((numBytesRead = in.read(buffer)) > 0) {
+                        while ((numBytesRead = in.read(buffer)) > 0)
+                        {
                             out.write(buffer, 0, numBytesRead);
                         }
                     }
                     
+                    File file = new File( getServletContext().getRealPath( filePath ) );
+                    file.delete();
                 }
                 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);

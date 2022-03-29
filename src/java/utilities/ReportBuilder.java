@@ -80,7 +80,25 @@ public class ReportBuilder {
     *
     * @param year, the year for the energy you'd like to recieve
      */
-    public static double[] getEnergyByYear(int year) throws SQLException {
+    public static double[] getEnergyByYear(String startDate, String endDate) throws SQLException {
+        //Hacky but lazy
+        //Parse the date
+        String stringYear = startDate.substring(0, 4);
+        int startYear = Integer.parseInt(stringYear);
+        
+        String stringMonth = startDate.substring(5,6);
+        int startMonth = Integer.parseInt(stringMonth);
+        
+        //Parse the date
+        String stringEndYear = endDate.substring(0, 4);
+        int endYear = Integer.parseInt(stringEndYear);
+        
+        String stringEndMonth = startDate.substring(5,6);
+        int endMonth = Integer.parseInt(stringEndMonth);
+        
+        System.out.println(startYear);
+        System.out.println(endYear);
+        
         //Bring in the access to the database
         PccDB pccDB = new PccDB();
 
@@ -93,8 +111,8 @@ public class ReportBuilder {
         for (int month : months) {
             try {
                 //Get the PCC list for the month 
-                Date begin = TimeFactory.getRangeBeginning(year, month);
-                Date end = TimeFactory.getRangeEnd(year, month);
+                Date begin = TimeFactory.getRangeBeginning(startYear, startMonth);
+                Date end = TimeFactory.getRangeEnd(endYear, endMonth);
 
                 //System.out.println(begin);
                 //System.out.println(end);
@@ -135,9 +153,12 @@ public class ReportBuilder {
         double[] yearEnergy = new double[years.length];
         int i = 0;
         for (int year : years) {
+            //get the start and end date from the year
+            String start = year + "-01";
+            String end = year + "-12";
             double[] monthlyEnergies;
             try {
-                monthlyEnergies = ReportBuilder.getCumulativeEnergyByYear(year);
+                monthlyEnergies = ReportBuilder.getCumulativeEnergyByYear(start, end);
                 //System.out.println(Arrays.toString(monthlyEnergies));
                 yearEnergy[i] = monthlyEnergies[monthlyEnergies.length - 1];
                 i++;
@@ -154,16 +175,19 @@ public class ReportBuilder {
     /*
     * Useful for report 1, cumulative energy for y2
      */
-    public static double[] getCumulativeEnergyByYear(int year) throws SQLException {
+    public static double[] getCumulativeEnergyByYear(String startDate, String endDate) throws SQLException {
 
         //get the monthly energies
-        double[] monthlyEnergies = getEnergyByYear(year);
+        double[] monthlyEnergies = getEnergyByYear(startDate, endDate);
+        
+        String stringYear = startDate.substring(0, 3);
+        int startYear = Integer.parseInt(stringYear);
 
         //get the cumulative energy values
         double[] cumulativeEnergy;
         
         //Dont cumulate months that havent happened yet
-        if (year == Year.now().getValue()) {
+        if (startYear == Year.now().getValue()) {
             int[] currentYearMonths = getMonths();
             cumulativeEnergy = new double[currentYearMonths.length];
             

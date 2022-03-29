@@ -6,6 +6,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.Year;
@@ -102,7 +104,28 @@ public class ReportServlet extends HttpServlet {
                         System.out.println(list.get(i)[j] + " :row" + i + " ");
                     }
                 }
+                
+                if( CSVParser.writeToCSV(list, getServletContext().getRealPath("/resources/"), "testData") )
+                {
+                    String filePath = "/resources/testData.csv";
+                    
+                    response.setContentType("text/plain");
+                    response.setHeader("Content-disposition", "attachment; filename=testData.csv");
 
+                    try(InputStream in = getServletContext().getResourceAsStream(filePath);
+                      OutputStream out = response.getOutputStream()) {
+
+                        byte[] buffer = new byte[1048];
+
+                        int numBytesRead;
+                        while ((numBytesRead = in.read(buffer)) > 0) {
+                            out.write(buffer, 0, numBytesRead);
+                        }
+                    }
+                    
+                }
+                
+                getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
                 break;
         }
     }

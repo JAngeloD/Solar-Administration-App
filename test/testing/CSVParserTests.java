@@ -55,5 +55,8 @@ public class CSVParserTests {
     public void testGetData() {
         String[] test = {"Pcc_Get_AcOutputRealPower", "Pcc_Get_AcOutputPhaseCCurrent", "Facility_Get_BackOfPanelTemperature1"};
         ArrayList<String[]> list = CSVParser.getData(test);
+        
+        
+        
     }
 }

@@ -7,6 +7,6 @@ DELETE FROM users WHERE email = "facility_manager@localhost";
 DELETE FROM users WHERE email = "facility_operator@localhost";
 DELETE FROM users WHERE email = "admin";
 
-INSERT INTO users VALUES( "facility_manager@localhost", 2, "Facility", "Manager", "password" );
-INSERT INTO users VALUES( "facility_operator@localhost", 1, "Facility", "Operator", "password" );
-INSERT INTO users VALUES( "admin", 2, "Facility", "Manager", "password" );
+INSERT INTO users VALUES( "facility_manager@localhost", 2, "Facility", "Manager", "password", 1);
+INSERT INTO users VALUES( "facility_operator@localhost", 1, "Facility", "Operator", "password", 1);
+INSERT INTO users VALUES( "admin", 2, "Facility", "Manager", "password", 1);

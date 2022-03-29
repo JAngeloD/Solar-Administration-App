@@ -51,7 +51,7 @@ public class CSVParser {
             int previousDevice = -1;
 
             ArrayList<String> labelLine = new ArrayList<>(); //
-            ArrayList<String> dataLine = new ArrayList<>();
+            ArrayList<String> dataLine = new ArrayList<>(); 
             ArrayList<String[]> dataLines = new ArrayList<>(); //2
             for (String get : getterMethods) {
 
@@ -92,6 +92,7 @@ public class CSVParser {
                         CSVList.add(dataLines.get(i));
                     }
 
+                    
                     labelLine.clear();
                     dataLine.clear();
                     dataLines.clear();
@@ -100,13 +101,25 @@ public class CSVParser {
                 }
 
                 //Checks if label exists. If it does place it on the same index in the data line. If it doesn't add a new one and append
-                attribute = attribute.replaceAll("\\d", "");
-                int index = labelLine.indexOf(attribute);
+                String attributeOnly = attribute.replaceAll("\\d", "");
+                int index = labelLine.indexOf(attributeOnly);
                 if (index > 0) {
                     dataLine.add(index, data);
                 } else {
-                    labelLine.add(attribute);
-                    dataLine.add(labelLine.size() - 1, data);
+                    //Adds device label if it doesn't exist
+                    if(labelLine.indexOf(modelName) == -1) {
+                        labelLine.add(0, modelName);
+                    }
+                    
+                    labelLine.add(attributeOnly);
+                    
+                    if(dataLine.isEmpty()) 
+                        dataLine.add("");
+                    dataLine.add(labelLine.indexOf(attributeOnly), data);
+                }
+                
+                if(!deviceNum.equals("") && dataLine.get(0).equals("")) {
+                    dataLine.add(0, (deviceNum.substring(0).equals("0")) ? deviceNum.replaceAll("0", "") : deviceNum);
                 }
 
                 previousModel = modelName;

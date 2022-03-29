@@ -4,202 +4,197 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style><%@include file="/WEB-INF//css/style.css"%></style>
+        <style><%@include file="/WEB-INF/css/weatherdetail.css"%></style>
+        <style><%@include file="/WEB-INF/css/header.css"%></style>
+
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/WeatherPageAjax.js"></script>
         <title>Weather Detail</title>
     </head>
     <body>
-        <ul>
-            <li class="menuButton"><a href="login?action=logout">Logout</a></li>
-            <li class="menuButton"><a href="inverterfour">Account</a></li>
-            <li class="menuButton"><a href="home">Home</a></li>
-            <h1 class="left">Weather Detail</h1>
-        </ul>
+        <div class="headerS">
+            <ul  id="navigation" class="nav">
 
-        <div id="graphs">
+                <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+                <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+                <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
+                <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
+                <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
+                <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Weather</a></li>
 
-            <table id="mainTable">
-                <tr>
-                    <td>
+                <h1 class="left">WEATHER DETAILS</h1>
+            </ul>
+        </div>
+        <div class="wrapall" id="electricDiagram">
+            <div id="graphs">
 
-                        <div id="power">
-                            <div id="root">
+                <table id="mainTable" width="100%">
+                    <tr>
+                        <td>
 
+                            <div id="power">
+                                <div id="root">
+
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div id="wind">
-                            <div id="windGraph">
+                        </td>
+                        <td>
+                            <div id="wind">
+                                <div id="windGraph">
 
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" id="cellForTable">
-                        <div id="data" >
-                            <table id="weatherData" width="100%">
-                                <tr>
-                                    <td>
+                        </td>
+                    </tr>
 
-                                    </td>
-                                    <td colspan="2">
-                                        <b>Current</b>
-                                    </td>
-                                    <td colspan="2">
-                                        <b>Maximum</b>
-                                    </td>
-                                    <td colspan="2">
-                                        <b>Minimum</b>
-                                    </td>
+                </table>
+            </div>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Solar Irradiance (POA) </b>
-                                    </td>
-                                    <td id="FacilitygetSolarIrridinacePOA" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        W / sq m
-                                    </td>
-                                    <td id="FacilitygetSolarIrridinacePOAMax" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        W / sq m
-                                    </td>
-                                    <td>
-                                        -
-                                    </td>
-                                    <td>
-                                        -
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Solar Irradiance (GHI)</b>
-                                    </td>
-                                    <td id="FacilitygetSolarIrridinaceGHI" class="realtime">
-                                         
-                                    </td>
-                                    <td>
-                                        W / sq m
-                                    </td>
-                                    <td id="FacilitygetSolarIrridinaceGHIMax" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        W / sq m
-                                    </td>
-                                    <td>
-                                        -
-                                    </td>
-                                    <td>
-                                        -
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Ambient Temperature</b>
-                                    </td>
-                                    <td id="FacilitygetAmbientTemperature" class="realtime">
-                                         
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetAmbientTemperatureMax" class="realtime">
-                                        XXX
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetAmbientTemperatureMin" class="realtime">
-                                        XXX
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Wind Speed</b>
-                                    </td>
-                                    <td id="FacilitygetWindSpeed" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        km / hr
-                                    </td>
-                                    <td id="FacilitygetWindSpeedMax" class="realtime">
-                                        XXX
-                                    </td>
-                                    <td>
-                                        km / hr
-                                    </td>
-                                    <td id="FacilitygetWindSpeedMin" class="realtime">
-                                        XXX
-                                    </td>
-                                    <td>
-                                        km / hr
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Back of Panel Temperature - 1</b>
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature1" class="realtime">
-                                         
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Back of Panel Temperature - 2</b>
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature2" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature2Max" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                    <td id="FacilitygetBackOfPanelTemperature2Min" class="realtime">
-                                        
-                                    </td>
-                                    <td>
-                                        Deg C
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div id="data" >
+                <table id="weatherData" width="100%">
+
+
+
+
+
+                    <tr>
+                        <th colspan="4"></th>
+                        <th colspan="4">   Current</th>
+
+                        <th colspan="4"> Maximum</th>
+
+                        <th colspan="4"> Minimum</th> 
+
+                    </tr>
+                    <tr>
+
+                        <th colspan="4">Solar Irradiance (POA)</th>
+                        <td colspan="4" id="FacilitygetSolarIrridinacePOA" class="realtime">
+
+
+                            W / sq m
+                        </td>
+
+                        <td colspan="4" id="FacilitygetSolarIrridinacePOAMax" class="realtime">
+
+                            W / sq m
+                        </td>
+
+
+                        <td colspan="4"id="FacilitygetSolarIrridinacePOAMin" class="realtime">
+                             W / sq m
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Solar Irradiance (GHI)</th>
+
+
+                        <td colspan="4" id="FacilitygetSolarIrridinaceGHI" class="realtime">
+
+                            W / sq m
+                        </td>
+                        <td colspan="4" id="FacilitygetSolarIrridinaceGHIMax" class="realtime">
+
+
+                            W / sq m
+                        </td>
+                        <td colspan="4" id="FacilitygetSolarIrridinaceGHIMin" class="realtime">
+                             W / sq m
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+                        <th colspan="4">Ambient Temperature</th>
+
+                        <td colspan="4" id="FacilitygetAmbientTemperature" class="realtime">
+
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetAmbientTemperatureMax" class="realtime">
+                            XXX
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetAmbientTemperatureMin" class="realtime">
+                            XXX
+
+                            Deg C
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th colspan="4">Wind Speed</th>
+
+                        <td colspan="4" id="FacilitygetWindSpeed" class="realtime">
+
+
+                            km / hr
+                        </td>
+                        <td colspan="4" id="FacilitygetWindSpeedMax" class="realtime">
+                            XXX
+
+                            km / hr
+                        </td>
+                        <td colspan="4" id="FacilitygetWindSpeedMin" class="realtime">
+                            XXX
+
+                            km / hr
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th colspan="4">Back of Panel Temperature - 1</th>
+
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1" class="realtime">
+
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
+
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
+
+
+                            Deg C
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Back of Panel Temperature - 2</th>
+
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1" class="realtime">
+
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
+
+
+                            Deg C
+                        </td>
+                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
+
+
+                            Deg C
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">All Parameters</th>
+
+                    </tr>
+                </table>
+
+
+
+            </div>
+
+
 
         </div>
 

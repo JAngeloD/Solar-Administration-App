@@ -32,13 +32,6 @@ public class ReportServlet extends HttpServlet {
         //Intial report values
         request.setAttribute("reportChoice", "Anual Energy at PCC");
         request.setAttribute("year", "2022");
-        try {
-            request.setAttribute("x", ReportBuilder.getAllMonths());
-            request.setAttribute("y1", ReportBuilder.getEnergyByYear(2022));
-            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(2022));
-        } catch (SQLException ex) {
-            Logger.getLogger(ReportServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
     }
@@ -49,19 +42,21 @@ public class ReportServlet extends HttpServlet {
 
         //Data will be retrieved from the JSP
         String reportType = request.getParameter("reportType");
-
+        String year = request.getParameter("year");
+        
 
         switch (reportType) {
             case "graphReport":
                 String graphChoice = request.getParameter("reportChoice");
-                String year = request.getParameter("year");
+                String start = request.getParameter("fromDT");
+                String end = request.getParameter("toDT");
 
                 try {
                     switch (graphChoice) {
                         case "Anual Energy at PCC":
                             request.setAttribute("x", ReportBuilder.getAllMonths());
-                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(Integer.parseInt(year)));
-                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(Integer.parseInt(year)));
+                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(start, end));
+                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(start, end));
                             break;
                         case "PCC year to year comparison":
                             request.setAttribute("x", ReportBuilder.getYears());
@@ -69,8 +64,8 @@ public class ReportServlet extends HttpServlet {
                             break;
                         case "Year to date":
                             request.setAttribute("x", ReportBuilder.getAllMonths());
-                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(Year.now().getValue()));
-                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(Year.now().getValue()));
+                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(start, end));
+                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(start, end));
                             break;
                         case "Month comparison in the last 5 years":
                             request.setAttribute("x", ReportBuilder.getYears());

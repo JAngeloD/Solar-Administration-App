@@ -5,11 +5,17 @@
  */
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,7 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import utilities.CSVParser;
-import utilities.ReportBuilder;
+import utilities.ReportBuilderv2;
 
 /**
  *
@@ -28,17 +34,10 @@ public class ReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
+
         //Intial report values
         request.setAttribute("reportChoice", "Anual Energy at PCC");
-        request.setAttribute("year", "2022");
-        try {
-            request.setAttribute("x", ReportBuilder.getAllMonths());
-            request.setAttribute("y1", ReportBuilder.getEnergyByYear(2022));
-            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(2022));
-        } catch (SQLException ex) {
-            Logger.getLogger(ReportServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        request.setAttribute("scriptFlag", false);
         
         getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
     }
@@ -47,46 +46,25 @@ public class ReportServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String startDate = request.getParameter("fromDT");
+        String endDate = request.getParameter("toDT");
+
         //Data will be retrieved from the JSP
         String reportType = request.getParameter("reportType");
-
 
         switch (reportType) {
             case "graphReport":
                 String graphChoice = request.getParameter("reportChoice");
-                String year = request.getParameter("year");
 
-                try {
-                    switch (graphChoice) {
-                        case "Anual Energy at PCC":
-                            request.setAttribute("x", ReportBuilder.getAllMonths());
-                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(Integer.parseInt(year)));
-                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(Integer.parseInt(year)));
-                            break;
-                        case "PCC year to year comparison":
-                            request.setAttribute("x", ReportBuilder.getYears());
-                            request.setAttribute("y1", ReportBuilder.getTotalEnergyByYears());
-                            break;
-                        case "Year to date":
-                            request.setAttribute("x", ReportBuilder.getAllMonths());
-                            request.setAttribute("y1", ReportBuilder.getEnergyByYear(Year.now().getValue()));
-                            request.setAttribute("y2", ReportBuilder.getCumulativeEnergyByYear(Year.now().getValue()));
-                            break;
-                        case "Month comparison in the last 5 years":
-                            request.setAttribute("x", ReportBuilder.getYears());
-                            request.setAttribute("y1", ReportBuilder.getMonthEnergyPastYears());
-                            break;
-                    }
-                } catch (SQLException | ParseException sql) {
-                    Logger.getLogger(ReportServlet.class.getName()).log(Level.SEVERE, null, sql);
-                }
-                
                 //set the values to the changed values
                 request.setAttribute("reportChoice", graphChoice);
-                request.setAttribute("year", year);
+                request.setAttribute("startDate", ReportBuilderv2.chopTime(startDate));
+                request.setAttribute("endDate", ReportBuilderv2.chopTime(endDate));
+                request.setAttribute("scriptFlag", true);
 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp
                 break;
+
             case "csvReport":
                 String[] csvRequestList = request.getParameterValues("csvValue");
 
@@ -103,6 +81,28 @@ public class ReportServlet extends HttpServlet {
                     }
                 }
 
+                String fileName = UUID.randomUUID().toString();
+                if (CSVParser.writeToCSV(list, getServletContext().getRealPath("/resources/"), fileName)) {
+                    String filePath = String.format("/resources/%s.csv", fileName);
+
+                    response.setContentType("text/csv");
+                    response.setHeader("Content-disposition", String.format("attachment; filename=%s.csv", fileName));
+
+                    try (InputStream in = getServletContext().getResourceAsStream(filePath);
+                            OutputStream out = response.getOutputStream()) {
+                        byte[] buffer = new byte[4096];
+
+                        int numBytesRead;
+                        while ((numBytesRead = in.read(buffer)) > 0) {
+                            out.write(buffer, 0, numBytesRead);
+                        }
+                    }
+
+                    File file = new File(getServletContext().getRealPath(filePath));
+                    file.delete();
+                }
+
+                getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
                 break;
         }
     }

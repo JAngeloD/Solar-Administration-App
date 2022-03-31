@@ -31,62 +31,10 @@
                 <form method="POST" action="reports">
                     <h3>Please select the dates</h3>
                     <label>From: </label>
-                    <input type="datetime-local" id="fromDT">
+                    <input type="datetime-local" id="fromDT" name="fromDT" required>
                     <label>To: </label>
-                    <input type="datetime-local" id="toDT">
-                    <br>
-                    <label>Year:</label>
-                    <select name="year" id="year" default="2022">
-                        <c:if test="${year == '2022'}">
-                            <option name="2022" id="2022" selected>2022</option>
-                            <option name="2021" id="2021">2021</option>
-                            <option name="2020" id="2020">2020</option>
-                            <option name="2019" id="2019">2019</option>
-                            <option name="2018" id="2018">2018</option>
-                            <option name="2017" id="2017">2017</option>
-                        </c:if>
-                        <c:if test="${year == '2021'}">
-                            <option name="2022" id="2022" >2022</option>
-                            <option name="2021" id="2021" selected>2021</option>
-                            <option name="2020" id="2020">2020</option>
-                            <option name="2019" id="2019">2019</option>
-                            <option name="2018" id="2018">2018</option>
-                            <option name="2017" id="2017">2017</option>
-                        </c:if>
-                        <c:if test="${year == '2020'}">
-                            <option name="2022" id="2022" >2022</option>
-                            <option name="2021" id="2021">2021</option>
-                            <option name="2020" id="2020" selected>2020</option>
-                            <option name="2019" id="2019">2019</option>
-                            <option name="2018" id="2018">2018</option>
-                            <option name="2017" id="2017">2017</option>
-                        </c:if>
-                        <c:if test="${year == '2019'}">
-                            <option name="2022" id="2022">2022</option>
-                            <option name="2021" id="2021">2021</option>
-                            <option name="2020" id="2020">2020</option>
-                            <option name="2019" id="2019" selected>2019</option>
-                            <option name="2018" id="2018">2018</option>
-                            <option name="2017" id="2017">2017</option>
-                        </c:if>
-                        <c:if test="${year == '2018'}">
-                            <option name="2022" id="2022" >2022</option>
-                            <option name="2021" id="2021">2021</option>
-                            <option name="2020" id="2020">2020</option>
-                            <option name="2019" id="2019">2019</option>
-                            <option name="2018" id="2018" selected>2018</option>
-                            <option name="2017" id="2017">2017</option>
-                        </c:if>
-                        <c:if test="${year == '2017'}">
-                            <option name="2022" id="2022">2022</option>
-                            <option name="2021" id="2021">2021</option>
-                            <option name="2020" id="2020">2020</option>
-                            <option name="2019" id="2019">2019</option>
-                            <option name="2018" id="2018">2018</option>
-                            <option name="2017" id="2017" selected>2017</option>
-                        </c:if>
+                    <input type="datetime-local" id="toDT" name="toDT" required>
 
-                    </select>
                     <br />
                     <div>
                         <input type="radio" id="graphReport" value="graphReport" name="reportType" required>
@@ -275,31 +223,18 @@
                         </div>
                     </div>            
                     <br>
-                    <input type="submit" value="Create Report" onClick="handleChange()">
+                    <input type="submit" value="Create Report">
                 </form>
             </div>  
         </div>
 
-        <div id="reportOutput">
+        <!-- Need somewhere to hold the date values -->
+        <input type="hidden" name="startDate" id="startDate" value="${startDate}">
+        <input type="hidden" name="endDate" id="endDate" value="${endDate}">
+       
 
-        </div>
-
-        <!-- Need somewhere to hold the x values -->
-        <c:forEach var="x1" items="${x}">
-            <input type="hidden" name="x[]" value="${x1}">
-        </c:forEach>
-
-        <!-- Need somewhere to hold the y1 values -->
-        <c:forEach var="y1a" items="${y1}">
-            <input type="hidden" name="y1[]" value="${y1a}">
-        </c:forEach> 
-
-        <!-- Need somewhere to hold the y2 values -->
-        <c:forEach var="y2a" items="${y2}">
-            <input type="hidden" name="y2[]" value="${y2a}">
-        </c:forEach> 
-
-        <script src="javascript/ReportPlotly.js"></script>
-
+        <c:if test="${scriptFlag == true}">
+            <script src="javascript/ReportPlotly.js"></script>
+        </c:if>
     </body>
 </html>

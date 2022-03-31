@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// todo: only allow manager access to userlist servlet
+
 public class AuthenticationFilter implements Filter
 {
     @Override

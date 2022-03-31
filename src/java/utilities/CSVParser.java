@@ -19,10 +19,8 @@ public class CSVParser {
      * @return true if operation was successful, false otherwise
      */
     public static boolean writeToCSV(ArrayList<String[]> list, String filePath, String fileName) {
-        // todo: consult with group to see if file naming matters, if not, just randomly generate a file name to avoid duplicates and sanitizing
         try {
-            // "web\\resources\\fileName.csv"
-            FileWriter outputFile = new FileWriter(new File(String.format(filePath + "%s.csv", fileName)));
+            FileWriter outputFile = new FileWriter(new File(String.format("%s%s.csv", filePath, fileName)));
             try (CSVWriter writer = new CSVWriter(outputFile)) {
                 writer.writeAll(list);
             }

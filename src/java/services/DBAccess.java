@@ -17,6 +17,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.logging.Level;
@@ -229,6 +230,13 @@ public class DBAccess {
     }
 
     public static Users UsersGet(String email) {
+        UsersDB db = new UsersDB();
+        Users user = db.get(email);
+
+        return user;
+    }
+    
+    public static List<Users> getUsers() {
         UsersDB db = new UsersDB();
         Users user = db.get(email);
 

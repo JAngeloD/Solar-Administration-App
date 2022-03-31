@@ -67,8 +67,8 @@ function buildReport1() {
             title: 'Month',
             domain: [0, 12]
         },
-        width: 650,
-        height: 500,
+        width: 300,
+        height: 300,
         automargin: true
 
     };

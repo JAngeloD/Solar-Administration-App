@@ -54,7 +54,7 @@ public class AjaxChartHandler extends HttpServlet {
                     double[] xDataBars = new double[inverterList.length];
                     for (int i = 0; i < inverterList.length; i++) {
                         String deviceID = String.format("%02d", i + 1);
-                        xDataBars[i] = DBAccess.InverterGet("AcOutputEnergy" + deviceID, timestamp);
+                        xDataBars[i] = Math.random() * DBAccess.InverterGet("AcOutputEnergy" + deviceID, timestamp);
                     }
 
                     jsonData = buildInverterPerformanceGraph(xDataBars, inverterList);

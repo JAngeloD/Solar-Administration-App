@@ -202,6 +202,10 @@ public class PCC implements Serializable {
     public void setAcOutputPhaseCaVoltage(Double acOutputPhaseCaVoltage) {
         this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
+    
+    public Double getAcOutputPhaseAverageVoltage() {
+        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) / 3;
+    }
 
     @Override
     public int hashCode() {

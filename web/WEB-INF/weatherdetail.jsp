@@ -10,6 +10,7 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/WeatherPageAjax.js"></script>
+        <script src="javascript/AjaxHandler.js"></script>
         <title>Weather Detail</title>
     </head>
     <body>
@@ -69,38 +70,38 @@
                     </tr>
                     <tr>
 
-                        <th colspan="4">Solar Irradiance (POA)</th>
-                        <td colspan="4" id="FacilitygetSolarIrridinacePOA" class="realtime">
+                        <th colspan="4">Solar irradiance (POA)</th>
+                        <td colspan="4" id="Facility_Get_SolarirridiancePOA" class="realtime">
 
 
-                            W / sq m
+                            0
                         </td>
 
-                        <td colspan="4" id="FacilitygetSolarIrridinacePOAMax" class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridiancePOAMax">
 
-                            W / sq m
+                            0
                         </td>
 
 
-                        <td colspan="4"id="FacilitygetSolarIrridinacePOAMin" class="realtime">
-                             W / sq m
+                        <td colspan="4"id="Facility_Get_SolarirridiancePOAMin">
+                             0
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="4">Solar Irradiance (GHI)</th>
+                        <th colspan="4">Solar irradiance (GHI)</th>
 
 
-                        <td colspan="4" id="FacilitygetSolarIrridinaceGHI" class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridianceGHI" class="realtime">
 
-                            W / sq m
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetSolarIrridinaceGHIMax" class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMax">
 
 
-                            W / sq m
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetSolarIrridinaceGHIMin" class="realtime">
-                             W / sq m
+                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMin">
+                             0
                         </td>
 
                     </tr>
@@ -109,79 +110,79 @@
                     <tr>
                         <th colspan="4">Ambient Temperature</th>
 
-                        <td colspan="4" id="FacilitygetAmbientTemperature" class="realtime">
+                        <td colspan="4" id="Facility_Get_AmbientTemperature" class="realtime">
 
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetAmbientTemperatureMax" class="realtime">
-                            XXX
+                        <td colspan="4" id="Facility_Get_AmbientTemperatureMax">
+                            
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetAmbientTemperatureMin" class="realtime">
-                            XXX
+                        <td colspan="4" id="Facility_Get_AmbientTemperatureMin">
+                            
 
-                            Deg C
+                            0
                         </td>
 
                     </tr>
                     <tr>
                         <th colspan="4">Wind Speed</th>
 
-                        <td colspan="4" id="FacilitygetWindSpeed" class="realtime">
+                        <td colspan="4" id="Facility_Get_WindSpeed" class="realtime">
 
 
-                            km / hr
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetWindSpeedMax" class="realtime">
-                            XXX
+                        <td colspan="4" id="Facility_Get_WindSpeedMax">
+                            
 
-                            km / hr
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetWindSpeedMin" class="realtime">
-                            XXX
+                        <td colspan="4" id="Facility_Get_WindSpeedMin">
+                            
 
-                            km / hr
+                            0
                         </td>
 
                     </tr>
                     <tr>
                         <th colspan="4">Back of Panel Temperature - 1</th>
 
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1" class="realtime">
 
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Max">
 
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Min">
 
 
-                            Deg C
+                            0
                         </td>
                     </tr>
                     <tr>
                         <th colspan="4">Back of Panel Temperature - 2</th>
 
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2" class="realtime">
 
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Max" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Max">
 
 
-                            Deg C
+                            0
                         </td>
-                        <td colspan="4" id="FacilitygetBackOfPanelTemperature1Min" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Min">
 
 
-                            Deg C
+                            0
                         </td>
                     </tr>
                     <tr>

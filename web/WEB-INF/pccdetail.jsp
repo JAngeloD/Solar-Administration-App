@@ -276,7 +276,7 @@
                                             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                                             id="path451"
                                             transform="translate(8.186185e-6)" />
-                                        <path
+                                        <path class="dynamicState02"
                                             d="m 1568.985,813.1624 h 50 v 50 h -50 z"
                                             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                                             id="path459"
@@ -331,7 +331,7 @@
                                             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                                             id="path455"
                                             transform="translate(8.186185e-6)" />
-                                        <path class="dynamicState02"
+                                        <path
                                             d="m 1618.985,711.9066 76.264,-0.1366"
                                             style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                                             id="path463"

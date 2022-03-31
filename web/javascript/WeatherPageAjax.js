@@ -1,15 +1,15 @@
 $(document).ready(function () {
-    setIntervalImmediately(2000);
+    setIntervalImmediately(6000);
 });
 
 function setIntervalImmediately(interval) {
     displayData("windGraph");
     displayData("root");
-//    triggerUpdate();
+    triggerUpdate();
     return setInterval(function () {
         displayData("windGraph");
         displayData("root");
-//        triggerUpdate();
+        triggerUpdate();
     }, interval);
 }
 
@@ -19,7 +19,7 @@ function displayData(chartElement) {
         url: "ajaxcharthandler",
         type: "POST",
         data: {name: chartElement,
-                  graphData: JSON.stringify(gd.data)}
+               graphData: JSON.stringify(gd.data)}
     });
 
     req.done(function (data) {
@@ -37,15 +37,36 @@ function triggerUpdate() {
 }
 
 function load(requestType) {
-    alert(JSON.stringify(gd.data));
+
+    var minVal = "";
+    var maxVal = "";
+    try {
+        minVal = document.getElementById(requestType + "Min").textContent;
+        maxVal = document.getElementById(requestType + "Max").textContent;
+    }
+    catch(err) {
+    }
+    
     $.ajax({
         url: 'ajaxhandler',
-        data: {name: requestType},
+        data: {name: requestType,
+               max: maxVal,
+               min: minVal},
         type: 'POST',
         cache: false,
         success: function (data) {
             if ($('#' + requestType).prop("tagName") == "TD") {
-                $('#' + requestType).html(data);
+                //If the contained string in the data has a max and a min attached to it
+                if(data.includes(",")) {
+                    const dataset = data.split(',');
+                    $('#' + requestType).html(dataset[0]);
+                    $('#' + requestType + "Max").html(dataset[1]);
+                    $('#' + requestType + "Min").html(dataset[2]);
+                }
+                else {
+                    $('#' + requestType).html(data);
+                }
+                
             } else {
                 $('#' + requestType).attr("value", data);
             }

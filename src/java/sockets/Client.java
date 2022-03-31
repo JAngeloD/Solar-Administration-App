@@ -53,6 +53,7 @@ public class Client {
             facility = new Facility(facility.getRecordID(), facility.getTimeStampId(), facility.getTimeStamp(), facility.getSolarirridiancePOA(), facility.getSolarirridianceGHI(), facility.getBackOfPanelTemperature1(), facility.getAmbientTemperature(), facility.getBackOfPanelTemperature2(), facility.getWindSpeed());
             System.out.println("object to be written = " + facility);
             oos.writeObject(facility);
+            socket.close();
         } catch (SocketException se) {
             se.printStackTrace();
         } catch (IOException e) {

@@ -36,9 +36,9 @@
                             <td colspan='3'><b>${start} to ${end}</b></td>
                         </tr>
                         <tr>
-                            <td >Month</td>
-                            <td >Energy (MWhrs)</td>
-                            <td >Cumulative Energy</td>
+                            <td ><b>Month</b></td>
+                            <td ><b>Energy (MWhrs)</b></td>
+                            <td ><b>Cumulative Energy</b></td>
                         </tr>
                         <c:forEach var="out" items="${output}">
                             <tr>
@@ -61,8 +61,8 @@
                             <td colspan='2'><b>PCC Yearly Energy last 5 years.</b></td>
                         </tr>
                         <tr>
-                            <td >Year</td>
-                            <td >Energy (MWhrs)</td>
+                            <td ><b>Year</b></td>
+                            <td ><b>Energy (MWhrs)</b></td>
                         </tr>
                         <c:forEach var="out" items="${output}">
                             <tr>
@@ -82,8 +82,8 @@
                             <td colspan='2'><b>Monthly Energy Comparison over the last 5 years</b></td>
                         </tr>
                         <tr>
-                            <td >Year</td>
-                            <td >Energy (MWhrs)</td>
+                            <td ><b>Year</b></td>
+                            <td ><b>Energy (MWhrs)</b></td>
                         </tr>
                         <c:forEach var="out" items="${output}">
                             <tr>

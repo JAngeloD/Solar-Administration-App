@@ -136,6 +136,10 @@
         <servlet-name>UserAccountServlet</servlet-name>
         <servlet-class>servlets.UserAccountServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportOutputServlet</servlet-name>
+        <servlet-class>servlets.ReportOutputServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <url-pattern>/breaker</url-pattern>
@@ -238,7 +242,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserAccountServlet</servlet-name>
-        <url-pattern>/useraccounts</url-pattern>
+        <url-pattern>/useraccounts</url-pattern>        
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportOutputServlet</servlet-name>
+        <url-pattern>/reportOutput</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

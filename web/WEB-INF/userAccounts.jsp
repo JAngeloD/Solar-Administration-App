@@ -76,7 +76,7 @@
                 <c:forEach items="${list}" var="item">
                     <tr>
                         <td>${item.email}</td>
-                        <td>${item.type_id}</td>
+                        <td>${item.type_id.type_name}</td>
                         <td>${item.firstName}</td>
                         <td>${item.lastName}</td>
                         <td>

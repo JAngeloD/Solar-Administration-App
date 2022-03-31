@@ -30,12 +30,15 @@ public class UserAccountServlet extends HttpServlet {
             DBAccess dba = new DBAccess();
             try{
                 users = dba.getUsers();
+                request.setAttribute("list", users);
             }
             catch(Exception e){
-                
-            }
+                System.out.println(e.toString());
+            }    
+            
             getServletContext().getRequestDispatcher("/WEB-INF/userAccounts.jsp").forward(request, response);
         }
+        getServletContext().getRequestDispatcher("/WEB-INF/userAccounts.jsp").forward(request, response);
     }
 
     @Override
@@ -43,24 +46,27 @@ public class UserAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         DBAccess dba = new DBAccess();
         String action = request.getParameter("action");
-//        if(action.equals("listUsers")){
-//            ArrayList<Users> users = null;
-//            try{
-//                
-//            }
-//            catch(Exception e){
-//                
-//            }
-//            
-//        }
-//        else 
         if(action.equals("addUser")){
             
         }
         else if(action.equals("fillEdit")){
-            
+            String email = request.getParameter("email");
+            Users user = dba.UsersGet(email);
+            request.setAttribute("email_edit", user.getEmail());
+            request.setAttribute("type_edit", user.getTypeId().getTypeName());
+            request.setAttribute("active_edit", user.getActive());
+            request.setAttribute("fname_edit", user.getFirstName());
+            request.setAttribute("lname_edit", user.getLastName());
+            request.setAttribute("password_edit", user.getPassword());
+            doGet(request, response);
         }
         else if(action.equals("saveUser")){
+            String email = request.getParameter("email_edit");
+            int typeID = Integer.parseInt(request.getParameter("type_edit"));
+            BIT active = request.getParameter("active_edit");
+            String fName = request.getParameter("fname_edit");
+            String lName = request.getParameter("lname_edit");
+            String password = request.getParameter("password_edit");
             
         }
         

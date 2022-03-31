@@ -3,24 +3,49 @@ package utilities;
 import dbutil.PccDB;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.PCC;
-import servlets.PCCDetailServlet;
 
 /**
- * A class that will return an array for various different data points.
  *
  * @author 821320
  */
-public class ReportBuilder {
+public class ReportBuilderv2 {
 
-    public ReportBuilder() {
+    public ReportBuilderv2() {
 
+    }
+
+    /*
+    * Useful for report 3.
+    * Returns an array of months for x values
+     */
+    public static int[] getAllMonths() {
+        return new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    }
+    
+    /*
+    * Useful for report 3
+    * Returns an array of months that have happened in the current year for x values
+    * March = 2, not 3
+     */
+    public static int[] getMonths() {
+        //Get the current year and month
+        Date current = new Date();
+        int month = current.getMonth();
+
+        //Initialize array
+        int months[] = new int[month + 1];
+
+        for (int i = 0; i <= month; i++) {
+            months[i] = i + 1;
+        }
+
+        return months;
     }
 
     /*
@@ -47,33 +72,157 @@ public class ReportBuilder {
     }
 
     /*
-    * Useful for reports 1 and 3.
-    * Returns an array of months for x values
+    * Useful for report 1, return the x axis array between two dates.
      */
-    public static int[] getAllMonths() {
-        return new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    }
+    public static int[] getSpecificMonths(String startDate, String endDate) throws ParseException {
 
-    /*
-    * Useful for report 3
-    * Returns an array of months that have happened in the current year for x values
-    * March = 2, not 3
-     */
-    public static int[] getMonths() {
-        //Get the current year and month
-        Date current = new Date();
-        int month = current.getMonth();
+        //All the values we will need
+        Date start = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        Date end = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 
-        //Initialize array
-        int months[] = new int[month + 1];
+        //year = 2020
+        int startYear = start.getYear() + 1900;
+        int endYear = end.getYear() + 1900;
 
-        for (int i = 0; i <= month; i++) {
-            months[i] = i + 1;
+        //Jan = 1
+        int startMonth = start.getMonth() + 1;
+        int endMonth = end.getMonth() + 1;
+
+        //find the total months we will need
+        int totalMonths = 0;
+        if (startYear != endYear) {
+            for (int i = startMonth; i <= 12; i++) {
+                totalMonths++;
+            }
+
+            for (int z = 1; z <= endMonth; z++) {
+                totalMonths++;
+            }
+        } else {
+            for (int i = startMonth; i <= endMonth; i++) {
+                totalMonths++;
+            }
         }
 
+        //start adding the months to the array
+        int[] months = new int[totalMonths];
+        if (startYear != endYear) {
+            int arrayPlacement = 0;
+            for (int i = startMonth; i <= 12; i++) {
+                months[arrayPlacement] = i;
+                arrayPlacement++;
+            }
+
+            for (int z = 1; z <= endMonth; z++) {
+                months[arrayPlacement] = z;
+                arrayPlacement++;
+            }
+        } else {
+            int arrayPlacement = 0;
+            for (int i = startMonth; i <= endMonth; i++) {
+                months[arrayPlacement] = i;
+                arrayPlacement++;
+            }
+        }
+
+        //System.out.println(startYear + " " + startMonth + " "+ " \n" + endYear + " " + endMonth + " ");
+        //System.out.println(totalMonths);
+        //System.out.println(Arrays.toString(months));
         return months;
     }
 
+    /*
+    * Useful for report 1
+    * Get the energy values for the specific months specified
+     */
+    public static double[] getEnergyForSpecificMonths(String startDate, String endDate) throws ParseException, SQLException {
+
+        //All the values we will need
+        Date start = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        Date end = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+
+        //year = 2020
+        int startYear = start.getYear() + 1900;
+        int endYear = end.getYear() + 1900;
+
+        //Bring in the access to the database
+        PccDB pccDB = new PccDB();
+
+        int[] months = getSpecificMonths(startDate, endDate);
+
+        //the energy month totals
+        double[] monthlyEnergy = new double[months.length];
+
+        //previous month holder
+        int prevMonth = 0;
+
+        //arrayholder
+        int arrayHolder = 0;
+        //loop for each month
+        for (int month : months) {
+            Date begin;
+            Date finish;
+
+            //need to see if the year changes
+            if (month < prevMonth) {
+                begin = TimeFactory.getRangeBeginning(endYear, month);
+                finish = TimeFactory.getRangeEnd(endYear, month);
+                //System.out.println(begin);
+                //System.out.println(finish);
+            } else {
+                begin = TimeFactory.getRangeBeginning(startYear, month);
+                finish = TimeFactory.getRangeEnd(startYear, month);
+                //System.out.println(begin);
+                //System.out.println(finish);
+            }
+
+            List<PCC> pccList = pccDB.getMonthSearchResults(begin, finish);
+
+            //Go through the list and add up the energy
+            double totalEnergy = 0;
+            for (PCC pcc : pccList) {
+                double energy = pcc.getAcOutputEnergy();
+                totalEnergy += energy;
+            }
+
+            monthlyEnergy[arrayHolder] = totalEnergy;
+
+            //fix values
+            arrayHolder++;
+            prevMonth = month;
+
+        }
+
+        //System.out.println(Arrays.toString(monthlyEnergy));
+        return monthlyEnergy;
+    }
+    
+    /*
+    * Useful for report 1, y2
+    */
+    public static double[] getCumulativeEnergyForSpecificMonths(String startDate, String endDate) throws ParseException, SQLException {
+
+        //get the monthly energies
+        double[] monthlyEnergies = getEnergyForSpecificMonths(startDate, endDate);
+
+        //get the cumulative energy values
+        double[] cumulativeEnergy;
+
+        cumulativeEnergy = new double[monthlyEnergies.length];
+        int i = 0;
+
+        for (double month : monthlyEnergies) {
+            if (i == 0) {
+                cumulativeEnergy[i] = month;
+            } else {
+                cumulativeEnergy[i] = month + cumulativeEnergy[i - 1];
+            }
+            i++;
+        }
+        //System.out.println(Arrays.toString(cumulativeEnergy));
+        return cumulativeEnergy;
+    }
+    
     /*
     * Useful for report 1. Monthly energy for y axis.
     * Monthly Report where you compare this years months to the same month of previous years.
@@ -81,6 +230,7 @@ public class ReportBuilder {
     * @param year, the year for the energy you'd like to recieve
      */
     public static double[] getEnergyByYear(int year) throws SQLException {
+        
         //Bring in the access to the database
         PccDB pccDB = new PccDB();
 
@@ -120,7 +270,7 @@ public class ReportBuilder {
 
         return monthlyEnergy;
     }
-
+    
     /*
     * Useful for report 2.
     * Get cumulative monthly energy value for a year.
@@ -135,14 +285,17 @@ public class ReportBuilder {
         double[] yearEnergy = new double[years.length];
         int i = 0;
         for (int year : years) {
+            //get the start and end date from the year
+            String start = year + "-01";
+            String end = year + "-12";
             double[] monthlyEnergies;
             try {
-                monthlyEnergies = ReportBuilder.getCumulativeEnergyByYear(year);
+                monthlyEnergies = ReportBuilderv2.getCumulativeEnergyByYear(year);
                 //System.out.println(Arrays.toString(monthlyEnergies));
                 yearEnergy[i] = monthlyEnergies[monthlyEnergies.length - 1];
                 i++;
             } catch (SQLException ex) {
-                Logger.getLogger(PCCDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
 
         }
@@ -150,9 +303,9 @@ public class ReportBuilder {
 
         return yearEnergy;
     }
-
+    
     /*
-    * Useful for report 1, cumulative energy for y2
+    * Useful for report 3, cumulative energy for y2
      */
     public static double[] getCumulativeEnergyByYear(int year) throws SQLException {
 
@@ -236,6 +389,13 @@ public class ReportBuilder {
         }
         
         return monthlyEnergy;
+    }
+
+    /*
+    * Chops the time off the date.
+     */
+    public static String chopTime(String date) {
+        return date.substring(0, 10);
     }
 
 }

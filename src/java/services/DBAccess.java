@@ -238,9 +238,14 @@ public class DBAccess {
     
     public static List<Users> getUsers() {
         UsersDB db = new UsersDB();
-        Users user = db.get(email);
-
-        return user;
+        List<Users> users= null;
+        try{
+            users = db.getAll();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return users;
     }
 
     public static void FacilityInsert(String email, int logType, String logText) {

@@ -1,4 +1,4 @@
-window.onload(handleGraph());
+window.onload = handleGraph();
 
 function handleGraph() {
     let choice = document.getElementById('reportChoice').value;
@@ -49,7 +49,7 @@ function buildReport1() {
     var data = [cumulativeEnergy, monthlyEnergy];
 
     var layout = {
-        title: 'Calender Year Energy @ PCC',
+        title: 'Monthly Energy @ PCC',
         'plot_bgcolor': 'rgba(242, 241, 239, 1)',
         'paper_bgcolor': 'rgba(236, 236, 236, 1)',
         yaxis: {

@@ -27,7 +27,7 @@ public class ReportBuilderv2 {
     public static int[] getAllMonths() {
         return new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     }
-    
+
     /*
     * Useful for report 3
     * Returns an array of months that have happened in the current year for x values
@@ -88,9 +88,11 @@ public class ReportBuilderv2 {
         int startMonth = start.getMonth() + 1;
         int endMonth = end.getMonth() + 1;
 
+        int yearDifference = endYear - startYear;
+
         //find the total months we will need
         int totalMonths = 0;
-        if (startYear != endYear) {
+        if (yearDifference == 1) {
             for (int i = startMonth; i <= 12; i++) {
                 totalMonths++;
             }
@@ -98,19 +100,53 @@ public class ReportBuilderv2 {
             for (int z = 1; z <= endMonth; z++) {
                 totalMonths++;
             }
+        } else if (yearDifference > 1) {
+            for (int i = startMonth; i <= 12; i++) {
+                totalMonths++;
+            }
+
+            for (int i = 1; i < yearDifference; i++) {
+                for (int x = 1; x <= 12; x++) {
+                    totalMonths++;
+                }
+            }
+
+            for (int z = 1; z <= endMonth; z++) {
+                totalMonths++;
+            }
+
         } else {
             for (int i = startMonth; i <= endMonth; i++) {
                 totalMonths++;
             }
         }
 
+        //System.out.println(totalMonths);
         //start adding the months to the array
         int[] months = new int[totalMonths];
-        if (startYear != endYear) {
+        if (yearDifference == 1) {
             int arrayPlacement = 0;
             for (int i = startMonth; i <= 12; i++) {
                 months[arrayPlacement] = i;
                 arrayPlacement++;
+            }
+
+            for (int z = 1; z <= endMonth; z++) {
+                months[arrayPlacement] = z;
+                arrayPlacement++;
+            }
+        } else if (yearDifference > 1) {
+            int arrayPlacement = 0;
+            for (int i = startMonth; i <= 12; i++) {
+                months[arrayPlacement] = i;
+                arrayPlacement++;
+            }
+
+            for (int i = 1; i < yearDifference; i++) {
+                for (int x = 1; x <= 12; x++) {
+                    months[arrayPlacement] = x;
+                    arrayPlacement++;
+                }
             }
 
             for (int z = 1; z <= endMonth; z++) {
@@ -144,6 +180,7 @@ public class ReportBuilderv2 {
         //year = 2020
         int startYear = start.getYear() + 1900;
         int endYear = end.getYear() + 1900;
+        int yearDifference = endYear - startYear;
 
         //Bring in the access to the database
         PccDB pccDB = new PccDB();
@@ -163,17 +200,32 @@ public class ReportBuilderv2 {
             Date begin;
             Date finish;
 
-            //need to see if the year changes
-            if (month < prevMonth) {
-                begin = TimeFactory.getRangeBeginning(endYear, month);
-                finish = TimeFactory.getRangeEnd(endYear, month);
-                //System.out.println(begin);
-                //System.out.println(finish);
+            if (yearDifference > 1) {
+                //need to see if the year changes
+                if (month < prevMonth) {
+                    begin = TimeFactory.getRangeBeginning(endYear - yearDifference + 1, month);
+                    finish = TimeFactory.getRangeEnd(endYear - yearDifference + 1, month);
+                    //System.out.println(begin);
+                    //System.out.println(finish);
+                } else {
+                    begin = TimeFactory.getRangeBeginning(startYear + yearDifference - 1, month);
+                    finish = TimeFactory.getRangeEnd(startYear + yearDifference - 1, month);
+                    //System.out.println(begin);
+                    //System.out.println(finish);
+                }
             } else {
-                begin = TimeFactory.getRangeBeginning(startYear, month);
-                finish = TimeFactory.getRangeEnd(startYear, month);
-                //System.out.println(begin);
-                //System.out.println(finish);
+                //need to see if the year changes
+                if (month < prevMonth) {
+                    begin = TimeFactory.getRangeBeginning(endYear, month);
+                    finish = TimeFactory.getRangeEnd(endYear, month);
+                    //System.out.println(begin);
+                    //System.out.println(finish);
+                } else {
+                    begin = TimeFactory.getRangeBeginning(startYear, month);
+                    finish = TimeFactory.getRangeEnd(startYear, month);
+                    //System.out.println(begin);
+                    //System.out.println(finish);
+                }
             }
 
             List<PCC> pccList = pccDB.getMonthSearchResults(begin, finish);
@@ -196,10 +248,10 @@ public class ReportBuilderv2 {
         //System.out.println(Arrays.toString(monthlyEnergy));
         return monthlyEnergy;
     }
-    
+
     /*
     * Useful for report 1, y2
-    */
+     */
     public static double[] getCumulativeEnergyForSpecificMonths(String startDate, String endDate) throws ParseException, SQLException {
 
         //get the monthly energies
@@ -222,7 +274,7 @@ public class ReportBuilderv2 {
         //System.out.println(Arrays.toString(cumulativeEnergy));
         return cumulativeEnergy;
     }
-    
+
     /*
     * Useful for report 1. Monthly energy for y axis.
     * Monthly Report where you compare this years months to the same month of previous years.
@@ -230,7 +282,7 @@ public class ReportBuilderv2 {
     * @param year, the year for the energy you'd like to recieve
      */
     public static double[] getEnergyByYear(int year) throws SQLException {
-        
+
         //Bring in the access to the database
         PccDB pccDB = new PccDB();
 
@@ -270,7 +322,7 @@ public class ReportBuilderv2 {
 
         return monthlyEnergy;
     }
-    
+
     /*
     * Useful for report 2.
     * Get cumulative monthly energy value for a year.
@@ -295,7 +347,7 @@ public class ReportBuilderv2 {
                 yearEnergy[i] = monthlyEnergies[monthlyEnergies.length - 1];
                 i++;
             } catch (SQLException ex) {
-                
+
             }
 
         }
@@ -303,7 +355,7 @@ public class ReportBuilderv2 {
 
         return yearEnergy;
     }
-    
+
     /*
     * Useful for report 3, cumulative energy for y2
      */
@@ -314,12 +366,12 @@ public class ReportBuilderv2 {
 
         //get the cumulative energy values
         double[] cumulativeEnergy;
-        
+
         //Dont cumulate months that havent happened yet
         if (year == Year.now().getValue()) {
             int[] currentYearMonths = getMonths();
             cumulativeEnergy = new double[currentYearMonths.length];
-            
+
             for (int z = 0; z < currentYearMonths.length; z++) {
                 if (z == 0) {
                     cumulativeEnergy[z] = monthlyEnergies[z];
@@ -330,7 +382,7 @@ public class ReportBuilderv2 {
         } else {
             cumulativeEnergy = new double[12];
             int i = 0;
-            
+
             for (double month : monthlyEnergies) {
                 if (i == 0) {
                     cumulativeEnergy[i] = month;
@@ -343,51 +395,51 @@ public class ReportBuilderv2 {
         //System.out.println(Arrays.toString(cumulativeEnergy));
         return cumulativeEnergy;
     }
-    
+
     /*
     * Useful report 4
     * Returns the last full month of the current year compared to the past five years
-    */
+     */
     public static double[] getMonthEnergyPastYears() throws ParseException, SQLException {
-        
+
         //PccDB
         PccDB pccDB = new PccDB();
-        
+
         //get the last full month of the year, this will return 2 for february
         // Be weary for december though so we will minus one and add one, because the way im
         // storing my month values store january as 1 at 0.
         Date date = new Date();
         int month = date.getMonth() - 1;
         int prevMonth = month + 1;
-        
+
         //get the years
         int[] years = getYears();
-        
+
         int i = 0;
         double totalEnergy;
         double[] monthlyEnergy = new double[years.length];
-        
-        for (int year: years) {
-        
+
+        for (int year : years) {
+
             //get a begin and end range
             Date begin = TimeFactory.getRangeBeginning(year, prevMonth);
             Date end = TimeFactory.getRangeEnd(year, prevMonth);
-            
+
             //make the query call
             List<PCC> pccList = pccDB.getMonthSearchResults(begin, end);
-            
+
             totalEnergy = 0;
-            
-            for (PCC pcc: pccList) {
+
+            for (PCC pcc : pccList) {
                 double energy = pcc.getAcOutputEnergy();
                 totalEnergy += energy;
             }
-            
+
             //add it to the array
             monthlyEnergy[i] = totalEnergy;
             i++;
         }
-        
+
         return monthlyEnergy;
     }
 

@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 /**
  *
  * @author 821320
@@ -25,7 +27,7 @@ public class Output {
         this.y1 = y1;
         this.y2 = y2;
     }
-    
+
     public Output(String x, double y1, double y2) {
         this.xString = x;
         this.y1 = y1;
@@ -89,15 +91,22 @@ public class Output {
 
         int length = x.length;
         String[] stringArray = new String[length];
-        
+        int yearCount = 0;
         int prevMonth = 0;
+
         for (int i = 0; i < length; i++) {
             String monthString = "";
             int xValue = x[i];
-            
+
             if (prevMonth > xValue) {
-                monthString = "| ";
+                yearCount++;
             }
+
+            for (int z = 0; z < yearCount; z++) {
+                monthString += "|";
+            }
+            monthString += " ";
+            
             //before judgment lol, need custom month string values
             switch (xValue) {
                 case 1:

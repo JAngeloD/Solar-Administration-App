@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Output;
 import utilities.ReportBuilderv2;
 
 /**
@@ -30,27 +31,49 @@ public class ReportOutputServlet extends HttpServlet {
         //set what we need to grab
         request.setAttribute("reportChoice", type[0]);
         request.setAttribute("year", Year.now().getValue());
+        request.setAttribute("start", start[0]);
+        request.setAttribute("end", end[0]);
+        
+        
 
         try {
-
+            //The report builder returns this correctly, gotta look into plotly later
+            //System.out.println(Arrays.toString(ReportBuilderv2.getSpecificMonths(start[0], end[0])));
+            Output o = new Output();
             switch (type[0]) {
                 case "1":
-                    request.setAttribute("x", ReportBuilderv2.getSpecificMonths(start[0], end[0]));
-                    request.setAttribute("y1", ReportBuilderv2.getEnergyForSpecificMonths(start[0], end[0]));
-                    request.setAttribute("y2", ReportBuilderv2.getCumulativeEnergyForSpecificMonths(start[0], end[0]));
+                    int[] x = ReportBuilderv2.getSpecificMonths(start[0], end[0]);
+                    String[] xStrings = o.getMonthStrings(ReportBuilderv2.getSpecificMonths(start[0], end[0]));
+                    double[] y1 = ReportBuilderv2.getEnergyForSpecificMonths(start[0], end[0]);
+                    double[] y2 = ReportBuilderv2.getCumulativeEnergyForSpecificMonths(start[0], end[0]);
+                    request.setAttribute("x", xStrings);
+                    request.setAttribute("y1", y1);
+                    request.setAttribute("y2", y2);
+                    request.setAttribute("output", o.getOutputArray(x, y1, y2));
                     break;
                 case "2":
-                    request.setAttribute("x", ReportBuilderv2.getYears());
-                    request.setAttribute("y1", ReportBuilderv2.getTotalEnergyByYears());
+                    int[] xCase2 = ReportBuilderv2.getYears();
+                    double[] y1Case2 = ReportBuilderv2.getTotalEnergyByYears();
+                    request.setAttribute("x", xCase2);
+                    request.setAttribute("y1", y1Case2);
+                    request.setAttribute("output", o.getOutputArray(xCase2, y1Case2));
                     break;
                 case "3":
-                    request.setAttribute("x", ReportBuilderv2.getAllMonths());
-                    request.setAttribute("y1", ReportBuilderv2.getEnergyByYear(Year.now().getValue()));
-                    request.setAttribute("y2", ReportBuilderv2.getCumulativeEnergyByYear(Year.now().getValue()));
+                    int[] xCase3 = ReportBuilderv2.getAllMonths();
+                    String[] xStringsCase3 = o.getMonthStrings(ReportBuilderv2.getAllMonths());
+                    double[] y1Case3 = ReportBuilderv2.getEnergyByYear(Year.now().getValue());
+                    double[] y2Case3 = ReportBuilderv2.getCumulativeEnergyByYear(Year.now().getValue());
+                    request.setAttribute("x", xStringsCase3);
+                    request.setAttribute("y1", y1Case3);
+                    request.setAttribute("y2", y2Case3);
+                    request.setAttribute("output", o.getOutputArray(xCase3, y1Case3, y2Case3));
                     break;
                 case "4":
-                    request.setAttribute("x", ReportBuilderv2.getYears());
-                    request.setAttribute("y1", ReportBuilderv2.getMonthEnergyPastYears());
+                    int[] xCase4 = ReportBuilderv2.getYears();
+                    double[] y1Case4 = ReportBuilderv2.getMonthEnergyPastYears();
+                    request.setAttribute("x", xCase4);
+                    request.setAttribute("y1", y1Case4);
+                    request.setAttribute("output", o.getOutputArray(xCase4, y1Case4));
                     break;
             }
 

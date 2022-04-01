@@ -1,0 +1,39 @@
+#mainHeader {
+    font-size: 400%;
+    text-align: center;
+    font-family: monospace;
+}
+
+#secondHeader {
+    text-align: center;
+    font-family: monospace;
+}
+
+#reportDiv {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#graphBox {
+    display: inline-block;
+}
+
+#tableBox {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+    width: 50%;
+}
+
+.resultsTable {
+    width: 100%;
+    font-size: 200%;
+    border: 1px solid #000000;
+    text-align: right;
+}
+
+td {
+  border: 1px solid;
+  width: fit-content;
+}

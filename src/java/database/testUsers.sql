@@ -2,6 +2,7 @@ DELETE FROM user_type WHERE type_id <= 2;
 
 INSERT INTO user_type VALUES( 1, 1, "Facility Operator" );
 INSERT INTO user_type VALUES( 2, 2, "Facility Manager" );
+INSERT INTO user_type VALUES( 3, 3, "Maintenance" );
 
 DELETE FROM users WHERE email = "facility_manager@localhost";
 DELETE FROM users WHERE email = "facility_operator@localhost";

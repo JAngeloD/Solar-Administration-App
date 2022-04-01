@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,15 +30,17 @@
                 </label>
                 <br>
                 <label> User Type: 
-                    <select>
-                        <option value="1" name="userType">Manager</option>
-                        <option value="2" name="userType">Facility Operator</option>
-                        <option value="3" name="userType">Maintenance / Engineering</option>
+                    <select name="type" id="type" required>
+                        <option value="" disabled selected>select</option>
+                        <option value="2" >Facility Manager</option>
+                        <option value="1" >Facility Operator</option>
+                        <option value="3" >Maintenance / Engineering</option>
                     </select>
                 </label>
                 <br>
                 <label>User Status: 
-                    <select>
+                    <select name="active" required>
+                        <option value="" disabled selected>select</option>
                         <option value="0" name="active">Inactive</option>
                         <option value="1" name="active">Active</option>
                     </select>
@@ -76,13 +79,14 @@
                 <c:forEach items="${list}" var="item">
                     <tr>
                         <td>${item.email}</td>
-                        <td>${item.type_id.type_name}</td>
+                        <td>${item.typeId.typeName}</td>
                         <td>${item.firstName}</td>
                         <td>${item.lastName}</td>
                         <td>
-                            <c:if test = "${item.active}">
-                                ${activeMessage}
-                            </c:if>
+                            <c:choose>
+                                <c:when test="${item.active}">Active</c:when>
+                                <c:when test="${!item.active}">Inactive</c:when>
+                             </c:choose>
                         </td>                    
                         <form method="POST" action="useraccounts">
                             <td>
@@ -100,32 +104,37 @@
             <h2>Edit user</h2>               
             <form method="POST" action="useraccounts">
                 <label>Email: 
-                    <input type="text" id="eml" name="email_edit" value="${email_edit}"
+                    <input type="text" id="eml" name="email_edit" value="${email_e}"
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" readonly>
                 </label>
                 <br>           
                 <label> User Type: 
-                    <select name="typeEdit" id="type" placeholder="${type_edit}">
-                        <option value="1" name="userType">Manager</option>
-                        <option value="2" name="userType">Facility Operator</option>
-                        <option value="3" name="userType">Maintenance / Engineering</option>
+                    <select name="type_edit">
+                        <option value="${typeval_e}" selected>${type_e}</option> 
+                        <option value="2" >Facility Manager</option>
+                        <option value="1" >Facility Operator</option>
+                        <option value="3" >Maintenance</option>
                     </select>
                 </label>
                 <br>
-                <label> Active
-                    <input type="checkbox" name="active_edit" value="${active_edit}">
+                <label>User Status:                                         
+                    <select name="active_edit">
+                        <option value="${activeVal_e}" selected>${active_e}</option>
+                        <option value="0" >Inactive</option>
+                        <option value="1" >Active</option>
+                    </select>
                 </label>
                 <br>
                 <label>First Name: 
-                    <input type="text" id="fname" name="fname_edit" value="${fname_edit}" >
+                    <input type="text" id="fname" name="fname_edit" value="${fname_e}" >
                 </label>
                 <br>
                 <label>Last Name: 
-                    <input type="text" id="lname" name="lname_edit" value="${lname_edit}" >
+                    <input type="text" id="lname" name="lname_edit" value="${lname_e}" >
                 </label>
                 <br>
                 <label>Password: 
-                    <input type="password" id="pass" name="password_edit" value="${password_edit}">
+                    <input type="password" id="pass" name="password_edit" value="${password_e}">
                 </label>
                 <br>                
                 <input type="hidden" name="action" value="saveUser">

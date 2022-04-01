@@ -247,6 +247,55 @@ public class DBAccess {
         }
         return users;
     }
+    
+    public static void updateUser(String email, int typeID, int active, String fname, String lname, String pass){
+        UsersDB db = new UsersDB();
+        try{
+            Users user = new Users();  
+            user.setEmail(email);
+            UserTypeDB utdb = new UserTypeDB();
+            UserType ut = utdb.get(typeID);
+            user.setTypeId(ut);
+            if(active == 1){
+                user.setActive(Boolean.TRUE);
+            }
+            else if(active == 0){
+                user.setActive(Boolean.FALSE);
+            }
+            user.setFirstName(fname);
+            user.setLastName(lname);
+            user.setPassword(pass);
+            db.update(user);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
+    public static void insertUser(String email, int typeID, int active, String fname, String lname, String pass){
+        UsersDB db = new UsersDB();
+        try{
+            Users user = new Users();  
+            user.setEmail(email);
+            UserTypeDB utdb = new UserTypeDB();
+            UserType ut = utdb.get(typeID);
+            user.setTypeId(ut);
+            if(active == 1){
+                user.setActive(Boolean.TRUE);
+            }
+            else if(active == 0){
+                user.setActive(Boolean.FALSE);
+            }
+            user.setFirstName(fname);
+            user.setLastName(lname);
+            user.setPassword(pass);    
+            db.insert(user);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
 
     public static void FacilityInsert(String email, int logType, String logText) {
         FacilityLogsDB db = new FacilityLogsDB();
@@ -262,7 +311,7 @@ public class DBAccess {
         log.setLogText(logText);
         
         log.setTimeStamp(TimeFactory.getCurrentTimestamp());
-        log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
+        //log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
         
         try {
             db.insert(log);

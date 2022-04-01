@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
@@ -47,30 +42,52 @@ public class UserAccountServlet extends HttpServlet {
         DBAccess dba = new DBAccess();
         String action = request.getParameter("action");
         if(action.equals("addUser")){
-            
+            String email = request.getParameter("email");
+            int typeID = Integer.parseInt(request.getParameter("type"));
+            int active = Integer.parseInt(request.getParameter("active"));
+            String fName = request.getParameter("fistName");
+            String lName = request.getParameter("lastName");
+            String password = request.getParameter("password");
+            dba.insertUser(email, typeID, active, fName, lName, password);
+            request.setAttribute("message", "User was created successful");
+            doGet(request, response);
         }
         else if(action.equals("fillEdit")){
             String email = request.getParameter("email");
             Users user = dba.UsersGet(email);
-            request.setAttribute("email_edit", user.getEmail());
-            request.setAttribute("type_edit", user.getTypeId().getTypeName());
-            request.setAttribute("active_edit", user.getActive());
-            request.setAttribute("fname_edit", user.getFirstName());
-            request.setAttribute("lname_edit", user.getLastName());
-            request.setAttribute("password_edit", user.getPassword());
+            request.setAttribute("email_e", user.getEmail());
+            request.setAttribute("typeval_e", user.getTypeId().getTypeId());
+            request.setAttribute("type_e", user.getTypeId().getTypeName());
+            if(user.getActive()){
+                request.setAttribute("active_e", "Active");
+                request.setAttribute("activeVal_e", 1);
+            }
+            else{
+                request.setAttribute("active_e", "Inactive");
+                request.setAttribute("activeVal_e", 0);
+            }
+            
+            request.setAttribute("fname_e", user.getFirstName());
+            request.setAttribute("lname_e", user.getLastName());
+            request.setAttribute("password_e", user.getPassword());
             doGet(request, response);
         }
         else if(action.equals("saveUser")){
             String email = request.getParameter("email_edit");
             int typeID = Integer.parseInt(request.getParameter("type_edit"));
-            BIT active = request.getParameter("active_edit");
+            int active = Integer.parseInt(request.getParameter("active_edit"));
             String fName = request.getParameter("fname_edit");
             String lName = request.getParameter("lname_edit");
             String password = request.getParameter("password_edit");
-            
-        }
-        
-        
+            try{
+                dba.updateUser(email, typeID, active, fName, lName, password);
+                request.setAttribute("messageEdit", "Edit was successful");
+                doGet(request, response);
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }        
     }
 
 }

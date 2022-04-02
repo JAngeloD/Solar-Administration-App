@@ -6,22 +6,26 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
- * @author hazco
+ * @author 856622
  */
 @Entity
 @Table(name = "feeder")
@@ -29,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Feeder.findAll", query = "SELECT f FROM Feeder f")
     , @NamedQuery(name = "Feeder.findByRecordID", query = "SELECT f FROM Feeder f WHERE f.recordID = :recordID")
+    , @NamedQuery(name = "Feeder.findByTimeStampId", query = "SELECT f FROM Feeder f WHERE f.timeStampId = :timeStampId")
     , @NamedQuery(name = "Feeder.findByTimeStamp", query = "SELECT f FROM Feeder f WHERE f.timeStamp = :timeStamp")
     , @NamedQuery(name = "Feeder.findByDeviceId", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId")
     , @NamedQuery(name = "Feeder.findByBreakerStatus", query = "SELECT f FROM Feeder f WHERE f.breakerStatus = :breakerStatus")
@@ -41,19 +46,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseCCurrent", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseAbVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseBcVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
-    , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
-public class Feeder implements Serializable {
+    , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
+    ,@NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
+public class Feeder extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "recordID")
+    @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
-    @Lob
     @Column(name = "time_stamp_id")
-    private String timeStampId;
+    private Integer timeStampId;
     @Basic(optional = false)
-    @Column(name = "time_stamp")
+    @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
     @Column(name = "device_id")
@@ -61,28 +66,46 @@ public class Feeder implements Serializable {
     @Column(name = "breaker_status")
     private Boolean breakerStatus;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "ac_output_real_power")
+    @Column(name = "ac_output_real_power", precision = 22)
     private Double acOutputRealPower;
-    @Column(name = "ac_output_apparent_power")
+    @Column(name = "ac_output_apparent_power", precision = 22)
     private Double acOutputApparentPower;
-    @Column(name = "ac_output_reactive_power")
+    @Column(name = "ac_output_reactive_power", precision = 22)
     private Double acOutputReactivePower;
-    @Column(name = "ac_output_power_factor")
+    @Column(name = "ac_output_power_factor", precision = 22)
     private Double acOutputPowerFactor;
-    @Column(name = "ac_output_phase_a_current")
+    @Column(name = "ac_output_phase_a_current", precision = 22)
     private Double acOutputPhaseACurrent;
-    @Column(name = "ac_output_phase_b_current")
+    @Column(name = "ac_output_phase_b_current", precision = 22)
     private Double acOutputPhaseBCurrent;
-    @Column(name = "ac_output_phase_c_current")
+    @Column(name = "ac_output_phase_c_current", precision = 22)
     private Double acOutputPhaseCCurrent;
-    @Column(name = "ac_output_phase_ab_voltage")
+    @Column(name = "ac_output_phase_ab_voltage", precision = 22)
     private Double acOutputPhaseAbVoltage;
-    @Column(name = "ac_output_phase_bc_voltage")
+    @Column(name = "ac_output_phase_bc_voltage", precision = 22)
     private Double acOutputPhaseBcVoltage;
-    @Column(name = "ac_output_phase_ca_voltage")
+    @Column(name = "ac_output_phase_ca_voltage", precision = 22)
     private Double acOutputPhaseCaVoltage;
 
     public Feeder() {
+    }
+
+    public Feeder(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Boolean breakerStatus, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.deviceId = deviceId;
+        this.breakerStatus = breakerStatus;
+        this.acOutputRealPower = acOutputRealPower;
+        this.acOutputApparentPower = acOutputApparentPower;
+        this.acOutputReactivePower = acOutputReactivePower;
+        this.acOutputPowerFactor = acOutputPowerFactor;
+        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
+        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
+        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
 
     public Feeder(String recordID) {
@@ -102,11 +125,11 @@ public class Feeder implements Serializable {
         this.recordID = recordID;
     }
 
-    public String getTimeStampId() {
+    public Integer getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(String timeStampId) {
+    public void setTimeStampId(Integer timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -126,8 +149,8 @@ public class Feeder implements Serializable {
         this.deviceId = deviceId;
     }
 
-    public Boolean getBreakerStatus() {
-        return breakerStatus;
+    public Double getBreakerStatus() {
+        return (breakerStatus) ? 1.0 : 0;
     }
 
     public void setBreakerStatus(Boolean breakerStatus) {
@@ -214,6 +237,10 @@ public class Feeder implements Serializable {
         this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
     }
 
+    public Double getAcOutputPhaseAverageVoltage() {
+        return (acOutputPhaseCaVoltage + acOutputPhaseBcVoltage + acOutputPhaseAbVoltage) / 3;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -239,4 +266,14 @@ public class Feeder implements Serializable {
         return "models.Feeder[ recordID=" + recordID + " ]";
     }
     
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.FeederInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Feeder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }     
+    
+
 }

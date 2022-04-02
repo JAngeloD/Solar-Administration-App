@@ -53,8 +53,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void PccInsert() {
-
+    public static void PccInsert(PCC newPCC) throws SQLException {
+        PccDB pccDB = new PccDB();
+        pccDB.insert(newPCC);
     }
 
     public static void PccUpdate() {
@@ -98,8 +99,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void FeederInsert() {
-
+    public static void FeederInsert(Feeder newFeeder) throws SQLException {
+        FeederDB feederDB = new FeederDB();
+        feederDB.insert(newFeeder);
     }
 
     public static void FeederUpdate() {
@@ -142,8 +144,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void InverterInsert() {
-
+    public static void InverterInsert(Inverter newInverter) throws SQLException {
+        InverterDB inverterDB = new InverterDB();
+        inverterDB.insert(newInverter);
     }
 
     public static void InverterUpdate() {
@@ -212,17 +215,6 @@ public class DBAccess {
         return logs;
     }
 
-    // maybe accept a Log object then get the attribute that isnt null so we can pass
-    // email, or timestamp, or whatever
-    //    public static FacilityLogs FacilityGetLog(Integer logId, String logType, Date timeStamp) {
-    //        throw new UnsupportedOperationException("Not supported yet.");
-    //        
-    //        FacilityLogsDB facilitydb = new FacilityLogsDB();
-    //        FacilityLogs log = facilitydb.get(logId);
-    //        
-    //        return log;
-    //
-    //    }
     public static FacilityLogs FacilityGetLog(int logId) {
         FacilityLogsDB facilitydb = new FacilityLogsDB();
         FacilityLogs log = facilitydb.get(logId);
@@ -320,11 +312,30 @@ public class DBAccess {
         }
     }
 
+    public static void FacilityInsertDatabase(Facility newFacility) throws SQLException {
+        FacilityDB facilitydb = new FacilityDB();
+        facilitydb.insert(newFacility);
+    }
+    
     public static void FacilityUpdate() {
 
     }
 
     public static void FacilityDelete() {
+
+    }
+
+
+    public static void FacilityLogsInsert(FacilityLogs newLogs) throws SQLException {
+        FacilityLogsDB facilitylogsdb = new FacilityLogsDB();
+        facilitylogsdb.insert(newLogs);
+    }
+     
+    public static void FacilityLogsUpdate() {
+
+    }
+
+    public static void FacilityLogsDelete() {
 
     }
 

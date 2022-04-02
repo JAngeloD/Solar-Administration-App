@@ -6,22 +6,26 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
- * @author hazco
+ * @author 856622
  */
 @Entity
 @Table(name = "inverter")
@@ -29,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Inverter.findAll", query = "SELECT i FROM Inverter i")
     , @NamedQuery(name = "Inverter.findByRecordID", query = "SELECT i FROM Inverter i WHERE i.recordID = :recordID")
+    , @NamedQuery(name = "Inverter.findByTimeStampId", query = "SELECT i FROM Inverter i WHERE i.timeStampId = :timeStampId")
     , @NamedQuery(name = "Inverter.findByTimeStamp", query = "SELECT i FROM Inverter i WHERE i.timeStamp = :timeStamp")
     , @NamedQuery(name = "Inverter.findByDeviceId", query = "SELECT i FROM Inverter i WHERE i.deviceId = :deviceId")
     , @NamedQuery(name = "Inverter.findByAcOutputEnergy", query = "SELECT i FROM Inverter i WHERE i.acOutputEnergy = :acOutputEnergy")
@@ -45,56 +50,78 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inverter.findByDcRealPower", query = "SELECT i FROM Inverter i WHERE i.dcRealPower = :dcRealPower")
     , @NamedQuery(name = "Inverter.findByDcVolt", query = "SELECT i FROM Inverter i WHERE i.dcVolt = :dcVolt")
     , @NamedQuery(name = "Inverter.findByDcCurrent", query = "SELECT i FROM Inverter i WHERE i.dcCurrent = :dcCurrent")
-    , @NamedQuery(name = "Inverter.findByEfficiency", query = "SELECT i FROM Inverter i WHERE i.efficiency = :efficiency")})
-public class Inverter implements Serializable {
+    , @NamedQuery(name = "Inverter.findByEfficiency", query = "SELECT i FROM Inverter i WHERE i.efficiency = :efficiency")
+    , @NamedQuery(name = "Inverter.findByTimeStampAndDeviceID", query = "SELECT i FROM Inverter i WHERE i.deviceId = :deviceId AND i.timeStampId = :timeStampId")})
+public class Inverter extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "recordID")
+    @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
-    @Lob
     @Column(name = "time_stamp_id")
-    private String timeStampId;
+    private Integer timeStampId;
     @Basic(optional = false)
-    @Column(name = "time_stamp")
+    @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
     @Column(name = "device_id")
     private Integer deviceId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "ac_output_energy")
+    @Column(name = "ac_output_energy", precision = 22)
     private Double acOutputEnergy;
-    @Column(name = "ac_output_real_power")
+    @Column(name = "ac_output_real_power", precision = 22)
     private Double acOutputRealPower;
-    @Column(name = "ac_output_apparent_power")
+    @Column(name = "ac_output_apparent_power", precision = 22)
     private Double acOutputApparentPower;
-    @Column(name = "ac_output_reactive_power")
+    @Column(name = "ac_output_reactive_power", precision = 22)
     private Double acOutputReactivePower;
-    @Column(name = "ac_output_power_factor")
+    @Column(name = "ac_output_power_factor", precision = 22)
     private Double acOutputPowerFactor;
-    @Column(name = "ac_output_phase_a_current")
+    @Column(name = "ac_output_phase_a_current", precision = 22)
     private Double acOutputPhaseACurrent;
-    @Column(name = "ac_output_phase_b_current")
+    @Column(name = "ac_output_phase_b_current", precision = 22)
     private Double acOutputPhaseBCurrent;
-    @Column(name = "ac_output_phase_c_current")
+    @Column(name = "ac_output_phase_c_current", precision = 22)
     private Double acOutputPhaseCCurrent;
-    @Column(name = "ac_output_phase_ab_voltage")
+    @Column(name = "ac_output_phase_ab_voltage", precision = 22)
     private Double acOutputPhaseAbVoltage;
-    @Column(name = "ac_output_phase_bc_voltage")
+    @Column(name = "ac_output_phase_bc_voltage", precision = 22)
     private Double acOutputPhaseBcVoltage;
-    @Column(name = "ac_output_phase_ca_voltage")
+    @Column(name = "ac_output_phase_ca_voltage", precision = 22)
     private Double acOutputPhaseCaVoltage;
-    @Column(name = "dc_real_power")
+    @Column(name = "dc_real_power", precision = 22)
     private Double dcRealPower;
-    @Column(name = "dc_volt")
+    @Column(name = "dc_volt", precision = 22)
     private Double dcVolt;
-    @Column(name = "dc_current")
+    @Column(name = "dc_current", precision = 22)
     private Double dcCurrent;
-    @Column(name = "efficiency")
+    @Column(name = "efficiency", precision = 22)
     private Double efficiency;
 
     public Inverter() {
+    }
+
+    public Inverter(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.deviceId = deviceId;
+        this.acOutputEnergy = acOutputEnergy;
+        this.acOutputRealPower = acOutputRealPower;
+        this.acOutputApparentPower = acOutputApparentPower;
+        this.acOutputReactivePower = acOutputReactivePower;
+        this.acOutputPowerFactor = acOutputPowerFactor;
+        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
+        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
+        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
+        this.dcRealPower = dcRealPower;
+        this.dcVolt = dcVolt;
+        this.dcCurrent = dcCurrent;
+        this.efficiency = efficiency;
     }
 
     public Inverter(String recordID) {
@@ -114,11 +141,11 @@ public class Inverter implements Serializable {
         this.recordID = recordID;
     }
 
-    public String getTimeStampId() {
+    public Integer getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(String timeStampId) {
+    public void setTimeStampId(Integer timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -282,5 +309,14 @@ public class Inverter implements Serializable {
     public String toString() {
         return "models.Inverter[ recordID=" + recordID + " ]";
     }
+
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.InverterInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inverter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
     
 }

@@ -6,22 +6,26 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
- * @author hazco
+ * @author 856622
  */
 @Entity
 @Table(name = "facility")
@@ -29,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Facility.findAll", query = "SELECT f FROM Facility f")
     , @NamedQuery(name = "Facility.findByRecordID", query = "SELECT f FROM Facility f WHERE f.recordID = :recordID")
+    , @NamedQuery(name = "Facility.findByTimeStampId", query = "SELECT f FROM Facility f WHERE f.timeStampId = :timeStampId")
     , @NamedQuery(name = "Facility.findByTimeStamp", query = "SELECT f FROM Facility f WHERE f.timeStamp = :timeStamp")
     , @NamedQuery(name = "Facility.findBySolarirridiancePOA", query = "SELECT f FROM Facility f WHERE f.solarirridiancePOA = :solarirridiancePOA")
     , @NamedQuery(name = "Facility.findBySolarirridianceGHI", query = "SELECT f FROM Facility f WHERE f.solarirridianceGHI = :solarirridianceGHI")
@@ -36,35 +41,46 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Facility.findByAmbientTemperature", query = "SELECT f FROM Facility f WHERE f.ambientTemperature = :ambientTemperature")
     , @NamedQuery(name = "Facility.findByBackOfPanelTemperature2", query = "SELECT f FROM Facility f WHERE f.backOfPanelTemperature2 = :backOfPanelTemperature2")
     , @NamedQuery(name = "Facility.findByWindSpeed", query = "SELECT f FROM Facility f WHERE f.windSpeed = :windSpeed")})
-public class Facility implements Serializable {
+public class Facility extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "recordID")
+    @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
-    @Lob
     @Column(name = "time_stamp_id")
-    private String timeStampId;
+    private Integer timeStampId;
     @Basic(optional = false)
-    @Column(name = "time_stamp")
+    @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "solar_irridiance_POA")
+    @Column(name = "solar_irridiance_POA", precision = 22)
     private Double solarirridiancePOA;
-    @Column(name = "solar_irridiance_GHI")
+    @Column(name = "solar_irridiance_GHI", precision = 22)
     private Double solarirridianceGHI;
-    @Column(name = "back_of_panel_temperature_1")
+    @Column(name = "back_of_panel_temperature_1", precision = 22)
     private Double backOfPanelTemperature1;
-    @Column(name = "ambient_temperature")
+    @Column(name = "ambient_temperature", precision = 22)
     private Double ambientTemperature;
-    @Column(name = "back_of_panel_temperature_2")
+    @Column(name = "back_of_panel_temperature_2", precision = 22)
     private Double backOfPanelTemperature2;
-    @Column(name = "wind_speed")
+    @Column(name = "wind_speed", precision = 22)
     private Double windSpeed;
 
     public Facility() {
+    }
+
+    public Facility(String recordID, Integer timeStampId, Date timeStamp, Double solarirridiancePOA, Double solarirridianceGHI, Double backOfPanelTemperature1, Double ambientTemperature, Double backOfPanelTemperature2, Double windSpeed) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.solarirridiancePOA = solarirridiancePOA;
+        this.solarirridianceGHI = solarirridianceGHI;
+        this.backOfPanelTemperature1 = backOfPanelTemperature1;
+        this.ambientTemperature = ambientTemperature;
+        this.backOfPanelTemperature2 = backOfPanelTemperature2;
+        this.windSpeed = windSpeed;
     }
 
     public Facility(String recordID) {
@@ -84,11 +100,11 @@ public class Facility implements Serializable {
         this.recordID = recordID;
     }
 
-    public String getTimeStampId() {
+    public Integer getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(String timeStampId) {
+    public void setTimeStampId(Integer timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -170,7 +186,16 @@ public class Facility implements Serializable {
 
     @Override
     public String toString() {
-        return "models.Facility[ recordID=" + recordID + " ]";
+        return "models.Facility[ recordID=" + recordID + " " + timeStampId + " " + timeStamp + " " + solarirridiancePOA + " " + solarirridianceGHI + " " + backOfPanelTemperature1 + " " +  ambientTemperature  + " " + backOfPanelTemperature2 + " " + windSpeed + " ]";
     }
     
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.FacilityInsertDatabase(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Facility.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+
 }

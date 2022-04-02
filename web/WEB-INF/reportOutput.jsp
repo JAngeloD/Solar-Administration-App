@@ -43,7 +43,7 @@
                         <c:forEach var="out" items="${output}">
                             <tr>
                                 <td>
-                                    ${out.x}
+                                    ${out.xString}
                                 </td>
                                 <td>
                                     ${out.y1}

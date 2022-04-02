@@ -1,4 +1,4 @@
-window.onload(handleGraph());
+window.onload = handleGraph();
 
 function handleGraph() {
     let choice = document.getElementById('reportChoice').value;
@@ -49,7 +49,7 @@ function buildReport1() {
     var data = [cumulativeEnergy, monthlyEnergy];
 
     var layout = {
-        title: 'Calender Year Energy @ PCC',
+        title: 'Monthly Energy @ PCC',
         'plot_bgcolor': 'rgba(242, 241, 239, 1)',
         'paper_bgcolor': 'rgba(236, 236, 236, 1)',
         yaxis: {
@@ -67,8 +67,8 @@ function buildReport1() {
             title: 'Month',
             domain: [0, 12]
         },
-        width: 300,
-        height: 300,
+        width: 500,
+        height: 350,
         automargin: true
 
     };
@@ -111,8 +111,8 @@ function buildReport2() {
             title: 'Year',
             domain: [0, 6]
         },
-        width: 650,
-        height: 500,
+        width: 500,
+        height: 350,
         automargin: true
 
     };
@@ -176,8 +176,8 @@ function buildReport3() {
             title: 'Month',
             domain: [0, 12]
         },
-        width: 650,
-        height: 500,
+        width: 500,
+        height: 350,
         automargin: true
 
     };
@@ -225,8 +225,8 @@ function buildReport4() {
             title: 'Year',
             domain: [0, 6]
         },
-        width: 650,
-        height: 500,
+        width: 500,
+        height: 350,
         automargin: true
 
     };

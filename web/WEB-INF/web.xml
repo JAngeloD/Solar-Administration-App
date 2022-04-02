@@ -68,6 +68,10 @@
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>ReadLogServlet</servlet-name>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>UserAccountServlet</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <servlet-class>servlets.BreakerControllerServlet</servlet-class>
@@ -127,6 +131,10 @@
     <servlet>
         <servlet-name>PlotTest</servlet-name>
         <servlet-class>servlets.PlotTest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserAccountServlet</servlet-name>
+        <servlet-class>servlets.UserAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ReportOutputServlet</servlet-name>
@@ -231,6 +239,10 @@
     <servlet-mapping>
         <servlet-name>PlotTest</servlet-name>
         <url-pattern>/plottest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserAccountServlet</servlet-name>
+        <url-pattern>/useraccounts</url-pattern>        
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReportOutputServlet</servlet-name>

@@ -43,9 +43,10 @@ public class ReportOutputServlet extends HttpServlet {
             switch (type[0]) {
                 case "1":
                     int[] x = ReportBuilderv2.getSpecificMonths(start[0], end[0]);
+                    String[] xStrings = o.getMonthStrings(ReportBuilderv2.getSpecificMonths(start[0], end[0]));
                     double[] y1 = ReportBuilderv2.getEnergyForSpecificMonths(start[0], end[0]);
                     double[] y2 = ReportBuilderv2.getCumulativeEnergyForSpecificMonths(start[0], end[0]);
-                    request.setAttribute("x", x);
+                    request.setAttribute("x", xStrings);
                     request.setAttribute("y1", y1);
                     request.setAttribute("y2", y2);
                     request.setAttribute("output", o.getOutputArray(x, y1, y2));
@@ -59,9 +60,10 @@ public class ReportOutputServlet extends HttpServlet {
                     break;
                 case "3":
                     int[] xCase3 = ReportBuilderv2.getAllMonths();
+                    String[] xStringsCase3 = o.getMonthStrings(ReportBuilderv2.getAllMonths());
                     double[] y1Case3 = ReportBuilderv2.getEnergyByYear(Year.now().getValue());
                     double[] y2Case3 = ReportBuilderv2.getCumulativeEnergyByYear(Year.now().getValue());
-                    request.setAttribute("x", xCase3);
+                    request.setAttribute("x", xStringsCase3);
                     request.setAttribute("y1", y1Case3);
                     request.setAttribute("y2", y2Case3);
                     request.setAttribute("output", o.getOutputArray(xCase3, y1Case3, y2Case3));

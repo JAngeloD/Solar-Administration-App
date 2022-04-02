@@ -39,14 +39,14 @@ public class FacilityDB {
         return record;
     }
 
-    public void insert(Facility event) throws SQLException {
+    public void insert(Facility facility) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         
         try {
             trans.begin();
-            em.persist(event);
+            em.persist(facility);
             trans.commit();
         } catch (Exception ex) {
             trans.rollback();

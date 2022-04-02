@@ -7,8 +7,11 @@ package models;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +24,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
@@ -37,7 +42,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "FacilityLogs.findByTimeStampId", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId = :timeStampId")
     , @NamedQuery(name = "FacilityLogs.findByTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStamp = :timeStamp")
     , @NamedQuery(name = "FacilityLogs.findBetweenTimeStamp", query = "SELECT f FROM FacilityLogs f WHERE f.timeStampId BETWEEN :start AND :end AND f.logType = :logType")})
-public class FacilityLogs implements Serializable {
+public class FacilityLogs extends TransferDatabase implements Serializable {
 
     @Column(name = "time_stamp_id")
     private BigInteger timeStampId;
@@ -166,4 +171,13 @@ public class FacilityLogs implements Serializable {
                 return "Undefined";
         }
     }
+    
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.FacilityLogsInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(FacilityLogs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 }

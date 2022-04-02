@@ -6,7 +6,10 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
@@ -36,7 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Facility.findByAmbientTemperature", query = "SELECT f FROM Facility f WHERE f.ambientTemperature = :ambientTemperature")
     , @NamedQuery(name = "Facility.findByBackOfPanelTemperature2", query = "SELECT f FROM Facility f WHERE f.backOfPanelTemperature2 = :backOfPanelTemperature2")
     , @NamedQuery(name = "Facility.findByWindSpeed", query = "SELECT f FROM Facility f WHERE f.windSpeed = :windSpeed")})
-public class Facility implements Serializable {
+public class Facility extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -183,5 +188,14 @@ public class Facility implements Serializable {
     public String toString() {
         return "models.Facility[ recordID=" + recordID + " " + timeStampId + " " + timeStamp + " " + solarirridiancePOA + " " + solarirridianceGHI + " " + backOfPanelTemperature1 + " " +  ambientTemperature  + " " + backOfPanelTemperature2 + " " + windSpeed + " ]";
     }
+    
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.FacilityInsertDatabase(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Facility.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 
 }

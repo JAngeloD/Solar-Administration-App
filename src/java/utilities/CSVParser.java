@@ -49,7 +49,7 @@ public class CSVParser {
             int previousDevice = -1;
 
             ArrayList<String> labelLine = new ArrayList<>(); //
-            ArrayList<String> dataLine = new ArrayList<>(); 
+            ArrayList<String> dataLine = new ArrayList<>();
             ArrayList<String[]> dataLines = new ArrayList<>(); //2
             for (String get : getterMethods) {
 
@@ -60,29 +60,26 @@ public class CSVParser {
 
                 //Retrieves the data from the DB 
                 String data = "";
-                for (Method m : models) {
-                    if (m.getName().equals(modelName + "Get")) {
-                        Object[] args = {attribute, timestamp};
-                        data = String.valueOf(m.invoke(db, args));
+                try {
+                    for (Method m : models) {
+                        if (m.getName().equals(modelName + "Get")) {
+                            Object[] args = {attribute, timestamp};
+                            data = String.valueOf(m.invoke(db, args));
+                        }
                     }
+                } catch (Exception e) {
+                    continue;
                 }
 
                 //If a change has occured in device numbers. Push into complete dataline array
                 String deviceNum = attribute.replaceAll("[^\\d]", "");
-                if (!deviceNum.equals("") && Integer.parseInt(deviceNum) != previousDevice) {
+                if (!previousModel.equals("") && !deviceNum.equals("") && Integer.parseInt(deviceNum) != previousDevice) {
                     dataLines.add(convertListToArray(dataLine));
                     dataLine.clear();
-                    
-                    //Fills dataLine
-                    for(int i = 0; i < labelLine.size(); i++) {
-                        dataLine.add("");
-                    }
-                    
                 }
 
                 //If the type of model has changed push into the final CSV and resets the 3 buffer arrays.
                 if (!previousModel.equals("") && !modelName.equals(previousModel)) {
-                    System.out.println("GAY");
                     dataLines.add(convertListToArray(dataLine)); //Flushes out any remaining lines into the full line
 
                     CSVList.add(convertListToArray(labelLine)); //Label goes in first
@@ -90,8 +87,8 @@ public class CSVParser {
                         CSVList.add(dataLines.get(i));
                     }
 
-                    
                     labelLine.clear();
+
                     dataLine.clear();
                     dataLines.clear();
                     previousModel = "";
@@ -101,23 +98,35 @@ public class CSVParser {
                 //Checks if label exists. If it does place it on the same index in the data line. If it doesn't add a new one and append
                 String attributeOnly = attribute.replaceAll("\\d", "");
                 int index = labelLine.indexOf(attributeOnly);
+                boolean added = false;
                 if (index > 0) {
-                    dataLine.add(index, data);
+                    do {
+                        try {
+                            dataLine.set(labelLine.indexOf(attributeOnly), data);
+                            added = true;
+                        } catch (Exception e) {
+                            dataLine.add("");
+                        }
+                    } while (!added);
                 } else {
                     //Adds device label if it doesn't exist
-                    if(labelLine.indexOf(modelName) == -1) {
+                    if (labelLine.indexOf(modelName) == -1) {
                         labelLine.add(0, modelName);
                     }
-                    
+
                     labelLine.add(attributeOnly);
-                    
-                    if(dataLine.isEmpty()) 
-                        dataLine.add("");
-                    dataLine.add(labelLine.indexOf(attributeOnly), data);
+                    do {
+                        try {
+                            dataLine.set(labelLine.indexOf(attributeOnly), data);
+                            added = true;
+                        } catch (Exception e) {
+                            dataLine.add("");
+                        }
+                    } while (!added);
                 }
-                
-                if(!deviceNum.equals("") && dataLine.get(0).equals("")) {
-                    dataLine.add(0, (deviceNum.substring(0).equals("0")) ? deviceNum.replaceAll("0", "") : deviceNum);
+
+                if (!deviceNum.equals("") && dataLine.get(0).equals("")) {
+                    dataLine.set(0, (deviceNum.substring(0).equals("0")) ? deviceNum.replaceAll("0", "") : deviceNum);
                 }
 
                 previousModel = modelName;
@@ -129,7 +138,7 @@ public class CSVParser {
             for (int i = 0; i < dataLines.size(); i++) {
                 CSVList.add(dataLines.get(i));
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

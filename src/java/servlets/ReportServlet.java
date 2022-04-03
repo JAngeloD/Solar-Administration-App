@@ -63,7 +63,7 @@ public class ReportServlet extends HttpServlet {
                 request.setAttribute("scriptFlag", true);
 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp
-                break;
+                return;
 
             case "csvReport":
                 String[] csvRequestList = request.getParameterValues("csvValue");
@@ -103,7 +103,7 @@ public class ReportServlet extends HttpServlet {
                 }
 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
-                break;
+                return;
         }
     }
 

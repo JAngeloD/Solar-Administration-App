@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 821320
+ * @author hazco
  */
 @Entity
 @Table(name = "users")
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
     , @NamedQuery(name = "Users.findByFirstName", query = "SELECT u FROM Users u WHERE u.firstName = :firstName")
     , @NamedQuery(name = "Users.findByLastName", query = "SELECT u FROM Users u WHERE u.lastName = :lastName")
-    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
+    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
+    , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,10 +48,12 @@ public class Users implements Serializable {
     private String lastName;
     @Column(name = "password")
     private String password;
-    @OneToMany(mappedBy = "email")
+    @Column(name = "active")
+    private Boolean active;
+    @OneToMany(mappedBy = "email", fetch = FetchType.EAGER)
     private List<FacilityLogs> facilityLogsList;
     @JoinColumn(name = "type_id", referencedColumnName = "type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private UserType typeId;
 
     public Users() {
@@ -89,6 +93,14 @@ public class Users implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @XmlTransient

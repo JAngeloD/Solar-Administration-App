@@ -17,6 +17,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.logging.Level;
@@ -52,8 +53,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void PccInsert() {
-
+    public static void PccInsert(PCC newPCC) throws SQLException {
+        PccDB pccDB = new PccDB();
+        pccDB.insert(newPCC);
     }
 
     public static void PccUpdate() {
@@ -97,8 +99,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void FeederInsert() {
-
+    public static void FeederInsert(Feeder newFeeder) throws SQLException {
+        FeederDB feederDB = new FeederDB();
+        feederDB.insert(newFeeder);
     }
 
     public static void FeederUpdate() {
@@ -141,8 +144,9 @@ public class DBAccess {
         return data;
     }
 
-    public static void InverterInsert() {
-
+    public static void InverterInsert(Inverter newInverter) throws SQLException {
+        InverterDB inverterDB = new InverterDB();
+        inverterDB.insert(newInverter);
     }
 
     public static void InverterUpdate() {
@@ -211,17 +215,6 @@ public class DBAccess {
         return logs;
     }
 
-    // maybe accept a Log object then get the attribute that isnt null so we can pass
-    // email, or timestamp, or whatever
-    //    public static FacilityLogs FacilityGetLog(Integer logId, String logType, Date timeStamp) {
-    //        throw new UnsupportedOperationException("Not supported yet.");
-    //        
-    //        FacilityLogsDB facilitydb = new FacilityLogsDB();
-    //        FacilityLogs log = facilitydb.get(logId);
-    //        
-    //        return log;
-    //
-    //    }
     public static FacilityLogs FacilityGetLog(int logId) {
         FacilityLogsDB facilitydb = new FacilityLogsDB();
         FacilityLogs log = facilitydb.get(logId);
@@ -234,6 +227,67 @@ public class DBAccess {
 
         return user;
     }
+    
+    public static List<Users> getUsers() {
+        UsersDB db = new UsersDB();
+        List<Users> users= null;
+        try{
+            users = db.getAll();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return users;
+    }
+    
+    public static void updateUser(String email, int typeID, int active, String fname, String lname, String pass){
+        UsersDB db = new UsersDB();
+        try{
+            Users user = new Users();  
+            user.setEmail(email);
+            UserTypeDB utdb = new UserTypeDB();
+            UserType ut = utdb.get(typeID);
+            user.setTypeId(ut);
+            if(active == 1){
+                user.setActive(Boolean.TRUE);
+            }
+            else if(active == 0){
+                user.setActive(Boolean.FALSE);
+            }
+            user.setFirstName(fname);
+            user.setLastName(lname);
+            user.setPassword(pass);
+            db.update(user);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
+    public static void insertUser(String email, int typeID, int active, String fname, String lname, String pass){
+        UsersDB db = new UsersDB();
+        try{
+            Users user = new Users();  
+            user.setEmail(email);
+            UserTypeDB utdb = new UserTypeDB();
+            UserType ut = utdb.get(typeID);
+            user.setTypeId(ut);
+            if(active == 1){
+                user.setActive(Boolean.TRUE);
+            }
+            else if(active == 0){
+                user.setActive(Boolean.FALSE);
+            }
+            user.setFirstName(fname);
+            user.setLastName(lname);
+            user.setPassword(pass);    
+            db.insert(user);
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
 
     public static void FacilityInsert(String email, int logType, String logText) {
         FacilityLogsDB db = new FacilityLogsDB();
@@ -249,7 +303,7 @@ public class DBAccess {
         log.setLogText(logText);
         
         log.setTimeStamp(TimeFactory.getCurrentTimestamp());
-        log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
+        //log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
         
         try {
             db.insert(log);
@@ -258,11 +312,30 @@ public class DBAccess {
         }
     }
 
+    public static void FacilityInsertDatabase(Facility newFacility) throws SQLException {
+        FacilityDB facilitydb = new FacilityDB();
+        facilitydb.insert(newFacility);
+    }
+    
     public static void FacilityUpdate() {
 
     }
 
     public static void FacilityDelete() {
+
+    }
+
+
+    public static void FacilityLogsInsert(FacilityLogs newLogs) throws SQLException {
+        FacilityLogsDB facilitylogsdb = new FacilityLogsDB();
+        facilitylogsdb.insert(newLogs);
+    }
+     
+    public static void FacilityLogsUpdate() {
+
+    }
+
+    public static void FacilityLogsDelete() {
 
     }
 

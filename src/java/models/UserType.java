@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 821320
+ * @author hazco
  */
 @Entity
 @Table(name = "user_type")
@@ -41,7 +42,7 @@ public class UserType implements Serializable {
     private Integer accessLevel;
     @Column(name = "type_name")
     private String typeName;
-    @OneToMany(mappedBy = "typeId")
+    @OneToMany(mappedBy = "typeId", fetch = FetchType.EAGER)
     private List<Users> usersList;
 
     public UserType() {

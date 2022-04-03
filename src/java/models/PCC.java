@@ -6,7 +6,10 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
@@ -42,7 +47,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PCC.findByAcOutputPhaseAbVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "PCC.findByAcOutputPhaseBcVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
     , @NamedQuery(name = "PCC.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
-public class PCC implements Serializable {
+public class PCC extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -231,5 +236,13 @@ public class PCC implements Serializable {
     public String toString() {
         return "models.PCC[ recordID=" + recordID + " ]";
     }
-    
+
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.PccInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(PCC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }     
 }

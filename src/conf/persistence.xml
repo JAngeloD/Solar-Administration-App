@@ -32,6 +32,7 @@
     <class>models.Inverter</class>
     <class>models.Facility</class>
     <class>models.PCC</class>
+    <class>models.Pcc</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>

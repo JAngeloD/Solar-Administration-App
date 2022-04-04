@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import models.FacilityLogs;
 import models.PCC;
 
 /**
@@ -25,6 +27,23 @@ public class PccDB {
             em.close();
         }
 
+        return list;
+    }
+    
+    public List<PCC> getInBetween(long start, long end, String attribute) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        try {
+            Query q = em.createNamedQuery("FacilityLogs.findBetweenTimeStamp", FacilityLogs.class);
+            q.setParameter("start", start);
+            q.setParameter("end", end);
+            
+            list = q.getResultList();
+        } finally {
+            em.close();
+        }
+        
+        System.out.println("SIZE: " +list.size());
+        
         return list;
     }
     

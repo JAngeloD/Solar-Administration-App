@@ -2,13 +2,10 @@ package servlets;
 
 import dbutil.FacilityLogsDB;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.FacilityLogs;
-import models.Users;
 import services.DBAccess;
 import utilities.TimeFactory;
 

@@ -60,7 +60,7 @@ public class Inverter extends TransferDatabase implements Serializable {
     @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private Long timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -102,7 +102,7 @@ public class Inverter extends TransferDatabase implements Serializable {
     public Inverter() {
     }
 
-    public Inverter(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
+    public Inverter(String recordID, Long timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
         this.recordID = recordID;
         this.timeStampId = timeStampId;
         this.timeStamp = timeStamp;
@@ -141,11 +141,11 @@ public class Inverter extends TransferDatabase implements Serializable {
         this.recordID = recordID;
     }
 
-    public Integer getTimeStampId() {
+    public Long getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(Long timeStampId) {
         this.timeStampId = timeStampId;
     }
 

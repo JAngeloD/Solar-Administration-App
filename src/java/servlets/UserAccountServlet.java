@@ -15,7 +15,13 @@ import services.DBAccess;
 
 @WebServlet(name = "UserAccountServlet", urlPatterns = {"/UserAccountServlet"})
 public class UserAccountServlet extends HttpServlet {
-
+    /**
+     * Process GET requests, displays 
+     * @param request http request
+     * @param response http response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,7 +51,7 @@ public class UserAccountServlet extends HttpServlet {
             String email = request.getParameter("email");
             int typeID = Integer.parseInt(request.getParameter("type"));
             int active = Integer.parseInt(request.getParameter("active"));
-            String fName = request.getParameter("fistName");
+            String fName = request.getParameter("firstName");
             String lName = request.getParameter("lastName");
             String password = request.getParameter("password");
             dba.insertUser(email, typeID, active, fName, lName, password);

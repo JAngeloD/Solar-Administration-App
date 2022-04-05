@@ -87,7 +87,7 @@ public class ReadLogServlet extends HttpServlet {
         String from = request.getParameter("from");
         String to = request.getParameter("to");
 
-        DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime localFrom = LocalDateTime.from(formatDateTime.parse(from));
         LocalDateTime localTo = LocalDateTime.from(formatDateTime.parse(to));
 

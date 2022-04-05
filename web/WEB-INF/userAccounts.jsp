@@ -8,6 +8,7 @@
         <style><%@include file="/WEB-INF/css/users.css"%></style>
            <style><%@include file="/WEB-INF/css/header.css"%></style>
         <script src="javascript/users.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
       <body>

@@ -6,7 +6,10 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
@@ -47,7 +52,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Inverter.findByDcCurrent", query = "SELECT i FROM Inverter i WHERE i.dcCurrent = :dcCurrent")
     , @NamedQuery(name = "Inverter.findByEfficiency", query = "SELECT i FROM Inverter i WHERE i.efficiency = :efficiency")
     , @NamedQuery(name = "Inverter.findByTimeStampAndDeviceID", query = "SELECT i FROM Inverter i WHERE i.deviceId = :deviceId AND i.timeStampId = :timeStampId")})
-public class Inverter implements Serializable {
+public class Inverter extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,7 +60,7 @@ public class Inverter implements Serializable {
     @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private Long timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -97,7 +102,7 @@ public class Inverter implements Serializable {
     public Inverter() {
     }
 
-    public Inverter(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
+    public Inverter(String recordID, Long timeStampId, Date timeStamp, Integer deviceId, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage, Double dcRealPower, Double dcVolt, Double dcCurrent, Double efficiency) {
         this.recordID = recordID;
         this.timeStampId = timeStampId;
         this.timeStamp = timeStamp;
@@ -136,11 +141,11 @@ public class Inverter implements Serializable {
         this.recordID = recordID;
     }
 
-    public Integer getTimeStampId() {
+    public Long getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(Long timeStampId) {
         this.timeStampId = timeStampId;
     }
 
@@ -304,5 +309,14 @@ public class Inverter implements Serializable {
     public String toString() {
         return "models.Inverter[ recordID=" + recordID + " ]";
     }
+
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.InverterInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inverter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
     
 }

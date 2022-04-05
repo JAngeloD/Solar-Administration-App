@@ -27,12 +27,12 @@ public class UserTypeDB {
         return list;
     }
 
-    public UserType get(int event) {
+    public UserType get(int id) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         UserType user = null;
         try {
-            user = em.find(UserType.class, event);
+            user = em.find(UserType.class, id);
         } finally {
             em.close();
         }

@@ -10,8 +10,10 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 821320
+ * @author hazco
  */
 @Entity
 @Table(name = "alarm_events")
@@ -30,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "AlarmEvents.findAll", query = "SELECT a FROM AlarmEvents a")
     , @NamedQuery(name = "AlarmEvents.findByEventId", query = "SELECT a FROM AlarmEvents a WHERE a.eventId = :eventId")
-    , @NamedQuery(name = "AlarmEvents.findByTimeStampId", query = "SELECT a FROM AlarmEvents a WHERE a.timeStampId = :timeStampId")
     , @NamedQuery(name = "AlarmEvents.findByTimeStamp", query = "SELECT a FROM AlarmEvents a WHERE a.timeStamp = :timeStamp")})
 public class AlarmEvents implements Serializable {
 
@@ -39,14 +40,15 @@ public class AlarmEvents implements Serializable {
     @Basic(optional = false)
     @Column(name = "event_id")
     private Integer eventId;
+    @Lob
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private String timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeStamp;
     @JoinColumn(name = "alarm_id", referencedColumnName = "alarm_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private AlarmInfo alarmId;
 
     public AlarmEvents() {
@@ -69,11 +71,11 @@ public class AlarmEvents implements Serializable {
         this.eventId = eventId;
     }
 
-    public Integer getTimeStampId() {
+    public String getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(String timeStampId) {
         this.timeStampId = timeStampId;
     }
 

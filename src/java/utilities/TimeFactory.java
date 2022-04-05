@@ -4,8 +4,11 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 821320
@@ -56,6 +59,31 @@ public class TimeFactory {
         return convertToID(timestamp);
     }
 
+    /**
+     * Generates a list of timestamps between startDate and endDate using 10 minute timestamps
+     *
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    public static ArrayList<Long> getTimeStampsInBetween(String startDate, String endDate) {
+
+        ArrayList<Long> list = new ArrayList<>();
+
+        Timestamp start = Timestamp.valueOf(startDate);
+        Timestamp end = Timestamp.valueOf(endDate);
+
+        if (end.getTime() - start.getTime() > 0) {
+            while (!start.equals(end)) {
+                Long timestamp = convertToID(start);
+                list.add(timestamp);
+                start.setTime(start.getTime() + TimeUnit.MINUTES.toMillis(10));
+            }
+        }
+
+        return list;
+    }
+
     public static long getCurrentID() {
 
         return convertToID(getCurrentTimestampInterval());
@@ -76,25 +104,25 @@ public class TimeFactory {
 
         return new Timestamp(ID);
     }
-    
+
     /*
     * Get the beginning value of the long range
     *
-    */
+     */
     public static Date getRangeBeginning(int year, int month) throws ParseException {
-        
+
         Date begin = new SimpleDateFormat("yyyy-MM-dd").parse(year + "-" + month + "-01");
         Timestamp beginTs = new Timestamp(begin.getTime());
- 
+
         return beginTs;
     }
-    
+
     /*
     * Get the end value of the long range
     *
-    */
+     */
     public static Date getRangeEnd(int year, int month) throws ParseException {
-        
+
         //get the end of the month by getting the start of the next month
         if (month == 12) {
             month = 1;
@@ -102,10 +130,10 @@ public class TimeFactory {
         } else {
             month++;
         }
-        
+
         Date end = new SimpleDateFormat("yyyy-MM-dd").parse(year + "-" + month + "-01");
         Timestamp endTs = new Timestamp(end.getTime());
- 
+
         return endTs;
     }
 }

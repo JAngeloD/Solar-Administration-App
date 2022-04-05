@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 821320
+ * @author hazco
  */
 @Entity
 @Table(name = "alarm_info")
@@ -44,7 +45,7 @@ public class AlarmInfo implements Serializable {
     private String alarmStatus;
     @Column(name = "device")
     private String device;
-    @OneToMany(mappedBy = "alarmId")
+    @OneToMany(mappedBy = "alarmId", fetch = FetchType.EAGER)
     private List<AlarmEvents> alarmEventsList;
 
     public AlarmInfo() {

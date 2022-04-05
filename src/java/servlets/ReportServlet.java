@@ -9,15 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.time.Year;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +33,7 @@ public class ReportServlet extends HttpServlet {
         request.setAttribute("scriptFlag", false);
         
         getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
+        return;
     }
 
     @Override
@@ -63,24 +57,15 @@ public class ReportServlet extends HttpServlet {
                 request.setAttribute("scriptFlag", true);
 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp
-                break;
+                return;
 
             case "csvReport":
                 String[] csvRequestList = request.getParameterValues("csvValue");
-
-//                for (String csvRequestList1 : csvRequestList) {
-//                    System.out.println(csvRequestList1);
-//                }
-                ArrayList<String[]> list = CSVParser.getData(csvRequestList);
-
-                //TESTING ONLY
-                System.out.println(list.size());
-                for (int i = 0; i < list.size(); i++) {
-                    for (int j = 0; j < list.get(i).length; j++) {
-                        System.out.println(list.get(i)[j] + " :row" + i + " ");
-                    }
-                }
-
+                
+                startDate = startDate + " 00:00:00";
+                endDate = endDate + " 24:00:00";
+                ArrayList<String[]> list = CSVParser.getData(csvRequestList, startDate, endDate);
+                
                 String fileName = UUID.randomUUID().toString();
                 if (CSVParser.writeToCSV(list, getServletContext().getRealPath("/resources/"), fileName)) {
                     String filePath = String.format("/resources/%s.csv", fileName);
@@ -101,10 +86,10 @@ public class ReportServlet extends HttpServlet {
                     File file = new File(getServletContext().getRealPath(filePath));
                     file.delete();
                 }
-
-                getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response);
-                break;
         }
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp
+        return;
     }
 
     /**

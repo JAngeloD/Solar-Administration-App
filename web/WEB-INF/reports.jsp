@@ -31,9 +31,9 @@
                 <form method="POST" action="reports">
                     <h3>Please select the dates</h3>
                     <label>From: </label>
-                    <input type="datetime-local" id="fromDT" name="fromDT" required>
+                    <input type="date" id="fromDT" name="fromDT" required>
                     <label>To: </label>
-                    <input type="datetime-local" id="toDT" name="toDT" required>
+                    <input type="date" id="toDT" name="toDT" required>
 
                     <br />
                     <div>

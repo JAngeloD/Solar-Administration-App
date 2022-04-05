@@ -6,7 +6,10 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import services.DBAccess;
+import servlets.TransferDatabase;
 
 /**
  *
@@ -42,8 +47,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseAbVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseBcVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
-    ,@NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
-public class Feeder implements Serializable {
+    , @NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
+public class Feeder extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -260,5 +265,15 @@ public class Feeder implements Serializable {
     public String toString() {
         return "models.Feeder[ recordID=" + recordID + " ]";
     }
+    
+    @Override
+    public void PutIntoDatabase() {
+        try {
+            DBAccess.FeederInsert(this);
+        } catch (SQLException ex) {
+            Logger.getLogger(Feeder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }     
+    
 
 }

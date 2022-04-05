@@ -6,22 +6,37 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User Accounts</title>
         <style><%@include file="/WEB-INF/css/users.css"%></style>
+           <style><%@include file="/WEB-INF/css/header.css"%></style>
         <script src="javascript/users.js"></script>
     </head>
 
-    <body>
-        <div>
-            <h1>User Management </h1>
-            <div>
-                <button onclick="displayAdd()">Create a New User</button>
+      <body>
+
+        <div class="headerS">
+            <ul  id="navigation" class="nav">
+      
+              <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
+             
+              <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Accounts</a></li>
+          
+              <h1 class="left">USER MANAGEMENT</h1>
+            </ul>
+          </div>
+
+
+        <div class="row">
+           <div>
+
+           
+                <button class="addUser" onclick="displayAdd()">Create a New User</button>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <form method="POST" action="useraccounts" id="inline">
                     <input type="hidden" name="action" value="listUsers">                                     
-                    <input type="submit" value="Manage Existing Users" onclick="displayList()">                    
+                    <input  class="submitManage" type="submit" value="Manage Existing Users" onclick="displayList()">                    
                 </form>                 
             </div>
-        </div>
-        
+      
+           <div class="col p-3">
         <div id="newU">
             <h2>Add User</h2>
             <form method="POST" action="useraccounts">
@@ -59,11 +74,12 @@
                 </label>
                 <br>
                 <input type="hidden" name="action" value="addUser">
-                <input type="submit" value="Create User" onclick="closeAdd(); displayEdit()">
+                <input class="submitCreate" type="submit" value="Create User" onclick="closeAdd(); displayEdit()">
                 <p>${message}</p>
             </form>
         </div>
-
+    </div>
+    <div class="col p-3">
         <div id="listU">
             <h2>Manage users</h2>
             <p>${messageDelete}</p>
@@ -92,14 +108,15 @@
                             <td>
                                 <input type="hidden" name="email" value="${item.email}">
                                 <input type="hidden" name="action" value="fillEdit">                                     
-                                <input type="submit" value="Edit" onclick="closeList()">
+                                <input class="submitButton" type="submit" value="Edit" onclick="closeList()">
                             </td>
                         </form>
                     </tr>
                 </c:forEach> 
             </table>
         </div>
-
+    </div>
+        <div class="col p-3">
         <div id="editU" >
             <h2>Edit user</h2>               
             <form method="POST" action="useraccounts">
@@ -138,11 +155,12 @@
                 </label>
                 <br>                
                 <input type="hidden" name="action" value="saveUser">
-                <input type="submit" value="Save">
+                <input class="submitSave" type="submit" value="Save">
                 <input type="reset" value="Cancel">
                 <p>${messageEdit}</p>
             </form>                
         </div>
-        
+        </div>
+    </div>
     </body>
 </html>

@@ -15,6 +15,7 @@
         <style><%@include file="/WEB-INF/css/header.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/HomePageAjax.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         <title>Home</title>
     </head>
        
@@ -26,7 +27,7 @@
       <ul  id="navigation" class="nav">
 
         <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
-        <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+        <li class="menuButton1"><a class="buttonMenu1" href="useraccounts">Account</a></li>
         <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
         <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
         <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Home</a></li>

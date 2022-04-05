@@ -20,7 +20,7 @@
         <ul  id="navigation" class="nav">
   
           <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
-          <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+          <li class="menuButton1"><a class="buttonMenu1" href="useraccounts">Account</a></li>
           <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
          
                   <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>

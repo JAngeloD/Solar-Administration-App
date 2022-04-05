@@ -17,7 +17,7 @@
             <ul  id="navigation" class="nav">
 
                 <li class="menuButton1"><a class="buttonMenu1" href="login">Logout</a></li>
-                <li class="menuButton1"><a class="buttonMenu1" href="account">Account</a></li>
+                <li class="menuButton1"><a class="buttonMenu1" href="useraccounts">Account</a></li>
                 <li class="menuButton1"><a class="buttonMenu1" href="home">Home</a></li>
 
                 <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
@@ -31,9 +31,9 @@
                 <form method="POST" action="reports">
                     <h3>Please select the dates</h3>
                     <label>From: </label>
-                    <input type="datetime-local" id="fromDT" name="fromDT" required>
+                    <input type="date" id="fromDT" name="fromDT" required>
                     <label>To: </label>
-                    <input type="datetime-local" id="toDT" name="toDT" required>
+                    <input type="date" id="toDT" name="toDT" required>
 
                     <br />
                     <div>

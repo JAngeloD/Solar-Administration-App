@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import models.Inverter;
 
@@ -34,10 +35,11 @@ public class InverterDB {
         try {
             Query q = em.createNamedQuery("Inverter.findByTimeStampAndDeviceID", Inverter.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
-            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setParameter("timeStampId", Long.parseLong(timestamp));
             
             record = (Inverter) q.getSingleResult();
-        } finally {
+        }
+        finally {
             em.close();
         }
 

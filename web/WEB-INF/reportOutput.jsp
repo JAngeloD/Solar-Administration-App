@@ -31,6 +31,7 @@
                 </div>
                 <div id='tableBox'>
                 <c:if test="${reportChoice == '1' || reportChoice == '3'}">
+                    <p> | - means the start of a new year </p>
                     <table class='resultsTable'>
                         <tr>
                             <td colspan='3'><b>${start} to ${end}</b></td>

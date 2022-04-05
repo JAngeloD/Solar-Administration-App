@@ -8,6 +8,8 @@ import utilities.TimeFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -25,7 +27,6 @@ public class TimeFactoryTests {
 
     }
 
-    @Test
     public void testCurrentTime() throws ParseException {
 
         //Test for current Time
@@ -56,13 +57,13 @@ public class TimeFactoryTests {
 
         System.out.println("");
         System.out.println("");
-        
+
         //Test getting the long range for month in a year
         System.out.println("Long Range Tests");
-        
+
         Date begin = TimeFactory.getRangeBeginning(2021, 01);
         Date finish = TimeFactory.getRangeEnd(2021, 01);
-        
+
         System.out.println("begin: " + begin);
         System.out.println("finish: " + finish);
 
@@ -71,9 +72,28 @@ public class TimeFactoryTests {
         Timestamp ts = new Timestamp(date.getTime());
         System.out.println("Timestamp: " + ts);
         System.out.println("ID: " + TimeFactory.convertToID(ts));
-        
-        
-        
+    }
 
+    @Test
+    public void getTimeStampsInBetweenTest() {
+        String start = "2022-04-04 00:00:00";
+        String end = "2022-04-04 24:00:00";
+
+        List<Long> list = TimeFactory.getTimeStampsInBetween(start, end);
+
+        for (long val : list) {
+            System.out.println(val);
+        }
+
+        System.out.println(list.size());
+    }
+
+    
+    public void timeStampMath() {
+        Timestamp start = Timestamp.valueOf("2022-04-04 00:00:00");
+        Timestamp end = Timestamp.valueOf("2022-04-04 24:00:00");
+
+        System.out.println(end.getTime() - start.getTime());
+        
     }
 }

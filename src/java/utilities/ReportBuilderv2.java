@@ -23,7 +23,8 @@ public class ReportBuilderv2 {
     /*
     * Useful for report 3.
     * Returns an array of months for x values
-     */
+    * @return array of integers 
+    */
     public static int[] getAllMonths() {
         return new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     }
@@ -32,7 +33,8 @@ public class ReportBuilderv2 {
     * Useful for report 3
     * Returns an array of months that have happened in the current year for x values
     * March = 2, not 3
-     */
+    * @return array of integers
+    */
     public static int[] getMonths() {
         //Get the current year and month
         Date current = new Date();
@@ -52,7 +54,8 @@ public class ReportBuilderv2 {
     * Useful for reports 2 and 4.
     * Returns an array of years for x values.
     * To my understanding it is the current year, and the five years preceding it.
-     */
+    * @return an array of integers
+    */
     public static int[] getYears() {
 
         int[] years = new int[6];
@@ -73,7 +76,9 @@ public class ReportBuilderv2 {
 
     /*
     * Useful for report 1, return the x axis array between two dates.
-     */
+    * @param startDate, endDate, the starting and end dates to retrieve the array of month ints
+    * @return an array of integers
+    */
     public static int[] getSpecificMonths(String startDate, String endDate) throws ParseException {
 
         //All the values we will need
@@ -170,7 +175,9 @@ public class ReportBuilderv2 {
     /*
     * Useful for report 1
     * Get the energy values for the specific months specified
-     */
+    * @param startDate, endDate, the starting and end date 
+    * @return an array of doubles
+    */
     public static double[] getEnergyForSpecificMonths(String startDate, String endDate) throws ParseException, SQLException {
 
         //All the values we will need
@@ -251,7 +258,10 @@ public class ReportBuilderv2 {
 
     /*
     * Useful for report 1, y2
-     */
+    * Cumulate the energy for specific months
+    * @param startDate, endDate, the start and end dates
+    * @return an array of doubles
+    */
     public static double[] getCumulativeEnergyForSpecificMonths(String startDate, String endDate) throws ParseException, SQLException {
 
         //get the monthly energies
@@ -280,7 +290,8 @@ public class ReportBuilderv2 {
     * Monthly Report where you compare this years months to the same month of previous years.
     *
     * @param year, the year for the energy you'd like to recieve
-     */
+    * @return an array of doubles
+    */
     public static double[] getEnergyByYear(int year) throws SQLException {
 
         //Bring in the access to the database
@@ -326,7 +337,8 @@ public class ReportBuilderv2 {
     /*
     * Useful for report 2.
     * Get cumulative monthly energy value for a year.
-     */
+    * @return an array of doubles
+    */
     public static double[] getTotalEnergyByYears() throws SQLException {
 
         //get years
@@ -358,7 +370,10 @@ public class ReportBuilderv2 {
 
     /*
     * Useful for report 3, cumulative energy for y2
-     */
+    * Get a year cumulative energy
+    * @param year, the year to cumulate
+    * @return an array of doubles
+    */
     public static double[] getCumulativeEnergyByYear(int year) throws SQLException {
 
         //get the monthly energies
@@ -398,8 +413,9 @@ public class ReportBuilderv2 {
 
     /*
     * Useful report 4
-    * Returns the last full month of the current year compared to the past five years
-     */
+    * Returns the last full month of the current year compared to the past five years.
+    * @return an array of doubles
+    */
     public static double[] getMonthEnergyPastYears() throws ParseException, SQLException {
 
         //PccDB
@@ -445,7 +461,9 @@ public class ReportBuilderv2 {
 
     /*
     * Chops the time off the date.
-     */
+    * @param date, the date to chop
+    * @return String of the chopped date.
+    */
     public static String chopTime(String date) {
         return date.substring(0, 10);
     }

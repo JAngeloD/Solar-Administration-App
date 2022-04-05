@@ -74,6 +74,7 @@ public class TimeFactoryTests {
         System.out.println("ID: " + TimeFactory.convertToID(ts));
     }
 
+    @Test
     public void getTimeStampsInBetweenTest() {
         String start = "2022-04-04 00:00:00";
         String end = "2022-04-04 24:00:00";
@@ -87,7 +88,7 @@ public class TimeFactoryTests {
         System.out.println(list.size());
     }
 
-    @Test
+    
     public void timeStampMath() {
         Timestamp start = Timestamp.valueOf("2022-04-04 00:00:00");
         Timestamp end = Timestamp.valueOf("2022-04-04 24:00:00");
@@ -95,11 +96,4 @@ public class TimeFactoryTests {
         System.out.println(end.getTime() - start.getTime());
         
     }
-    
-    public void pubes() {
-        int stuff = Integer.parseInt("1649052000000");
-        
-        System.out.println(stuff);
-    }
-
 }

@@ -7,6 +7,7 @@ package services;
 
 import dbutil.*;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import models.*;
 import java.util.List;
@@ -289,7 +290,7 @@ public class DBAccess {
         log.setLogText(logText);
 
         log.setTimeStamp(TimeFactory.getCurrentTimestamp());
-        //log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));  //////////////////////////
+        log.setTimeStampId(BigInteger.valueOf(TimeFactory.convertToID(TimeFactory.getCurrentTimestamp())));
 
         try {
             db.insert(log);

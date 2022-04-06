@@ -114,8 +114,6 @@ public class DBAccess {
             }
         }
 
-        
-
         //Initializes the database and retrieves the data based on the parameters given
         InverterDB db = new InverterDB();
         Inverter record = db.get(timestamp, deviceID);
@@ -214,6 +212,11 @@ public class DBAccess {
         return log;
     }
 
+    /**
+     * Uses a UserDB object to access the database and retrieve a user with the matching email
+     * @param email a string representing an email
+     * @return a user with matching email
+     */
     public static Users UsersGet(String email) {
         UsersDB db = new UsersDB();
         Users user = db.get(email);
@@ -221,6 +224,10 @@ public class DBAccess {
         return user;
     }
 
+    /**
+     * Users a UserDB object to retrieve a list of all users
+     * @return a List collection of all users
+     */
     public static List<Users> getUsers() {
         UsersDB db = new UsersDB();
         List<Users> users = null;
@@ -232,6 +239,16 @@ public class DBAccess {
         return users;
     }
 
+    /**
+     * Creates a new user with the received parameters and uses a UserDB object 
+     * to update the user's information in the database
+     * @param email a string representing the user's email
+     * @param typeID an integer representing the user's type id
+     * @param active an integer value representing the user's status
+     * @param fname a string representing the user's first name
+     * @param lname a string representing the user's last name
+     * @param pass  a string representing the user's password
+     */
     public static void updateUser(String email, int typeID, int active, String fname, String lname, String pass) {
         UsersDB db = new UsersDB();
         try {
@@ -254,6 +271,16 @@ public class DBAccess {
         }
     }
 
+    /**
+     * Creates a new user with the received parameters and uses a UserDB object 
+     * to insert  the new user's information in the database
+     * @param email a string representing the user's email
+     * @param typeID an integer representing the user's type id
+     * @param active an integer value representing the user's status
+     * @param fname a string representing the user's first name
+     * @param lname a string representing the user's last name
+     * @param pass  a string representing the user's password
+     */
     public static void insertUser(String email, int typeID, int active, String fname, String lname, String pass) {
         UsersDB db = new UsersDB();
         try {

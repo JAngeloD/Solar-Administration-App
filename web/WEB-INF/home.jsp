@@ -15,6 +15,7 @@
         <style><%@include file="/WEB-INF/css/header.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/HomePageAjax.js"></script>
+       
         <title>Home</title>
     </head>
        

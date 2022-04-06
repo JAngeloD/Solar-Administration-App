@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import javax.persistence.NoResultException;
 import services.DBAccess;
 
-// todo: implement into a servlet, grab the contents from the database and call writeToCSV
+/**
+ * 
+ * @author Steven Tran, Angelo De Vera 
+ */
 public class CSVParser {
 
     /**
@@ -35,11 +37,14 @@ public class CSVParser {
     }
 
     /**
+     * Retrieves all the data given a list of getter methods and a from and to date from the DB. It uses that data
+     * and formats a 2D list of values and labels in such a way that it can be used to write into a CSV
      *
-     * @param getterMethods -
-     * @param startDate
-     * @param endDate
-     * @return
+     * @param getterMethods - A list of getter methods (contains deviceID, device name, and required attribute)
+     * @param startDate - start date YYYY-MM-DD
+     * @param endDate - end date 
+     * @return - 2D list of values and labels meant to be written using writeAll()
+     * @author - Angelo De Vera
      */
     public static ArrayList<String[]> getData(String[] getterMethods, String startDate, String endDate) {
 
@@ -159,6 +164,13 @@ public class CSVParser {
         return CSVList;
     }
 
+    /**
+     * Converts String list to String array
+     * 
+     * @param list - A list of string values
+     * @return - An array of string values
+     * @Author - Angelo De Vera
+     */
     private static String[] convertListToArray(ArrayList<String> list) {
 
         String[] array = new String[list.size()];

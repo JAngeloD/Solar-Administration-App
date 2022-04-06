@@ -82,7 +82,7 @@ public class TimeFactoryTests {
         List<Long> list = TimeFactory.getTimeStampsInBetween(start, end);
 
         for (long val : list) {
-            System.out.println(val);
+            System.out.println(val + ",");
         }
 
         System.out.println(list.size());

@@ -62,9 +62,10 @@ public class TimeFactory {
     /**
      * Generates a list of timestamps between startDate and endDate using 10 minute timestamps
      *
-     * @param startDate
-     * @param endDate
-     * @return
+     * @param startDate - Start date (YYYY-MM-DD HH-MM-SS)
+     * @param endDate - end date
+     * @return - a list of timestamps (unix epoch)
+     * @author - Angelo De Vera 
      */
     public static ArrayList<Long> getTimeStampsInBetween(String startDate, String endDate) {
 

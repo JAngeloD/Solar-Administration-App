@@ -5,8 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- *
- * @author 821320
+ * Since the testing package struggled to test the database
+ * This class serves as a guide to the methods for the reports 
+ * @author Therin Mody
  */
 public class ReportBuilderTests {
 

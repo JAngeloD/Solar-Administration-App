@@ -1,9 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : Feb 8, 2022, 8:23:50 AM
-    Author     : 821320
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.io.Serializable;
@@ -22,8 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author hazco
+ * Represents a user
  */
 @Entity
 @Table(name = "users")
@@ -59,46 +53,89 @@ public class Users implements Serializable {
     public Users() {
     }
 
+    /**
+     * Creates a user with the specified email
+     * @param email 
+     */
     public Users(String email) {
         this.email = email;
     }
-
+    
+    /**
+     * Gets the user's email
+     * @return a string representing the user's email address
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Set's the user's email
+     * @param email 
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets the user's first name
+     * @return a string representing the user's first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Set's the user's first name
+     * @param firstName The user's first name 
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+    * Gets the user's last name
+    * @return a string representing the user's last name
+    */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+    * Set's the user's last name
+    * @param lastName The user's last name 
+    */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+    * Gets the user's password
+    * @return a string representing the user's password
+    */
     public String getPassword() {
         return password;
     }
 
+    /**
+    * Set's the user's password
+    * @param password The user's password 
+    */    
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+    * Gets the user's active status
+    * @return a boolean value representing the user's active status
+    */
     public Boolean getActive() {
         return active;
     }
-
+    /**
+    * Sets the user active status true if active false if inactive
+    * @param active the user's status
+    */
     public void setActive(Boolean active) {
         this.active = active;
     }
@@ -112,10 +149,17 @@ public class Users implements Serializable {
         this.facilityLogsList = facilityLogsList;
     }
 
+    /**
+    * Gets the user's type
+    * @return a UserType object representing the user's type
+    */
     public UserType getTypeId() {
         return typeId;
     }
-
+    /**
+     * Sets the user type
+     * @param typeId A UserType object representing the user's type
+     */
     public void setTypeId(UserType typeId) {
         this.typeId = typeId;
     }

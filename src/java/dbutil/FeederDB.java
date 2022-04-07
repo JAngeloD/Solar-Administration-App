@@ -8,12 +8,18 @@ import javax.persistence.Query;
 import models.Feeder;
 
 /**
- *
- * @author 821320
+ * A class that provides access to the Feeder table in the database.
+ * @author Therin Mody
  */
 public class FeederDB {
     private List<Feeder> list;
 
+    /**
+     * A method to retrieve all Feeder entries from the database.
+     * @return list The List<Feeder> object that holds all the entries from
+     *              the Feeder table in the database.
+     * @throws SQLException 
+     */
     public List<Feeder> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -27,6 +33,12 @@ public class FeederDB {
         return list;
     }
 
+    /**
+     * A method that will retrieve a Feeder based on a specific timestamp and deviceID
+     * @param timestamp The timestamp to find the feeder for.
+     * @param deviceID The deviceID to find the feeder for.
+     * @return record The specific feeder you queried
+     */
     public Feeder get(String timestamp, String deviceID) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -44,6 +56,11 @@ public class FeederDB {
         return record;
     }
 
+    /**
+     * A method to insert a Feeder into the database
+     * @param event The Feeder object that is to be inserted into the database.
+     * @throws SQLException 
+     */
     public void insert(Feeder event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -61,6 +78,10 @@ public class FeederDB {
 
     }
 
+    /**
+     * A method to update a Feeder already existing in the database.
+     * @param user The Feeder object that is to be updated
+     */
     public void update(Feeder user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -78,6 +99,11 @@ public class FeederDB {
 
     }
 
+    /**
+     * A method to delete a Feeder object from the database
+     * @param event The primary key of the Feeder object
+     * @throws SQLException 
+     */
     public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

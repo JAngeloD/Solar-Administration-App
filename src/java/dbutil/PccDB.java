@@ -11,12 +11,17 @@ import models.FacilityLogs;
 import models.PCC;
 
 /**
- *
- * @author 821320
+ * A class that provides access to the PCC table in the database
+ * @author Therin Mody
  */
 public class PccDB {
     private List<PCC> list;
 
+    /**
+     * A method to retrieve all PCC entries the database
+     * @return list A List<PCC> object that holds the results of the query.
+     * @throws SQLException 
+     */
     public List<PCC> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -30,6 +35,13 @@ public class PccDB {
         return list;
     }
     
+    /**
+     * A method to get all the PCC entries in between certain dates.
+     * @param start The long value of the start date
+     * @param end The long value of the end date
+     * @param attribute The attribute of the PCC you are looking for
+     * @return list The List<PCC> object that holds the results of the query
+     */
     public List<PCC> getInBetween(long start, long end, String attribute) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
@@ -47,6 +59,13 @@ public class PccDB {
         return list;
     }
     
+    /**
+     * A method that gets the PCC objects in the database between two dates
+     * @param start The starting date 
+     * @param end The ending date
+     * @return list The List<PCC> object that holds the query results
+     * @throws SQLException 
+     */
     public List<PCC> getMonthSearchResults(Date start, Date end) throws SQLException {
         
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -61,6 +80,11 @@ public class PccDB {
         return list;
     }
 
+    /**
+     * A method to get a specific PCC object
+     * @param timestamp The timestamp for the object you are looking for
+     * @return record The PCC object from the resulting query.
+     */
     public PCC get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -74,6 +98,11 @@ public class PccDB {
         return record;
     }
 
+    /**
+     * A method to insert a PCC into the database
+     * @param event The PCC object that is to be inserted into the database.
+     * @throws SQLException 
+     */
     public void insert(PCC event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -91,6 +120,10 @@ public class PccDB {
 
     }
 
+    /**
+     * A method used to update a PCC currently in the database
+     * @param user The PCC object that is to be updated
+     */
     public void update(PCC user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -108,6 +141,11 @@ public class PccDB {
 
     }
 
+    /**
+     * A method to delete a PCC object from the database.
+     * @param event The primary key of the PCC you aim to delete.
+     * @throws SQLException 
+     */
     public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

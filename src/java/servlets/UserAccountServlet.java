@@ -13,14 +13,18 @@ import javax.servlet.http.HttpSession;
 import models.Users;
 import services.DBAccess;
 
+/**
+ * Processes HTTL requests
+ */
 @WebServlet(name = "UserAccountServlet", urlPatterns = {"/UserAccountServlet"})
 public class UserAccountServlet extends HttpServlet {
+    
     /**
-     * Process GET requests, displays 
-     * @param request http request
-     * @param response http response
-     * @throws ServletException
-     * @throws IOException 
+     * Processes HTTP GET requests, displays a list of all users
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet specific error occurs
+     * @throws IOException  if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,9 +43,16 @@ public class UserAccountServlet extends HttpServlet {
             
             getServletContext().getRequestDispatcher("/WEB-INF/userAccounts.jsp").forward(request, response);
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/userAccounts.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
+    /**
+     * Processes HTTP POST requests according to the user's selected action
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet specific error occurs
+     * @throws IOException  if an I/O error occurs 
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

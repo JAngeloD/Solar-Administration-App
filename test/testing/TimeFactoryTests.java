@@ -9,11 +9,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
- *
- * @author 821320
+ * Tests for the time factory class
+ * @author Therin Mody
  */
 public class TimeFactoryTests {
 

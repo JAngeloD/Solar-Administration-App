@@ -7,12 +7,19 @@ import javax.persistence.EntityTransaction;
 import models.Facility;
 
 /**
- *
- * @author 821320
+ * A class that provides specific access points into the Facility Table in the database.
+ * @author Therin Mody
+ * @autho Jeric De Vera
  */
 public class FacilityDB {
     private List<Facility> list;
 
+    /**
+    * A method to retrieve all Facility entries from the database
+    * @throws SQLException
+    * @return list The List<Facility> object that holds all database entries in the
+    *               Facility table.
+    */
     public List<Facility> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -26,6 +33,11 @@ public class FacilityDB {
         return list;
     }
 
+    /**
+    * A method that retrieves a specific Facilty entry from the database
+    * @param timestamp The timestamp for the Facility you aim to retrieve from the database
+    * @return record The Facility object result from the database query.
+    */
     public Facility get(String timestamp) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -39,6 +51,11 @@ public class FacilityDB {
         return record;
     }
 
+    /**
+    * A method to insert a Facility object into the database
+    * @throws SQLException
+    * @param facility The facility object that is to be inserted into the database
+    */
     public void insert(Facility facility) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -56,6 +73,10 @@ public class FacilityDB {
 
     }
 
+    /**
+    * A method to update a facility entry in the database
+    * @param user The facility object that is to be updated
+    */
     public void update(Facility user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -73,6 +94,12 @@ public class FacilityDB {
 
     }
 
+    /**
+    * A method to delete a Facility entry from the database
+    * @throws SQLException
+    * @param event The primary key of the facility that is to 
+    *               be deleted from the database
+    */
     public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

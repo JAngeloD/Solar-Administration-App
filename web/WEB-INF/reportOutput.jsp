@@ -1,9 +1,3 @@
-<%-- 
-    Document   : reportOutput
-    Created on : Mar 29, 2022, 8:51:35 PM
-    Author     : 821320
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>

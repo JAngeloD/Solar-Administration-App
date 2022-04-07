@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    setIntervalImmediately(9000);
+    setIntervalImmediately(6000);
 });
 
 function setIntervalImmediately(interval) {

@@ -29,10 +29,12 @@
 
     <input type="hidden" name="nonce" value="<%=session.getAttribute( "nonce" )%>"/>
     <input type="submit" type="submit" class="btn" value="Login" />
-  </form>
-
-
-
+    </form>
+    
+    <div>
+        <h3>${message}</h3>
+    </div>  
+    <a href="reset">Forgot password</a>
 
   <p>${formFeedback}</p>
 </body>

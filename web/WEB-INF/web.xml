@@ -140,6 +140,10 @@
         <servlet-name>ReportOutputServlet</servlet-name>
         <servlet-class>servlets.ReportOutputServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>servlets.ResetPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <url-pattern>/breaker</url-pattern>
@@ -242,11 +246,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserAccountServlet</servlet-name>
-        <url-pattern>/useraccounts</url-pattern>        
+        <url-pattern>/useraccounts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReportOutputServlet</servlet-name>
         <url-pattern>/reportOutput</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/reset</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -256,4 +264,14 @@
     <welcome-file-list>
         <welcome-file>login</welcome-file>
     </welcome-file-list>
+    <env-entry>
+        <env-entry-name>webmail-username</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>hazawtesting@gmail.com</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>webmail-password</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>$aitCPRG252</env-entry-value>
+    </env-entry>
 </web-app>

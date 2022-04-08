@@ -281,11 +281,11 @@
     <env-entry>
         <env-entry-name>webmail-username</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>hazawtesting@gmail.com</env-entry-value>
+        <env-entry-value></env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>webmail-password</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>$aitCPRG252</env-entry-value>
+        <env-entry-value></env-entry-value>
     </env-entry>
 </web-app>

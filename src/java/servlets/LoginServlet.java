@@ -66,7 +66,15 @@ public class LoginServlet extends HttpServlet
             return;
         }
         
-        if( email == null || email.isEmpty() || password == null || password.isEmpty() || DBAccess.UsersGet( email ) == null )
+        if( email == null || email.isEmpty() || password == null || password.isEmpty() )
+        {
+            request.setAttribute( "formFeedback", "Invalid username or password" );
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            return;
+        }
+        
+        Users user = DBAccess.UsersGet( email );
+        if( user == null )
         {
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -74,6 +82,7 @@ public class LoginServlet extends HttpServlet
         }
 
         session.setAttribute( "email", email );
+        session.setAttribute( "accessLevel", user.getTypeId().getAccessLevel() );
         response.sendRedirect( "home" );
     }
 }

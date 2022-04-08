@@ -19,6 +19,7 @@ public class CSVParser {
      * Writes content to a CSV file
      *
      * @param list Takes in a list of String arrays, each string array representing a single line in the CSV
+     * @param filePath Path of the file
      * @param fileName Output of the file for the user to download
      * @return true if operation was successful, false otherwise
      */

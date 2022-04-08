@@ -59,7 +59,7 @@ public class AjaxHandler extends HttpServlet {
         
         data = Math.random() * data; //TEMPORARY
         
-        String finalData = String.valueOf(data);
+        String finalData = String.format("%.2f", data);
 
         String max = request.getParameter("max");
         String min = request.getParameter("min");
@@ -71,7 +71,7 @@ public class AjaxHandler extends HttpServlet {
                 min = String.valueOf(data);
             }
 
-            finalData = String.valueOf(data) + "," + max + "," + min;
+            finalData = String.format("%.2f", data) + "," + String.format("%.2f", Double.parseDouble(max)) + "," + String.format("%.2f", Double.parseDouble(min));
         }
 
         //Send data back

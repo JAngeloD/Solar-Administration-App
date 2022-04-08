@@ -78,7 +78,7 @@
                 <input class="form-control form-control-lg" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
      
             </label>
-                
+                <br>
                 <label  class="col-lg-11 col-form-label"> User Type: 
                     <select class="form-select form-select-lg"name="type" id="type" required>
                         <option value="" disabled selected>select</option>
@@ -87,7 +87,7 @@
                         <option value="3" >Maintenance / Engineering</option>
                     </select>
                 </label>
-            
+              <br>
                 <label  class="col-lg-11 col-form-label">User Status: 
                     <select class="form-select form-select-lg" name="active" required>
                         <option value="" disabled selected>select</option>
@@ -95,15 +95,15 @@
                         <option value="1" name="active">Active</option>
                     </select>
                 </label>
-               
+                 <br>
                 <label class="col-lg-11 col-form-label">First Name: 
                 <input class="form-control form-control-lg"type="text" name="firstName" required>
                 </label>
-             
+               <br>
                 <label  class="col-lg-11 col-form-label">Last Name: 
                 <input class="form-control form-control-lg"type="text" name="lastName" required>
                 </label>
-            
+              <br>
                 <label  class="col-lg-11 col-form-label">Password: 
                 <input class="form-control form-control-lg"type="password" name="password" placeholder="Password" required>
                 </label>

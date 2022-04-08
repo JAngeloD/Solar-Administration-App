@@ -56,12 +56,16 @@ li a.active {
     margin-left: 5%;
 }
 */
+buttons{
+    padding:0px
+}
 #components {
     margin-left: 10%;
 }
 
 #buttonsBox {
     float: left;
+    margin-top:110px;
 }
 
 #barBox {
@@ -71,13 +75,13 @@ li a.active {
 
 .inverterButton {
     background-color:#3A2318;
-            border-radius: 15px;
+            border-radius: 20px;
     color: white;
     width: 120%;
-    padding: 5%;
+    padding: 10%;
    
     border: 3px solid #F5F3E6;
-    margin-top: 100px;
+   
 }
 
 .inverterButton:hover {

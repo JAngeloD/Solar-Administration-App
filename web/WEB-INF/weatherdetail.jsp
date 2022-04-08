@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF/css/weatherdetail.css"%></style>
         <style><%@include file="/WEB-INF/css/newHead.css"%></style>

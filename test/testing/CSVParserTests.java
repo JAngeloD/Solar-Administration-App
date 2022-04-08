@@ -8,11 +8,8 @@ package testing;
 
 import java.util.ArrayList;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import utilities.CSVParser;
 
 /**
@@ -53,8 +50,8 @@ public class CSVParserTests {
     
     @Test
     public void testGetData() {
-        String[] test = {"Pcc_Get_AcOutputRealPower", "Pcc_Get_AcOutputPhaseCCurrent", "Facility_Get_BackOfPanelTemperature1"};
-        ArrayList<String[]> list = CSVParser.getData(test);
+//        String[] test = {"Pcc_Get_AcOutputRealPower", "Pcc_Get_AcOutputPhaseCCurrent", "Facility_Get_BackOfPanelTemperature1"};
+//        ArrayList<String[]> list = CSVParser.getData(test);
         
         
         

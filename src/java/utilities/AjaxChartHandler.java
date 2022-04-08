@@ -1,36 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utilities;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.*;
-import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import services.DBAccess;
 
 /**
- *
- * @author 856622
+ * For delivering Plotly data to an AJAX call originating from a javascript using JQuery.
+ * This is done through querying the DB for data to put into a specific JSON template.
+ * 
+ * @author Angelo De Vera
  */
 public class AjaxChartHandler extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
+    /**
+     * Gets the model name, the requested attribute, and if possible the device ID. From
+     * that it will query the DB for those parameters and fill the desired JSON template 
+     * with data retrieved from the DB and send it back to the AJAX call which will populate
+     * the chart on a page.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -128,6 +122,15 @@ public class AjaxChartHandler extends HttpServlet {
         response.getWriter().write(jsonData);
     }
 
+    /**
+     * Builds a weather graph formatted  as a JSON string
+     * using Plotly syntax
+     * 
+     * @param xData - Hours in an array
+     * @param yData1 - Temperature in an array
+     * @param yData2 -  Wind speed in an array
+     * @return - a JSON string filled with data 
+     */
     public String buildWeatherGraph(int[] xData, double[] yData1, double[] yData2) {
 
         String jsonTemplate = "";
@@ -145,6 +148,15 @@ public class AjaxChartHandler extends HttpServlet {
         return jsonTemplate;
     }
 
+    /**
+     * Builds a power/irradiance graph formatted as a JSON string 
+     * using Plotly syntax
+     * 
+     * @param xData - Hours 
+     * @param yData1 - Average Power in an array
+     * @param yData2 - Irradiance in an array
+     * @return - a JSON string filled with data 
+     */
     public String buildIrradiancePowerGraph(int[] xData, double[] yData1, double[] yData2) {
 
         String jsonTemplate = "";
@@ -197,11 +209,11 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * Turns string array returned by plotly in the JSP into a double array and return that
+     * Turns JSON string returned by plotly in the JSP into a double array and return that
      *
      * @param rawPlotArray - Raw plotly array
      * @param first - If true it will return the y array in for the first trace
-     * @return
+     * @return - return a double array in the rawPlotlyArray  
      */
     private static double[] convertRawPlotlyData(String rawPlotArray, boolean first) throws Exception {
 
@@ -235,6 +247,13 @@ public class AjaxChartHandler extends HttpServlet {
         return finalArray;
     }
 
+    /**
+     * Appends array with new data. Used for appending to graph data
+     * 
+     * @param currentArray - the current Array
+     * @param newData - the new value to be appended
+     * @return - the new array 
+     */
     private static double[] appendIntoCurrent(double[] currentArray, double newData) {
 
         double[] finalArray = new double[currentArray.length + 1];

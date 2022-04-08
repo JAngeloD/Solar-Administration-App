@@ -6,7 +6,6 @@
 package models;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByFirstName", query = "SELECT u FROM Users u WHERE u.firstName = :firstName")
     , @NamedQuery(name = "Users.findByLastName", query = "SELECT u FROM Users u WHERE u.lastName = :lastName")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
-    , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
+    , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")
+    , @NamedQuery(name = "Users.findByResetPasswordUuid", query = "SELECT u FROM Users u WHERE u.resetPasswordUuid = :resetPasswordUuid")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +48,8 @@ public class Users implements Serializable {
     private String password;
     @Column(name = "active")
     private Boolean active;
-    @OneToMany(mappedBy = "email", fetch = FetchType.EAGER)
-    private List<FacilityLogs> facilityLogsList;
+    @Column(name = "reset_password_uuid")
+    private String resetPasswordUuid;
     @JoinColumn(name = "type_id", referencedColumnName = "type_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private UserType typeId;
@@ -103,13 +101,12 @@ public class Users implements Serializable {
         this.active = active;
     }
 
-    @XmlTransient
-    public List<FacilityLogs> getFacilityLogsList() {
-        return facilityLogsList;
+    public String getResetPasswordUuid() {
+        return resetPasswordUuid;
     }
 
-    public void setFacilityLogsList(List<FacilityLogs> facilityLogsList) {
-        this.facilityLogsList = facilityLogsList;
+    public void setResetPasswordUuid(String resetPasswordUuid) {
+        this.resetPasswordUuid = resetPasswordUuid;
     }
 
     public UserType getTypeId() {

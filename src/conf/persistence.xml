@@ -27,12 +27,12 @@
     <class>dbutil.Users</class>
     <class>models.AlarmEvents</class>
     <class>models.AlarmInfo</class>
-    <class>models.Users</class>
     <class>models.Feeder</class>
     <class>models.Inverter</class>
     <class>models.Facility</class>
     <class>models.PCC</class>
     <class>models.Pcc</class>
+    <class>models.Users</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>

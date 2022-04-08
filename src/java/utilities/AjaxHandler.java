@@ -10,18 +10,17 @@ import java.lang.reflect.Method;
 import services.DBAccess;
 
 /**
+ * For delivering a single value to an AJAX call. Used in pages where data is shown through 
+ * a single line (located mostly on tables).
  *
- * @author 856622
+ * @author - Angelo De Vera
  */
 public class AjaxHandler extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    //object to be written = models.Facility[ recordID=100000001 4193 Tue Mar 29 09:07:38 MDT 2022 29.94 1955.24 0.65 -12.42 24.01 6.73 ]
+    /**
+     * Retrieves a value in the database based on the attribute required, deviceID as well as the device name
+     * and delivers it back to the AJAX call. Usually all values retrieved are doubles.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,7 +59,7 @@ public class AjaxHandler extends HttpServlet {
         
         data = Math.random() * data; //TEMPORARY
         
-        String finalData = String.valueOf(data);
+        String finalData = String.format("%.2f", data);
 
         String max = request.getParameter("max");
         String min = request.getParameter("min");
@@ -72,7 +71,7 @@ public class AjaxHandler extends HttpServlet {
                 min = String.valueOf(data);
             }
 
-            finalData = String.valueOf(data) + "," + max + "," + min;
+            finalData = String.format("%.2f", data) + "," + String.format("%.2f", Double.parseDouble(max)) + "," + String.format("%.2f", Double.parseDouble(min));
         }
 
         //Send data back

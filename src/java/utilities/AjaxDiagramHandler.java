@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utilities;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,17 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import services.DBAccess;
 
 /**
+ * For delivering color data (HEXCODE) to AJAX call. Only used for changing color
+ * for both breaker symbols in the home page. Note that in the database breaker status is
+ * 0 or 1, not working and working respectively 
+ * 
+ * Green - working   #00FF00
+ * Red - not working #FF0000
  *
- * @author 856622
+ * @author Angelo De Vera
  */
 public class AjaxDiagramHandler extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
+    /**
+     * Retrieves the breaker status given the breaker deviceID from the AJAX call and returns 
+     * the hexcode value for the correct color.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,8 +54,6 @@ public class AjaxDiagramHandler extends HttpServlet {
         } catch (Exception e) {
 //            e.printStackTrace();
         }
-
-        
         
         //Changes the stroke color of the style
         //Regex finds the hex code

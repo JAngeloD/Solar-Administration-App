@@ -9,12 +9,17 @@ import javax.persistence.Query;
 import models.Inverter;
 
 /**
- *
- * @author 821320
+ * A class for accessing the Inverter table in the database.
+ * @author Therin Mody
  */
 public class InverterDB {
     private List<Inverter> list;
 
+    /**
+     * A method to retrieve all the Inverter entries in the database
+     * @return list The list of Inverter objects from the database
+     * @throws SQLException 
+     */
     public List<Inverter> getAll() throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -28,6 +33,12 @@ public class InverterDB {
         return list;
     }
 
+    /**
+     * A method to retrieve a specific Inverter from the database
+     * @param timestamp The timestamp of the inverter
+     * @param deviceID the deviceID of the inverter
+     * @return record The Inverter object returned from the query
+     */
     public Inverter get(String timestamp, String deviceID) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -46,6 +57,11 @@ public class InverterDB {
         return record;
     }
 
+    /**
+     * A method to insert an Inverter into the database
+     * @param event The Inverter to be inserted into the database
+     * @throws SQLException 
+     */
     public void insert(Inverter event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -63,6 +79,10 @@ public class InverterDB {
 
     }
 
+    /**
+     * A method to update a Inverter into the database
+     * @param user The Inverter object that is to be inserted into the database
+     */
     public void update(Inverter user) {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -80,6 +100,11 @@ public class InverterDB {
 
     }
 
+    /**
+     * A method to delete an Inverter object from the database
+     * @param event The primary key of the inverter to be deleted
+     * @throws SQLException 
+     */
     public void delete(String event) throws SQLException {
 
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

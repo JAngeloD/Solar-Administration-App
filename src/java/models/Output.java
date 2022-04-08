@@ -1,10 +1,9 @@
 package models;
 
-import java.util.Arrays;
-
 /**
- *
- * @author 821320
+ * A class that constructs an Output object and make the
+ * necessary adjustments to the data it holds 
+ * @author Therin Mody
  */
 public class Output {
 
@@ -13,29 +12,55 @@ public class Output {
     public double y1;
     public double y2;
 
+    /**
+     * Default constructor
+     */
     public Output() {
 
     }
 
+    /**
+     * Constructor for an output object without a y2 axis
+     * @param x The x axis attribute
+     * @param y1 The y1 attribute
+     */
     public Output(int x, double y1) {
         this.x = x;
         this.y1 = y1;
     }
 
+    /**
+     * Constructor for an output object with two y-axis
+     * @param x The x axis attribute
+     * @param y1 The y1 axis attribute
+     * @param y2  The y2 axis attribute
+     */
     public Output(int x, double y1, double y2) {
         this.x = x;
         this.y1 = y1;
         this.y2 = y2;
     }
 
+    /**
+     * A constructor for an Output object to hold the x-axis
+     * value as its adjacent String value
+     * @param x the x axis attribute
+     * @param y1 the y1 axis attribute
+     * @param y2 the y2 axis attribute
+     */
     public Output(String x, double y1, double y2) {
         this.xString = x;
         this.y1 = y1;
         this.y2 = y2;
     }
 
-    /*
-    * Get the the array of output objects for the jsp reports 1 and 3
+    /**
+     * A method to create a array of Output objects to use for Report use case 1 & 3
+     * I.e. the ones where the x axis is in months
+     * @param x an array of integers for the x axis
+     * @param y1 an array of doubles for the y1 axis
+     * @param y2 an array of doubles for the y2 axis
+     * @return outputArray the Output[] that holds the values for the reportOutput table
      */
     public Output[] getOutputArray(int[] x, double[] y1, double[] y2) {
         int length;
@@ -61,8 +86,12 @@ public class Output {
         return outputArray;
     }
 
-    /*
-    * Get the the array of output objects for the jsp reports 2 and 4
+    /**
+     * A method that will get the outputArray values for the reports 2 and 4
+     * i.e any report with years as the x-axis
+     * @param x an int[] of x values
+     * @param y1 an double[] of y values
+     * @return outputArray the Output[] that holds all the Output objects you will need.
      */
     public Output[] getOutputArray(int[] x, double[] y1) {
 
@@ -79,13 +108,11 @@ public class Output {
 
         return outputArray;
     }
-
-    public String getxString() {
-        return xString;
-    }
-
-    /*
-    * Convert int to month String
+    
+    /**
+     * A method with convert an array of integers into their corresponding month String
+     * @param x The array of integers
+     * @return stringArray the resulting stringArray converted from integers
      */
     public String[] getMonthStrings(int[] x) {
 
@@ -156,15 +183,35 @@ public class Output {
         return stringArray;
     }
 
+    /**
+     * Simple getter for X
+     * @return x
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Simple getter for y1
+     * @return y1
+     */
     public double getY1() {
         return y1;
     }
 
+    /**
+     * Simple getter for y2
+     * @return y2
+     */
     public double getY2() {
         return y2;
+    }
+    
+    /**
+     * Simple getter for xString
+     * @return xString
+     */
+    public String getxString() {
+        return xString;
     }
 }

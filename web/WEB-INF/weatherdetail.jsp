@@ -112,13 +112,13 @@
                             0
                         </td>
 
-                        <td colspan="4" id="Facility_Get_SolarirridiancePOAMax"class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridiancePOAMax"class="wd">
 
                             0
                         </td>
 
 
-                        <td colspan="4"id="Facility_Get_SolarirridiancePOAMin"class="realtime">
+                        <td colspan="4"id="Facility_Get_SolarirridiancePOAMin"class="wd"hidden>
                              0
                         </td>
                     </tr>
@@ -130,12 +130,12 @@
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMax"class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMax"class="wd">
 
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMin"class="realtime">
+                        <td colspan="4" id="Facility_Get_SolarirridianceGHIMin"class="wd" hidden>
                              0
                         </td>
 
@@ -150,12 +150,12 @@
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_AmbientTemperatureMax"class="realtime">
+                        <td colspan="4" id="Facility_Get_AmbientTemperatureMax"class="wd">
                             
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_AmbientTemperatureMin"class="realtime">
+                        <td colspan="4" id="Facility_Get_AmbientTemperatureMin"class="wd">
                             
 
                             0
@@ -170,12 +170,12 @@
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_WindSpeedMax"class="realtime">
+                        <td colspan="4" id="Facility_Get_WindSpeedMax"class="wd">
                             
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_WindSpeedMin"class="realtime">
+                        <td colspan="4" id="Facility_Get_WindSpeedMin"class="wd">
                             
 
                             0
@@ -190,12 +190,12 @@
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Max"class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Max"class="wd">
 
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Min" class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature1Min" class="wd">
 
 
                             0
@@ -209,17 +209,30 @@
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Max"class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Max"class="wd">
 
 
                             0
                         </td>
-                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Min"class="realtime">
+                        <td colspan="4" id="Facility_Get_BackOfPanelTemperature2Min"class="wd">
 
 
                             0
                         </td>
                     </tr>
+                    <tr> <th scope="row">AC Output</th>
+                        
+
+<td colspan="4" id="Pcc_Get_AcOutputEnergy" class="realtime">
+0
+</td>
+<td colspan="4" id="Pcc_Get_AcOutputEnergyMax">
+0
+</td>
+<td colspan="4" id="Pcc_Get_AcOutputEnergyMin" hidden>
+0
+</td>
+</tr>
                    
                 </table>
 

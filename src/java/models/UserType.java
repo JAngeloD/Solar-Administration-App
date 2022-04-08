@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.io.Serializable;
@@ -20,8 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author hazco
+ * Represents the type of user
  */
 @Entity
 @Table(name = "user_type")
@@ -48,39 +42,74 @@ public class UserType implements Serializable {
     public UserType() {
     }
 
+    /**
+     * Creates a UserType with the specified typeId
+     * @param typeId An integer representing the typeId
+     */
     public UserType(Integer typeId) {
         this.typeId = typeId;
     }
 
+    /**
+     * Gets the typeId for the UserType
+     * @return an Integer representing the user type id
+     */
     public Integer getTypeId() {
         return typeId;
     }
 
+    /**
+     * Sets the user type id
+     * @param typeId an integer representing the user type id
+     */
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
 
+    /**
+     * Gets the user's access lever
+     * @return an integer representing the user's access level
+     */
     public Integer getAccessLevel() {
         return accessLevel;
     }
-
+    /**
+     * Sets the user access level
+     * @param accessLevel  An integer representing the user's access level
+     */
     public void setAccessLevel(Integer accessLevel) {
         this.accessLevel = accessLevel;
     }
 
+    /**
+     * Sets the user type name
+     * @return A string representing the user type's name
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     * Gets the user type's name
+     * @param typeName  A string representing the user type's name
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 
+    /**
+     * Gets a list of all users
+     * @return A List collection of all users
+     */
     @XmlTransient
     public List<Users> getUsersList() {
         return usersList;
     }
 
+    /**
+     * Sets a list of all users
+     * @param usersList a List collection of type Users where the list of all users will be stored
+     */
     public void setUsersList(List<Users> usersList) {
         this.usersList = usersList;
     }

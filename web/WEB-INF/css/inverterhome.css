@@ -1,12 +1,18 @@
-body {
-    background-color : #F5F3E6;
+
+
+
+   body { 
+       background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif;
-}
+
+   }
+      
 /*
 h1 {
     font-family: 'Roboto', sans-serif;
 }
 */
+/*
 ul {
     list-style-type: none;
     margin: 0;
@@ -15,12 +21,12 @@ ul {
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
     text-align: right;
-}
+}*/
 
-li {
+/*li {
     float: right;
     font-size: larger;
-}
+}*/
 
 .left {
     float: left;
@@ -79,10 +85,10 @@ li a.active {
     color:black;
 }
 
-.menuButton {
+/*.menuButton {
     width: 10%;
     border-radius: 1em;
-}
+}*/
 
 .center {
     margin-right: 10%;
@@ -124,6 +130,23 @@ a {
 
     font-size: 12px;
 }
+ .data{
+            border-radius: 1em;
+            border: 2px solid;
+         
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+          
+            border:1;
+            border-width: 2;
+            width: 60px;
+        }
 
 .wrapall{
     text-align: center;

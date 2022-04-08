@@ -5,15 +5,14 @@ h1 {
 }
 */
 
-body {
-    background-color: #F5F3E6;
-}
+
 
 #electricDiagram {
     clear: both;
     float: left;
     margin-left: 2%;
-    margin-top: -3%;
+    margin-top: 5%;
+    
 }
 
 #companyName {
@@ -24,10 +23,18 @@ body {
     float: right;
 }
 
+
+  
+   body { 
+       background: #F5F3E6 !important; 
+  
+
+   }
         .wrapall{
+           
             text-align: center;
             position: relative;
-
+        background-color: #F5F3E6;
         }
         .wrapper {
             text-align: center;
@@ -37,9 +44,11 @@ body {
         .button {
             background-color:#3A2318;
             position: absolute;
-            top: 58%;
-            left: 65%;
+            top: 56.5%;
+            left: 63%;
             border-radius: 15px;
+            color:white;
+             font-size: 16px;
         }
         .wrapper1 {
             text-align: center;
@@ -48,11 +57,13 @@ body {
 
         .button1 {
             position: absolute;
-            top: 81.6%;
-            left: 14.2%;
-            width: 92px;
+            top: 41%;
+            left: 13.15%;
+            width: 155px;
             background-color:#3A2318;
             border-radius: 15px;
+            font-size: 16px;
+            color:white;
         }
 
         .wrapper2 {
@@ -66,6 +77,8 @@ body {
             left: 65%;
             background-color:#3A2318;
             border-radius: 15px;
+             color:white;
+             font-size: 16px;
         }
         .wrapper4 {
             text-align: center;
@@ -73,7 +86,7 @@ body {
         }
         .button4 {
             position: absolute;
-            top: 18.5%;
+            top: 19.5%;
             left: 2%;
             width:88px;
         }
@@ -83,7 +96,7 @@ body {
         }
         .button5 {
            position: absolute;
-            top: 34%;
+            top: 35%;
             left: 2%;
             width:88px;
         }
@@ -93,7 +106,7 @@ body {
         }
         .button6 {
             position: absolute;
-          top: 62.5%;
+          top: 64%;
             left: 2%;
             width:88px;;
         }
@@ -103,7 +116,7 @@ body {
         }
         .button7 {
             position: absolute;
-           top: 77.5%;
+           top: 79%;
             left: 2%;
             width:88px;
         }
@@ -113,7 +126,7 @@ body {
         }
         .button8 {
                position: absolute;
-            top: 18.5%;
+            top: 19.5%;
             left: 8.2%;
             width:88px;
         }
@@ -123,7 +136,7 @@ body {
         }
         .button9 {
               position: absolute;
-            top: 34%;
+            top: 35%;
             left: 8.2%;
             width:88px;
         }
@@ -133,7 +146,7 @@ body {
         }
         .button10 {
             position: absolute;
-          top: 62.5%;
+          top: 64%;
             left: 8.2%;
             width:88px;;
         }
@@ -143,7 +156,7 @@ body {
         }
         .button11 {
                position: absolute;
-           top: 77.5%;
+           top: 79%;
             left: 8.2%;
             width:88px;
         }
@@ -153,7 +166,7 @@ body {
         }
         .button12 {
             position: absolute;
-            top: 18.5%;
+            top: 19.5%;
             left: 16.4%;
             width:45px;
         }
@@ -163,7 +176,7 @@ body {
         }
         .button13 {
           position: absolute;
-            top: 34%;
+            top: 35%;
             left: 16.4%;
             width:45px;
         }
@@ -173,7 +186,7 @@ body {
         }
         .button14 {
                   position: absolute;
-          top: 62.5%;
+          top: 64%;
             left: 16.4%;
             width:45px;
         }
@@ -183,7 +196,7 @@ body {
         }
         .button15 {
               position: absolute;
-           top: 77.5%;
+           top: 79%;
             left: 16.4%;
             width:45px;
         }
@@ -193,7 +206,7 @@ body {
         }
         .button16 {
               position: absolute;
-            top: 18.5%;
+            top: 19.5%;
             left: 22.4%;
             width:45px;
         }
@@ -203,7 +216,7 @@ body {
         }
         .button17 {
            position: absolute;
-            top: 34%;
+            top: 35%;
             left: 22.4%;
             width:45px;
         }
@@ -213,7 +226,7 @@ body {
         }
         .button18 {
                     position: absolute;
-          top: 62.5%;
+          top: 64%;
             left: 22.4%;
             width:45px;
         }
@@ -223,7 +236,7 @@ body {
         }
         .button19 {
                 position: absolute;
-           top: 77.5%;
+           top: 79%;
             left: 22.4%;
             width:45px;
         }
@@ -233,7 +246,7 @@ body {
         }
         .button20 {
             position: absolute;
-            top: 29%;
+            top: 30%;
             left: 36.4%;
         }
            .wrapper21 {
@@ -242,7 +255,7 @@ body {
         }
         .button21 {
             position: absolute;
-            top: 72.6%;
+            top: 74.6%;
                         left: 36.4%;
         }
            .wrapper22 {
@@ -251,7 +264,7 @@ body {
         }
         .button22 {
             position: absolute;
-            top: 38.3%;
+            top: 46%;
             left: 56.5%;
         }
            .wrapper23 {
@@ -260,7 +273,7 @@ body {
         }
         .button23 {
             position: absolute;
-            top: 47.2%;
+            top: 54.5%;
             left: 56.5%;
         }
            .wrapper24 {
@@ -269,7 +282,7 @@ body {
         }
         .button24 {
             position: absolute;
-           top: 38.3%;
+           top: 46%;
             left: 65.5%;
         }
            .wrapper25 {
@@ -278,7 +291,7 @@ body {
         }
         .button25 {
             position: absolute;
-            top: 47.2%;
+            top: 54.5%;
             left: 65.5%;
         }
            .wrapper26 {
@@ -287,7 +300,7 @@ body {
         }
         .button26 {
             position: absolute;
-           top: 41%;
+           top: 42%;
             left: 74%;
         }
            .wrapper27 {
@@ -296,7 +309,7 @@ body {
         }
         .button27 {
             position: absolute;
-           top: 50%;
+           top: 51%;
             left: 74%;
         }
         p{
@@ -338,7 +351,7 @@ body {
         .data{
             border-radius: 1em;
             border: 2px solid;
-            background-color: #F5F3E6;
+         
             font: sans-serif;  
             font-size: 10px;
             padding: 5px;
@@ -347,16 +360,43 @@ body {
         label, input{
             font-size: 10px;
             font-weight: bold;
-            background-color: #F5F3E6;
-            border: 0;
-            border-width: 0;
+          
+            border:1;
+            border-width: 2;
             width: 60px;
         }
 
         #pcc{
             position: absolute;
-            left: 64%;
-            top: 31%;
+            left: 63%;
+            top: 25%;
+            width:180px;
+             text-align: left;
+             font-size:11px;
+             
+             
         }
-
-
+        .realtime{
+            font-size:11px;
+            width:46px;
+             padding:0px;
+        }
+        #Pcc_Get_AcOutputRealPower{
+            margin-left:25px;
+                padding:0px;
+        }
+      
+        #Pcc_Get_AcOutputReactivePower{
+             margin-left:5px;
+              padding:0px;
+        }
+        
+        #Pcc_Get_AcOutputPowerFactor{
+             margin-left:15px;
+              padding:0px;
+        }
+        
+        #Pcc_Get_AcOutputPhaseAverageVoltage{
+             margin-left:43px;
+              padding:0px;
+        }

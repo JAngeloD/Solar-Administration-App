@@ -1,4 +1,8 @@
+  body { 
+       background: #F5F3E6 !important; 
+  
 
+   }
      .wrapper5 {
             text-align: center;
 
@@ -23,16 +27,13 @@
         */
   
 
-body {
-    background-color : #F5F3E6;
-    font-family: 'Lato', sans-serif;
-}
+
 /*
 h1 {
     font-family: 'Roboto', sans-serif;
 }
 */
-ul {
+/*ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -45,7 +46,7 @@ ul {
 li {
     float: right;
     font-size: larger;
-}
+}*/
 
 .left {
     float: left;
@@ -108,7 +109,7 @@ li a.active {
     border-radius: 1em;
 }
 */
-.center {
+/*.center {
     margin-right: 10%;
     margin-left: 10%;
     margin-top: 2%;
@@ -128,14 +129,14 @@ li a.active {
    width: 50%;
    margin-left: 25%;
    margin-right: 25%;
-}
+}*/
 /*
 #weatherData {
     border: 1px solid;
     padding: 2%;
     
 }*/
-
+/*
 .buttonLog {
     width: 120px;
       color: whitesmoke; 
@@ -153,7 +154,7 @@ li a.active {
   .buttonLog:hover {
       background-color: darkgray;
       color:black;
-  }
+  }*/
    input[type=submit]{
     background-color:#3A2318;
     color: whitesmoke; 
@@ -162,6 +163,7 @@ li a.active {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 15px;
+    width:220px;
   }
   input[type=submit]:hover{
     background-color: darkgray;
@@ -179,9 +181,44 @@ a {
 
     font-size: 12px;
 }
+b {
+           
+    color: black;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
 
 .wrapall{
     text-align: center;
     position: relative;
 
 }
+.data{
+            border-radius: 1em;
+            border: 2px solid;
+         
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+          
+            border:1;
+            border-width: 2;
+            width: 60px;
+        }
+         a {
+           
+            color: white;
+            padding: 1.6em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            font-size: 12px;
+        }

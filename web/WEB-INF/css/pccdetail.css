@@ -1,4 +1,10 @@
 
+
+  body { 
+       background: #F5F3E6 !important; 
+  
+
+   }
 h1 {
     font-family: 'Roboto', sans-serif;
 }
@@ -62,56 +68,152 @@ a {
     font-size: 12px;
 }
 
-.button2 {
-  width: 67px;
-    color: whitesmoke; 
-    left: 31%;
-    top: 55%;
-    border-radius: 15px;
-    background-color:#3A2318;
-    position: absolute;
-}
 
-.button2:hover {
-    background-color: darkgray;
-    color:black;
-}
 
-.data{
-    border-radius: 1em;
-    border: 2px solid;
-    background-color: #F5F3E6;
-    font: sans-serif;  
-    font-size: 8px;
-    padding: 5px;
-    width: 140px;
-}
+ .data{
+            border-radius: 1em;
+            border: 2px solid;
+         
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+  label, input{
+            font-size: 10px;
+            font-weight: bold;
+          
+            border:1;
+            border-width: 2;
+            width: 60px;
+        }
 .electricDiagram{
     position: relative;
 }
-label, input{
-    font-size: 8px;
-    font-weight: bold;
-    background-color: #F5F3E6;
-    border: 2px;
-    border-width: 1px;
-    width: 50px;
-}
+
 #f1data{
     position: absolute;
-    left: 14.4%;
-    top: 17.5%;
+    left: 16.5%;
+    top: 11%;
+     text-align: left;
+             font-size:11px;
+           width:180px; 
 }
 #f2data{
     position: absolute;
-    left: 14.4%;
-    top: 53%;
+    left: 16.5%;
+    top: 47%;
+     text-align: left;
+             font-size:11px;
+           width:180px; 
 }
 #pccdata{
     position: absolute;
-    left: 56%;
-    top: 17.5%;
+    left: 63%;
+    top: 24%;
+    text-align: left;
+             font-size:11px;
+           width:180px; 
+    
 }
+
+
+        .realtime{
+            font-size:11px;
+            width:46px;
+             padding:0px;
+        }
+/*        #Pcc_Get_AcOutputRealPower{
+            margin-left:5px;
+                padding:0px;
+        }
+      
+        #Pcc_Get_AcOutputReactivePower{
+             margin-left:5px;
+              padding:0px;
+        }
+        
+        #Pcc_Get_AcOutputPowerFactor{
+             margin-left:5px;
+              padding:0px;
+        }*/
+        
+/*        #Pcc_Get_AcOutputPhaseAverageVoltage{
+             margin-left:43px;
+              padding:0px;
+        }*/
+#Pcc_Get_AcOutputPhaseCaVoltage{
+             margin-left:20px;
+              padding:0px;
+        }
+
+#Pcc_Get_AcOutputPhaseBcVoltage{
+             margin-left:20px;
+              padding:0px;
+        }
+
+#Pcc_Get_AcOutputPhaseAbVoltage{
+             margin-left:20px;
+              padding:0px;
+        }
+
+#Pcc_Get_AcOutputPowerFactor{
+             margin-left:14px;
+              padding:0px;
+        }
+
+#Pcc_Get_AcOutputReactivePower{
+             margin-left:2px;
+              padding:0px;
+        }
+
+#Pcc_Get_AcOutputRealPower{
+             margin-left:23px;
+              padding:0px;
+        }
+
+#Feeder_Get_AcOutputRealPower01{
+             margin-left:27px;
+              padding:0px;
+        }
+
+#Feeder_Get_AcOutputReactivePower01{
+             margin-left:5px;
+              padding:0px;
+        }
+
+
+#Feeder_Get_AcOutputPowerFactor01{
+             margin-left:15px;
+              padding:0px;
+        }
+
+#Feeder_Get_AcOutputPhaseAverageVoltage01{
+             margin-left:43px;
+              padding:0px;
+        }
+
+#Feeder_Get_AcOutputRealPower02{
+             margin-left:27px;
+              padding:0px;
+        }
+
+#Feeder_Get_AcOutputReactivePower02{
+             margin-left:5px;
+              padding:0px;
+        }
+
+
+#Feeder_Get_AcOutputPowerFactor02{
+             margin-left:16px;
+              padding:0px;
+        }
+
+
+#Feeder_Get_AcOutputPhaseAverageVoltage02{
+             margin-left:43px;
+              padding:0px;
+        }
+
 
 /*
 button{
@@ -131,10 +233,7 @@ left:50%;
 }
 
 */
-body {
-    background-color: #F5F3E6;
-    
-}
+
 /*
 #header {
     background-color: #F5F3E6;
@@ -150,7 +249,7 @@ body {
     clear: both;
     float: left;
     margin-left: 2%;
-    margin-top: -3%;
+    margin-top: 5%;
 }
 
 p{

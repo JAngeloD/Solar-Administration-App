@@ -1,12 +1,12 @@
-body {
-    background-color : #F5F3E6;
-    font-family: 'Lato', sans-serif;
-}
+  body { 
+       background: #F5F3E6 !important; 
+  
 
+   }
 h1 {
     font-family: 'Roboto', sans-serif;
 }
-
+/*
 ul {
     list-style-type: none;
     margin: 0;
@@ -15,12 +15,12 @@ ul {
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
     text-align: right;
-}
+}*/
 
-li {
+/*li {
     float: right;
     font-size: larger;
-}
+}*/
 
 .left {
     float: left;
@@ -103,6 +103,7 @@ li a.active {
    margin-right: 25%;
 }
 */
+
 #weatherData {
     border: 1px solid;
     padding: 2%;
@@ -112,15 +113,15 @@ li a.active {
 p{
     font-size: 11px;
 }
-a {
+ a {
            
-    color: white;
-    padding: 1.6em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
+            color: white;
+            padding: 1.6em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
 
-    font-size: 12px;
-}
+            font-size: 12px;
+        }
 
 .wrapall{
     text-align: center;
@@ -135,35 +136,73 @@ a {
     margin-top: 5%;
 }
 
-table, td, th {
-    border-collapse: collapse;
-    table-layout: fixed;
-    border: 2px solid;
+  #table{
+      margin-right: 60px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      table-layout: auto;
+      width: 100%;
+       background-color: #a99a86;
+  }
+
+  
+
+.row{
+    width:100%;
 }
 
-td{
-    text-align:left;
-
-               
-                border:2px solid black;
-                padding:15px
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
-  th {
-               background-color: #99582A;
-                Color:white;
-            }
-            th {
-               
-                text-align:center;
-                border:2px solid black;
-                padding:15px
-              
-            }
-            
+/*#table tr:nth-child(even){background-color: #F5F3E6;}*/
+
+#table tr:hover {background-color: #99582A;}
+
+#table
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #848886;
+    color: white;
+} 
             
 .center{
     position: absolute;
     left:0%;
 }
 
+
+
+         .data{
+            border-radius: 1em;
+            border: 2px solid;
+         
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
+
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+          
+            border:1;
+            border-width: 2;
+            width: 60px;
+        }
+
+    
+        .realtime{
+            font-size:18px;
+            width:200px;
+             padding:0px;
+        }
+        #Facility_Get_BackOfPanelTemperature2Min{
+             margin-left:15px;
+              padding:0px;
+        }
+        

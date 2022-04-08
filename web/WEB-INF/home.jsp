@@ -12,9 +12,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
            <meta name="viewport" content="width=device-width, initial-scale=1">
         <style><%@include file="/WEB-INF/css/home.css"%></style>
-        <style><%@include file="/WEB-INF/css/header.css"%></style>
+        <style><%@include file="/WEB-INF/css/newHead.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="javascript/HomePageAjax.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
        
         <title>Home</title>
     </head>
@@ -23,18 +29,51 @@
     
       
     <body>
-             <div class="headerS">
-      <ul  id="navigation" class="nav">
+        
+      <nav  class="navbar navbar-expand-lg navbar-light" style="background-color: #f3f3f3;"> 
+        <div class="container-fluid">
+          <h1 class="left">MFN SOLAR FACILITY</h1>
+         
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button><div class="float-right box">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul  id="navigation"class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="menuButton1"><a class="buttonMenu1" href="login?action=logout">Logout</a></li>
-        <li class="menuButton1"><a class="buttonMenu1" href="useraccounts">Account</a></li>
-        <li class="menuButton1"><a class="buttonMenu1" href="reports">Reports</a></li>
-        <li class="menuButton1"><a class="buttonMenu1" href="writelog">Operator Log</a></li>
-        <li class="currentPage"><a class="buttonMenu2" id="current" class="active":active >Home</a></li>
-    
-        <h1 class="left">MFN SOLAR FACILITY</h1>
-      </ul>
-    </div>
+              <li class="nav-item" id="currentPage" f>
+                <a class="nav-link"  id="current" aria-current="page">Home</a>
+              </li>
+             
+              <li class="nav-item" id="menuButton1" f>
+                <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="useraccounts">Account</a>
+              </li>
+
+             
+       
+              <li class="nav-item dropdown" id="menuButton1" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="writelog">Operator Log</a></li>
+                  <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="readlog">Read Logs</a></li>
+                   <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="writelog">Write Logs</a></li>
+                  <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="reports">Reports</a></li>
+                    <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="inverterhome">Inverters</a></li>
+                      <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="pccdetail">PCC</a></li>
+                        <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="weather">Weather</a></li>
+                  <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="useraccounts">Account</a></li>
+                  <li id="menuButton2"><a class="dropdown-item"id="buttonMenu1" href="login?action=logout">Logout</a></li>
+
+                </ul>
+              </li>
+              </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+           
         <div class="wrapall" id="electricDiagram">
 
             <div class="wrapper">
@@ -53,13 +92,16 @@
 
             <div class="wrapper3">
 
+               
+
                 <div id="pcc" class="data">
-                    <label>Real Power: <input type="number" id="Pcc_Get_AcOutputRealPower" class="realtime" stepget="1" readonly="true" size="10" value="1000"> kW</label><br>
-                    <label>Reactive Power: <input type="number" id="Pcc_Get_AcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
-                    <label>Power Factor: <input type="number" id="Pcc_Get_AcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
-                    <label>Voltage: <input type="number" id="Pcc_Get_AcOutputPhaseAverageVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
+                    <label class="col-lg-12 col-form-label">Real Power: <input type="number" id="Pcc_Get_AcOutputRealPower" class="realtime" stepget="1" readonly="true" size="10" value="1000" > kW</label><br>
+                    <label class="col-lg-12 col-form-label">Reactive Power: <input type="number"  id="Pcc_Get_AcOutputReactivePower" class="realtime" step="0.1" readonly="true" size="10" value="1000"> kVAr</label><br>
+                    <label class="col-lg-12 col-form-label">Power Factor: <input type="number" id="Pcc_Get_AcOutputPowerFactor" class="realtime" step="0.1" readonly="true" size="10" value="1000"> %</label><br>
+                        <label class="col-lg-12 col-form-label">Voltage: <input type="number" id="Pcc_Get_AcOutputPhaseAverageVoltage" class="realtime" step="1" readonly="true" size="10" value="1000"> V</label>
                 </div>
             </div>
+            
 
             <div class="txt">
 
@@ -1102,6 +1144,6 @@
             </g>
             </svg>
         </div>
-      
+    
     </body>
 </html>

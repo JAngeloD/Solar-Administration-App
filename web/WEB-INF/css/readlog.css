@@ -1,13 +1,14 @@
-body {
-    background-color : #F5F3E6;
-    font-family: 'Lato', sans-serif;
-}
+ body { 
+       background: #F5F3E6 !important; 
+  font-family: 'Lato', sans-serif;
+
+   }
 /*
 h1 {
     font-family: 'Roboto', sans-serif;
 }
 */
-ul {
+/*ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -20,7 +21,7 @@ ul {
 li {
     float: right;
     font-size: larger;
-}
+}*/
 /*
 .left {
     float: left;
@@ -134,15 +135,32 @@ li a.active {
 p{
     font-size: 11px;
 }
-a {
-           
-    color: white;
-    padding: 1.6em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
+.data{
+            border-radius: 1em;
+            border: 2px solid;
+         
+            font: sans-serif;  
+            font-size: 10px;
+            padding: 5px;
+        }
 
-    font-size: 12px;
-}
+        label, input{
+            font-size: 10px;
+            font-weight: bold;
+          
+            border:1;
+            border-width: 2;
+            width: 60px;
+        }
+         a {
+           
+            color: white;
+            padding: 1.6em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            font-size: 12px;
+        }
 
 .wrapall{
     text-align: center;

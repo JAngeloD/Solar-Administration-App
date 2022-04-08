@@ -9,8 +9,10 @@ import dbutil.*;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.sql.SQLException;
+import java.util.HashMap;
 import models.*;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import utilities.TimeFactory;
@@ -302,7 +304,66 @@ public class DBAccess {
             System.out.println(e.toString());
         }
     }
-
+    
+    /**
+     * Send an email to the user's email with a link to reset password
+     * @param email represents the user's email
+     * @param path represents the path to the location of the email templates folder
+     * @param url represents the url that will be used to create the link that the user will use to reset password
+     * @return true if the email to reset password was sent successfully
+     */
+    public boolean resetPassword(String email, String path, String url){
+        UsersDB udb = new UsersDB();
+        try{
+            Users user = udb.get(email);
+            if(user != null){
+                String uuid = UUID.randomUUID().toString();
+                user.setResetPasswordUuid(uuid);
+                udb.update(user);                
+                
+                String to = email;
+                String subject = "Reset password";
+                String template = path + "/emailtemplates/resetPassword.html";
+                String link = url + "?uuid=" + uuid;
+                
+                HashMap<String, String> tags = new HashMap<>();
+                tags.put("firstname", user.getFirstName());
+                tags.put("lastname", user.getLastName());
+                tags.put("link", link);
+                
+                GmailService.sendMail(to, subject, template, tags);
+                return true;
+            }
+        }
+        catch (Exception e){
+            return false;
+        }
+        return false;
+    }
+    
+    /**
+     * method that sets the new password if the uuid matches the one for the user
+     * @param uuid a string representing a unique id
+     * @param password a string representing the new password
+     * @return 
+     */
+    public boolean changePassword(String uuid, String password){
+        UsersDB udb = new UsersDB();
+        System.out.println("Change password in as");
+        try{
+            Users user = udb.getByUUID(uuid);
+            System.out.println(user.getFirstName());
+            user.setPassword(password);
+            user.setResetPasswordUuid(null);
+            udb.update(user);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+     
+    }
+    
     public static void FacilityInsert(String email, int logType, String logText) {
         FacilityLogsDB db = new FacilityLogsDB();
         FacilityLogs log = new FacilityLogs();

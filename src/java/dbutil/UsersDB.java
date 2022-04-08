@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import models.Users;
 
 /**
@@ -29,7 +30,7 @@ public class UsersDB {
     }
 
     /**
-     * A method to retrieve a specific User from the database
+     * A method to retrieve the specific User from the database that matches email
      * @param email The primary key of the User you intend to receive
      * @return user The user returned from the query
      */
@@ -42,6 +43,27 @@ public class UsersDB {
             em.close();
         }
         return user;
+    }
+    
+    /**
+     * A method to retrieve the specific User from the database that matches the uuid
+     * @param uuid unique id used to retrieve a specific user
+     * @return 
+     */
+    public Users getByUUID(String uuid){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        try{
+            TypedQuery<Users> query = em.createNamedQuery("User.findByResetPasswordUuid", Users.class);
+            query.setParameter("resetPasswordUuid", uuid);
+            Users user = query.getSingleResult();
+            return user;
+        }
+        catch(Exception e){
+            return null;
+        }
+        finally{
+          em.close();
+        }  
     }
 
     /**

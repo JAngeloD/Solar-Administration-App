@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(50),
     password VARCHAR(50),
     active BIT,
+    reset_password_uuid VARCHAR(50),
     CONSTRAINT fk_type_id
     FOREIGN KEY (type_id)
         REFERENCES user_type(type_id)

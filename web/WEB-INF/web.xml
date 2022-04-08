@@ -4,6 +4,10 @@
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>filters.AuthenticationFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>RoleFilter</filter-name>
+        <filter-class>filters.RoleFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>AjaxDiagramHandler</servlet-name>
@@ -70,6 +74,10 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>UserAccountServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
         <servlet-name>UserAccountServlet</servlet-name>
     </filter-mapping>
     <servlet>
@@ -147,6 +155,10 @@
     <servlet>
         <servlet-name>InverterEightServlet</servlet-name>
         <servlet-class>servlets.InverterEightServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>servlets.ResetPasswordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
@@ -257,6 +269,10 @@
         <url-pattern>/reportOutput</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/reset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>InverterSevenServlet</servlet-name>
         <url-pattern>/inverterseven</url-pattern>
     </servlet-mapping>
@@ -272,4 +288,14 @@
     <welcome-file-list>
         <welcome-file>login</welcome-file>
     </welcome-file-list>
+    <env-entry>
+        <env-entry-name>webmail-username</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value/>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>webmail-password</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value/>
+    </env-entry>
 </web-app>

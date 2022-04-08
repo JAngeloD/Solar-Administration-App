@@ -34,7 +34,7 @@ public class AjaxHandler extends HttpServlet {
         String timestamp = "4192"; //TEMPORARY
 
         //Data to be returned back to caller
-        double data = -1;
+        double data = 0;
         try {
             DBAccess db = new DBAccess();
             Method[] models = db.getClass().getDeclaredMethods();
@@ -52,7 +52,7 @@ public class AjaxHandler extends HttpServlet {
                     break;
             }
         } catch (InvocationTargetException e) {
-            data = -1;
+            data = 0;
         } catch (Exception e) {
             e.printStackTrace();
         }

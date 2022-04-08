@@ -1,6 +1,6 @@
 .csvOptions{
     padding-left: 30px;
-    
+
 }
 
 #pccBlock{
@@ -186,5 +186,9 @@
 }
 
 #wthr{
+    display: none;
+}
+
+#pcc, #feeders, #inverters, #weather {
     display: none;
 }

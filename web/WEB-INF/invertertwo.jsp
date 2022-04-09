@@ -19,7 +19,7 @@
    <body>
       <nav  class="navbar navbar-expand-lg navbar-light" style="background-color: #f3f3f3;"> 
         <div class="container-fluid">
-          <h1 class="left">INVERTER HOME</h1>
+          <h1 class="left">INVERTERS 6-10</h1>
          
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,11 +28,11 @@
             <ul  id="navigation"class="navbar-nav me-auto mb-2 mb-lg-0">
 
               <li class="nav-item" id="currentPage" f>
-                <a class="nav-link"  id="current" aria-current="page">Inverters</a>
+                <a class="nav-link"  id="current" aria-current="page">6-10</a>
               </li>
              
               <li class="nav-item" id="menuButton1" f>
-                <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="home">Home</a>
+                <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="inverterhome">Inverters</a>
               </li>
 
              

@@ -157,3 +157,37 @@ a {
     position: relative;
 
 }
+
+#table{
+      margin-right: 60px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      table-layout: auto;
+      width: 100%;
+       background-color: #a99a86;
+  }
+
+  
+
+.row{
+    width:100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/*#table tr:nth-child(even){background-color: #F5F3E6;}*/
+
+#table tr:hover {background-color: #99582A;}
+
+#table
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #848886;
+    color: white;
+} 

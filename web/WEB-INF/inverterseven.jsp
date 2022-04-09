@@ -28,11 +28,11 @@
             <ul  id="navigation"class="navbar-nav me-auto mb-2 mb-lg-0">
 
               <li class="nav-item" id="currentPage" f>
-                <a class="nav-link"  id="current" aria-current="page">Inverters</a>
+                <a class="nav-link"  id="current" aria-current="page">31-35</a>
               </li>
              
               <li class="nav-item" id="menuButton1" f>
-                <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="home">Home</a>
+                <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="inverterhome">Inverters</a>
               </li>
 
              

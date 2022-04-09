@@ -93,7 +93,7 @@ a {
 #f1data{
     position: absolute;
     left: 16.5%;
-    top: 11%;
+    top:-6%;
      text-align: left;
              font-size:11px;
            width:180px; 
@@ -101,7 +101,7 @@ a {
 #f2data{
     position: absolute;
     left: 16.5%;
-    top: 47%;
+    top: 64%;
      text-align: left;
              font-size:11px;
            width:180px; 
@@ -119,7 +119,7 @@ a {
 
         .realtime{
             font-size:11px;
-            width:46px;
+            width:48px;
              padding:0px;
         }
 /*        #Pcc_Get_AcOutputRealPower{

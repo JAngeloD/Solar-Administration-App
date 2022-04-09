@@ -47,7 +47,7 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="writelog">Operator Log</a></li>
                   <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="readlog">Read Logs</a></li>
-                   <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="writelog">Write Logs</a></li>
+                  
                   <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="reports">Reports</a></li>
                     <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="inverterhome">Inverters</a></li>
                       <li id="menuButton2"><a class="dropdown-item" id="buttonMenu1" href="pccdetail">PCC</a></li>
@@ -63,29 +63,52 @@
           </div>
         </div>
       </nav>
-        <div id="components">
+        <div class="container">
+            <div class="row">
+           <div class="col-lg">      
+<!--             <div id="components">-->
 
             <div id="barBox">
                 <div id="bar"></div>
             </div>
-
+           </div>
+         <div class="col-lg">
             <div id="buttonsBox">
                 <div id="buttons">
-                    <form action="inverterone">
-                        <button type="submit" class="inverterButton" id="oneToNine">Inverter Detail<br> 1- 9</button>
+                    
+                   
+                   
+                    <form action="invertereight">
+                        <button  class="inverterButton" id="thirtysixToThirtynine">Inverter Detail<br> 36-39 </button>
                     </form>
-                    <form action="invertertwo">
-                        <button class="inverterButton" id="tenToNineteen">Inverter Detail<br> 10-19</button>
+                    <form action="inverterseven">
+                        <button class="inverterButton" id="thirtyoneToThirtyfive">Inverter Detail<br> 31-35 </button>
+                    </form>
+                    <form action="invertersix">
+                        <button class="inverterButton" id="twentysixToThirty">Inverter Detail<br> 26-30 </button>
+                    </form>
+                    <form action="inverterfive">
+                        <button class="inverterButton" id="twentyoneToTwentyfive">Inverter Detail<br> 21-25 </button>
+                    </form>
+                    
+                     <form action="inverterfour">
+                        <button class="inverterButton" id="sixteenTotwenty">Inverter Detail<br> 16-20 </button>
                     </form>
                     <form action="inverterthree">
-                        <button class="inverterButton" id="twentyTo29">Inverter Detail<br> 20-29</button>
+                        <button class="inverterButton" id="elevenTofifteen">Inverter Detail<br> 11-15 </button>
                     </form>
-                    <form action="inverterfour">
-                        <button class="inverterButton" id="thirtyTo39">Inverter Detail<br> 30-39</button>
+                    <form action="invertertwo">
+                        <button class="inverterButton" id="sixToTen">Inverter Detail<br> 6-10 </button>
+                    </form>
+                    <form action="inverterone">
+                        <button class="inverterButton" id="oneToFive">Inverter Detail<br> 1-5 </button>
                     </form>
                 </div>
             </div>
-
+             </div>
+  </div>
         </div>
+    
+    
     </body>
 </html>

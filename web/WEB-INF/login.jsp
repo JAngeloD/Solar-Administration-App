@@ -22,7 +22,7 @@
                 <i class="fa fa-key icon"></i>
 
                 <input type="password" class="input-field" id="password" name="password" autcomplete="username" maxlength="32"
-                       required />
+                       pattern="[A-Za-z0-9.-_]+" required />
             </div>
             <br>
             <input type="hidden" name="nonce" value="<%=session.getAttribute("nonce")%>"/>

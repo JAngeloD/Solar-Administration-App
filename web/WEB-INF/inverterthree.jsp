@@ -62,39 +62,41 @@
         </div>
       </nav>
          <div class="wrapall" id="electricDiagram">
-         <div class="center">
-            <table>
-               <tr>
-                  <td>
-                     <table>
-                        <tr>
-                           <th colspan="10">Inverter | 11</th>
-                        </tr>
-                        <tr>
-                           <th>DC Input</th>
-                           <td>DC Power</td>
+
+                 <div id="data" >
+      
+               <table id="table"class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+    <th scope="col" colspan="10">Inverter | 11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="1">DC Input</th>
+         <td >DC Power</td>
                            <td id="Inverter_Get_DcRealPower11" class="realtime">XXX.X</td>
                            <td>kW</td>
                            <td>DC Voltage</td>
-                           <td id="Inverter_Get_DcVolts11" class="realtime">XXX</td>
+                           <td id="Inverter_Get_DcVolt11" class="realtime">XXX</td>
                            <td>V</td>
                            <td>DC Current</td>
                            <td id="Inverter_Get_DcCurrent11" class="realtime">XX.X</td>
                            <td>A</td>
-                        </tr>
-                        <tr>
-                           <th rowspan="3">AC Output</th>
-                           <td>Vab</td>
-                           <td id="Inverter_Get_AcOutputPhaseABVoltage11" class="realtime">XXX</td>
+    </tr>
+    <tr>
+      <th scope="row" rowspan="3">AC Output</th>
+     <td>Vab</td>
+                           <td id="Inverter_Get_AcOutputPhaseAbVoltage11" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vbc</td>
-                           <td id="Inverter_Get_AcOutputPhaseBCVoltage11" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseBcVoltage11" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vca</td>
-                           <td id="Inverter_Get_AcOutputPhaseCAVoltage11" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseCaVoltage11" class="realtime">XXX</td>
                            <td>V</td>
-                        </tr>
-                        <tr>
+    </tr>
+    <tr>
                            <td>A Phase Current</td>
                            <td id="Inverter_Get_AcOutputPhaseACurrent11" class="realtime">XX</td>
                            <td>A</td>
@@ -116,51 +118,50 @@
                            <td id="Inverter_Get_AcOutputPowerFactor11" class="realtime">.XX</td>
                            <td>%</td>
                         </tr>
-                        <tr>
-                           <th>Status</th>
-                           <td>Fault Code</td>
+     <tr>
+      <th scope="row" rowspan="1">Status</th>
+    <td>Fault Code</td>
                            <td>--</td>
                            <td></td>
                            <td>Efficiency</td>
                            <td id="Inverter_Get_Efficiency11" class="realtime">XX.X</td>
                            <td>%</td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td>
-                     <table>
-                        <tr>
-                           <th colspan="10">Inverter | 12</th>
-                        </tr>
-                        <tr>
-                           <th>DC Input</th>
-                           <td>DC Power</td>
+    </tr>
+  </tbody>
+</table>
+       
+    <table id="table"class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+    <th scope="col" colspan="10">Inverter | 12</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="1">DC Input</th>
+         <td >DC Power</td>
                            <td id="Inverter_Get_DcRealPower12" class="realtime">XXX.X</td>
                            <td>kW</td>
                            <td>DC Voltage</td>
-                           <td id="Inverter_Get_DcVolts12" class="realtime">XXX</td>
+                           <td id="Inverter_Get_DcVolt12" class="realtime">XXX</td>
                            <td>V</td>
                            <td>DC Current</td>
                            <td id="Inverter_Get_DcCurrent12" class="realtime">XX.X</td>
                            <td>A</td>
-                        </tr>
-                        <tr>
-                           <th rowspan="3">AC Output</th>
-                           <td>Vab</td>
-                           <td id="Inverter_Get_AcOutputPhaseABVoltage12" class="realtime">XXX</td>
+    </tr>
+    <tr>
+      <th scope="row" rowspan="3">AC Output</th>
+     <td>Vab</td>
+                           <td id="Inverter_Get_AcOutputPhaseAbVoltage12" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vbc</td>
-                           <td id="Inverter_Get_AcOutputPhaseBCVoltage12" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseBcVoltage12" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vca</td>
-                           <td id="Inverter_Get_AcOutputPhaseCAVoltage12" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseCaVoltage12" class="realtime">XXX</td>
                            <td>V</td>
-                        </tr>
-                        <tr>
+    </tr>
+    <tr>
                            <td>A Phase Current</td>
                            <td id="Inverter_Get_AcOutputPhaseACurrent12" class="realtime">XX</td>
                            <td>A</td>
@@ -182,51 +183,50 @@
                            <td id="Inverter_Get_AcOutputPowerFactor12" class="realtime">.XX</td>
                            <td>%</td>
                         </tr>
-                        <tr>
-                           <th>Status</th>
-                           <td>Fault Code</td>
+     <tr>
+      <th scope="row" rowspan="1">Status</th>
+    <td>Fault Code</td>
                            <td>--</td>
                            <td></td>
                            <td>Efficiency</td>
                            <td id="Inverter_Get_Efficiency12" class="realtime">XX.X</td>
                            <td>%</td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td>
-                     <table>
-                        <tr>
-                           <th colspan="10">Inverter | 13</th>
-                        </tr>
-                        <tr>
-                           <th>DC Input</th>
-                           <td>DC Power</td>
+    </tr>
+  </tbody>
+</table>
+                     
+                     <table id="table"class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+    <th scope="col" colspan="10">Inverter | 13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="1">DC Input</th>
+         <td >DC Power</td>
                            <td id="Inverter_Get_DcRealPower13" class="realtime">XXX.X</td>
                            <td>kW</td>
                            <td>DC Voltage</td>
-                           <td id="Inverter_Get_DcVolts13" class="realtime">XXX</td>
+                           <td id="Inverter_Get_DcVolt13" class="realtime">XXX</td>
                            <td>V</td>
                            <td>DC Current</td>
                            <td id="Inverter_Get_DcCurrent13" class="realtime">XX.X</td>
                            <td>A</td>
-                        </tr>
-                        <tr>
-                           <th rowspan="3">AC Output</th>
-                           <td>Vab</td>
-                           <td id="Inverter_Get_AcOutputPhaseABVoltage13" class="realtime">XXX</td>
+    </tr>
+    <tr>
+      <th scope="row" rowspan="3">AC Output</th>
+     <td>Vab</td>
+                           <td id="Inverter_Get_AcOutputPhaseAbVoltage13" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vbc</td>
-                           <td id="Inverter_Get_AcOutputPhaseBCVoltage13" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseBcVoltage13" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vca</td>
-                           <td id="Inverter_Get_AcOutputPhaseCAVoltage13" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseCaVoltage13" class="realtime">XXX</td>
                            <td>V</td>
-                        </tr>
-                        <tr>
+    </tr>
+    <tr>
                            <td>A Phase Current</td>
                            <td id="Inverter_Get_AcOutputPhaseACurrent13" class="realtime">XX</td>
                            <td>A</td>
@@ -248,51 +248,51 @@
                            <td id="Inverter_Get_AcOutputPowerFactor13" class="realtime">.XX</td>
                            <td>%</td>
                         </tr>
-                        <tr>
-                           <th>Status</th>
-                           <td>Fault Code</td>
+     <tr>
+      <th scope="row" rowspan="1">Status</th>
+    <td>Fault Code</td>
                            <td>--</td>
                            <td></td>
                            <td>Efficiency</td>
                            <td id="Inverter_Get_Efficiency13" class="realtime">XX.X</td>
                            <td>%</td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td>
-                     <table>
-                        <tr>
-                           <th colspan="10">Inverter | 14</th>
-                        </tr>
-                        <tr>
-                           <th>DC Input</th>
-                           <td>DC Power</td>
+    </tr>
+  </tbody>
+</table>
+                     
+                     
+                     <table id="table"class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+    <th scope="col" colspan="10">Inverter | 14</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="1">DC Input</th>
+         <td >DC Power</td>
                            <td id="Inverter_Get_DcRealPower14" class="realtime">XXX.X</td>
                            <td>kW</td>
                            <td>DC Voltage</td>
-                           <td id="Inverter_Get_DcVolts14" class="realtime">XXX</td>
+                           <td id="Inverter_Get_DcVolt14" class="realtime">XXX</td>
                            <td>V</td>
                            <td>DC Current</td>
                            <td id="Inverter_Get_DcCurrent14" class="realtime">XX.X</td>
                            <td>A</td>
-                        </tr>
-                        <tr>
-                           <th rowspan="3">AC Output</th>
-                           <td>Vab</td>
-                           <td id="Inverter_Get_AcOutputPhaseABVoltage14" class="realtime">XXX</td>
+    </tr>
+    <tr>
+      <th scope="row" rowspan="3">AC Output</th>
+     <td>Vab</td>
+                           <td id="Inverter_Get_AcOutputPhaseAbVoltage14" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vbc</td>
-                           <td id="Inverter_Get_AcOutputPhaseBCVoltage14" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseBcVoltage14" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vca</td>
-                           <td id="Inverter_Get_AcOutputPhaseCAVoltage14" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseCaVoltage14" class="realtime">XXX</td>
                            <td>V</td>
-                        </tr>
-                        <tr>
+    </tr>
+    <tr>
                            <td>A Phase Current</td>
                            <td id="Inverter_Get_AcOutputPhaseACurrent14" class="realtime">XX</td>
                            <td>A</td>
@@ -314,51 +314,49 @@
                            <td id="Inverter_Get_AcOutputPowerFactor14" class="realtime">.XX</td>
                            <td>%</td>
                         </tr>
-                        <tr>
-                           <th>Status</th>
-                           <td>Fault Code</td>
+     <tr>
+      <th scope="row" rowspan="1">Status</th>
+    <td>Fault Code</td>
                            <td>--</td>
                            <td></td>
                            <td>Efficiency</td>
                            <td id="Inverter_Get_Efficiency14" class="realtime">XX.X</td>
                            <td>%</td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-            <table>
-               <tr>
-                  <td>
-                     <table>
-                        <tr>
-                           <th colspan="10">Inverter | 15</th>
-                        </tr>
-                        <tr>
-                           <th>DC Input</th>
-                           <td>DC Power</td>
+    </tr>
+  </tbody>
+</table>
+                     <table id="table"class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+    <th scope="col" colspan="10">Inverter | 15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="1">DC Input</th>
+         <td >DC Power</td>
                            <td id="Inverter_Get_DcRealPower15" class="realtime">XXX.X</td>
                            <td>kW</td>
                            <td>DC Voltage</td>
-                           <td id="Inverter_Get_DcVolts15" class="realtime">XXX</td>
+                           <td id="Inverter_Get_DcVolt15" class="realtime">XXX</td>
                            <td>V</td>
                            <td>DC Current</td>
                            <td id="Inverter_Get_DcCurrent15" class="realtime">XX.X</td>
                            <td>A</td>
-                        </tr>
-                        <tr>
-                           <th rowspan="3">AC Output</th>
-                           <td>Vab</td>
-                           <td id="Inverter_Get_AcOutputPhaseABVoltage15" class="realtime">XXX</td>
+    </tr>
+    <tr>
+      <th scope="row" rowspan="3">AC Output</th>
+     <td>Vab</td>
+                           <td id="Inverter_Get_AcOutputPhaseAbVoltage15" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vbc</td>
-                           <td id="Inverter_Get_AcOutputPhaseBCVoltage15" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseBcVoltage15" class="realtime">XXX</td>
                            <td>V</td>
                            <td>Vca</td>
-                           <td id="Inverter_Get_AcOutputPhaseCAVoltage15" class="realtime">XXX</td>
+                           <td id="Inverter_Get_AcOutputPhaseCaVoltage15" class="realtime">XXX</td>
                            <td>V</td>
-                        </tr>
-                        <tr>
+    </tr>
+    <tr>
                            <td>A Phase Current</td>
                            <td id="Inverter_Get_AcOutputPhaseACurrent15" class="realtime">XX</td>
                            <td>A</td>
@@ -380,20 +378,22 @@
                            <td id="Inverter_Get_AcOutputPowerFactor15" class="realtime">.XX</td>
                            <td>%</td>
                         </tr>
-                        <tr>
-                           <th>Status</th>
-                           <td>Fault Code</td>
+     <tr>
+      <th scope="row" rowspan="1">Status</th>
+    <td>Fault Code</td>
                            <td>--</td>
                            <td></td>
                            <td>Efficiency</td>
                            <td id="Inverter_Get_Efficiency15" class="realtime">XX.X</td>
                            <td>%</td>
-                        </tr>
-                     </table>
-                  </td>
-               </tr>
-            </table>
-         </div>
-      </div>
+    </tr>
+  </tbody>
+</table>
+       
+       
+       
+                 </div>
+                 
+                </div>
    </body>
 </html>

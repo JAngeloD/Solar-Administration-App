@@ -13,7 +13,7 @@
             <label for="username">Email</label>
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                <input type="text" id="email" class="input-field" name="email" autocomplete="username" maxlength="32" required />
+                <input type="text" id="email" class="input-field" name="email" autocomplete="username" maxlength="32" pattern="[A-Za-z0-9.-_@]+" required />
             </div>
             <br>
             <br>
@@ -22,7 +22,7 @@
                 <i class="fa fa-key icon"></i>
 
                 <input type="password" class="input-field" id="password" name="password" autcomplete="username" maxlength="32"
-                       pattern="[A-Za-z0-9.-_]+" required />
+                       pattern="[A-Za-z0-9.-_@]+" required />
             </div>
             <br>
             <input type="hidden" name="nonce" value="<%=session.getAttribute("nonce")%>"/>

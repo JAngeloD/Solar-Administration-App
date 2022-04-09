@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import services.DBAccess;
 
 /**
- * 
- * @author Steven Tran, Angelo De Vera 
+ *
+ * @author Steven Tran, Angelo De Vera
  */
 public class CSVParser {
 
@@ -38,12 +38,11 @@ public class CSVParser {
     }
 
     /**
-     * Retrieves all the data given a list of getter methods and a from and to date from the DB. It uses that data
-     * and formats a 2D list of values and labels in such a way that it can be used to write into a CSV
+     * Retrieves all the data given a list of getter methods and a from and to date from the DB. It uses that data and formats a 2D list of values and labels in such a way that it can be used to write into a CSV
      *
      * @param getterMethods - A list of getter methods (contains deviceID, device name, and required attribute)
      * @param startDate - start date YYYY-MM-DD
-     * @param endDate - end date 
+     * @param endDate - end date
      * @return - 2D list of values and labels meant to be written using writeAll()
      * @author - Angelo De Vera
      */
@@ -62,8 +61,10 @@ public class CSVParser {
             ArrayList<String> labelLine = new ArrayList<>();
             ArrayList<String> dataLine = new ArrayList<>();
             ArrayList<String[]> dataLines = new ArrayList<>();
+            boolean foundData = true;
             for (long timestampVal : timestamps) {
                 for (String get : getterMethods) {
+                    
                     //Splits the getterMethod String into 3 different parts: modelName and request attribute
                     String modelName = get.substring(0, get.indexOf("_"));
                     String attribute = get.substring(get.lastIndexOf("_") + 1);
@@ -77,7 +78,8 @@ public class CSVParser {
                                 data = String.valueOf(m.invoke(db, args));
                             }
                         }
-                    }catch (Exception e) {
+                    } catch (Exception e) {
+                        foundData = false;
                         continue;
                     }
 
@@ -91,7 +93,6 @@ public class CSVParser {
                     //If the type of model has changed push into the final CSV and resets the 3 buffer arrays.
                     if (!previousModel.equals("") && !modelName.equals(previousModel)) {
                         dataLines.add(convertListToArray(dataLine)); //Flushes out any remaining lines into the full line
-
                         CSVList.add(convertListToArray(labelLine)); //Label goes in first
                         for (int i = 0; i < dataLines.size(); i++) {
                             CSVList.add(dataLines.get(i));
@@ -143,13 +144,21 @@ public class CSVParser {
                     }
                     if (dataLine.get(1).equals("")) {
                         String date = new Timestamp(timestampVal).toString();
-                        date = date.replaceAll(" ", ":");
+                        date.replaceAll(" ", ":");
                         dataLine.set(1, date);
                     }
 
                     previousModel = modelName;
                     previousDevice = (deviceNum.equals("")) ? -1 : Integer.parseInt(deviceNum);
+
+                    foundData = true;
                 }
+
+                if(foundData) {
+                    dataLines.add(convertListToArray(dataLine));
+                    foundData = false;
+                }
+
             }
 
             dataLines.add(convertListToArray(dataLine)); //Flushes out any remaining lines into the full line
@@ -167,7 +176,7 @@ public class CSVParser {
 
     /**
      * Converts String list to String array
-     * 
+     *
      * @param list - A list of string values
      * @return - An array of string values
      * @Author - Angelo De Vera

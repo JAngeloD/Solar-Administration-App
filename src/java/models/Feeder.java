@@ -56,7 +56,7 @@ public class Feeder extends TransferDatabase implements Serializable {
     @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private Long timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -90,7 +90,7 @@ public class Feeder extends TransferDatabase implements Serializable {
     public Feeder() {
     }
 
-    public Feeder(String recordID, Integer timeStampId, Date timeStamp, Integer deviceId, Boolean breakerStatus, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
+    public Feeder(String recordID, Long timeStampId, Date timeStamp, Integer deviceId, Boolean breakerStatus, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
         this.recordID = recordID;
         this.timeStampId = timeStampId;
         this.timeStamp = timeStamp;
@@ -125,11 +125,11 @@ public class Feeder extends TransferDatabase implements Serializable {
         this.recordID = recordID;
     }
 
-    public Integer getTimeStampId() {
+    public Long getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(Long timeStampId) {
         this.timeStampId = timeStampId;
     }
 

@@ -6,8 +6,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <title>Reset Password</title>
     </head>
-    <body>
-        
+    <body>        
         <h1>MFN Solar</h1>
         <h3>Reset Password</h3>
         <div>

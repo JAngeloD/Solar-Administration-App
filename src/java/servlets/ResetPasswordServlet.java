@@ -8,9 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import services.DBAccess;
 
-
+/**
+ * Reset a user password
+ * @author Haz W
+ */
 public class ResetPasswordServlet extends HttpServlet {
 
+    /**
+     * Process HTTP GET request sending the user to a jsp to request the reset of the 
+     * password or to set a new password if uuid has been already assigned
+     * @param request HTTP request
+     * @param response HTTP response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -26,7 +37,16 @@ public class ResetPasswordServlet extends HttpServlet {
         }
     }
 
-
+    /**
+     * Process HTTP POST requests. Receives the request for password reset and sends 
+     * the user an email to make sure the right user has access to the link to 
+     * reset the password or reads the new password and sends the information to
+     * the database to set the new password if uuid matches uuid in the database
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

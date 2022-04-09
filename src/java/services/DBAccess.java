@@ -20,6 +20,7 @@ import utilities.TimeFactory;
 /**
  *
  * @author 856622
+ * @author Haz W
  */
 public class DBAccess {
 

@@ -14,7 +14,8 @@ import models.Users;
 import services.DBAccess;
 
 /**
- * Processes HTTL requests
+ * Processes HTPL requests to manager user's accounts: add a user. edit a user, display all users
+ * @author Haz W
  */
 @WebServlet(name = "UserAccountServlet", urlPatterns = {"/UserAccountServlet"})
 public class UserAccountServlet extends HttpServlet {

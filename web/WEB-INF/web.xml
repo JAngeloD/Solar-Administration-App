@@ -160,6 +160,14 @@
         <servlet-name>ResetPasswordServlet</servlet-name>
         <servlet-class>servlets.ResetPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InverterFiveServlet</servlet-name>
+        <servlet-class>servlets.InverterFiveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InverterSixServlet</servlet-name>
+        <servlet-class>servlets.InverterSixServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BreakerControllerServlet</servlet-name>
         <url-pattern>/breaker</url-pattern>
@@ -279,6 +287,14 @@
     <servlet-mapping>
         <servlet-name>InverterEightServlet</servlet-name>
         <url-pattern>/invertereight</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterFiveServlet</servlet-name>
+        <url-pattern>/inverterfive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InverterSixServlet</servlet-name>
+        <url-pattern>/invertersix</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

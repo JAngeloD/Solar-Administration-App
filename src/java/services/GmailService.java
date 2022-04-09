@@ -18,8 +18,20 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+/**
+ * Service to send emails using a Gmail account
+ * @author hazco
+ */
 public class GmailService {
-
+    
+    /**
+     * Creates the email body from a template
+     * @param to email recepient
+     * @param subject email subject
+     * @param template template stored in emailtemplates folder located in WEB-INF
+     * @param tags tags for hashmap
+     * @throws Exception 
+     */
     public static void sendMail(String to, String subject, String template, HashMap<String, String> tags) throws Exception {
         //takes a template instead of the body. The templates are located in WEB-INF --> emailtempleates --> a html file
         //takes a HashMap object
@@ -48,6 +60,15 @@ public class GmailService {
         sendMail(to, subject, body, true);
     }
 
+    /**
+     * Connects to gmail account and sends the email
+     * @param to email recepient
+     * @param subject email subject
+     * @param body body of the email
+     * @param bodyIsHTML true when the body is HTML
+     * @throws MessagingException 
+     * @throws NamingException 
+     */
     public static void sendMail(String to, String subject, String body, boolean bodyIsHTML) throws MessagingException, NamingException {
         Context env = (Context) new InitialContext().lookup("java:comp/env");    //Object to read from the web.xml file where we have stored username and password as env-entry 
         String username = (String) env.lookup("webmail-username");    

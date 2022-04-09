@@ -8,34 +8,32 @@
          <style><%@include file="/WEB-INF/css/login.css"%></style>
         <title>Login Page</title>
     </head>
-<body>
+    <body>
+        <form action="login" method="POST" style="max-width:500px;margin:auto">
+            <label for="username">Email</label>
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input type="text" id="email" class="input-field" name="email" autocomplete="username" maxlength="32" required />
+            </div>
+            <br>
+            <br>
+            <label for="password">Password</label>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
 
-  <form action="login" method="POST" style="max-width:500px;margin:auto">
-    <label for="username">Email</label>
-    <div class="input-container">
-      <i class="fa fa-envelope icon"></i>
-      <input type="text" id="email" class="input-field" name="email" autocomplete="username" maxlength="32" required />
-    </div>
-    <br>
-    <br>
-    <label for="password">Password</label>
-    <div class="input-container">
-      <i class="fa fa-key icon"></i>
+                <input type="password" class="input-field" id="password" name="password" autcomplete="username" maxlength="32"
+                       required />
+            </div>
+            <br>
+            <input type="hidden" name="nonce" value="<%=session.getAttribute("nonce")%>"/>
+            <input type="submit" type="submit" class="btn" value="Login" />
+        </form>
 
-      <input type="password" class="input-field" id="password" name="password" autcomplete="username" maxlength="32"
-        required />
-    </div>
-    <br>
+        <div>
+            <h3>${message}</h3>
+        </div>  
+        <a href="reset">Forgot password</a>
 
-    <input type="hidden" name="nonce" value="<%=session.getAttribute( "nonce" )%>"/>
-    <input type="submit" type="submit" class="btn" value="Login" />
-    </form>
-    
-    <div>
-        <h3>${message}</h3>
-    </div>  
-    <a href="reset">Forgot password</a>
-
-  <p>${formFeedback}</p>
-</body>
+        <p>${formFeedback}</p>
+    </body>
 </html>

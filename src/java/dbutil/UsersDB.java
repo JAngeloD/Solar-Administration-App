@@ -9,6 +9,7 @@ import models.Users;
 /**
  * A class to access the Users in the database
  * @author Therin
+ * @author Haz W
  */
 public class UsersDB {
     private List<Users> list;
@@ -48,17 +49,20 @@ public class UsersDB {
     /**
      * A method to retrieve the specific User from the database that matches the uuid
      * @param uuid unique id used to retrieve a specific user
-     * @return 
+     * @return the user returned by the query
      */
     public Users getByUUID(String uuid){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        System.out.println("Inside Users.getByUUID. UUID:" + uuid);
         try{
-            TypedQuery<Users> query = em.createNamedQuery("User.findByResetPasswordUuid", Users.class);
+            TypedQuery<Users> query = em.createNamedQuery("Users.findByResetPasswordUuid", Users.class);
             query.setParameter("resetPasswordUuid", uuid);
             Users user = query.getSingleResult();
+            System.out.println("We got " + user.getFirstName());
             return user;
         }
         catch(Exception e){
+            e.printStackTrace();
             return null;
         }
         finally{

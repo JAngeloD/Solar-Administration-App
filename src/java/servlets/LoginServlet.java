@@ -80,9 +80,18 @@ public class LoginServlet extends HttpServlet
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
+        
+        if (user.getPassword().equals(password)){
+            session.setAttribute( "email", email );
+            session.setAttribute( "accessLevel", user.getTypeId().getAccessLevel() );
+            response.sendRedirect( "home" );
+            return;
+        } else {
+            request.setAttribute( "formFeedback", "Invalid username or password" );
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            return;
+        }
 
-        session.setAttribute( "email", email );
-        session.setAttribute( "accessLevel", user.getTypeId().getAccessLevel() );
-        response.sendRedirect( "home" );
+        
     }
 }

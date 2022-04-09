@@ -72,7 +72,7 @@
               </select>
         </div>
         <br />
-        <textarea style="resize:both" name="log" rows="20" cols="75">Start here</textarea>
+        <textarea style="resize:both" name="log" rows="20" cols="75" placeholder="Start Here"></textarea>
         <br />
         <input type="submit" value="Save Log">
       </form>

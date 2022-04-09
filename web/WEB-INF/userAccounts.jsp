@@ -97,15 +97,15 @@
                 </label>
                  <br>
                 <label class="col-lg-11 col-form-label">First Name: 
-                <input class="form-control form-control-lg"type="text" name="firstName" required>
+                <input class="form-control form-control-lg"type="text" name="firstName" pattern="[A-Za-z0-9.-_@]+" required>
                 </label>
                <br>
                 <label  class="col-lg-11 col-form-label">Last Name: 
-                <input class="form-control form-control-lg"type="text" name="lastName" required>
+                <input class="form-control form-control-lg"type="text" name="lastName" pattern="[A-Za-z0-9.-_@]+" required>
                 </label>
               <br>
                 <label  class="col-lg-11 col-form-label">Password: 
-                <input class="form-control form-control-lg"type="password" name="password" placeholder="Password" required>
+                <input class="form-control form-control-lg"type="password" name="password" placeholder="Password" pattern="[A-Za-z0-9.-_@]+" required>
                 </label>
                <br>
                 <input type="hidden" name="action" value="addUser">
@@ -182,15 +182,15 @@
                 </label>
                 <br>
                 <label class="col-lg-11 col-form-label">First Name: 
-                    <input class="form-control form-control-lg"type="text" id="fname" name="fname_edit" value="${fname_e}" >
+                    <input class="form-control form-control-lg"type="text" id="fname" name="fname_edit" pattern="[A-Za-z0-9.-_@]+" value="${fname_e}" >
                 </label>
                 <br>
                 <label class="col-lg-11 col-form-label">Last Name: 
-                    <input class="form-control form-control-lg"type="text" id="lname" name="lname_edit" value="${lname_e}" >
+                    <input class="form-control form-control-lg"type="text" id="lname" name="lname_edit" pattern="[A-Za-z0-9.-_@]+" value="${lname_e}" >
                 </label>
                 <br>
                 <label class="col-lg-11 col-form-label">Password: 
-                    <input class="form-control form-control-lg"type="password" id="pass" name="password_edit" value="${password_e}">
+                    <input class="form-control form-control-lg"type="password" id="pass" name="password_edit" pattern="[A-Za-z0-9.-_@]+" value="${password_e}">
                 </label>
                 <br>                
                 <input type="hidden" name="action" value="saveUser">

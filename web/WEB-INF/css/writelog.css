@@ -1,6 +1,7 @@
-  body { 
+
+   body { 
        background: #F5F3E6 !important; 
-  
+    font-family: 'Lato', sans-serif !important; 
 
    }
      .wrapper5 {
@@ -194,6 +195,7 @@ font-family: 'Roboto', sans-serif;
 .wrapall{
     text-align: center;
     position: relative;
+    margin-left:20%;
 
 }
 .data{

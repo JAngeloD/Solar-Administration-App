@@ -40,6 +40,7 @@ public class WriteLogServlet extends HttpServlet
         HttpSession session = request.getSession( false );
         
         DBAccess.FacilityInsert( (String)session.getAttribute( "email" ), logType, log );
+        request.setAttribute("message", "Log was created successfully");
         getServletContext().getRequestDispatcher("/WEB-INF/writelog.jsp").forward(request, response);
     }
 }

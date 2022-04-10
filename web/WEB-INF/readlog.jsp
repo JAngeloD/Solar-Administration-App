@@ -63,67 +63,104 @@
       </nav>
          <div class="wrapall" id="electricDiagram">
             <div id="form">
+                
                 <div>
                     <form method="POST" action="readlog">
-                        <label>Select dates</label><br />
-                        <label>From: </label>
-                        <input type="date" id="fromDate" name="from" value="">
-                        <label>To: </label>
-                        <input type="date" id="toDate" name="to" value="">
+                        
+                      
+                        <label class="col-lg-11 col-form-label" style="font-size:25px;">Select dates</label><br />
+                        <div class="form-floating mb-5">
+                        <label class="col-lg-11 col-form-label">From: </label>
+                        </div>
+                        <div class="col-lg-3">
+                        <input class="form-control form-control-lg" type="date" id="fromDate" name="from" value="">
+                        </div>
+                        <div class="form-floating mb-5">
+                        <label class="col-lg-11 col-form-label">To: </label>
+                        </div>
+                        <div class="col-lg-3">
+                        <input class="form-control form-control-lg" type="date" id="toDate" name="to" value="">
+                        </div>
                         <br />
-                        <label>Select log type:</label>
-                        <select name="logType" id="logType">
+                          <div class="form-floating mb-5">
+                        <label class="col-lg-11 col-form-label">Select log type:</label>
+                          </div>
+                        <div class="form-floating mb-5container w-25">
+                        <select class="form-select " name="logType" id="logType">
                             <option value="1">Inspection</option>
                             <option value="2">Maintenance</option>
                             <option value="3">Planner Outage</option>
                             <option value="4">Forced Outage</option>
                             <option value="5">Other</option>
                         </select>
+                        </div>
                         <br/>
-                        <input type="hidden" name="action" value="datesearch">
+                        <input  type="hidden" name="action" value="datesearch">
                         <input type="submit" value="Submit">
+                        
                     </form>
+                    <br>
                 </div>
                 <div id="logList">
                     <h3>RESULTS</h3>
-                    <ul>
-                        <table>
+                 
+                       <table id="table" class="table table-hover table-bordered ">
+                           <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Log Type</th>
-                                <th>Log Date</th>
-                                <!--<th>Text</th>-->
-                                <th></th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Log Type</th>
+                                <th scope="col">Log Date</th>
+                                <th scope="col">View Log</th>
+<!--                                <th></th>-->
                             </tr>
+                           </thead>
+                            <tbody>
                             <c:forEach var="log" items="${logList}" >
+                                 
                                 <tr>
                                     <td>${log.getLogId()}</td>
                                     <td>${log.logTypeToString()}</td>
                                     <td>${log.getTimeGST()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
-                                    <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
-                                    <td>                                
+                                    <td><a class="button" href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
+                                                                 
                                         <form action="readlog" method="POST">
                                             <input type="hidden" name="action" value="view">
                                             <input type="hidden" name="logID" value="${log.getLogId()}"/>
-                                        </form></td>
+                                        </form>
                                 </tr>
+                                 
                             </c:forEach>
+                                 </tbody>
                         </table>
-                    </ul>
+                  
                 </div>
                 <div>
                     <c:if test="${selectedLog ne null}">
                         <h2>View</h2>
                         <form action="readlog" method="POST">
-                            <label>Date and time:</label>
-                            <input type="text" id="date" value="${selectedLog.getTimeGST()}" size="25"/>
+                            <br>
+                              <div class="form-floating mb-5">
+                            <label class="col-lg-11 col-form-label">Date and time:</label>
+                              </div>
+                            
+                               <div class="col-lg-3">
+                            <input class="form-control form-control-lg" type="text" id="date" value="${selectedLog.getTimeGST()}" size="25"/>
+                            </div>
                             <br />
-                            <label>Log Type:</label>
-                            <input type="text" id="typeLog" value="${selectedLog.logTypeToString()}" />
+                              <div class="form-floating mb-5">
+                            <label class="col-lg-11 col-form-label">Log Type:</label>
+                              </div>
+                            <div class="col-lg-3">
+                            <input class="form-control form-control-lg" type="text" id="typeLog" value="${selectedLog.logTypeToString()}" />
+                            </div>
                             <br />
-                            <label>By:</label>
-                            <input type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
+                              <div class="form-floating mb-5">
+                            <label class="col-lg-11 col-form-label">By:</label>
+                              </div>
+                            <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
+                            </div>
                             <br/>
                             <textarea name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
                         </form>

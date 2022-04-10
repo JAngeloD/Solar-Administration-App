@@ -67,23 +67,24 @@
         <div class="wrapall" id="electricDiagram">
             <div id="graphs">
 
-                <table id="table" class="table table-hover table-bordered ">
+                <table id="table" class="table table-bordered ">
                     <tr>
-                        <td>
-
+                       
+                        <th>
                             <div id="power">
                                 <div id="root">
 
                                 </div>
                             </div>
-                        </td>
-                        <td>
+                            </th>
+                    
+                        <th>
                             <div id="wind">
                                 <div id="windGraph">
 
                                 </div>
                             </div>
-                        </td>
+                        </th>
                     </tr>
 
                 </table>
@@ -95,7 +96,7 @@
 
 
 
-
+                    <thead>
                     <tr>
                         <th scope="col"></th>
                         <th scope="col"colspan="4">Current</th>
@@ -104,7 +105,9 @@
 
                         <th scope="col"colspan="4">Minimum</th> 
 
-                    </tr>
+                    </tr
+                    </thead>
+                    <tbody>
                     <tr>
 
                         <th scope="row">Solar irradiance (POA)</th>
@@ -235,7 +238,7 @@
 0
 </td>
 </tr>
-                   
+                </tbody>       
                 </table>
 
 

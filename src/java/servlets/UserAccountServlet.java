@@ -67,7 +67,7 @@ public class UserAccountServlet extends HttpServlet {
             String lName = request.getParameter("lastName");
             String password = request.getParameter("password");
             dba.insertUser(email, typeID, active, fName, lName, password);
-            request.setAttribute("message", "User was created successful");
+            request.setAttribute("message", "User was created successfully");
             doGet(request, response);
         }
         else if(action.equals("fillEdit")){

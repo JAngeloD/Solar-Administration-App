@@ -78,12 +78,14 @@
                         <div class="form-floating mb-5">
                         <label class="col-lg-11 col-form-label">To: </label>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                         <input class="form-control form-control-lg" type="date" id="toDate" name="to" value="">
                         </div>
                         <br />
+                          <div class="form-floating mb-5">
                         <label class="col-lg-11 col-form-label">Select log type:</label>
-                        <div class="container w-25">
+                          </div>
+                        <div class="form-floating mb-5container w-25">
                         <select class="form-select " name="logType" id="logType">
                             <option value="1">Inspection</option>
                             <option value="2">Maintenance</option>
@@ -95,7 +97,9 @@
                         <br/>
                         <input  type="hidden" name="action" value="datesearch">
                         <input type="submit" value="Submit">
+                        
                     </form>
+                    <br>
                 </div>
                 <div id="logList">
                     <h3>RESULTS</h3>
@@ -118,12 +122,12 @@
                                     <td>${log.logTypeToString()}</td>
                                     <td>${log.getTimeGST()}</td>                          
                                     <!--<td>${log.getLogText()}</td>-->
-                                    <td><a href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
-                                    <td>                                
+                                    <td><a class="button" href="readlog?action=view&amp;logID=${log.getLogId()}">View</a></td>
+                                                                 
                                         <form action="readlog" method="POST">
                                             <input type="hidden" name="action" value="view">
                                             <input type="hidden" name="logID" value="${log.getLogId()}"/>
-                                        </form></td>
+                                        </form>
                                 </tr>
                                  
                             </c:forEach>
@@ -135,18 +139,26 @@
                     <c:if test="${selectedLog ne null}">
                         <h2>View</h2>
                         <form action="readlog" method="POST">
+                            <br>
+                              <div class="form-floating mb-5">
                             <label class="col-lg-11 col-form-label">Date and time:</label>
-                               <div class="col-lg-2">
+                              </div>
+                            
+                               <div class="col-lg-3">
                             <input class="form-control form-control-lg" type="text" id="date" value="${selectedLog.getTimeGST()}" size="25"/>
                             </div>
                             <br />
+                              <div class="form-floating mb-5">
                             <label class="col-lg-11 col-form-label">Log Type:</label>
-                            <div class="col-lg-2">
+                              </div>
+                            <div class="col-lg-3">
                             <input class="form-control form-control-lg" type="text" id="typeLog" value="${selectedLog.logTypeToString()}" />
                             </div>
                             <br />
+                              <div class="form-floating mb-5">
                             <label class="col-lg-11 col-form-label">By:</label>
-                            <div class="col-lg-2">
+                              </div>
+                            <div class="col-lg-3">
                             <input  class="form-control form-control-lg" type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
                             </div>
                             <br/>

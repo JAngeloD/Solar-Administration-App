@@ -67,7 +67,7 @@
                <table id="table"class="table table-hover table-bordered ">
   <thead>
     <tr>
-    <th scope="col" colspan="10">Inverter | 1</th>
+    <th scope="col" colspan="10">Inverter | 01</th>
     </tr>
   </thead>
   <tbody>

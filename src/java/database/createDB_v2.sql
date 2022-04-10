@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS facility_logs (
 
 CREATE TABLE IF NOT EXISTS pcc (
     recordID VARCHAR(50) PRIMARY KEY,
-    time_stamp_id BIGINT,
+    time_stamp_id LONG,
     time_stamp TIMESTAMP,
     ac_output_energy DOUBLE,
     ac_output_real_power DOUBLE,

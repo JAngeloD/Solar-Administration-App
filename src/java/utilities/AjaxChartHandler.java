@@ -35,8 +35,6 @@ public class AjaxChartHandler extends HttpServlet {
         //Instantiating JSONdata to pass back into the ajax call
         String jsonData = "";
         try {
-            String timestamp = "4192"; //TEMPORARY (WOULD GET THE MOST RECENT TIMESTAMP
-
             switch (requestedData) {
                 case "bar":
                     //List of interverts in the Y AXIS
@@ -48,7 +46,7 @@ public class AjaxChartHandler extends HttpServlet {
                     double[] xDataBars = new double[inverterList.length];
                     for (int i = 0; i < inverterList.length; i++) {
                         String deviceID = String.format("%02d", i + 1);
-                        xDataBars[i] = Math.random() * DBAccess.InverterGet("AcOutputEnergy" + deviceID, timestamp);
+                        xDataBars[i] = Math.random() * DBAccess.InverterGetRecent("AcOutputEnergy" + deviceID);
                     }
 
                     jsonData = buildInverterPerformanceGraph(xDataBars, inverterList);
@@ -76,8 +74,8 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    power = appendIntoCurrent(power, DBAccess.PccGet("AcOutputEnergy", timestamp));
-                    irradiance = appendIntoCurrent(irradiance, DBAccess.FacilityGet("SolarirridianceGHI", timestamp));
+                    power = appendIntoCurrent(power, DBAccess.PccGetRecent("AcOutputEnergy"));
+                    irradiance = appendIntoCurrent(irradiance, DBAccess.FacilityGetRecent("SolarirridianceGHI"));
 
                     //System.out.println(Arrays.toString(yData1));
                     jsonData = buildIrradiancePowerGraph(hours1, power, irradiance);
@@ -105,8 +103,8 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    temperature = appendIntoCurrent(temperature, DBAccess.FacilityGet("AmbientTemperature", timestamp));
-                    windSpeed = appendIntoCurrent(windSpeed, DBAccess.FacilityGet("WindSpeed", timestamp));
+                    temperature = appendIntoCurrent(temperature, DBAccess.FacilityGetRecent("AmbientTemperature"));
+                    windSpeed = appendIntoCurrent(windSpeed, DBAccess.FacilityGetRecent("WindSpeed"));
 
                     jsonData = buildWeatherGraph(hours2, temperature, windSpeed);
                     break;
@@ -261,7 +259,8 @@ public class AjaxChartHandler extends HttpServlet {
             finalArray[i] = currentArray[i];
         }
 
-        finalArray[finalArray.length - 1] = newData * (Math.random() * 10);
+        //BREAK IN CASE OF EMERGENCY 
+//        finalArray[finalArray.length - 1] = newData * (Math.random() * 10);
 
         return finalArray;
     }

@@ -40,7 +40,8 @@ import servlets.TransferDatabase;
     , @NamedQuery(name = "Facility.findByBackOfPanelTemperature1", query = "SELECT f FROM Facility f WHERE f.backOfPanelTemperature1 = :backOfPanelTemperature1")
     , @NamedQuery(name = "Facility.findByAmbientTemperature", query = "SELECT f FROM Facility f WHERE f.ambientTemperature = :ambientTemperature")
     , @NamedQuery(name = "Facility.findByBackOfPanelTemperature2", query = "SELECT f FROM Facility f WHERE f.backOfPanelTemperature2 = :backOfPanelTemperature2")
-    , @NamedQuery(name = "Facility.findByWindSpeed", query = "SELECT f FROM Facility f WHERE f.windSpeed = :windSpeed")})
+    , @NamedQuery(name = "Facility.findByWindSpeed", query = "SELECT f FROM Facility f WHERE f.windSpeed = :windSpeed")
+    , @NamedQuery(name = "Facility.findByMostRecentTimeStampID", query = "SELECT max(f.timeStampId) FROM Facility f")})
 public class Facility extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,7 +50,7 @@ public class Facility extends TransferDatabase implements Serializable {
     @Column(name = "recordID", nullable = false, length = 50)
     private String recordID;
     @Column(name = "time_stamp_id")
-    private Integer timeStampId;
+    private Long timeStampId;
     @Basic(optional = false)
     @Column(name = "time_stamp", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -71,7 +72,7 @@ public class Facility extends TransferDatabase implements Serializable {
     public Facility() {
     }
 
-    public Facility(String recordID, Integer timeStampId, Date timeStamp, Double solarirridiancePOA, Double solarirridianceGHI, Double backOfPanelTemperature1, Double ambientTemperature, Double backOfPanelTemperature2, Double windSpeed) {
+    public Facility(String recordID, Long timeStampId, Date timeStamp, Double solarirridiancePOA, Double solarirridianceGHI, Double backOfPanelTemperature1, Double ambientTemperature, Double backOfPanelTemperature2, Double windSpeed) {
         this.recordID = recordID;
         this.timeStampId = timeStampId;
         this.timeStamp = timeStamp;
@@ -100,11 +101,11 @@ public class Facility extends TransferDatabase implements Serializable {
         this.recordID = recordID;
     }
 
-    public Integer getTimeStampId() {
+    public Long getTimeStampId() {
         return timeStampId;
     }
 
-    public void setTimeStampId(Integer timeStampId) {
+    public void setTimeStampId(Long timeStampId) {
         this.timeStampId = timeStampId;
     }
 

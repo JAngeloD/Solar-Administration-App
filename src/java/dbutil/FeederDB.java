@@ -60,14 +60,11 @@ public class FeederDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Feeder record = null;
         try {
-            long timestamp = em.createNamedQuery("Feeder.findByMostRecentTimeStampID", Long.class).getSingleResult();
-            System.out.println(timestamp);
-            Query q = em.createNamedQuery("Feeder.findByTimeStampAndDeviceID", Feeder.class);
+            Query q = em.createNamedQuery("Feeder.findByMostRecentTimeStampIDRow", Feeder.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
-            q.setParameter("timeStampId", timestamp);
             
             record = (Feeder) q.getSingleResult();
-        } finally {
+        }finally {
             em.close();
         }
 

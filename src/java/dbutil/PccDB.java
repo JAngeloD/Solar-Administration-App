@@ -106,8 +106,7 @@ public class PccDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         PCC record = null;
         try {
-            long timestamp = em.createNamedQuery("PCC.findByMostRecentTimeStampID", Long.class).getSingleResult();
-            record = em.createNamedQuery("PCC.findByTimeStampId", PCC.class).setParameter("timeStampId", timestamp).getSingleResult();
+            record = em.createNamedQuery("PCC.findByMostRecentTimeStampIDRow", PCC.class).getSingleResult();
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -41,7 +41,8 @@ import servlets.TransferDatabase;
     , @NamedQuery(name = "Facility.findByAmbientTemperature", query = "SELECT f FROM Facility f WHERE f.ambientTemperature = :ambientTemperature")
     , @NamedQuery(name = "Facility.findByBackOfPanelTemperature2", query = "SELECT f FROM Facility f WHERE f.backOfPanelTemperature2 = :backOfPanelTemperature2")
     , @NamedQuery(name = "Facility.findByWindSpeed", query = "SELECT f FROM Facility f WHERE f.windSpeed = :windSpeed")
-    , @NamedQuery(name = "Facility.findByMostRecentTimeStampID", query = "SELECT max(f.timeStampId) FROM Facility f")})
+    , @NamedQuery(name = "Facility.findByMostRecentTimeStampID", query = "SELECT max(f.timeStampId) FROM Facility f")
+    , @NamedQuery(name = "Facility.findByMostRecentTimeStampIDRow", query = "SELECT f FROM Facility f WHERE f.timeStampId = (SELECT max(f.timeStampId) FROM Facility f)")})
 public class Facility extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;

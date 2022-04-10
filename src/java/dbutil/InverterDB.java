@@ -61,11 +61,8 @@ public class InverterDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Inverter record = null;
         try {
-            long timestamp = em.createNamedQuery("Inverter.findByMostRecentTimeStampID", Long.class).getSingleResult();
-            System.out.println(timestamp);
-            Query q = em.createNamedQuery("Inverter.findByTimeStampAndDeviceID", Inverter.class);
+            Query q = em.createNamedQuery("Inverter.findByMostRecentTimeStampIDRow", Inverter.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
-            q.setParameter("timeStampId", timestamp);
             
             record = (Inverter) q.getSingleResult();
         }

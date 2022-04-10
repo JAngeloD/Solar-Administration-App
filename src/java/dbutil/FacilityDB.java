@@ -55,8 +55,7 @@ public class FacilityDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Facility record = null;
         try {
-            long timestamp = em.createNamedQuery("Facility.findByMostRecentTimeStampID", Long.class).getSingleResult();
-            record = em.createNamedQuery("Facility.findByTimeStampId", Facility.class).setParameter("timeStampId", timestamp).getSingleResult();
+            record = em.createNamedQuery("Facility.findByMostRecentTimeStampIDRow", Facility.class).getSingleResult();
         } finally {
             em.close();
         }

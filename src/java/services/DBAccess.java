@@ -131,7 +131,10 @@ public class DBAccess {
         //Initializes the database and retrieves the data based on the parameters given
         FeederDB db = new FeederDB();
         Feeder record = db.getRecent(deviceID);
-
+        
+        if(record == null)
+            System.out.println("TEST");
+        
         //Goes through the assoicated model and invokes the correct getter method
         double data = 0;
         try {

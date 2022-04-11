@@ -97,6 +97,26 @@ public class PccDB {
 
         return record;
     }
+    
+    /**
+     * A method to get the most recent object pushed into the database
+     * @return 
+     */
+    public PCC getRecent() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        PCC record = null;
+        try {
+            record = em.createNamedQuery("PCC.findByMostRecentTimeStampIDRow", PCC.class).getSingleResult();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            em.close();
+        }
+
+        return record;
+    }
 
     /**
      * A method to insert a PCC into the database

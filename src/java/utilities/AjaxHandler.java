@@ -31,7 +31,6 @@ public class AjaxHandler extends HttpServlet {
         String modelName = requestedData.substring(0, requestedData.indexOf("_"));
         String operation = requestedData.substring(requestedData.indexOf("_") + 1, requestedData.lastIndexOf("_"));
         String attribute = requestedData.substring(requestedData.lastIndexOf("_") + 1);
-        String timestamp = "4192"; //TEMPORARY
 
         //Data to be returned back to caller
         double data = 0;
@@ -42,8 +41,8 @@ public class AjaxHandler extends HttpServlet {
             switch (operation) {
                 case "Get":
                     for (Method m : models) {
-                        if (m.getName().equals(modelName + operation)) {
-                            Object[] args = {attribute, timestamp};
+                        if (m.getName().equals(modelName + operation + "Recent")) {
+                            Object[] args = {attribute};
                             data = (double) m.invoke(db, args);
                         }
                     }
@@ -57,7 +56,8 @@ public class AjaxHandler extends HttpServlet {
             e.printStackTrace();
         }
         
-        data = Math.random() * data; //TEMPORARY
+        //IN CASE OF EMERENCY
+//        data = Math.random() * data; 
         
         String finalData = String.format("%.2f", data);
 

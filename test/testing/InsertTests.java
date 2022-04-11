@@ -22,7 +22,7 @@ public class InsertTests {
         insertData = null;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-        insertData = new Facility("102310", 4192, timestamp, 20.0, 49.0, 24.0, 28.0, 28.0, 28.0);
+        insertData = new Facility("102310", Long.parseLong("4192"), timestamp, 20.0, 49.0, 24.0, 28.0, 28.0, 28.0);
         TransferDatabase transfer = (TransferDatabase) insertData;
         transfer.PutIntoDatabase();
 

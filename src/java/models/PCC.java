@@ -46,7 +46,9 @@ import servlets.TransferDatabase;
     , @NamedQuery(name = "PCC.findByAcOutputPhaseCCurrent", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCCurrent = :acOutputPhaseCCurrent")
     , @NamedQuery(name = "PCC.findByAcOutputPhaseAbVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "PCC.findByAcOutputPhaseBcVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
-    , @NamedQuery(name = "PCC.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")})
+    , @NamedQuery(name = "PCC.findByAcOutputPhaseCaVoltage", query = "SELECT p FROM PCC p WHERE p.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
+    , @NamedQuery(name = "PCC.findByMostRecentTimeStampID", query = "SELECT max(p.timeStampId) FROM PCC p")
+    , @NamedQuery(name = "PCC.findByMostRecentTimeStampIDRow", query = "SELECT p FROM PCC p WHERE p.timeStampId = (SELECT max(p.timeStampId) FROM PCC p)")})
 public class PCC extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;

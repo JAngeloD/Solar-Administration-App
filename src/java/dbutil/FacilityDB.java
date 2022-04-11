@@ -50,6 +50,18 @@ public class FacilityDB {
 
         return record;
     }
+    
+    public Facility getRecent() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Facility record = null;
+        try {
+            record = em.createNamedQuery("Facility.findByMostRecentTimeStampIDRow", Facility.class).getSingleResult();
+        } finally {
+            em.close();
+        }
+
+        return record;
+    }
 
     /**
     * A method to insert a Facility object into the database

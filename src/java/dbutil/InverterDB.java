@@ -56,6 +56,22 @@ public class InverterDB {
 
         return record;
     }
+    
+    public Inverter getRecent(String deviceID) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Inverter record = null;
+        try {
+            Query q = em.createNamedQuery("Inverter.findByMostRecentTimeStampIDRow", Inverter.class);
+            q.setParameter("deviceId", Integer.parseInt(deviceID));
+            
+            record = (Inverter) q.getSingleResult();
+        }
+        finally {
+            em.close();
+        }
+
+        return record;      
+    }
 
     /**
      * A method to insert an Inverter into the database

@@ -20,7 +20,7 @@ import models.*;
 public class DataGenerator {
 
     private String recordID = "100000000";
-    private Integer timeStampID = 4193;
+    private long timeStampID = 4193;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
     private Date timeStamp = new Date(System.currentTimeMillis());
 
@@ -32,7 +32,7 @@ public class DataGenerator {
         return Integer.toString(tempRecord);
     }
 
-    public Integer timeStampId() {
+    public Long timeStampId() {
         return timeStampID++;
     }
 

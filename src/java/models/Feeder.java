@@ -47,7 +47,9 @@ import servlets.TransferDatabase;
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseAbVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseAbVoltage = :acOutputPhaseAbVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseBcVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseBcVoltage = :acOutputPhaseBcVoltage")
     , @NamedQuery(name = "Feeder.findByAcOutputPhaseCaVoltage", query = "SELECT f FROM Feeder f WHERE f.acOutputPhaseCaVoltage = :acOutputPhaseCaVoltage")
-    , @NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")})
+    , @NamedQuery(name = "Feeder.findByTimeStampAndDeviceID", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = :timeStampId")
+    , @NamedQuery(name = "Feeder.findByMostRecentTimeStampID", query = "SELECT max(f.timeStampId) FROM Feeder f")
+    , @NamedQuery(name = "Feeder.findByMostRecentTimeStampIDRow", query = "SELECT f FROM Feeder f WHERE f.deviceId = :deviceId AND f.timeStampId = (SELECT max(f.timeStampId) FROM Feeder f WHERE f.deviceId = :deviceId)")})
 public class Feeder extends TransferDatabase implements Serializable {
 
     private static final long serialVersionUID = 1L;

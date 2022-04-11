@@ -122,7 +122,7 @@ public class AjaxChartHandler extends HttpServlet {
 
     /**
      * Builds a weather graph formatted  as a JSON string
-     * using Plotly syntax
+     * using Plotly syntax. Uses template to build the graph located in /templates
      * 
      * @param xData - Hours in an array
      * @param yData1 - Temperature in an array
@@ -148,7 +148,7 @@ public class AjaxChartHandler extends HttpServlet {
 
     /**
      * Builds a power/irradiance graph formatted as a JSON string 
-     * using Plotly syntax
+     * using Plotly syntax. Uses template to build the graph located in /templates
      * 
      * @param xData - Hours 
      * @param yData1 - Average Power in an array
@@ -175,6 +175,14 @@ public class AjaxChartHandler extends HttpServlet {
         return jsonTemplate;
     }
 
+    /**
+     * Builds a inverter/performance graph formatted as a JSON string
+     * using Plotly syntax. Uses template to build the graph located in /templates
+     * 
+     * @param xData - kWh / kWAC double array 
+     * @param yData - Inverter device (1-39) String array
+     * @return - a JSON string filled with data 
+     */
     public String buildInverterPerformanceGraph(double[] xData, String[] yData) {
 
         String jsonTemplate = "";

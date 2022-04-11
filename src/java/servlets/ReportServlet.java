@@ -37,6 +37,10 @@ public class ReportServlet extends HttpServlet {
         return;
     }
 
+    /**
+     * Grabs all the requested items from the JSP and will either call the CSVParser or the Report Builder 
+     * to generate a report to the user
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -92,36 +96,4 @@ public class ReportServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp
         return;
     }
-
-    /**
-     *
-     * Creates a JSON plot graph with variables from the parameters The graph
-     * can either be "Calendar Year (January 1 to December 31) –Energy @ PCC" or
-     * "Calendar Year to Date –similar toAnnual Report –Energy @ PCC"
-     *
-     * @param monthlyEnergy - monthly energy as a bar graph (Y axis)
-     * @param cumulativeEnergy - cumulative energy as a line graph (Y axis)
-     * @param months - months recorded (X axis)
-     * @return - JSON plot graph
-     */
-    public String buildGraphA(double[] monthlyEnergy, double[] cumulativeEnergy, double[] months) {
-
-        return "";
-    }
-
-    /**
-     *
-     * Creates a JSON plot graph with variables from the parameters The graph
-     * can either be "Last full of current year compared to same month of
-     * previous 5 years @ PCC" or "Year to Year Comparison at PCC"
-     *
-     * @param year - years in (X axis)
-     * @param energy - can either be in monthly energy or annual energy (Y axis)
-     * @return - JSON plot graph
-     */
-    public String buildGraphB(int[] year, double[] energy) {
-
-        return "";
-    }
-
 }

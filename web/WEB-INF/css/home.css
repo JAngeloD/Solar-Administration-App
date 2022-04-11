@@ -1,10 +1,4 @@
 
-/*
-h1 {
-    font-family: 'Roboto', sans-serif;
-}
-*/
-
 
 
 #electricDiagram {
@@ -371,7 +365,7 @@ h1 {
             position: absolute;
             left: 63%;
             top: 24.5%;
-            width:180px;
+            width:190px;
              text-align: left;
              font-size:11px;
              

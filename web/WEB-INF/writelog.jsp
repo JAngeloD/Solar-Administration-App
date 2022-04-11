@@ -75,6 +75,7 @@
         <textarea style="resize:both" name="log" rows="20" cols="75" placeholder="Start Here"></textarea>
         <br />
         <input type="submit" value="Save Log">
+        <br>
         <h3>${message}</h3>
       </form>      
     </div>

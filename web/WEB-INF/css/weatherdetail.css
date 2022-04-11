@@ -7,45 +7,11 @@
 h1 {
     font-family: 'Roboto', sans-serif;
 }
-/*
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-    text-align: right;
-}*/
-
-/*li {
-    float: right;
-    font-size: larger;
-}*/
 
 .left {
     float: left;
 }
-/*
-li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    
-}
 
-li a:hover:not(.active) {
-    background-color: #99582A;
-    color: #FFFFFF;
-}
-
-li a.active {
-    color: white;
-    background-color: #04AA6D;
-}
-*/
 .left {
     margin-left: 5%;
 }
@@ -87,23 +53,6 @@ li a.active {
     margin-left: 10%;
     margin-top: 2%;
 }
-/*
-#graphs {
-   width: 60%;
-}
-
-
-#mainTable {
- 
-    width: 100%;
-}
-
-#data {
-   width: 50%;
-   margin-left: 25%;
-   margin-right: 25%;
-}
-*/
 
 #weatherData {
     border: 1px solid;

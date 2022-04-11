@@ -26,16 +26,20 @@
                 <div id='tableBox'>
                 <c:if test="${reportChoice == '1' || reportChoice == '3'}">
                     <p> | - means the start of a new year </p>
-                    <table class='resultsTable'>
+                    <table id="table" class="table table-hover table-bordered ">
+                        <thead>
                         <tr>
-                            <td colspan='3'><b>${start} to ${end}</b></td>
+                            <th scope="col"colspan='3'>${start} to ${end}</th>
                         </tr>
                         <tr>
-                            <td ><b>Month</b></td>
-                            <td ><b>Energy (MWhrs)</b></td>
-                            <td ><b>Cumulative Energy</b></td>
+                            <th scope="col">Month</th>
+                            <th scope="col">Energy (MWhrs)</th>
+                            <th scope="col">Cumulative Energy</th>
                         </tr>
+                        </thead>
+                        <tbody> 
                         <c:forEach var="out" items="${output}">
+                           
                             <tr>
                                 <td>
                                     ${out.xString}
@@ -47,19 +51,25 @@
                                     ${out.y2}
                                 </td>
                             </tr>
+                           
                         </c:forEach>
+                             </tbody>
                     </table>
                 </c:if>
                 <c:if test="${reportChoice == '2'}">
-                    <table class='resultsTable'>
+                    <table id="table" class="table table-hover table-bordered ">
+                        <thead>
                         <tr>
-                            <td colspan='2'><b>PCC Yearly Energy last 5 years.</b></td>
+                            <th scope="col" colspan='2'>PCC Yearly Energy last 5 years.</th>
                         </tr>
                         <tr>
-                            <td ><b>Year</b></td>
-                            <td ><b>Energy (MWhrs)</b></td>
+                            <th scope="col"><b>Year</th>
+                            <th scope="col"><b>Energy (MWhrs)</th>
                         </tr>
+                        </thead>
+                         <tbody>
                         <c:forEach var="out" items="${output}">
+                           
                             <tr>
                                 <td>
                                     ${out.x}
@@ -68,19 +78,25 @@
                                     ${out.y1}
                                 </td>
                             </tr>
+                           
                         </c:forEach>
+                             </tbody>
                     </table>
                 </c:if>
                 <c:if test="${reportChoice == '4'}">
-                    <table class='resultsTable'>
+                    <table id="table" class="table table-hover table-bordered ">
+                         <thead>
                         <tr>
-                            <td colspan='2'><b>Monthly Energy Comparison over the last 5 years</b></td>
+                            <th scope="col"colspan='2'>Monthly Energy Comparison over the last 5 years</th>
                         </tr>
                         <tr>
-                            <td ><b>Year</b></td>
-                            <td ><b>Energy (MWhrs)</b></td>
+                            <th scope="col">Year</th>
+                            <th scope="col">Energy (MWhrs)</th>
                         </tr>
+                         </thead>
+                          <tbody>
                         <c:forEach var="out" items="${output}">
+                           
                             <tr>
                                 <td>
                                     ${out.x}
@@ -89,7 +105,9 @@
                                     ${out.y1}
                                 </td>
                             </tr>
+                           
                         </c:forEach>
+                             </tbody>
                     </table>
                 </c:if>
 

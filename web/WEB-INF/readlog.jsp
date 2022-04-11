@@ -162,8 +162,12 @@
                             <input  class="form-control form-control-lg" type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
                             </div>
                             <br/>
-                            <textarea name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
+                            <textarea style="resize:both" name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
                         </form>
+                        <br>
+                          <br>  <br>
+                          
+                        
                     </c:if>
 
                 </div>

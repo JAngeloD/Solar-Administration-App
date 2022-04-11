@@ -76,6 +76,7 @@ p{
 .wrapall{
     text-align: center;
     position: relative;
+    
 
 }
 #electricDiagram {
@@ -84,6 +85,7 @@ p{
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5%;
+    
 }
 
   #table{

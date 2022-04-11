@@ -18,11 +18,24 @@ function toggleDisplayCSV() {
         document.getElementById("feeders").style.display = "block";
         document.getElementById("inverters").style.display = "block";
         document.getElementById("weather").style.display = "block";
-    }
-    else {
+    } else {
         document.getElementById("pcc").style.display = "none";
         document.getElementById("feeders").style.display = "none";
         document.getElementById("inverters").style.display = "none";
         document.getElementById("weather").style.display = "none";
+
+        document.getElementById("pccBlock").style.display = "none";
+        document.getElementById("fdrs").style.display = "none";
+        document.getElementById("invtrs").style.display = "none";
+        document.getElementById("wthr").style.display = "none";
+
+        var uncheck = document.getElementsByTagName('input');
+        for (var i = 0; i < uncheck.length; i++)
+        {
+            if (uncheck[i].type === 'checkbox')
+            {
+                uncheck[i].checked = false;
+            }
+        }
     }
 }

@@ -87,6 +87,23 @@ public class PCC extends TransferDatabase implements Serializable {
 
     public PCC() {
     }
+    
+     public PCC(String recordID, long timeStampId, Date timeStamp, Double acOutputEnergy, Double acOutputRealPower, Double acOutputApparentPower, Double acOutputReactivePower, Double acOutputPowerFactor, Double acOutputPhaseACurrent, Double acOutputPhaseBCurrent, Double acOutputPhaseCCurrent, Double acOutputPhaseAbVoltage, Double acOutputPhaseBcVoltage, Double acOutputPhaseCaVoltage) {
+        this.recordID = recordID;
+        this.timeStampId = timeStampId;
+        this.timeStamp = timeStamp;
+        this.acOutputEnergy = acOutputEnergy;
+        this.acOutputRealPower = acOutputRealPower;
+        this.acOutputApparentPower = acOutputApparentPower;
+        this.acOutputReactivePower = acOutputReactivePower;
+        this.acOutputPowerFactor = acOutputPowerFactor;
+        this.acOutputPhaseACurrent = acOutputPhaseACurrent;
+        this.acOutputPhaseBCurrent = acOutputPhaseBCurrent;
+        this.acOutputPhaseCCurrent = acOutputPhaseCCurrent;
+        this.acOutputPhaseAbVoltage = acOutputPhaseAbVoltage;
+        this.acOutputPhaseBcVoltage = acOutputPhaseBcVoltage;
+        this.acOutputPhaseCaVoltage = acOutputPhaseCaVoltage;
+    }
 
     public PCC(String recordID) {
         this.recordID = recordID;

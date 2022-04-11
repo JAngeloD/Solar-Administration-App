@@ -9,41 +9,46 @@ package sockets;
  *
  * @author Andrew
  */
-import java.io.*;
-import java.net.*;
-import models.Facility;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import models.*;
+import utilities.DataGenerator;
 
-public class Server {
+public class Server implements Runnable{
 
-    private ServerSocket serverSocket = null;
-    private Socket socket = null;
-    private ObjectInputStream ois = null;
+    public static void communicate() {
+        Socket socket = null;
+        ObjectOutputStream oos = null;
 
-    public Server() {
-
-    }
-
-    public void communicate() {
         try {
-            serverSocket = new ServerSocket(4445);
-            socket = serverSocket.accept();
-            System.out.println("connected");
-            ois = new ObjectInputStream(socket.getInputStream());
-            Facility facility = (Facility) ois.readObject();
-            System.out.println("Object receieved = " + facility);
-            socket.close();
+            socket = new Socket("localhost", 4445);
+            System.out.println("Server connected: " + socket.toString());
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            DataGenerator dataGenerator = new DataGenerator();
+            Facility facility = new Facility();
+            facility.setAmbientTemperature(dataGenerator.randomAmbientTemp());
+            facility.setBackOfPanelTemperature1(dataGenerator.randomTemp());
+            facility.setBackOfPanelTemperature2(dataGenerator.randomTemp());
+            facility.setRecordID(dataGenerator.recordID());
+            facility.setTimeStampId(dataGenerator.timeStampId());
+            facility.setTimeStamp(dataGenerator.timeStamp());
+            facility.setWindSpeed(dataGenerator.randomWindSpeed());
+            facility.setSolarirridianceGHI(dataGenerator.randomGHI());
+            facility.setSolarirridiancePOA(dataGenerator.randomPOA());
 
-        } catch (SocketException se) {
-            se.printStackTrace();
-            System.exit(0);
+            facility = new Facility(facility.getRecordID(), facility.getTimeStampId(), facility.getTimeStamp(), facility.getSolarirridiancePOA(), facility.getSolarirridianceGHI(), facility.getBackOfPanelTemperature1(), facility.getAmbientTemperature(), facility.getBackOfPanelTemperature2(), facility.getWindSpeed());
+            oos.writeObject(facility);
             
-        } catch (IOException | ClassNotFoundException e) {
+            socket.close();
+            oos.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-        Server server = new Server();
-        server.communicate();
+    @Override
+    public void run() {
+        Server.communicate();
     }
 }

@@ -6,7 +6,7 @@ import models.Facility;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import servlets.TransferDatabase;
+import models.TransferDatabase;
 
 public class InsertTests {
 

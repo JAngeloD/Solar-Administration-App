@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet
             }
             request.setAttribute( "formFeedback", "Successfuly logged out" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-            //response.sendRedirect( "login" );    
+              
         }
         else
         {

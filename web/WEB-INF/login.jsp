@@ -26,13 +26,21 @@
             </div>
             <br>
             <input type="hidden" name="nonce" value="<%=session.getAttribute("nonce")%>"/>
-            <input type="submit" type="submit" class="btn" value="Login" />
+            <input  type="submit" class="btn" value="Login" />
+            <br>
+            <br>
+   
         </form>
 
         <div>
             <h3>${message}</h3>
         </div>  
-        <a href="reset">Forgot password</a>
+              
+               <form method="GET" action="reset" style="max-width:500px;margin:auto">
+<input class="btn" type="submit" value="Forgot Password">
+</form>
+        
+        
 
         <p>${formFeedback}</p>
     </body>

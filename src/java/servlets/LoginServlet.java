@@ -31,8 +31,9 @@ public class LoginServlet extends HttpServlet
                 if( email != null && !email.isEmpty() )
                     session.invalidate();
             }
-            
-            response.sendRedirect( "login" );    
+            request.setAttribute( "formFeedback", "Successfuly logged out" );
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            //response.sendRedirect( "login" );    
         }
         else
         {

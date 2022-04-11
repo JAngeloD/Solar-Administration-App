@@ -23,26 +23,23 @@ public class Server implements Runnable{
 
         try {
             socket = new Socket("localhost", 4445);
-            System.out.println("connected");
-            isConnected = true;
+            System.out.println("Server connected: " + socket.toString());
             oos = new ObjectOutputStream(socket.getOutputStream());
             DataGenerator dataGenerator = new DataGenerator();
             Facility facility = new Facility();
-            PCC pcc = new PCC();
-            Inverter inverter = new Inverter();
-            Feeder feeder = new Feeder();
-            inverter = dataGenerator.randomInverter();
-            pcc = dataGenerator.randomPCC();
-            facility = dataGenerator.randomDataFacility();
-            feeder = dataGenerator.randomFeeder();
-            System.out.println("object to be written = " + facility);
-            System.out.println("object to be written = " + pcc);
-            System.out.println("object to be written = " + inverter);
-            System.out.println("object to be written = " + feeder);
+            facility.setAmbientTemperature(dataGenerator.randomAmbientTemp());
+            facility.setBackOfPanelTemperature1(dataGenerator.randomTemp());
+            facility.setBackOfPanelTemperature2(dataGenerator.randomTemp());
+            facility.setRecordID(dataGenerator.recordID());
+            facility.setTimeStampId(dataGenerator.timeStampId());
+            facility.setTimeStamp(dataGenerator.timeStamp());
+            facility.setWindSpeed(dataGenerator.randomWindSpeed());
+            facility.setSolarirridianceGHI(dataGenerator.randomGHI());
+            facility.setSolarirridiancePOA(dataGenerator.randomPOA());
+
+            facility = new Facility(facility.getRecordID(), facility.getTimeStampId(), facility.getTimeStamp(), facility.getSolarirridiancePOA(), facility.getSolarirridianceGHI(), facility.getBackOfPanelTemperature1(), facility.getAmbientTemperature(), facility.getBackOfPanelTemperature2(), facility.getWindSpeed());
             oos.writeObject(facility);
-            oos.writeObject(pcc);
-            oos.writeObject(inverter);
-            oos.writeObject(feeder);
+            
             socket.close();
             oos.close();
         } catch (Exception e) {

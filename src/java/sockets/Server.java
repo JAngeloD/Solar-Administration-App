@@ -9,39 +9,32 @@ package sockets;
  *
  * @author Andrew
  */
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-import models.*;
-import utilities.DataGenerator;
+import java.io.*;
+import java.net.*;
+import models.Facility;
+import models.TransferDatabase;
 
 public class Server implements Runnable{
-
     public static void communicate() {
+        ServerSocket serverSocket;
         Socket socket = null;
-        ObjectOutputStream oos = null;
+        ObjectInputStream ois = null;
 
         try {
-            socket = new Socket("localhost", 4445);
-            System.out.println("Server connected: " + socket.toString());
-            oos = new ObjectOutputStream(socket.getOutputStream());
-            DataGenerator dataGenerator = new DataGenerator();
-            Facility facility = new Facility();
-            facility.setAmbientTemperature(dataGenerator.randomAmbientTemp());
-            facility.setBackOfPanelTemperature1(dataGenerator.randomTemp());
-            facility.setBackOfPanelTemperature2(dataGenerator.randomTemp());
-            facility.setRecordID(dataGenerator.recordID());
-            facility.setTimeStampId(dataGenerator.timeStampId());
-            facility.setTimeStamp(dataGenerator.timeStamp());
-            facility.setWindSpeed(dataGenerator.randomWindSpeed());
-            facility.setSolarirridianceGHI(dataGenerator.randomGHI());
-            facility.setSolarirridiancePOA(dataGenerator.randomPOA());
-
-            facility = new Facility(facility.getRecordID(), facility.getTimeStampId(), facility.getTimeStamp(), facility.getSolarirridiancePOA(), facility.getSolarirridianceGHI(), facility.getBackOfPanelTemperature1(), facility.getAmbientTemperature(), facility.getBackOfPanelTemperature2(), facility.getWindSpeed());
-            oos.writeObject(facility);
+            serverSocket = new ServerSocket(4445);
+            socket = serverSocket.accept();
+            
+            System.out.println("Client connected: " + socket.toString());
+            ois = new ObjectInputStream(socket.getInputStream());
+            
+            TransferDatabase obj = (TransferDatabase) ois.readObject();
+            
+            //Grabs the object sent from the server and pushes into the database
+            obj.PutIntoDatabase();
             
             socket.close();
-            oos.close();
+            serverSocket.close();
+            ois.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

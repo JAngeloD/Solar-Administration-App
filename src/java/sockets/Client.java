@@ -9,32 +9,31 @@ package sockets;
  *
  * @author Andrew
  */
-import java.io.*;
-import java.net.*;
-import models.Facility;
-import models.TransferDatabase;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import models.*;
+import utilities.DataGenerator;
 
 public class Client implements Runnable{
+
     public static void communicate() {
-        ServerSocket serverSocket;
         Socket socket = null;
-        ObjectInputStream ois = null;
+        ObjectOutputStream oos = null;
 
         try {
-            serverSocket = new ServerSocket(4445);
-            socket = serverSocket.accept();
+            socket = new Socket("localhost", 4445);
+            System.out.println("Server connected: " + socket.toString());
+            oos = new ObjectOutputStream(socket.getOutputStream());
             
-            System.out.println("Client connected: " + socket.toString());
-            ois = new ObjectInputStream(socket.getInputStream());
+            DataGenerator dataGenerator = new DataGenerator();
             
-            TransferDatabase obj = (TransferDatabase) ois.readObject();
-            
-            //Grabs the object sent from the server and pushes into the database
-            obj.PutIntoDatabase();
+            //Objects being pushed into the database 
+
+//            oos.writeObject(facility);
             
             socket.close();
-            serverSocket.close();
-            ois.close();
+            oos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -18,8 +18,8 @@ public class RetrievalSim {
 
     public static void main(String[] args) {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-        Client client = new Client();
-        Server server = new Server();
+        Server client = new Server();
+        Client server = new Client();
 
         ScheduledFuture<?> result1 = executor.scheduleAtFixedRate(client, 0, 13, TimeUnit.SECONDS);
         ScheduledFuture<?> result2 = executor.scheduleAtFixedRate(server, 3, 13, TimeUnit.SECONDS);

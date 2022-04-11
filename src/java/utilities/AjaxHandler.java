@@ -57,7 +57,7 @@ public class AjaxHandler extends HttpServlet {
         }
         
         //IN CASE OF EMERENCY
-//        data = Math.random() * data; 
+        data = Math.random() * data; 
         
         String finalData = String.format("%.2f", data);
 

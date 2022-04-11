@@ -74,8 +74,8 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    power = appendIntoCurrent(power, DBAccess.PccGetRecent("AcOutputEnergy"));
-                    irradiance = appendIntoCurrent(irradiance, DBAccess.FacilityGetRecent("SolarirridianceGHI"));
+                    power = appendIntoCurrent(power, Math.random() * DBAccess.PccGetRecent("AcOutputEnergy"));
+                    irradiance = appendIntoCurrent(irradiance, Math.random() * DBAccess.FacilityGetRecent("SolarirridianceGHI"));
 
                     //System.out.println(Arrays.toString(yData1));
                     jsonData = buildIrradiancePowerGraph(hours1, power, irradiance);
@@ -103,8 +103,8 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    temperature = appendIntoCurrent(temperature, DBAccess.FacilityGetRecent("AmbientTemperature"));
-                    windSpeed = appendIntoCurrent(windSpeed, DBAccess.FacilityGetRecent("WindSpeed"));
+                    temperature = appendIntoCurrent(temperature, Math.random() * DBAccess.FacilityGetRecent("AmbientTemperature"));
+                    windSpeed = appendIntoCurrent(windSpeed, Math.random() * DBAccess.FacilityGetRecent("WindSpeed"));
 
                     jsonData = buildWeatherGraph(hours2, temperature, windSpeed);
                     break;
@@ -268,7 +268,7 @@ public class AjaxChartHandler extends HttpServlet {
         }
 
         //BREAK IN CASE OF EMERGENCY 
-//        finalArray[finalArray.length - 1] = newData * (Math.random() * 10);
+        finalArray[finalArray.length - 1] = newData * (Math.random() * 10);
 
         return finalArray;
     }

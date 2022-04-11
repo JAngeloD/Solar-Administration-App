@@ -28,7 +28,8 @@ public class Client implements Runnable{
             
             DataGenerator dataGenerator = new DataGenerator();
             
-            //Objects being pushed into the database 
+            //Objects being pushed into the database
+            
 
 //            oos.writeObject(facility);
             

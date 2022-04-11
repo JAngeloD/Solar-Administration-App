@@ -23,15 +23,16 @@ public class Client implements Runnable{
         try {
             serverSocket = new ServerSocket(4445);
             socket = serverSocket.accept();
-            
-            System.out.println("Client connected: " + socket.toString());
+            System.out.println("connected");
             ois = new ObjectInputStream(socket.getInputStream());
-            
-            TransferDatabase obj = (TransferDatabase) ois.readObject();
-            
-            //Grabs the object sent from the server and pushes into the database
-            obj.PutIntoDatabase();
-            
+            Facility facility = (Facility) ois.readObject();
+            PCC pcc = (PCC) ois.readObject();
+            Inverter inverter = (Inverter) ois.readObject();
+            Feeder feeder = (Feeder) ois.readObject();
+            System.out.println("Object receieved = " + feeder);
+            System.out.println("Object receieved = " + facility);
+            System.out.println("Object recieved = " + pcc);
+            System.out.println("Object recieved = " + (inverter));
             socket.close();
             serverSocket.close();
             ois.close();

@@ -9,15 +9,19 @@ import javax.persistence.Persistence;
  */
 public class DBUtil {
     
-    private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("SolarPU");
-    
    /**
     * A method to return the database Manager
     * @return emf The EntityManagerFactory that will provide access to the database
     */
     public static EntityManagerFactory getEmFactory() {
-        return emf;
+        try {
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("SolarPU");
+            return emf;
+        }
+        catch(Exception e) {
+            System.out.println("POg");
+        }
+        return null;
     } 
     
 }

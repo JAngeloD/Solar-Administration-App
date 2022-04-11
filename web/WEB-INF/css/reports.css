@@ -1,186 +1,84 @@
 
+   body { 
+       background: #F5F3E6 !important; 
+    font-family: 'Lato', sans-serif !important; 
+     text-align: right !important; 
+
+   }
      .wrapper5 {
-        text-align: center;
+            text-align: center;
 
-    }
+        }
 
-    .logForm{
-        text-align: center;
-    }
+        .logForm{
+            text-align: center;
+        }
 
-    .logFormz{
-        position: absolute;
-        top: 40px;
-        left: 5%;
-    }
-    /*
-     .buttonLog {
-        position: absolute;
-        top: 18.5%;
-        left: 68%;
-        width:166px;
-    }
-    */
-
-
-
-/*
-h1 {
-font-family: 'Roboto', sans-serif;
-}
-*/
-/*ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-border: 1px solid #e7e7e7;
-background-color: #f3f3f3;
-text-align: right;
-}
-
-li {
-float: right;
-font-size: larger;
-}*/
+        .logFormz{
+            position: absolute;
+            top: 40px;
+            left: 5%;
+        }
+      
 
 .left {
-float: left;
-}
-/*
-li a {
-display: block;
-color: black;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-
-}
-*/
-/*
-li a:hover:not(.active) {
-background-color: #99582A;
-color: #FFFFFF;
+    float: left;
 }
 
-li a.active {
-color: white;
-background-color: #04AA6D;
-}
-*/
-/*
-.left {
-margin-left: 5%;
-}
-*/
 #components {
-margin-left: 10%;
+    margin-left: 10%;
 }
 
 #buttonsBox {
-float: left;
+    float: left;
 }
 
 #barBox {
-float: left;
-margin-right: 5%;
-}
-/*
-.inverterButton {
-background-color: grey;
-color: white;
-width: 120%;
-padding: 5%;
-border-radius: 0.5em;
-border: 3px solid #F5F3E6;
-margin-top: 100px;
+    float: left;
+    margin-right: 5%;
 }
 
-.inverterButton:hover {
-border: 3px solid #99582A;
+   input[type=submit]{
+    background-color:#3A2318;
+    color: whitesmoke; 
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    width:220px;
+  }
+  input[type=submit]:hover{
+    background-color: darkgray;
+    color:black; 
+  }
+  p{
+    font-size: 11px;
 }
+a {
+           
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
 
-.menuButton {
-width: 10%;
-border-radius: 1em;
+    font-size: 12px;
 }
-*/
-.center {
-margin-right: 10%;
-margin-left: 10%;
-margin-top: 2%;
+b {
+           
+    color: black;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
-
-#graphs {
-width: 60%;
-}
-
-#mainTable {
-margin-left: 10%;
-margin-right: 10%;
-width: 100%;
-}
-
-#data {
-width: 50%;
-margin-left: 25%;
-margin-right: 25%;
-}
-/*
-#weatherData {
-border: 1px solid;
-padding: 2%;
-
-}*/
-
-.buttonLog {
-width: 120px;
-  color: whitesmoke; 
-  left: 64%;
-  top: 80px;
-  border-radius: 15px;
-  background-color:#3A2318;
-  position: absolute;
-  text-decoration: none;
-padding: 16px 32px;
-
-
-}
-
-.buttonLog:hover {
-  background-color: darkgray;
-  color:black;
-}
-input[type=submit]{
-background-color:#3A2318;
-color: whitesmoke; 
-padding: 16px 32px;
-text-decoration: none;
-margin: 4px 2px;
-cursor: pointer;
-border-radius: 15px;
-}
-input[type=submit]:hover{
-background-color: darkgray;
-color:black; 
-}
-p{
-font-size: 11px;
-}
-/*a {
-       
-color: white;
-padding: 1.6em 1em;
-text-decoration: none;
-text-transform: uppercase;
-
-font-size: 12px;
-}*/
 
 .wrapall{
-text-align: center;
-position: relative;
-
+    text-align: center;
+    position: relative;
+    margin-left:10%;
+width:70%;
 }
 .data{
             border-radius: 1em;
@@ -209,9 +107,74 @@ position: relative;
             font-size: 12px;
         }
         
-   
-   body { 
-       background: #F5F3E6 !important; 
-    font-family: 'Lato', sans-serif !important; 
+        
+        .form-horizontal .control-label {
+  text-align: left !important; /* !important added for priority in SO snippet. */
+}
+.form-floating{
+    text-align: left;
+}
 
-   }
+
+  .row,
+     [class*="row"] {
+      padding-right: 0%;
+      padding-left: 2%;
+    
+  } 
+
+
+  #table{
+      margin-right: 60px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      table-layout: auto;
+      width: 100%;
+       background-color: #a99a86;
+  }
+
+  
+
+.row{
+    width:100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/*#table tr:nth-child(even){background-color: #F5F3E6;}*/
+
+#table tr:hover {background-color: #99582A;}
+
+#table
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #848886;
+    color: white;
+} 
+
+
+
+
+.button{
+    width: 100%;
+  
+    background-color: #3A2318;
+    color: white;
+    padding: 10px 18px;
+    margin: 8px 0px;
+     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.button:hover{
+    background-color: darkgray;
+    color:black;
+}

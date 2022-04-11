@@ -35,28 +35,6 @@ h1 {
     text-align: center;
 
 } 
-/*
-a {
-    background-color: #555;
-    color: white;
-    padding: 1.6em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-a:hover {
-    background-color: lightgray;
-}
-
-a:active {
-    background-color: black;
-}
-
-a:visited {
-    background-color: darkgrey;
-}
-/*/
 
 
 a {
@@ -93,19 +71,19 @@ a {
 
 #f1data{
     position: absolute;
-    left: 16.5%;
+    left: 15.5%;
     top:-6%;
      text-align: left;
              font-size:11px;
-           width:180px; 
+           width:190px; 
 }
 #f2data{
     position: absolute;
-    left: 16.5%;
+    left: 15.5%;
     top: 64%;
      text-align: left;
              font-size:11px;
-           width:180px; 
+           width:190px; 
 }
 #pccdata{
     position: absolute;
@@ -123,25 +101,7 @@ a {
             width:48px;
              padding:0px;
         }
-/*        #Pcc_Get_AcOutputRealPower{
-            margin-left:5px;
-                padding:0px;
-        }
-      
-        #Pcc_Get_AcOutputReactivePower{
-             margin-left:5px;
-              padding:0px;
-        }
-        
-        #Pcc_Get_AcOutputPowerFactor{
-             margin-left:5px;
-              padding:0px;
-        }*/
-        
-/*        #Pcc_Get_AcOutputPhaseAverageVoltage{
-             margin-left:43px;
-              padding:0px;
-        }*/
+
 #Pcc_Get_AcOutputPhaseCaVoltage{
              margin-left:20px;
               padding:0px;
@@ -216,36 +176,7 @@ a {
         }
 
 
-/*
-button{
-    width: 80px;
-    background-color: #6F1D1B;
-    color: whitesmoke;
-    position: absolute;
-    left: 31.4%;
-    top: 56%;
-}
-.head{
-text-align: center;
-}
-.headz{
-top:5%;
-left:50%;
-}
 
-*/
-
-/*
-#header {
-    background-color: #F5F3E6;
-    color: black;
-    padding: 0.5%;
-    border-radius: 1em;
-    border: 5px solid;
-    height: fit-content;
-    overflow: hidden;
-}
-*/
 #electricDiagram {
     clear: both;
     float: left;

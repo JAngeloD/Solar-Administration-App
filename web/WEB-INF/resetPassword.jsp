@@ -20,7 +20,9 @@
             <form method="POST" action="reset">
                 <div class="form-floating mb-7">   
                     <p>Please enter your email address to reset your password. <br> Email address:</p>                    
-                </div>          
+                </div>   
+                
+                <div class="form-floating mb-5">
                <div class="col-lg-4">
                    <input  class="form-control form-control-lg" type="email" name="email" size="30">
                </div>
@@ -31,8 +33,9 @@
                 <div class="col-lg-3">
                     <input  class="form-control form-control-lg" type="submit" value="Submit">
                      </div>
+                  </div>
             </form>
-        </div>
+      
         </div>
     </body>
 </html>

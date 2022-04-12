@@ -14,20 +14,15 @@
         <div class="wrapall">
         <h1>MFN Solar</h1>
         <h3>Reset Password</h3>
+        <br>
        <div id="form">
-            <p>
-                Please enter your email address to reset your password.
-            </p>
-            
+                       
             <form method="POST" action="reset">
-                 <div class="form-floating mb-7">
-                        
-                    <label class="col-lg-12 col-form-label">Email address:</label> 
-                 </div>
-                <br>
-                <br>
+                <div class="form-floating mb-7">   
+                    <p>Please enter your email address to reset your password. <br> Email address:</p>                    
+                </div>          
                <div class="col-lg-4">
-                    <input  class="form-control form-control-lg" type="email" name="email">
+                   <input  class="form-control form-control-lg" type="email" name="email" size="30">
                </div>
                 <br>
                 <div class="col-lg-3">

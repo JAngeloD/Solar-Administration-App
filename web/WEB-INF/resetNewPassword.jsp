@@ -10,26 +10,25 @@
         <title>Reset Password</title>
     </head>
     <body>        
-          <div class="wrapall" >
-        <h1>MNF Solar</h1>
-        <h3>Enter a new password</h3>
-        <div id="form">
-        <form method="POST" action="reset">
-            <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="password" name="newPassword">
+        <div class="wrapall" >
+            <h1>MNF Solar</h1>
+            <h3>Enter a new password</h3>
+            <div id="form">
+                <form method="POST" action="reset">
+                    <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="password" name="newPassword">
+                    </div>
+                    <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="hidden" name="uuid" value="${uuid}">
+                            </div>
+                    <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="hidden" name="action" value="changePassword">
+                            </div>
+                    <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="submit" value="Submit">
+                            </div>
+                </form>
             </div>
-            <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="hidden" name="uuid" value="${uuid}">
-                    </div>
-            <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="hidden" name="action" value="changePassword">
-                    </div>
-            <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="submit" value="Submit">
-                    </div>
-        </form>
         </div>
-                    
-          </div>
     </body>
 </html>

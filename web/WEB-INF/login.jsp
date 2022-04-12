@@ -9,6 +9,7 @@
         <title>Login Page</title>
     </head>
     <body>
+        <br>
         <form action="login" method="POST" style="max-width:500px;margin:auto">
             <label for="username">Email</label>
             <div class="input-container">
@@ -28,20 +29,15 @@
             <input type="hidden" name="nonce" value="<%=session.getAttribute("nonce")%>"/>
             <input  type="submit" class="btn" value="Login" />
             <br>
-            <br>
-   
-        </form>
-
+            <br>   
+        </form>        
+              
+        <form method="GET" action="reset" style="max-width:500px;margin:auto">
+            <input class="btn" type="submit" value="Forgot Password">
+        </form> 
         <div>
             <h3>${message}</h3>
+            <p>${formFeedback}</p>
         </div>  
-              
-               <form method="GET" action="reset" style="max-width:500px;margin:auto">
-<input class="btn" type="submit" value="Forgot Password">
-</form>
-        
-        
-
-        <p>${formFeedback}</p>
     </body>
 </html>

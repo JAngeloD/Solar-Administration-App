@@ -54,16 +54,21 @@ public class ResetPasswordServlet extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println(action);
         if (action.equals("resetPassword")) {
-            String email = request.getParameter("email");
-            System.out.println(email);
-            String path = getServletContext().getRealPath("/WEB-INF");
-            System.out.println(path);
-            String url = request.getRequestURL().toString();     
-            System.out.println(url);
-            if(dba.resetPassword(email, path, url)){
-                request.setAttribute("message", "Please check your inbox for an email with instructions"); 
-                getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-                return;
+            try{
+                String email = request.getParameter("email");
+                System.out.println(email);
+                String path = getServletContext().getRealPath("/WEB-INF");
+                System.out.println(path);
+                String url = request.getRequestURL().toString();     
+                System.out.println(url);
+                if(dba.resetPassword(email, path, url)){
+                    request.setAttribute("message", "Please check your inbox for an email with instructions"); 
+                    getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+                    return;
+                }
+            }
+            catch(Exception e){
+                System.out.println(e.toString());
             }
         } 
         else if (action.equals("changePassword")) {

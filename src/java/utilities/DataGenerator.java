@@ -7,8 +7,6 @@ package utilities;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import models.*;
@@ -17,7 +15,7 @@ import models.*;
  *
  * @author Andrew
  */
-public class DataGenerator {
+public class DataGenerator implements Runnable{
 
    
     private Facility facility = new Facility();
@@ -27,7 +25,7 @@ public class DataGenerator {
     private long timeStampID = 0;
     private Date timeStamp = new Date();
 
-    public Facility randomDataFacility() {
+    public Facility randomFacility() {
         int tempRecord = 0;
         tempRecord = new Random().nextInt() * 1000000;
         recordID = Integer.toString(tempRecord);
@@ -137,5 +135,38 @@ public class DataGenerator {
            return downFeeder;
         }
     }
+
+    /**
+     * 
+     */
+    @Override
+    public void run() {
+        
+        TransferDatabase obj = null;
+        
+        //Insert facility
+        obj = randomFacility();
+        obj.PutIntoDatabase();
+        
+        //Insert PCC
+        obj = randomPCC();
+        obj.PutIntoDatabase();
+        
+        //Insert Inverters
+        for(int i = 0; i < 39; i++) {
+            obj = randomInverter();
+            obj.PutIntoDatabase();
+        }
+        
+        //Insert Feeders
+        for(int i = 0; i < 2; i++) {
+            obj = randomFeeder();
+            obj.PutIntoDatabase();
+        }
+        
+        System.out.println("data sent");
+    }
+    
+    
 
 }

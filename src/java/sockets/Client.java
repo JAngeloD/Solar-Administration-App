@@ -9,7 +9,6 @@ package sockets;
  *
  * @author Andrew
  */
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import models.*;
@@ -35,7 +34,7 @@ public class Client implements Runnable{
             
             inverter = dataGenerator.randomInverter();
             pcc = dataGenerator.randomPCC();
-            facility = dataGenerator.randomDataFacility();
+            facility = dataGenerator.randomFacility();
             feeder = dataGenerator.randomFeeder();
             System.out.println("object to be written = " + facility);
             System.out.println("object to be written = " + pcc);

@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class RetrievalSim {
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+    public void run() {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
         Server client = new Server();
         Client server = new Client();
@@ -32,4 +33,6 @@ public class RetrievalSim {
 
         executor.shutdown();
     }
+    
+    
 }

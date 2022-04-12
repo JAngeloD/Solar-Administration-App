@@ -74,8 +74,11 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    power = appendIntoCurrent(power, Math.random() * DBAccess.PccGetRecent("AcOutputEnergy"));
-                    irradiance = appendIntoCurrent(irradiance, Math.random() * DBAccess.FacilityGetRecent("SolarirridianceGHI"));
+                    double powerVal = Math.random() * DBAccess.PccGetRecent("AcOutputEnergy");
+                    double irradianceVal = Math.random() * DBAccess.FacilityGetRecent("SolarirridianceGHI");
+                    
+                    power = appendIntoCurrent(power, powerVal);
+                    irradiance = appendIntoCurrent(irradiance, irradianceVal);
 
                     //System.out.println(Arrays.toString(yData1));
                     jsonData = buildIrradiancePowerGraph(hours1, power, irradiance);

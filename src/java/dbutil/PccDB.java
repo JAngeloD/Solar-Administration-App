@@ -19,8 +19,8 @@ public class PccDB {
 
     /**
      * A method to retrieve all PCC entries the database
-     * @return list A List<PCC> object that holds the results of the query.
-     * @throws SQLException 
+     * @return list A List[PCC] object that holds the results of the query.
+     * @throws SQLException - SQLException
      */
     public List<PCC> getAll() throws SQLException {
 
@@ -40,7 +40,7 @@ public class PccDB {
      * @param start The long value of the start date
      * @param end The long value of the end date
      * @param attribute The attribute of the PCC you are looking for
-     * @return list The List<PCC> object that holds the results of the query
+     * @return list The List[PCC] object that holds the results of the query
      */
     public List<PCC> getInBetween(long start, long end, String attribute) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -63,8 +63,8 @@ public class PccDB {
      * A method that gets the PCC objects in the database between two dates
      * @param start The starting date 
      * @param end The ending date
-     * @return list The List<PCC> object that holds the query results
-     * @throws SQLException 
+     * @return list The List[PCC] object that holds the query results
+     * @throws SQLException - SQLException
      */
     public List<PCC> getMonthSearchResults(Date start, Date end) throws SQLException {
         
@@ -100,7 +100,7 @@ public class PccDB {
     
     /**
      * A method to get the most recent object pushed into the database
-     * @return 
+     * @return - PCC object
      */
     public PCC getRecent() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -121,7 +121,7 @@ public class PccDB {
     /**
      * A method to insert a PCC into the database
      * @param event The PCC object that is to be inserted into the database.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(PCC event) throws SQLException {
 
@@ -164,7 +164,7 @@ public class PccDB {
     /**
      * A method to delete a PCC object from the database.
      * @param event The primary key of the PCC you aim to delete.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void delete(String event) throws SQLException {
 

@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import models.Inverter;
 
@@ -18,7 +17,7 @@ public class InverterDB {
     /**
      * A method to retrieve all the Inverter entries in the database
      * @return list The list of Inverter objects from the database
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public List<Inverter> getAll() throws SQLException {
 
@@ -76,7 +75,7 @@ public class InverterDB {
     /**
      * A method to insert an Inverter into the database
      * @param event The Inverter to be inserted into the database
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(Inverter event) throws SQLException {
 
@@ -119,7 +118,7 @@ public class InverterDB {
     /**
      * A method to delete an Inverter object from the database
      * @param event The primary key of the inverter to be deleted
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void delete(String event) throws SQLException {
 

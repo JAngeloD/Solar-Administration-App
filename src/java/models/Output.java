@@ -55,7 +55,7 @@ public class Output {
     }
 
     /**
-     * A method to create a array of Output objects to use for Report use case 1 & 3
+     * A method to create a array of Output objects to use for Report use case 1 and 3
      * I.e. the ones where the x axis is in months
      * @param x an array of integers for the x axis
      * @param y1 an array of doubles for the y1 axis

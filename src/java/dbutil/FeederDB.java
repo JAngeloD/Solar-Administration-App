@@ -16,9 +16,9 @@ public class FeederDB {
 
     /**
      * A method to retrieve all Feeder entries from the database.
-     * @return list The List<Feeder> object that holds all the entries from
+     * @return list The List[Feeder] object that holds all the entries from
      *              the Feeder table in the database.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public List<Feeder> getAll() throws SQLException {
 
@@ -74,7 +74,7 @@ public class FeederDB {
     /**
      * A method to insert a Feeder into the database
      * @param event The Feeder object that is to be inserted into the database.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(Feeder event) throws SQLException {
 
@@ -117,7 +117,7 @@ public class FeederDB {
     /**
      * A method to delete a Feeder object from the database
      * @param event The primary key of the Feeder object
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void delete(String event) throws SQLException {
 

@@ -16,7 +16,7 @@ public class UserTypeDB {
 
     /**
      * A method to get all the UserType entries in the database.
-     * @return list The List<UserType> object that holds the results of the query.
+     * @return list The List[UserType] object that holds the results of the query.
      * @throws SQLException 
      */
     public List<UserType> getAll() throws SQLException {
@@ -53,7 +53,7 @@ public class UserTypeDB {
     /**
      * A method to insert a UserType into the database
      * @param event The UserType you wish to insert into the database
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(UserType event) throws SQLException {
 
@@ -96,7 +96,7 @@ public class UserTypeDB {
     /**
      * A method to delete a UserType from the database
      * @param event The primary key of the UserType you wish to delete.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void delete(int event) throws SQLException {
 

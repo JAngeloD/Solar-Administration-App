@@ -9,14 +9,14 @@ import models.Facility;
 /**
  * A class that provides specific access points into the Facility Table in the database.
  * @author Therin Mody
- * @autho Jeric De Vera
+ * @author Jeric De Vera
  */
 public class FacilityDB {
     private List<Facility> list;
 
     /**
     * A method to retrieve all Facility entries from the database
-    * @throws SQLException
+    * @throws SQLException - SQLException
     * @return list The List<Facility> object that holds all database entries in the
     *               Facility table.
     */
@@ -65,7 +65,7 @@ public class FacilityDB {
 
     /**
     * A method to insert a Facility object into the database
-    * @throws SQLException
+    * @throws SQLException - SQLException
     * @param facility The facility object that is to be inserted into the database
     */
     public void insert(Facility facility) throws SQLException {
@@ -108,7 +108,7 @@ public class FacilityDB {
 
     /**
     * A method to delete a Facility entry from the database
-    * @throws SQLException
+    * @throws SQLException - SQLException
     * @param event The primary key of the facility that is to 
     *               be deleted from the database
     */

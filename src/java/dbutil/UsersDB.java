@@ -16,8 +16,8 @@ public class UsersDB {
 
     /**
      * A method to retrieve all User entries in the database
-     * @return list The List<Users> object that holds the results of the query
-     * @throws SQLException 
+     * @return list The List[Users] object that holds the results of the query
+     * @throws SQLException - SQLException
      */
     public List<Users> getAll() throws SQLException {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -73,7 +73,7 @@ public class UsersDB {
     /**
      * A method to insert a new user into the database
      * @param user The User to be inserted
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(Users user) throws SQLException {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

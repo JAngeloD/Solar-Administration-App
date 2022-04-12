@@ -14,16 +14,22 @@ import models.*;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import utilities.TimeFactory;
 
 /**
+ * All database transactions for all models are in here. Mostly used for reflection purposes.
  *
- * @author 856622
- * @author Haz W
+ * @author Angelo De Vera, Haz W, Mujtaba Medhi, Therin Mody
  */
 public class DBAccess {
 
+    /**
+     * Returns a value of a record given an attribute and a timestamp (Long)
+     *
+     * @param attribute - attribute of the model
+     * @param timestamp - UNIX timestamp
+     * @return - value of record
+     */
     public static double PccGet(String attribute, String timestamp) {
 
         //Initializes the database and retrieves the data based on the parameters given
@@ -46,6 +52,12 @@ public class DBAccess {
         return data;
     }
 
+    /**
+     * Retrieves the most recent PCC record pushed into the database
+     *
+     * @param attribute - attribute of the model
+     * @return - value of record
+     */
     public static double PccGetRecent(String attribute) {
 
         //Initializes the database and retrieves the data based on the parameters given
@@ -69,19 +81,24 @@ public class DBAccess {
 
     }
 
+    /**
+     * Inserts a PCC object into the database
+     *
+     * @param newPCC - new PCC object
+     * @throws SQLException - SQLException
+     */
     public static void PccInsert(PCC newPCC) throws SQLException {
         PccDB pccDB = new PccDB();
         pccDB.insert(newPCC);
     }
 
-    public static void PccUpdate() {
-
-    }
-
-    public static void PccDelete() {
-
-    }
-
+    /**
+     * Retrieves the value of feeder in the database
+     *
+     * @param attributeRaw - attribute of the model
+     * @param timestamp - UNIX timestamp
+     * @return - Retrieves value of the requested attribute and timestamp in the database
+     */
     public static double FeederGet(String attributeRaw, String timestamp) {
         //Refactor later (Works, it just hurts looking at it)
         String attribute = attributeRaw;
@@ -114,7 +131,13 @@ public class DBAccess {
 
         return data;
     }
-    
+
+    /**
+     * Retrieves the most recent Feeder record pushed into the database
+     *
+     * @param attributeRaw - attribute of the model
+     * @return - value of record
+     */
     public static double FeederGetRecent(String attributeRaw) {
         //Refactor later (Works, it just hurts looking at it)
         String attribute = attributeRaw;
@@ -131,10 +154,11 @@ public class DBAccess {
         //Initializes the database and retrieves the data based on the parameters given
         FeederDB db = new FeederDB();
         Feeder record = db.getRecent(deviceID);
-        
-        if(record == null)
+
+        if (record == null) {
             System.out.println("TEST");
-        
+        }
+
         //Goes through the assoicated model and invokes the correct getter method
         double data = 0;
         try {
@@ -148,22 +172,27 @@ public class DBAccess {
             e.printStackTrace();
         }
 
-        return data;       
+        return data;
     }
 
+    /**
+     * Pushes a new feeder object into the database
+     *
+     * @param newFeeder - new feeder object
+     * @throws SQLException - SQLException
+     */
     public static void FeederInsert(Feeder newFeeder) throws SQLException {
         FeederDB feederDB = new FeederDB();
         feederDB.insert(newFeeder);
     }
 
-    public static void FeederUpdate() {
-
-    }
-
-    public static void FeederDelete() {
-
-    }
-
+    /**
+     * Retrieves a value from a inverter in the database given a timestamp and an attribute
+     *
+     * @param attributeRaw - requested attribute of the model
+     * @param timestamp - UNIX timestamp
+     * @return - value of the attribute of the model found in the database.
+     */
     public static Double InverterGet(String attributeRaw, String timestamp) {
         //Refactor later (Works, it just hurts looking at it)
         String attribute = attributeRaw;
@@ -194,7 +223,13 @@ public class DBAccess {
 
         return data;
     }
-    
+
+    /**
+     * Retrieves the most current inverter in the database
+     *
+     * @param attributeRaw - attribute of the model
+     * @return - value of the attribute of the record found in the database.
+     */
     public static double InverterGetRecent(String attributeRaw) {
         //Refactor later (Works, it just hurts looking at it)
         String attribute = attributeRaw;
@@ -226,19 +261,24 @@ public class DBAccess {
         return data;
     }
 
+    /**
+     * Pushes a new inverter into the database
+     *
+     * @param newInverter - new inverter object
+     * @throws SQLException - SQLException
+     */
     public static void InverterInsert(Inverter newInverter) throws SQLException {
         InverterDB inverterDB = new InverterDB();
         inverterDB.insert(newInverter);
     }
 
-    public static void InverterUpdate() {
-
-    }
-
-    public static void InverterDelete() {
-
-    }
-
+    /**
+     * Retrieves a value from a Facility in the database given a timestamp and an attribute
+     *
+     * @param attribute - requested attribute of the model
+     * @param timestamp - UNIX timestamp
+     * @return - value of the attribute of the model found in the database.
+     */
     public static Double FacilityGet(String attribute, String timestamp) {
 
         //Initializes the database and retrieves the data based on the parameters given
@@ -261,6 +301,12 @@ public class DBAccess {
         return data;
     }
 
+    /**
+     * Retrieves the most current Facility record in the database
+     *
+     * @param attribute - attribute of the model
+     * @return - value of the attribute of the record found in the database.
+     */
     public static Double FacilityGetRecent(String attribute) {
         //Initializes the database and retrieves the data based on the parameters given
         FacilityDB db = new FacilityDB();
@@ -282,6 +328,11 @@ public class DBAccess {
         return data;
     }
 
+    /**
+     * Retrieves all facility logs
+     * 
+     * @return - List of facility logs
+     */
     public static List<FacilityLogs> FacilityGetAll() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
@@ -297,27 +348,24 @@ public class DBAccess {
         return null;
     }
 
-    public static List<FacilityLogs> FacilityGetAll(int logId) {
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-
-        try {
-            FacilityLogsDB db = new FacilityLogsDB();
-            return db.getAll();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            em.close();
-        }
-
-        return null;
-    }
-
-    public List<FacilityLogs> getAll(String logId) throws Exception {
+    /**
+     * Returns all facility logs under a certain logID
+     * 
+     * @param logId - log type in the form of it's ID
+     * @return list of Facility Logs
+     */
+    public List<FacilityLogs> getAll(String logId) {
         FacilityLogsDB logDB = new FacilityLogsDB();
         List<FacilityLogs> logs = logDB.getAll(logId);
         return logs;
     }
 
+    /**
+     * Returns a facility log given a logID
+     * 
+     * @param logId - logID of the facility log
+     * @return - a FacilityLogs object
+     */
     public static FacilityLogs FacilityGetLog(int logId) {
         FacilityLogsDB facilitydb = new FacilityLogsDB();
         FacilityLogs log = facilitydb.get(logId);
@@ -458,7 +506,7 @@ public class DBAccess {
      *
      * @param uuid a string representing a unique id
      * @param password a string representing the new password
-     * @return
+     * @return - boolean, true if the password has changed, false otherwise
      */
     public boolean changePassword(String uuid, String password) {
         UsersDB udb = new UsersDB();
@@ -476,6 +524,13 @@ public class DBAccess {
 
     }
 
+    /**
+     * Pushes a new facility object to the database
+     * 
+     * @param email - author of the log
+     * @param logType - the type of log as an int
+     * @param logText - content of the log
+     */
     public static void FacilityInsert(String email, int logType, String logText) {
         FacilityLogsDB db = new FacilityLogsDB();
         FacilityLogs log = new FacilityLogs();
@@ -499,30 +554,26 @@ public class DBAccess {
         }
     }
 
+    /**
+     * Inserts a new facility record into the database
+     * 
+     * @param newFacility - new facility object
+     * @throws SQLException - SQLEXception
+     */
     public static void FacilityInsertDatabase(Facility newFacility) throws SQLException {
         FacilityDB facilitydb = new FacilityDB();
         facilitydb.insert(newFacility);
     }
 
-    public static void FacilityUpdate() {
-
-    }
-
-    public static void FacilityDelete() {
-
-    }
-
+    /**
+     * Inserts a new facility log into a database using an object
+     * 
+     * @param newLogs - new FacilityLog object
+     * @throws SQLException - SQLException
+     */
     public static void FacilityLogsInsert(FacilityLogs newLogs) throws SQLException {
         FacilityLogsDB facilitylogsdb = new FacilityLogsDB();
         facilitylogsdb.insert(newLogs);
-    }
-
-    public static void FacilityLogsUpdate() {
-
-    }
-
-    public static void FacilityLogsDelete() {
-
     }
 
 }

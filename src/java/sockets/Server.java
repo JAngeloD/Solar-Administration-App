@@ -12,6 +12,9 @@ package sockets;
 import java.io.*;
 import java.net.*;
 import models.Facility;
+import models.Feeder;
+import models.Inverter;
+import models.PCC;
 import models.TransferDatabase;
 
 public class Server implements Runnable{

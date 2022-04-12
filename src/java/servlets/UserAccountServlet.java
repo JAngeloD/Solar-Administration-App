@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Users;
 import services.DBAccess;
+import utilities.PasswordAuth;
 
 /**
  * Processes HTPL requests to manager user's accounts: add a user. edit a user, display all users
@@ -66,6 +67,9 @@ public class UserAccountServlet extends HttpServlet {
             String fName = request.getParameter("firstName");
             String lName = request.getParameter("lastName");
             String password = request.getParameter("password");
+            
+            password = PasswordAuth.hashPassword(password);
+            
             dba.insertUser(email, typeID, active, fName, lName, password);
             request.setAttribute("message", "User was created successfully");
             doGet(request, response);
@@ -87,7 +91,7 @@ public class UserAccountServlet extends HttpServlet {
             
             request.setAttribute("fname_e", user.getFirstName());
             request.setAttribute("lname_e", user.getLastName());
-            request.setAttribute("password_e", user.getPassword());
+            //request.setAttribute("password_e", user.getPassword());
             doGet(request, response);
         }
         else if(action.equals("saveUser")){

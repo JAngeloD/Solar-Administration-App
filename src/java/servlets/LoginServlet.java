@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Users;
 import services.DBAccess;
+import utilities.PasswordAuth;
 
 public class LoginServlet extends HttpServlet
 {
@@ -75,6 +76,8 @@ public class LoginServlet extends HttpServlet
         }
         
         Users user = DBAccess.UsersGet( email );
+        password = PasswordAuth.hashPassword(password);
+        
         if( user == null )
         {
             request.setAttribute( "formFeedback", "Invalid username or password" );

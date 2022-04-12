@@ -154,10 +154,10 @@ public class CSVParser {
                     foundData = true;
                 }
 
-                if(foundData) {
-                    dataLines.add(convertListToArray(dataLine));
-                    foundData = false;
-                }
+//                if(foundData) {
+//                    dataLines.add(convertListToArray(dataLine));
+//                    foundData = false;
+//                }
 
             }
 

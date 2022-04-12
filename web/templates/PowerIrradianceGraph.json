@@ -22,7 +22,8 @@
             "paper_bgcolor": "rgba(236, 236, 236, 1)",
             "yaxis": {
                 "title": "AC Power (kW)",
-                "side": "left"
+                "side": "left",
+                "range": [0, 75]
             },
             "yaxis2": {
                 "title": "Irradiance (W / m ^ 2",
@@ -33,7 +34,8 @@
                     "color": "rgb(148, 103, 189)"
                 },
                 "overlaying": "y",
-                "side": "right"
+                "side": "right",
+                "range": [0, 75]
             },
             "xaxis": {
                 "title": "Hours",

@@ -12,18 +12,14 @@ import java.util.*;
 import services.DBAccess;
 
 /**
- * For delivering Plotly data to an AJAX call originating from a javascript using JQuery.
- * This is done through querying the DB for data to put into a specific JSON template.
- * 
+ * For delivering Plotly data to an AJAX call originating from a javascript using JQuery. This is done through querying the DB for data to put into a specific JSON template.
+ *
  * @author Angelo De Vera
  */
 public class AjaxChartHandler extends HttpServlet {
 
     /**
-     * Gets the model name, the requested attribute, and if possible the device ID. From
-     * that it will query the DB for those parameters and fill the desired JSON template 
-     * with data retrieved from the DB and send it back to the AJAX call which will populate
-     * the chart on a page.
+     * Gets the model name, the requested attribute, and if possible the device ID. From that it will query the DB for those parameters and fill the desired JSON template with data retrieved from the DB and send it back to the AJAX call which will populate the chart on a page.
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -74,9 +70,9 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    double powerVal = Math.random() * DBAccess.PccGetRecent("AcOutputEnergy");
-                    double irradianceVal = Math.random() * DBAccess.FacilityGetRecent("SolarirridianceGHI");
-                    
+                    double powerVal = DBAccess.PccGetRecent("AcOutputEnergy");
+                    double irradianceVal = DBAccess.FacilityGetRecent("SolarirridianceGHI");
+
                     power = appendIntoCurrent(power, powerVal);
                     irradiance = appendIntoCurrent(irradiance, irradianceVal);
 
@@ -106,8 +102,9 @@ public class AjaxChartHandler extends HttpServlet {
 
                     //Extracts both y values from the data and insert them into our arrays
                     //Gets newest data 
-                    temperature = appendIntoCurrent(temperature, Math.random() * DBAccess.FacilityGetRecent("AmbientTemperature"));
-                    windSpeed = appendIntoCurrent(windSpeed, Math.random() * DBAccess.FacilityGetRecent("WindSpeed"));
+                    Random r = new Random();
+                    temperature = appendIntoCurrent(temperature, DBAccess.FacilityGetRecent("AmbientTemperature"));
+                    windSpeed = appendIntoCurrent(windSpeed, DBAccess.FacilityGetRecent("WindSpeed"));
 
                     jsonData = buildWeatherGraph(hours2, temperature, windSpeed);
                     break;
@@ -124,13 +121,12 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * Builds a weather graph formatted  as a JSON string
-     * using Plotly syntax. Uses template to build the graph located in /templates
-     * 
+     * Builds a weather graph formatted as a JSON string using Plotly syntax. Uses template to build the graph located in /templates
+     *
      * @param xData - Hours in an array
      * @param yData1 - Temperature in an array
-     * @param yData2 -  Wind speed in an array
-     * @return - a JSON string filled with data 
+     * @param yData2 - Wind speed in an array
+     * @return - a JSON string filled with data
      */
     public String buildWeatherGraph(int[] xData, double[] yData1, double[] yData2) {
 
@@ -150,13 +146,12 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * Builds a power/irradiance graph formatted as a JSON string 
-     * using Plotly syntax. Uses template to build the graph located in /templates
-     * 
-     * @param xData - Hours 
+     * Builds a power/irradiance graph formatted as a JSON string using Plotly syntax. Uses template to build the graph located in /templates
+     *
+     * @param xData - Hours
      * @param yData1 - Average Power in an array
      * @param yData2 - Irradiance in an array
-     * @return - a JSON string filled with data 
+     * @return - a JSON string filled with data
      */
     public String buildIrradiancePowerGraph(int[] xData, double[] yData1, double[] yData2) {
 
@@ -179,12 +174,11 @@ public class AjaxChartHandler extends HttpServlet {
     }
 
     /**
-     * Builds a inverter/performance graph formatted as a JSON string
-     * using Plotly syntax. Uses template to build the graph located in /templates
-     * 
-     * @param xData - kWh / kWAC double array 
+     * Builds a inverter/performance graph formatted as a JSON string using Plotly syntax. Uses template to build the graph located in /templates
+     *
+     * @param xData - kWh / kWAC double array
      * @param yData - Inverter device (1-39) String array
-     * @return - a JSON string filled with data 
+     * @return - a JSON string filled with data
      */
     public String buildInverterPerformanceGraph(double[] xData, String[] yData) {
 
@@ -222,7 +216,7 @@ public class AjaxChartHandler extends HttpServlet {
      *
      * @param rawPlotArray - Raw plotly array
      * @param first - If true it will return the y array in for the first trace
-     * @return - return a double array in the rawPlotlyArray  
+     * @return - return a double array in the rawPlotlyArray
      */
     private static double[] convertRawPlotlyData(String rawPlotArray, boolean first) throws Exception {
 
@@ -242,7 +236,7 @@ public class AjaxChartHandler extends HttpServlet {
         }
 
         int arrayLength = yRawArray.length;
-        
+
         //If there are already a full days worth of data in the plot already, reset it 
         if (arrayLength > 24) {
             arrayLength = 0;
@@ -258,10 +252,10 @@ public class AjaxChartHandler extends HttpServlet {
 
     /**
      * Appends array with new data. Used for appending to graph data
-     * 
+     *
      * @param currentArray - the current Array
      * @param newData - the new value to be appended
-     * @return - the new array 
+     * @return - the new array
      */
     private static double[] appendIntoCurrent(double[] currentArray, double newData) {
 
@@ -271,9 +265,13 @@ public class AjaxChartHandler extends HttpServlet {
         }
 
         //BREAK IN CASE OF EMERGENCY 
-        finalArray[finalArray.length - 1] = newData * (Math.random() * 10);
-
+        finalArray[finalArray.length - 1] = newData + Math.floor(Math.random() * 7);
         return finalArray;
+    }
+
+    private static double getGaussian(double aMean, double aVariance) {
+        Random r = new Random();
+        return aMean + r.nextGaussian() * aVariance;
     }
 
 }

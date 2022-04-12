@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet
         
         if( email == null || email.isEmpty() || password == null || password.isEmpty() )
         {
+            System.out.println(1);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
@@ -85,6 +86,7 @@ public class LoginServlet extends HttpServlet
         
         if( user == null )
         {
+            System.out.println(2);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
@@ -96,6 +98,7 @@ public class LoginServlet extends HttpServlet
             response.sendRedirect( "home" );
             return;
         } else {
+            System.out.println(3);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;

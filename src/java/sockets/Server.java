@@ -12,6 +12,9 @@ package sockets;
 import java.io.*;
 import java.net.*;
 import models.Facility;
+import models.Feeder;
+import models.Inverter;
+import models.PCC;
 import models.TransferDatabase;
 
 public class Server implements Runnable{
@@ -27,7 +30,7 @@ public class Server implements Runnable{
             System.out.println("Client connected: " + socket.toString());
             ois = new ObjectInputStream(socket.getInputStream());
             
-            TransferDatabase obj = (TransferDatabase) ois.readObject();
+//            TransferDatabase obj = (TransferDatabase) ois.readObject();
             
             Facility facility = (Facility) ois.readObject();
             PCC pcc = (PCC) ois.readObject();
@@ -37,7 +40,8 @@ public class Server implements Runnable{
             System.out.println("Object receieved = " + facility);
             System.out.println("Object recieved = " + pcc);
             System.out.println("Object recieved = " + (inverter));
-            obj.PutIntoDatabase();
+            
+            facility.PutIntoDatabase();
             
             socket.close();
             serverSocket.close();

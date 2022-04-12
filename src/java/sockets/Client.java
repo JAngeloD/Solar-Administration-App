@@ -31,6 +31,8 @@ public class Client implements Runnable{
             PCC pcc = new PCC();
             Inverter inverter = new Inverter();
             Feeder feeder = new Feeder();
+            Facility facility = new Facility();
+            
             inverter = dataGenerator.randomInverter();
             pcc = dataGenerator.randomPCC();
             facility = dataGenerator.randomDataFacility();

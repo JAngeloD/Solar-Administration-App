@@ -28,10 +28,21 @@ public class Client implements Runnable{
             
             DataGenerator dataGenerator = new DataGenerator();
             
-            //Objects being pushed into the database
-            
-
-//            oos.writeObject(facility);
+            PCC pcc = new PCC();
+            Inverter inverter = new Inverter();
+            Feeder feeder = new Feeder();
+            inverter = dataGenerator.randomInverter();
+            pcc = dataGenerator.randomPCC();
+            facility = dataGenerator.randomDataFacility();
+            feeder = dataGenerator.randomFeeder();
+            System.out.println("object to be written = " + facility);
+            System.out.println("object to be written = " + pcc);
+            System.out.println("object to be written = " + inverter);
+            System.out.println("object to be written = " + feeder);
+            oos.writeObject(facility);
+            oos.writeObject(pcc);
+            oos.writeObject(inverter);
+            oos.writeObject(feeder);
             
             socket.close();
             oos.close();

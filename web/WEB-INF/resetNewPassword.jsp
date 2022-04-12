@@ -13,9 +13,11 @@
         <div class="wrapall" >
             <h1>MNF Solar</h1>
             <h3>Enter a new password</h3>
+            <br>
             <div id="form">
                 <form method="POST" action="reset">
-                    <div class="col-lg-3">
+                      <div class="form-floating mb-7">   
+                    <div class="col-lg-4">
                             <input  class="form-control form-control-lg" type="password" name="newPassword">
                     </div>
                     <div class="col-lg-3">
@@ -24,9 +26,12 @@
                     <div class="col-lg-3">
                             <input  class="form-control form-control-lg" type="hidden" name="action" value="changePassword">
                             </div>
+                            <br>
+                            
                     <div class="col-lg-3">
                             <input  class="form-control form-control-lg" type="submit" value="Submit">
                             </div>
+                      </div>
                 </form>
             </div>
         </div>

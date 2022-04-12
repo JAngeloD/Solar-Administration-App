@@ -25,9 +25,13 @@ public class AuthenticationFilter implements Filter
         HttpSession session = httpRequest.getSession();
         String email = (String)session.getAttribute( "email" );
         
+        HttpServletResponse httpResponse = (HttpServletResponse)response;
+        httpResponse.setHeader( "Cache-Control", "no-cache" ); 
+        httpResponse.setHeader( "Pragma", "no-cache" ); 
+        httpResponse.setDateHeader( "Expires", -1 ); 
+        
         if( email == null || email.isEmpty() )
         {
-            HttpServletResponse httpResponse = (HttpServletResponse)response;
             httpResponse.sendRedirect( "login" );
             return;
         }

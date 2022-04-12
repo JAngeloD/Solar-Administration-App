@@ -32,9 +32,13 @@ public class LoginServlet extends HttpServlet
                 if( email != null && !email.isEmpty() )
                     session.invalidate();
             }
+
             request.setAttribute( "formFeedback", "Successfuly logged out" );
+            
+            // create a new session for nonce
+            session = request.getSession();
+            session.setAttribute( "nonce", UUID.randomUUID().toString() );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-              
         }
         else
         {

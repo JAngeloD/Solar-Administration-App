@@ -20,7 +20,7 @@ public class FacilityLogsDB {
     /**
      * A method will get all FacilityLogs entries from the database.
      * @return list The list for the FacilityLogs objects retrieved from the database
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public List<FacilityLogs> getAll() throws SQLException {
 
@@ -38,10 +38,9 @@ public class FacilityLogsDB {
     /**
      * A method that will get all FacilityLogs based on the logId
      * @param logId The logId that is used to query the database
-     * @return list The List<FacilityLogs> object that holds all results from the query.
-     * @throws Exception 
+     * @return list The List[FacilityLogs] object that holds all results from the query.
      */
-    public List<FacilityLogs> getAll(String logId) throws Exception {
+    public List<FacilityLogs> getAll(String logId) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
             list = em.createNamedQuery("FacilityLogs.findAll", FacilityLogs.class).getResultList();
@@ -56,7 +55,7 @@ public class FacilityLogsDB {
      * @param start The specified start long value
      * @param end  The specified end long value
      * @param logType The type of log to be queried
-     * @return list The List<FacilityLogs> object holding the FacilityLogs in between the 
+     * @return list The List[FacilityLogs] object holding the FacilityLogs in between the 
      *              two timestamps
      */
     public List<FacilityLogs> getInBetween(long start, long end, int logType) {
@@ -98,7 +97,7 @@ public class FacilityLogsDB {
     /**
      * A method to insert a FacilityLog object into the database
      * @param log The FacilityLogs object that is to be inserted into the database
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void insert(FacilityLogs log) throws SQLException {
 
@@ -142,7 +141,7 @@ public class FacilityLogsDB {
     /**
      * A method to delete a FacilityLogs object from the database
      * @param event The primary key of the facility logs object we wish to delete.
-     * @throws SQLException 
+     * @throws SQLException - SQLException
      */
     public void delete(int event) throws SQLException {
 

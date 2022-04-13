@@ -8,6 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style><%@include file="/WEB-INF/css/reportOutput.css"%></style>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!--             <style><%@include file="/WEB-INF/css/bootstrap.min.css"%></style>
+<script src="javascript/bootstrap.bundle.min.js"></script>-->
         <title>Report Output</title>
     </head>
     <body>

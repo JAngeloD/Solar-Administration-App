@@ -16,20 +16,6 @@ function triggerUpdate() {
     }
 }
 
-function displayData(chartElement) {
-    req = $.ajax({
-        url: "ajaxcharthandler",
-        type: "POST",
-        data: {name: chartElement}
-    });
-
-    req.done(function (data) {
-        var graphData = JSON.parse(data);
-
-        Plotly.newPlot(chartElement, graphData, {});
-    });
-}
-
 function load(requestType) {
     $.ajax({
         url: 'ajaxhandler',
@@ -44,7 +30,13 @@ function load(requestType) {
             }
         },
         error: function (xhr, status, error) {
+            var deviceId = "";
+            if(!isNaN(requestType.substring(requestType.length - 1))) {
+                deviceId = requestType.substring(requestType.length - 2);
+            }
             
+            var deviceName = requestType.substring(0, requestType.indexOf("_"));
+            errorAlert("Error could not load one or more values for "+ deviceName + " " + deviceId + ". Contact your local admin");
         }
     }
     );

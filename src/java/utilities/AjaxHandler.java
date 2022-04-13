@@ -75,6 +75,9 @@ public class AjaxHandler extends HttpServlet {
         }
 
         //Send data back
+        if(data == 0) {
+            response.setStatus(400);
+        }
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(finalData);

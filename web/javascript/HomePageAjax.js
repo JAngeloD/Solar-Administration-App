@@ -24,7 +24,7 @@ function changeState(className) {
             $('.' + className).attr("style", data);
         },
         error: function () {
-            
+            errorAlert("Could not find status of one or more feeders in the database. Contact your local admin");
         }
     });
 }
@@ -50,7 +50,14 @@ function load(requestType) {
             }
         },
         error: function (xhr, status, error) {
+            var deviceId = "";
+            if(!isNaN(requestType.substring(requestType.length - 1))) {
+                deviceId = requestType.substring(requestType.length - 2);
+            }
             
+            var deviceName = requestType.substring(0, requestType.indexOf("_"));
+            
+            errorAlert("Could not data for " + deviceName + " " + deviceId +" in the database. Contact your local admin");
         }
     }
     );

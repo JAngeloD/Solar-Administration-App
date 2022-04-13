@@ -13,11 +13,16 @@ function displayData(chartElement) {
     req = $.ajax({
         url: "ajaxcharthandler",
         type: "POST",
-        data: {name: chartElement}
+        data: {name: chartElement},
     });
 
     req.done(function (data) {
-        var graphData = JSON.parse(data);
-        Plotly.newPlot(chartElement, graphData, {});
+        try {
+            var graphData = JSON.parse(data);
+            Plotly.newPlot(chartElement, graphData, {});
+        } catch (err) {
+            errorAlert("Graph could not load, could not retrieve at least one inverter from the database. Check server logs for more info");
+        }
+        
     });
 }

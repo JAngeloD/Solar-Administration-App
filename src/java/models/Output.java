@@ -7,10 +7,10 @@ package models;
  */
 public class Output {
 
-    public int x;
-    public String xString;
-    public double y1;
-    public double y2;
+    private int x;
+    private String xString;
+    private double y1;
+    private double y2;
 
     /**
      * Default constructor

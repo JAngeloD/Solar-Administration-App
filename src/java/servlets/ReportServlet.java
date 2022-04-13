@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import utilities.CSVParser;
-import utilities.ReportBuilderv2;
+import utilities.ReportBuilder;
 
 /**
  * 
@@ -57,8 +57,8 @@ public class ReportServlet extends HttpServlet {
 
                 //set the values to the changed values
                 request.setAttribute("reportChoice", graphChoice);
-                request.setAttribute("startDate", ReportBuilderv2.chopTime(startDate));
-                request.setAttribute("endDate", ReportBuilderv2.chopTime(endDate));
+                request.setAttribute("startDate", ReportBuilder.chopTime(startDate));
+                request.setAttribute("endDate", ReportBuilder.chopTime(endDate));
                 request.setAttribute("scriptFlag", true);
 
                 getServletContext().getRequestDispatcher("/WEB-INF/reports.jsp").forward(request, response); //Change to target jsp

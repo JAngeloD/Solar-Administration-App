@@ -15,9 +15,9 @@ import models.PCC;
  * database layer. The results are the x, y1, y2 array values for the reports
  * @author Therin Mody
  */
-public class ReportBuilderv2 {
+public class ReportBuilder {
 
-    public ReportBuilderv2() {
+    public ReportBuilder() {
 
     }
 
@@ -364,7 +364,7 @@ public class ReportBuilderv2 {
             String end = year + "-12";
             double[] monthlyEnergies;
             try {
-                monthlyEnergies = ReportBuilderv2.getCumulativeEnergyByYear(year);
+                monthlyEnergies = ReportBuilder.getCumulativeEnergyByYear(year);
                 //System.out.println(Arrays.toString(monthlyEnergies));
                 yearEnergy[i] = monthlyEnergies[monthlyEnergies.length - 1];
                 i++;

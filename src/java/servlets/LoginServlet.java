@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Users;
 import services.DBAccess;
-import sockets.RetrievalSim;
 import utilities.PasswordAuth;
 
 public class LoginServlet extends HttpServlet

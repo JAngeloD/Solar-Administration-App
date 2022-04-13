@@ -149,19 +149,6 @@
                         <div class="form-check" id="pccBlock">
                             <div class="form-check">
                                 <h2>PCC Parameters</h2>
-
-                                <input class="form-check-input"type="checkbox" id="pccOutputLifetime" name="csvValue" value="Pcc_Get_">
-                                <div class="form-floating mb-5">
-                                    <label class="col-lg-11 col-form-label">AC Output Lifetime</label></div><br>
-                                <input class="form-check-input"type="checkbox" id="pccOutputYTD" name="csvValue" value="Pcc_Get_">
-                                <div class="form-floating mb-5">
-                                    <label class="col-lg-11 col-form-label">AC Output YTD</label><br></div>
-                                <input class="form-check-input"type="checkbox" id="pccOutputMTD" name="csvValue" value="Pcc_Get_">
-                                <div class="form-floating mb-5">
-                                    <label class="col-lg-11 col-form-label ">AC Output MTD</label><br></div>
-                                <input class="form-check-input"type="checkbox" id="pccOutputDay" name="csvValue" value="Pcc_Get_">
-                                <div class="form-floating mb-5">
-                                    <label class="col-lg-11 col-form-label ">AC Output Daily</label><br> </div>
                                 <input class="form-check-input"type="checkbox" id="pccOutputRealPower" name="csvValue" value="Pcc_Get_AcOutputRealPower">
                                 <div class="form-floating mb-5">
                                     <label class="col-lg-11 col-form-label ">AC Output Real Power</label><br> </div>
@@ -209,7 +196,7 @@
                             <c:forEach var = "i" begin = "1" end = "2">
                                 <div class="form-check">
                                     <div class="form-check" >
-                                        <input class="form-check-input" type="checkbox" id="feeder1" name="feeder1" onclick="toggleDisplay('fdr<c:out value = "${i}"/>')">
+                                        <input class="form-check-input" type="button" id="feeder1" name="feeder1" onclick="toggleDisplay('fdr<c:out value = "${i}"/>')">
                                         <div class="form-floating mb-5">
                                             <label class="col-lg-11 col-form-label">Feeder <c:out value = "${i}"/></label>
                                         </div>
@@ -275,146 +262,130 @@
 
                                 <c:forEach var = "i" begin = "1" end = "39">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="inverter1" name="inverter <c:out value = "${i}"/>" onclick="toggleDisplay('inv<c:out value = "${i}"/>')">
+                                        <input class="form-check-input" type="button" id="inverter1" name="inverter <c:out value = "${i}"/>" onclick="toggleDisplay('inv<c:out value = "${i}"/>')">
                                         <div class="form-floating mb-5">
                                             <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/></label><br>
                                         </div>
                                         <div class="form-check" id="inv<c:out value = "${i}"/>">
-                                            <h2>Inverter <c:out value = "${i}"/> Parameters</h2>
-                                            <input class="form-check-input"type="checkbox" id="i1ACOutputLifetime" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <h2>Inverter <c:out value = "${i}"/> Parameters</h2>   
+                                            <input class="form-check-input"type="checkbox" id="i1ACOutputRealPower" name="csvValue" value="Inverter_Get_AcOutputRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                             <div class="form-floating mb-5">
-                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> AC Output Lifetime</label><br>
-                                            </div>    
-                                            <input class="form-check-input"type="checkbox" id="i1ACOutputYTD" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> AC Output Real Power</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1ApparentPower" name="csvValue" value="Inverter_Get_AcOutputApparentPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
                                             <div class="form-floating mb-5">
-                                                <label class="col-lg-11 col-form-label" <label>Inverter <c:out value = "${i}"/> AC Output YTD</label><br>
-                                                    </div>
-                                                    <input class="form-check-input"type="checkbox" id="i1ACOutputMTD" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> AC MTD</label><br>
-                                                    </div>    
-                                                    <input class="form-check-input"type="checkbox" id="i1ACOutputDay" name="csvValue" value="Inverter_Get_<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> AC Output Daily</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1ACOutputRealPower" name="csvValue" value="Inverter_Get_AcOutputRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> AC Output Real Power</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1ApparentPower" name="csvValue" value="Inverter_Get_AcOutputApparentPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Apparent Power</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1ReactivePower" name="csvValue" value="Inverter_Get_AcOutputReactivePower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Reactive Power</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PowerFactor" name="csvValue" value="Inverter_Get_AcOutputPowerFactor<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Power Factor</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseACurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseACurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase A Current</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseBCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseBCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase B Current</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseCCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseCCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase C Current</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseABVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseAbVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase AB Voltage</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseBCVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseBcVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase BC Voltage</label><br>                                
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1PhaseCAVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseCaVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase CA Voltage</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1DCRealPower" name="csvValue" value="Inverter_Get_DcRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />"> 
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Real Power</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1DCVolts" name="csvValue" value="Inverter_Get_DcVolt<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Volts</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1DCCurrent" name="csvValue" value="Inverter_Get_DcCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Current</label><br>
-                                                    </div>   
-                                                    <input class="form-check-input"type="checkbox" id="i1Efficiency" name="csvValue" value="Inverter_Get_Efficiency<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
-                                                    <div class="form-floating mb-5">
-                                                        <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Efficiency</label><br><br>
-                                                    </div>   
-                                                    <button class="button" type="button" onclick="toggleDisplay('inv<c:out value = "${i}"/>')">Done selecting Inverter <c:out value = "${i}"/> parameters</button>
-                                            </div>
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Apparent Power</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1ReactivePower" name="csvValue" value="Inverter_Get_AcOutputReactivePower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Reactive Power</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PowerFactor" name="csvValue" value="Inverter_Get_AcOutputPowerFactor<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Power Factor</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseACurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseACurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase A Current</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseBCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseBCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase B Current</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseCCurrent" name="csvValue" value="Inverter_Get_AcOutputPhaseCCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase C Current</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseABVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseAbVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase AB Voltage</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseBCVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseBcVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase BC Voltage</label><br>                                
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1PhaseCAVoltage" name="csvValue" value="Inverter_Get_AcOutputPhaseCaVoltage<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Phase CA Voltage</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1DCRealPower" name="csvValue" value="Inverter_Get_DcRealPower<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />"> 
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Real Power</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1DCVolts" name="csvValue" value="Inverter_Get_DcVolt<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Volts</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1DCCurrent" name="csvValue" value="Inverter_Get_DcCurrent<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> DC Current</label><br>
+                                            </div>   
+                                            <input class="form-check-input"type="checkbox" id="i1Efficiency" name="csvValue" value="Inverter_Get_Efficiency<fmt:formatNumber minIntegerDigits = '2' value = '${i}' />">
+                                            <div class="form-floating mb-5">
+                                                <label class="col-lg-11 col-form-label">Inverter <c:out value = "${i}"/> Efficiency</label><br><br>
+                                            </div>   
+                                            <button class="button" type="button" onclick="toggleDisplay('inv<c:out value = "${i}"/>')">Done selecting Inverter <c:out value = "${i}"/> parameters</button>
                                         </div>
-                                    </c:forEach>
-                                    <button class="button" type="button" onclick="toggleDisplay('invtrs')">Done selecting Inverters</button>
-                                </div>
+                                    </div>
+                                </c:forEach>
+                                <button class="button" type="button" onclick="toggleDisplay('invtrs')">Done selecting Inverters</button>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="csvOptions">
-                            <div class="form-check" id="weather">
-                                <input class="form-check-input" type="button"  name="weather" onclick="toggleDisplay('wthr')">
+                    <div class="csvOptions">
+                        <div class="form-check" id="weather">
+                            <input class="form-check-input" type="button"  name="weather" onclick="toggleDisplay('wthr')">
+                            <div class="form-floating mb-5">
+                                <label class="col-lg-11 col-form-label">Weather Data</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-check"id="wthr">
+                            <h2>Weather Parameters</h2>
+                            <div class="form-check">
+                                <input class="form-check-input"type="checkbox" id="irradiancePOA" name="csvValue" value="Facility_Get_SolarirridiancePOA">
                                 <div class="form-floating mb-5">
-                                    <label class="col-lg-11 col-form-label">Weather Data</label>
+                                    <label class="col-lg-11 col-form-label">Solar Irradiance POA</label><br>
                                 </div>
+                                <input class="form-check-input"type="checkbox" id="irradianceGHI" name="csvValue" value="Facility_Get_SolarirridianceGHI">
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Solar Irradiance GHI</label><br>
+                                </div>
+                                <input class="form-check-input"type="checkbox" id="panelTemp1" name="csvValue" value="Facility_Get_BackOfPanelTemperature1">
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Back of panel Temperature 1</label><br>
+                                </div>
+                                <input class="form-check-input"type="checkbox" id="ambientTemp" name="csvValue" value="Facility_Get_AmbientTemperature">
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Ambient Temperature</label><br>
+                                </div>
+                                <input class="form-check-input"type="checkbox" id="panelTemp2" name="csvValue" value="Facility_Get_BackOfPanelTemperature2">
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Back of panel Temperature 2</label><br>
+                                </div>
+                                <input class="form-check-input"type="checkbox" id="windSpeed" name="csvValue" value="Facility_Get_WindSpeed">
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Wind Speed</label><br><br>  
+                                </div>
+                                <button class="button" type="button" onclick="toggleDisplay('wthr')">Done selecting Weather parameters</button>
                             </div>
-                            <br>
-                            <div class="form-check"id="wthr">
-                                <h2>Weather Parameters</h2>
-                                <div class="form-check">
-                                    <input class="form-check-input"type="checkbox" id="irradiancePOA" name="csvValue" value="Facility_Get_SolarirridiancePOA">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Solar Irradiance POA</label><br>
-                                    </div>
-                                    <input class="form-check-input"type="checkbox" id="irradianceGHI" name="csvValue" value="Facility_Get_SolarirridianceGHI">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Solar Irradiance GHI</label><br>
-                                    </div>
-                                    <input class="form-check-input"type="checkbox" id="panelTemp1" name="csvValue" value="Facility_Get_BackOfPanelTemperature1">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Back of panel Temperature 1</label><br>
-                                    </div>
-                                    <input class="form-check-input"type="checkbox" id="ambientTemp" name="csvValue" value="Facility_Get_AmbientTemperature">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Ambient Temperature</label><br>
-                                    </div>
-                                    <input class="form-check-input"type="checkbox" id="panelTemp2" name="csvValue" value="Facility_Get_BackOfPanelTemperature2">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Back of panel Temperature 2</label><br>
-                                    </div>
-                                    <input class="form-check-input"type="checkbox" id="windSpeed" name="csvValue" value="Facility_Get_WindSpeed">
-                                    <div class="form-floating mb-5">
-                                        <label class="col-lg-11 col-form-label">Wind Speed</label><br><br>  
-                                    </div>
-                                    <button class="button" type="button" onclick="toggleDisplay('wthr')">Done selecting Weather parameters</button>
-                                </div>
-                            </div>                        
-                        </div>
-                    </div>            
-                    <br>
-                    <input class="button" type="submit" value="Create Report">
-                    </form>
-                </div>  
-        </div>
+                        </div>                        
+                    </div>
+                </div>            
+                <br>
+                <input class="button" type="submit" value="Create Report">
+            </form>
+        </div>  
+    </div>
 
-        <!-- Need somewhere to hold the date values -->
-        <input type="hidden" name="startDate" id="startDate" value="${startDate}">
-        <input type="hidden" name="endDate" id="endDate" value="${endDate}">
+    <!-- Need somewhere to hold the date values -->
+    <input type="hidden" name="startDate" id="startDate" value="${startDate}">
+    <input type="hidden" name="endDate" id="endDate" value="${endDate}">
 
 
-        <c:if test="${scriptFlag == true}">
-            <script src="javascript/ReportPlotly.js"></script>
-        </c:if>
+    <c:if test="${scriptFlag == true}">
+        <script src="javascript/ReportPlotly.js"></script>
+    </c:if>
 </body>
 </html>

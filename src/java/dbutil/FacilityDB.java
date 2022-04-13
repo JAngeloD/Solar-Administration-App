@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import models.Facility;
 
 /**
@@ -43,7 +44,12 @@ public class FacilityDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Facility record = null;
         try {
-            record = em.createNamedQuery("Facility.findByTimeStampId", Facility.class).setParameter("timeStampId", Integer.parseInt(timestamp)).getSingleResult();
+            Query q = em.createNamedQuery("Facility.findByTimeStampId", Facility.class);
+            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setMaxResults(1);
+            
+            record = (Facility) q.getSingleResult();
+            
         } finally {
             em.close();
         }
@@ -55,7 +61,11 @@ public class FacilityDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         Facility record = null;
         try {
-            record = em.createNamedQuery("Facility.findByMostRecentTimeStampIDRow", Facility.class).getSingleResult();
+            Query q = em.createNamedQuery("Facility.findByMostRecentTimeStampIDRow", Facility.class);
+            q.setMaxResults(1);
+            
+            record = (Facility) q.getSingleResult();
+            
         } finally {
             em.close();
         }

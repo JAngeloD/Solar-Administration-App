@@ -46,6 +46,7 @@ public class InverterDB {
             Query q = em.createNamedQuery("Inverter.findByTimeStampAndDeviceID", Inverter.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
             q.setParameter("timeStampId", Long.parseLong(timestamp));
+            q.setMaxResults(1);
             
             record = (Inverter) q.getSingleResult();
         }
@@ -62,6 +63,7 @@ public class InverterDB {
         try {
             Query q = em.createNamedQuery("Inverter.findByMostRecentTimeStampIDRow", Inverter.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
+            q.setMaxResults(1);
             
             record = (Inverter) q.getSingleResult();
         }

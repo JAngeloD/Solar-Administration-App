@@ -90,7 +90,11 @@ public class PccDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         PCC record = null;
         try {
-            record = em.createNamedQuery("PCC.findByTimeStampId", PCC.class).setParameter("timeStampId", Integer.parseInt(timestamp)).getSingleResult();
+            Query q = em.createNamedQuery("PCC.findByTimeStampId", PCC.class);
+            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setMaxResults(1);
+            
+            record = (PCC) q.getSingleResult();
         } finally {
             em.close();
         }
@@ -106,7 +110,10 @@ public class PccDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         PCC record = null;
         try {
-            record = em.createNamedQuery("PCC.findByMostRecentTimeStampIDRow", PCC.class).getSingleResult();
+            Query q = em.createNamedQuery("PCC.findByMostRecentTimeStampIDRow", PCC.class);
+            q.setMaxResults(1);
+            
+            record = (PCC) q.getSingleResult();
         }
         catch (Exception e) {
             e.printStackTrace();

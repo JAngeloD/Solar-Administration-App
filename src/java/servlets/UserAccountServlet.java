@@ -101,6 +101,7 @@ public class UserAccountServlet extends HttpServlet {
             String fName = request.getParameter("fname_edit");
             String lName = request.getParameter("lname_edit");
             String password = request.getParameter("password_edit");
+            password = PasswordAuth.hashPassword(password);
             try{
                 dba.updateUser(email, typeID, active, fName, lName, password);
                 request.setAttribute("messageEdit", "Edit was successful");

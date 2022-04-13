@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import services.DBAccess;
+import utilities.PasswordAuth;
 
 /**
  * Reset a user password
@@ -76,6 +77,7 @@ public class ResetPasswordServlet extends HttpServlet {
             System.out.println(action + " " + uuid);
             String password = request.getParameter("newPassword");
             System.out.println(password);
+            password = PasswordAuth.hashPassword(password);
             if(dba.changePassword(uuid, password)){
                 request.setAttribute("message", "Password has been succesfully changed");      
                 getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);

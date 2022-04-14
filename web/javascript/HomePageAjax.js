@@ -57,7 +57,7 @@ function load(requestType) {
             
             var deviceName = requestType.substring(0, requestType.indexOf("_"));
             
-            errorAlert("Could not data for " + deviceName + " " + deviceId +" in the database. Contact your local admin");
+            errorAlert("Could not retrieve data for " + deviceName + " " + deviceId +" in the database. Contact your local admin");
         }
     }
     );

@@ -10,7 +10,7 @@ import java.util.List;
 import models.PCC;
 
 /**
- * A class that is detrimental in the creation of the reports.
+ * A class that is crucial in the creation of the reports.
  * This class is served by several methods that will initiate a query on the
  * database layer. The results are the x, y1, y2 array values for the reports
  * @author Therin Mody

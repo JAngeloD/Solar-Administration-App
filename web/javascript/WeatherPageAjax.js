@@ -19,13 +19,19 @@ function displayData(chartElement) {
         url: "ajaxcharthandler",
         type: "POST",
         data: {name: chartElement,
-               graphData: JSON.stringify(gd.data)}
+            graphData: JSON.stringify(gd.data)},
+        error: function (xhr, status, error) {
+            errorAlert("Graph could not load, could not retrieve data from database. Check server logs for more info");
+        }
     });
 
     req.done(function (data) {
-        var graphData = JSON.parse(data);
-
-        Plotly.newPlot(chartElement, graphData, {});
+        try {
+            var graphData = JSON.parse(data);
+            Plotly.newPlot(chartElement, graphData, {});
+        } catch (err) {
+            errorAlert("Graph could not load, could not retrieve data from database. Check server logs for more info");
+        }
     });
 }
 
@@ -43,41 +49,36 @@ function load(requestType) {
     try {
         minVal = document.getElementById(requestType + "Min").textContent;
         maxVal = document.getElementById(requestType + "Max").textContent;
+    } catch (err) {
     }
-    catch(err) {
-    }
-    
+
     $.ajax({
         url: 'ajaxhandler',
         data: {name: requestType,
-               max: maxVal,
-               min: minVal},
+            max: maxVal,
+            min: minVal},
         type: 'POST',
         cache: false,
         success: function (data) {
             if ($('#' + requestType).prop("tagName") == "TD") {
                 //If the contained string in the data has a max and a min attached to it
-                if(data.includes(",")) {
+                if (data.includes(",")) {
                     const dataset = data.split(',');
                     $('#' + requestType).html(dataset[0]);
                     $('#' + requestType + "Max").html(dataset[1]);
                     $('#' + requestType + "Min").html(dataset[2]);
-                }
-                else {
+                } else {
                     $('#' + requestType).html(data);
                 }
-                
+
             } else {
                 $('#' + requestType).attr("value", data);
             }
         },
         error: function (xhr, status, error) {
-
+            errorAlert("Attribute " + requestType + " could not be found in the database. Check server logs for more info");
         }
     }
     );
-}
-
-;
-
+};
 

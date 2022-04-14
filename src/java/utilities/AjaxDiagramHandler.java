@@ -58,6 +58,9 @@ public class AjaxDiagramHandler extends HttpServlet {
         //Regex finds the hex code
         styleString = styleString.replaceAll("#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})", finalcolour);
 
+        if(finalcolour.equals("#000000")) {
+            response.setStatus(400);
+        }
         //Send data back
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

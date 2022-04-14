@@ -1,12 +1,12 @@
 
 
 
-   body { 
-       background: #F5F3E6 !important; 
+body { 
+    background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif !important; 
 
-   }
-      
+}
+
 
 .left {
     float: left;
@@ -31,13 +31,13 @@ buttons{
 
 .inverterButton {
     background-color:#3A2318;
-            border-radius: 20px;
+    border-radius: 20px;
     color: white;
     width: 120%;
     padding: 10%;
-   
+
     border: 3px solid #F5F3E6;
-   
+
 }
 
 .inverterButton:hover {
@@ -46,7 +46,7 @@ buttons{
 }
 
 #graphs {
-   width: 60%;
+    width: 60%;
 }
 
 #mainTable {
@@ -60,14 +60,14 @@ buttons{
 #weatherData {
     border: 1px solid;
     padding: 2%;
-    
+
 }
 
 p{
     font-size: 11px;
 }
 a {
-           
+
     color: white;
     padding: 1.6em 1em;
     text-decoration: none;
@@ -75,42 +75,42 @@ a {
 
     font-size: 12px;
 }
- .data{
-            border-radius: 1em;
-            border: 2px solid;
-         
-            font: sans-serif;  
-            font-size: 10px;
-            padding: 5px;
-        }
+.data{
+    border-radius: 1em;
+    border: 2px solid;
 
-        label, input{
-            font-size: 10px;
-            font-weight: bold;
-          
-            border:1;
-            border-width: 2;
-            width: 60px;
-        }
+    font: sans-serif;  
+    font-size: 10px;
+    padding: 5px;
+}
+
+label, input{
+    font-size: 10px;
+    font-weight: bold;
+
+    border:1;
+    border-width: 2;
+    width: 60px;
+}
 
 .wrapall{
     text-align: center;
     position: relative;
-width:80%;
+    width:80%;
 
 }
 
 #table{
-      margin-left: 60px;
+    margin-left: 60px;
 
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      table-layout: auto;
-      width: 100%;
-       background-color: #a99a86;
-  }
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    background-color: #a99a86;
+}
 
-  
+
 
 .row{
     width:100%;

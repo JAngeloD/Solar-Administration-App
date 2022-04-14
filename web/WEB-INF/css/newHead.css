@@ -3,6 +3,12 @@ h1 {
 
 }
 
+.alert-error{
+    background: red !important;
+    color: white;
+    position: fixed;
+}
+
 
 li a {
     display: block;

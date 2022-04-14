@@ -45,7 +45,7 @@ public class FacilityDB {
         Facility record = null;
         try {
             Query q = em.createNamedQuery("Facility.findByTimeStampId", Facility.class);
-            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setParameter("timeStampId", Long.parseLong(timestamp));
             q.setMaxResults(1);
             
             record = (Facility) q.getSingleResult();

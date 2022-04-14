@@ -282,12 +282,11 @@ public class DBAccess {
     public static Double FacilityGet(String attribute, String timestamp) {
 
         //Initializes the database and retrieves the data based on the parameters given
-        FacilityDB db = new FacilityDB();
-        Facility record = db.get(timestamp);
-
         //Goes through the assoicated model and invokes the correct getter method
         double data = 0;
         try {
+            FacilityDB db = new FacilityDB();
+            Facility record = db.get(timestamp);
             Method[] models = record.getClass().getDeclaredMethods();
             for (Method m : models) {
                 if (m.getName().equals("get" + attribute)) {
@@ -330,7 +329,7 @@ public class DBAccess {
 
     /**
      * Retrieves all facility logs
-     * 
+     *
      * @return - List of facility logs
      */
     public static List<FacilityLogs> FacilityGetAll() {
@@ -350,7 +349,7 @@ public class DBAccess {
 
     /**
      * Returns all facility logs under a certain logID
-     * 
+     *
      * @param logId - log type in the form of it's ID
      * @return list of Facility Logs
      */
@@ -362,7 +361,7 @@ public class DBAccess {
 
     /**
      * Returns a facility log given a logID
-     * 
+     *
      * @param logId - logID of the facility log
      * @return - a FacilityLogs object
      */
@@ -526,7 +525,7 @@ public class DBAccess {
 
     /**
      * Pushes a new facility object to the database
-     * 
+     *
      * @param email - author of the log
      * @param logType - the type of log as an int
      * @param logText - content of the log
@@ -556,7 +555,7 @@ public class DBAccess {
 
     /**
      * Inserts a new facility record into the database
-     * 
+     *
      * @param newFacility - new facility object
      * @throws SQLException - SQLEXception
      */
@@ -567,7 +566,7 @@ public class DBAccess {
 
     /**
      * Inserts a new facility log into a database using an object
-     * 
+     *
      * @param newLogs - new FacilityLog object
      * @throws SQLException - SQLException
      */

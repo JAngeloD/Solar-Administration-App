@@ -46,7 +46,7 @@ public class FeederDB {
         try {
             Query q = em.createNamedQuery("Feeder.findByTimeStampAndDeviceID", Feeder.class);
             q.setParameter("deviceId", Integer.parseInt(deviceID));
-            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setParameter("timeStampId", Long.parseLong(timestamp));
             q.setMaxResults(1);
             
             record = (Feeder) q.getSingleResult();

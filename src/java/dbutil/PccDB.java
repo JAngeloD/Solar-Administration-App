@@ -91,7 +91,7 @@ public class PccDB {
         PCC record = null;
         try {
             Query q = em.createNamedQuery("PCC.findByTimeStampId", PCC.class);
-            q.setParameter("timeStampId", Integer.parseInt(timestamp));
+            q.setParameter("timeStampId", Long.parseLong(timestamp));
             q.setMaxResults(1);
             
             record = (PCC) q.getSingleResult();

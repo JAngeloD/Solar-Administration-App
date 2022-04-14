@@ -15,6 +15,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js" integrity="sha512-pBoUgBw+mK85IYWlMTSeBQ0Djx3u23anXFNQfBiIm2D8MbVT9lr+IxUccP8AMMQ6LCvgnlhUCK3ZCThaBCr8Ng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="javascript/messageUtil.js"></script>
         <title>Inverters 16 - 20</title>
+<!--              <style><%@include file="/WEB-INF/css/bootstrap.min.css"%></style>
+<script src="javascript/bootstrap.bundle.min.js"></script>-->
+        title>Inverters 16 - 20</title>
     </head>
     <body>
         <nav  class="navbar navbar-expand-lg navbar-light" style="background-color: #f3f3f3;">

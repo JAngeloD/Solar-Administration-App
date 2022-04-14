@@ -264,8 +264,16 @@ public class AjaxChartHandler extends HttpServlet {
             finalArray[i] = currentArray[i];
         }
 
-        //BREAK IN CASE OF EMERGENCY 
-        finalArray[finalArray.length - 1] = newData + Math.floor(Math.random() * 7);
+        //BREAK IN CASE OF EMERGENCY
+        int variance = 7;
+        if(newData > 9000) {
+            variance = 10000;
+        }
+        else if (newData > 500) {
+            variance = 100;
+        }
+        
+        finalArray[finalArray.length - 1] = newData + Math.floor(Math.random() * variance);
         return finalArray;
     }
 

@@ -23,7 +23,7 @@
             "yaxis": {
                 "title": "AC Power (kW)",
                 "side": "left",
-                "range": [0, 75]
+                "range": [0, 2000]
             },
             "yaxis2": {
                 "title": "Irradiance (W / m ^ 2",
@@ -35,7 +35,7 @@
                 },
                 "overlaying": "y",
                 "side": "right",
-                "range": [0, 75]
+                "range": [0, 200000]
             },
             "xaxis": {
                 "title": "Hours",

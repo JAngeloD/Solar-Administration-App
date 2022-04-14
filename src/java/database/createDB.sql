@@ -4,202 +4,821 @@ DROP SCHEMA IF EXISTS `solarpowerdb`;
 CREATE SCHEMA IF NOT EXISTS `solarpowerdb` DEFAULT CHARACTER SET latin1;
 USE `solarpowerdb`;
 
---timestamp - PK - int - size 4 for hrs + mins, size 6 for hrs + mins + secs
---date_time - datetime
---attribute_name - int ?? -- changed to description - varchar 
-CREATE TABLE IF NOT EXISTS timestamp_desc (
-    time_stamp INT PRIMARY KEY,
-    date_time DATETIME DEFAULT CURRENT_TIMESTAMP,
-    description VARCHAR(500) 
-) ENGINE = INNODB;
-
 -- type of user - PK - int
 -- access level - int
 -- type_name - varchar
 CREATE TABLE IF NOT EXISTS user_type (
-    type_of_user INT PRIMARY KEY,
-    access_level INT,
-    type_name VARCHAR(20)
+  type_id INT PRIMARY KEY,
+  access_level INT,
+  type_name VARCHAR(20)
 ) ENGINE = INNODB;
 
-
-CREATE TABLE IF NOT EXISTS user_details (
-    email VARCHAR(100) PRIMARY KEY,
-    type_of_user INT,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    password VARCHAR(50),
-    CONSTRAINT fk_user_type
-    FOREIGN KEY (type_of_user)
-        REFERENCES user_type(type_of_user)
-) ENGINE = INNODB;
-
-CREATE TABLE IF NOT EXISTS facility_user (
-    email VARCHAR(100) PRIMARY KEY,
-    full_name VARCHAR(100),
-    CONSTRAINT fk_email
-    FOREIGN KEY (email)
-        REFERENCES user_details(email)
+CREATE TABLE IF NOT EXISTS users (
+  email VARCHAR(100) PRIMARY KEY,
+  type_id INT,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  password VARCHAR(32),
+  active BIT,
+  reset_password_uuid VARCHAR(50),
+  CONSTRAINT fk_type_id
+  FOREIGN KEY (type_id)
+   REFERENCES user_type(type_id)
 ) ENGINE = INNODB;
 
 CREATE TABLE IF NOT EXISTS facility_logs (
-    log_code INT PRIMARY KEY,
-    log_text VARCHAR(500),
-    created_by VARCHAR(100),
-    time_stamp INT,
-    CONSTRAINT fk_timestamp_desc_logs
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-) ENGINE = INNODB;
-
--- Need clarification here!
-
-CREATE TABLE IF NOT EXISTS breakers (
-    breaker_code INT PRIMARY KEY,
-    breaker_name VARCHAR(100),
-    breaker_status VARCHAR(3),
-    time_stamp INT,
-    CONSTRAINT fk_timestamp_desc_breakers
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-) ENGINE = INNODB;
-
-CREATE TABLE IF NOT EXISTS eaton (
-    title VARCHAR(3) PRIMARY KEY
-    -- Why is timestamp PK?
-    -- What is title from (PCC or Feeder?) and why is it a FK
-    /* 
-    time_stamp INT,
-    title_from VARCHAR(8)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_eaton
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
+  log_id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(100), 
+  log_text VARCHAR(500),
+  log_type INT,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  CONSTRAINT fk_email_author
+  FOREIGN KEY (email)
+   REFERENCES users(email)
 ) ENGINE = INNODB;
 
 CREATE TABLE IF NOT EXISTS pcc (
-    component VARCHAR(50) PRIMARY KEY,
-    ac_output_energy DOUBLE,
-    ac_output_real_power DOUBLE,
-    ac_output_apparent_power DOUBLE,
-    ac_output_reactive_power DOUBLE,
-    ac_output_power_factor DOUBLE,
-    ac_output_phase_a_current DOUBLE,
-    ac_output_phase_b_current DOUBLE,
-    ac_output_phase_c_current DOUBLE,
-    ac_output_phase_ab_voltage DOUBLE,
-    ac_output_phase_bc_voltage DOUBLE,
-    ac_output_phase_ca_voltage DOUBLE
-    -- Why is timestamp PK?
-    -- Why is title a FK?
-    /*
-    time_stamp INT,
-    title_from VARCHAR(9)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_pcc
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
+  recordID VARCHAR(50) PRIMARY KEY,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  ac_output_energy DOUBLE,
+  ac_output_real_power DOUBLE,
+  ac_output_apparent_power DOUBLE,
+  ac_output_reactive_power DOUBLE,
+  ac_output_power_factor DOUBLE,
+  ac_output_phase_a_current DOUBLE,
+  ac_output_phase_b_current DOUBLE,
+  ac_output_phase_c_current DOUBLE,
+  ac_output_phase_ab_voltage DOUBLE,
+  ac_output_phase_bc_voltage DOUBLE,
+  ac_output_phase_ca_voltage DOUBLE
 ) ENGINE = INNODB;
 
 
 -- Same issue as PCC
 CREATE TABLE IF NOT EXISTS feeder (
-    component VARCHAR(50) PRIMARY KEY,
-    ac_output_real_power DOUBLE,
-    ac_output_apparent_power DOUBLE,
-    ac_output_reactive_power DOUBLE,
-    ac_output_power_factor DOUBLE,
-    ac_output_phase_a_current DOUBLE,
-    ac_output_phase_b_current DOUBLE,
-    ac_output_phase_c_current DOUBLE,
-    ac_output_phase_ab_voltage DOUBLE,
-    ac_output_phase_bc_voltage DOUBLE,
-    ac_output_phase_ca_voltage DOUBLE
-    -- Why is timestamp PK?
-    -- Why is title a FK?
-    /*
-    time_stamp INT,
-    title_from VARCHAR(9)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_feeder
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
-) ENGINE = INNODB;
-
-CREATE TABLE IF NOT EXISTS alarms (
-    alarm_code INT PRIMARY KEY,
-    alarm_name VARCHAR(100),
-    alarm_status VARCHAR(4),
-    time_stamp INT,
-    CONSTRAINT fk_timestamp_desc_alarms
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-) ENGINE = INNODB;
-
--- Cachelan, Facility, and Inverter suffer from the same issues
-
-CREATE TABLE IF NOT EXISTS cachelan (
-    title VARCHAR(100) PRIMARY KEY
-    -- Why is timestamp PK?
-    -- Where is title_form coming from?
-    /*
-    time_stamp INT,
-    title_from VARCHAR(8)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_cachelan
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
+  recordID VARCHAR(50) PRIMARY KEY,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  device_id INT,
+  breaker_status BIT,
+  ac_output_real_power DOUBLE,
+  ac_output_apparent_power DOUBLE,
+  ac_output_reactive_power DOUBLE,
+  ac_output_power_factor DOUBLE,
+  ac_output_phase_a_current DOUBLE,
+  ac_output_phase_b_current DOUBLE,
+  ac_output_phase_c_current DOUBLE,
+  ac_output_phase_ab_voltage DOUBLE,
+  ac_output_phase_bc_voltage DOUBLE,
+  ac_output_phase_ca_voltage DOUBLE
 ) ENGINE = INNODB;
 
 CREATE TABLE IF NOT EXISTS facility (
-    component VARCHAR(50) PRIMARY KEY,
-    solar_irridiance_POA DOUBLE,
-    solar_irridiance_GHI DOUBLE,
-    back_of_panel_temperature_1 DOUBLE,
-    ambient_temperature DOUBLE,
-    back_of_panel_temperature_2 DOUBLE,
-    wind_speed DOUBLE
-    -- Why is timestamp PK?
-    -- Why is title a FK?
-    /*
-    time_stamp INT,
-    title_from VARCHAR(9)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_facility
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
+  recordID VARCHAR(50) PRIMARY KEY,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  solar_irridiance_POA DOUBLE,
+  solar_irridiance_GHI DOUBLE,
+  back_of_panel_temperature_1 DOUBLE,
+  ambient_temperature DOUBLE,
+  back_of_panel_temperature_2 DOUBLE,
+  wind_speed DOUBLE
 ) ENGINE = INNODB;
 
 CREATE TABLE IF NOT EXISTS inverter (
-    component VARCHAR(50) PRIMARY KEY,
-    ac_output_energy DOUBLE,
-    ac_output_real_power DOUBLE,
-    ac_output_apparent_power DOUBLE,
-    ac_output_reactive_power DOUBLE,
-    ac_output_power_factor DOUBLE,
-    ac_output_phase_a_current DOUBLE,
-    ac_output_phase_b_current DOUBLE,
-    ac_output_phase_c_current DOUBLE,
-    ac_output_phase_ab_voltage DOUBLE,
-    ac_output_phase_bc_voltage DOUBLE,
-    ac_output_phase_ca_voltage DOUBLE,
-    dc_real_power DOUBLE,
-    dc_volt DOUBLE,
-    dc_current DOUBLE,
-    efficiency DOUBLE
-    -- Why is timestamp PK?
-    -- Why is title a FK?
-    /*
-    time_stamp INT,
-    title_from VARCHAR(9)
-    IF time_stamp is FK:
-    CONSTRAINT fk_timestamp_desc_inverter
-    FOREIGN KEY (time_stamp)
-        REFERENCES timestamp_desc(time_stamp)
-    */
+  recordID VARCHAR(50) PRIMARY KEY,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  device_id INT,
+  ac_output_energy DOUBLE,
+  ac_output_real_power DOUBLE,
+  ac_output_apparent_power DOUBLE,
+  ac_output_reactive_power DOUBLE,
+  ac_output_power_factor DOUBLE,
+  ac_output_phase_a_current DOUBLE,
+  ac_output_phase_b_current DOUBLE,
+  ac_output_phase_c_current DOUBLE,
+  ac_output_phase_ab_voltage DOUBLE,
+  ac_output_phase_bc_voltage DOUBLE,
+  ac_output_phase_ca_voltage DOUBLE,
+  dc_real_power DOUBLE,
+  dc_volt DOUBLE,
+  dc_current DOUBLE,
+  efficiency DOUBLE
 ) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS alarm_info (
+  alarm_id INT PRIMARY KEY,
+  alarm_desc VARCHAR(100),
+  alarm_status VARCHAR(4),
+  device VARCHAR(20)
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS alarm_events (
+  event_id INT PRIMARY KEY,
+  alarm_id INT,
+  time_stamp_id LONG,
+  time_stamp TIMESTAMP,
+  CONSTRAINT fk_alarm_id
+  FOREIGN KEY (alarm_id)
+   REFERENCES alarm_info(alarm_id)
+) ENGINE = INNODB;
+
+--users
+DELETE FROM `solarpowerdb`.`user_type` WHERE type_id <= 2;
+
+INSERT INTO `solarpowerdb`.`user_type` VALUES( 1, 1, "Facility Operator" );
+INSERT INTO `solarpowerdb`.`user_type` VALUES( 2, 2, "Facility Manager" );
+INSERT INTO `solarpowerdb`.`user_type` VALUES( 3, 3, "Maintenance" );
+
+DELETE FROM `solarpowerdb`.`users` WHERE email = "facility_manager@localhost";
+DELETE FROM `solarpowerdb`.`users` WHERE email = "facility_operator@localhost";
+DELETE FROM `solarpowerdb`.`users` WHERE email = "admin";
+
+INSERT INTO `solarpowerdb`.`users` VALUES( "facility_manager@localhost", 2, "Facility", "Manager", "5f4dcc3b5aa765d61d8327deb882cf99", 1, "");
+INSERT INTO `solarpowerdb`.`users` VALUES( "facility_operator@localhost", 1, "Facility", "Operator", "5f4dcc3b5aa765d61d8327deb882cf99", 1, "");
+INSERT INTO `solarpowerdb`.`users` VALUES( "admin", 2, "Facility", "Manager", "5f4dcc3b5aa765d61d8327deb882cf99", 1, "");
+
+--pccMocks
+DELETE FROM pcc WHERE recordID <=51;
+
+--Mocks have primary key, timestamp_id, timestamp, and energy values updated
+
+--2020
+
+--January values, monthly energy = 15
+INSERT INTO pcc VALUES( 46, 1579741487000, "2020-01-22 17:04:47.0", 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 47, 1579741487000, "2020-01-22 17:04:47.0", 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 48, 1579741487000, "2020-01-22 17:04:47.0", 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--February, monthly energy = 30
+INSERT INTO pcc VALUES( 49, 1582419887000, "2020-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 50, 1582419887000, "2020-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 51, 1582419887000, "2020-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+
+--2021
+
+--January values, monthly energy = 9.9
+INSERT INTO pcc VALUES( 1, 1611363887000, "2021-01-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 2, 1611363887000, "2021-01-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 3, 1611363887000, "2021-01-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--February values, monthly energy = 20
+INSERT INTO pcc VALUES( 4, 1614042287000, "2021-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 5, 1614042287000, "2021-02-22 17:04:47.0", 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 6, 1614042287000, "2021-02-22 17:04:47.0", 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--March values, monthly energy = 30
+INSERT INTO pcc VALUES( 7, 1616457887000, "2021-03-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 8, 1616457887000, "2021-03-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 9, 1616457887000, "2021-03-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--April values, monthly energy = 60
+INSERT INTO pcc VALUES( 10, 1619136287000, "2021-04-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 11, 1619136287000, "2021-04-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 12, 1619136287000, "2021-04-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--May values, monthly energy = 80
+INSERT INTO pcc VALUES( 13, 1621728287000, "2021-05-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 14, 1621728287000, "2021-05-22 17:04:47.0", 40, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 15, 1621728287000, "2021-05-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--June values, monthly energy = 100
+INSERT INTO pcc VALUES( 16, 1624406687000, "2021-06-22 17:04:47.0", 50, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 17, 1624406687000, "2021-06-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 18, 1624406687000, "2021-06-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--July values, monthly energy = 120
+INSERT INTO pcc VALUES( 19, 1626998687000, "2021-07-22 17:04:47.0", 50, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 20, 1626998687000, "2021-07-22 17:04:47.0", 50, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 21, 1626998687000, "2021-07-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--August values, monthly energy = 100
+INSERT INTO pcc VALUES( 22, 1629677087000, "2021-08-22 17:04:47.0", 50, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 23, 1629677087000, "2021-08-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 24, 1629677087000, "2021-08-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--September values, monthly energy = 100
+INSERT INTO pcc VALUES( 25, 1632355487000, "2021-09-22 17:04:47.0", 50, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 26, 1632355487000, "2021-09-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 27, 1632355487000, "2021-09-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--October values, monthly energy = 70
+INSERT INTO pcc VALUES( 28, 1634947487000, "2021-10-22 17:04:47.0", 30, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 29, 1634947487000, "2021-10-22 17:04:47.0", 30, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 30, 1634947487000, "2021-10-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--November values, monthly energy = 50
+INSERT INTO pcc VALUES( 31, 1637629487000, "2021-11-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 32, 1637629487000, "2021-11-22 17:04:47.0", 15, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 33, 1637629487000, "2021-11-22 17:04:47.0", 25, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--December values, monthly energy = 10
+INSERT INTO pcc VALUES( 34, 1640221487000, "2021-12-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 35, 1640221487000, "2021-12-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 36, 1640221487000, "2021-12-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--2022
+
+--January, monthly energy = 10
+INSERT INTO pcc VALUES( 37, 1642899887000, "2022-01-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 38, 1642899887000, "2022-01-22 17:04:47.0", 3.3, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 39, 1642899887000, "2022-01-22 17:04:47.0", 3.4, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--February, monthly energy = 30
+INSERT INTO pcc VALUES( 40, 1645578287000, "2022-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 41, 1645578287000, "2022-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 42, 1645578287000, "2022-02-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--March, monthly energy = 50
+INSERT INTO pcc VALUES( 43, 1647993887000, "2022-03-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 44, 1647993887000, "2022-03-22 17:04:47.0", 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+INSERT INTO pcc VALUES( 45, 1647993887000, "2022-03-22 17:04:47.0", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+--Inverters
+insert into inverter values (34762, '1650348000000', '2021-07-24 13:40:29', 8, 494, 15, 3, -2, 39, 0, 58, 147, 363, 193, 406, 89, 1383, 149, 11);
+insert into inverter values (54851, '1650348600000', '2021-07-15 15:19:01', 18, 349, 113, 132, -108, 75, 58, 6, 62, 139, 46, 363, 43, 559, 109, 15);
+insert into inverter values (23043, '1650349200000', '2021-08-12 14:56:39', 6, 879, 138, 32, -101, 9, 126, 51, 142, 361, 465, 424, 55, 1322, 3, 50);
+insert into inverter values (12650, '1650349800000', '2021-05-07 16:54:23', 18, 587, 52, 5, -109, 74, 125, 51, 81, 643, 399, 286, 103, 410, 14, 43);
+insert into inverter values (55521, '1650350400000', '2022-03-31 19:39:40', 9, 556, 62, 28, 25, 79, 32, 31, 42, 496, 365, 654, 51, 1017, 61, 1);
+insert into inverter values (20600, '1650351000000', '2021-12-20 18:29:18', 17, 87, 140, 22, 24, 65, 22, 59, 18, 157, 297, 338, 113, 157, 116, 83);
+insert into inverter values (78040, '1650351600000', '2021-10-19 14:11:10', 35, 1965, 123, 46, 109, 60, 87, 125, 160, 51, 444, 367, 40, 842, 60, 80);
+insert into inverter values (25935, '1650352200000', '2021-11-12 08:02:32', 22, 2553, 77, 45, -85, 41, 105, 150, 128, 408, 342, 450, 96, 890, 144, 72);
+insert into inverter values (47444, '1650352800000', '2021-10-18 09:19:30', 28, 1901, 27, 20, 78, 45, 25, 100, 141, 315, 378, 519, 49, 1123, 164, 53);
+insert into inverter values (82596, '1650353400000', '2021-05-19 01:38:17', 38, 2643, 113, 67, 40, 93, 74, 130, 139, 347, 426, 146, 13, 520, 123, 40);
+insert into inverter values (31733, '1650354000000', '2021-05-26 02:27:41', 12, 1188, 41, 71, -113, 70, 95, 52, 73, 265, 467, 429, 13, 1183, 165, 85);
+insert into inverter values (94307, '1650354600000', '2021-12-05 21:37:26', 39, 2524, 44, 9, -55, 12, 139, 98, 72, 31, 351, 219, 89, 1214, 73, 46);
+insert into inverter values (24599, '1650355200000', '2022-03-23 23:04:16', 29, 1357, 20, 44, -34, 75, 30, 4, 125, 377, 591, 70, 87, 1152, 90, 89);
+insert into inverter values (33570, '1650355800000', '2021-05-21 15:24:39', 20, 901, 41, 47, 89, 41, 94, 55, 51, 621, 91, 316, 82, 1005, 11, 31);
+insert into inverter values (70290, '1650356400000', '2021-12-23 01:17:11', 30, 2725, 53, 111, -73, 15, 55, 24, 96, 114, 450, 189, 15, 1225, 112, 26);
+insert into inverter values (73869, '1650357000000', '2021-06-08 12:29:07', 14, 1908, 34, 115, 31, 49, 77, 88, 154, 547, 478, 285, 128, 994, 25, 86);
+insert into inverter values (44572, '1650357600000', '2022-01-19 00:01:51', 37, 687, 12, 22, -98, 94, 16, 146, 69, 642, 89, 426, 76, 1000, 30, 13);
+insert into inverter values (50680, '1650358200000', '2021-10-31 04:54:04', 9, 1567, 65, 0, -21, 81, 156, 46, 79, 453, 336, 206, 112, 1481, 98, 73);
+insert into inverter values (66222, '1650358800000', '2021-09-22 04:05:11', 4, 1805, 114, 123, 98, 41, 17, 147, 104, 474, 520, 180, 147, 889, 48, 50);
+insert into inverter values (27573, '1650359400000', '2022-01-05 11:27:13', 13, 2841, 79, 111, -48, 9, 139, 9, 40, 334, 55, 338, 100, 373, 104, 29);
+insert into inverter values (84271, '1650360000000', '2021-09-05 19:25:35', 34, 1992, 32, 53, -140, 31, 13, 35, 113, 59, 545, 173, 14, 659, 43, 25);
+insert into inverter values (13495, '1650360600000', '2021-08-13 10:42:18', 38, 1631, 8, 1, 49, 48, 26, 156, 88, 267, 235, 159, 107, 320, 163, 13);
+insert into inverter values (19114, '1650361200000', '2021-09-28 10:00:01', 32, 2699, 27, 48, -132, 10, 110, 107, 118, 492, 155, 576, 37, 493, 86, 31);
+insert into inverter values (6844, '1650361800000', '2021-07-16 11:56:42', 5, 1257, 62, 74, -60, 85, 142, 44, 70, 137, 278, 658, 74, 184, 44, 34);
+insert into inverter values (18277, '1650362400000', '2021-04-13 14:41:14', 7, 1718, 136, 25, -21, 78, 103, 41, 31, 317, 398, 398, 28, 289, 67, 80);
+insert into inverter values (79726, '1650363000000', '2021-05-03 20:16:13', 20, 82, 111, 143, 83, 15, 108, 157, 77, 173, 150, 28, 132, 669, 101, 40);
+insert into inverter values (74756, '1650363600000', '2022-03-19 13:11:22', 38, 1070, 56, 67, 42, 33, 83, 151, 114, 389, 453, 62, 33, 637, 82, 35);
+insert into inverter values (25586, '1650364200000', '2021-08-14 03:04:34', 5, 2322, 146, 30, -93, 32, 101, 160, 87, 335, 374, 151, 67, 568, 99, 38);
+insert into inverter values (29231, '1650364800000', '2021-12-15 01:41:53', 12, 958, 114, 5, 133, 98, 34, 141, 116, 549, 218, 614, 51, 1059, 59, 85);
+insert into inverter values (79718, '1650365400000', '2021-05-03 18:00:35', 14, 1961, 138, 75, 0, 87, 150, 2, 61, 644, 405, 163, 142, 233, 134, 90);
+insert into inverter values (38768, '1650366000000', '2021-11-16 13:24:22', 28, 2147, 39, 45, 129, 62, 71, 112, 62, 356, 630, 269, 22, 146, 53, 32);
+insert into inverter values (7386, '1650366600000', '2021-06-30 04:53:22', 17, 1140, 57, 71, -37, 51, 140, 101, 19, 95, 193, 524, 80, 155, 11, 98);
+insert into inverter values (93453, '1650367200000', '2021-08-01 23:15:31', 9, 1204, 98, 122, 34, 79, 143, 110, 36, 398, 583, 556, 134, 1232, 100, 60);
+insert into inverter values (40417, '1650367800000', '2021-07-23 20:22:55', 34, 972, 52, 88, -45, 90, 3, 90, 85, 481, 182, 513, 93, 351, 101, 95);
+insert into inverter values (59969, '1650368400000', '2021-06-07 10:39:01', 9, 1611, 76, 99, -119, 24, 159, 69, 76, 97, 604, 283, 116, 1365, 106, 90);
+insert into inverter values (26164, '1650369000000', '2021-11-14 13:16:17', 23, 2384, 145, 41, 58, 4, 10, 118, 44, 85, 371, 334, 132, 592, 40, 0);
+insert into inverter values (69337, '1650369600000', '2021-06-19 10:19:59', 17, 661, 24, 21, 46, 51, 144, 48, 3, 490, 515, 606, 23, 132, 170, 85);
+insert into inverter values (98694, '1650370200000', '2022-03-18 13:19:44', 6, 987, 116, 34, 49, 37, 76, 136, 55, 276, 125, 478, 93, 585, 127, 11);
+insert into inverter values (60753, '1650370800000', '2021-06-11 05:43:50', 17, 113, 28, 5, -45, 85, 131, 104, 160, 319, 241, 74, 74, 83, 33, 10);
+insert into inverter values (25805, '1650371400000', '2021-06-04 09:06:35', 35, 236, 112, 123, -149, 65, 124, 68, 9, 361, 94, 146, 32, 916, 115, 97);
+insert into inverter values (8850, '1650372000000', '2021-11-10 18:10:23', 17, 2000, 28, 86, -25, 43, 130, 16, 29, 338, 592, 304, 23, 1129, 111, 47);
+insert into inverter values (16067, '1650372600000', '2021-09-01 05:31:05', 5, 451, 149, 76, 65, 69, 11, 86, 126, 144, 299, 266, 92, 1320, 60, 67);
+insert into inverter values (26685, '1650373200000', '2022-01-05 02:27:47', 9, 2890, 120, 115, -39, 63, 129, 20, 103, 82, 407, 463, 48, 1371, 145, 33);
+insert into inverter values (5707, '1650373800000', '2021-10-28 19:15:22', 37, 1996, 109, 111, -106, 78, 14, 56, 14, 246, 430, 78, 25, 1077, 176, 29);
+insert into inverter values (45195, '1650374400000', '2021-08-29 23:42:26', 35, 2801, 97, 97, 125, 91, 141, 66, 123, 299, 257, 228, 124, 120, 161, 45);
+insert into inverter values (66950, '1650375000000', '2021-07-23 23:09:23', 13, 2495, 64, 94, -139, 2, 54, 120, 45, 581, 466, 138, 1, 553, 35, 41);
+insert into inverter values (18807, '1650375600000', '2021-05-06 01:23:49', 18, 2907, 100, 40, -115, 64, 5, 150, 117, 18, 177, 396, 123, 1211, 80, 17);
+insert into inverter values (19883, '1650376200000', '2021-09-23 16:50:46', 26, 1854, 142, 64, -123, 33, 49, 150, 51, 354, 640, 543, 88, 210, 76, 56);
+insert into inverter values (33960, '1650376800000', '2022-02-04 23:11:21', 15, 437, 104, 87, -96, 71, 64, 31, 125, 254, 347, 639, 23, 808, 36, 75);
+insert into inverter values (60262, '1650377400000', '2021-04-14 00:26:09', 27, 601, 48, 138, -148, 8, 143, 55, 50, 653, 481, 391, 122, 140, 145, 83);
+insert into inverter values (25799, '1650378000000', '2021-09-30 23:48:21', 22, 2148, 117, 76, -103, 95, 134, 64, 32, 202, 179, 444, 88, 758, 69, 16);
+insert into inverter values (7467, '1650378600000', '2021-04-13 01:45:50', 34, 1598, 132, 2, -40, 4, 0, 60, 28, 205, 40, 101, 82, 850, 25, 37);
+insert into inverter values (28386, '1650379200000', '2021-07-03 13:13:03', 30, 2008, 89, 16, -109, 92, 70, 110, 155, 554, 118, 396, 45, 728, 17, 99);
+insert into inverter values (91732, '1650379800000', '2022-04-04 16:19:48', 16, 2744, 49, 138, -85, 74, 116, 84, 37, 341, 592, 286, 144, 138, 162, 97);
+insert into inverter values (99609, '1650380400000', '2022-03-22 01:04:26', 26, 1541, 2, 123, 26, 26, 53, 30, 129, 206, 100, 477, 141, 1231, 164, 65);
+insert into inverter values (92794, '1650381000000', '2021-09-01 04:43:02', 15, 2174, 23, 140, -31, 82, 66, 29, 140, 69, 494, 658, 138, 6, 20, 9);
+insert into inverter values (54708, '1650381600000', '2021-05-27 12:34:42', 15, 2501, 127, 120, 6, 78, 2, 53, 14, 411, 335, 659, 24, 114, 53, 21);
+insert into inverter values (86148, '1650382200000', '2022-03-02 02:02:56', 13, 1784, 99, 121, -28, 43, 29, 137, 115, 336, 148, 282, 112, 439, 53, 9);
+insert into inverter values (46857, '1650382800000', '2021-10-02 22:07:25', 25, 645, 32, 11, 13, 100, 52, 74, 13, 344, 157, 73, 65, 984, 87, 94);
+insert into inverter values (92286, '1650383400000', '2022-04-02 16:51:15', 9, 636, 77, 144, -36, 70, 121, 83, 71, 401, 126, 9, 67, 1140, 42, 44);
+insert into inverter values (93060, '1650384000000', '2021-05-14 12:42:53', 33, 2451, 130, 59, 13, 63, 55, 87, 154, 135, 189, 236, 82, 810, 134, 5);
+insert into inverter values (40416, '1650384600000', '2021-10-06 17:22:11', 16, 45, 62, 98, 52, 65, 146, 133, 128, 49, 51, 160, 123, 1066, 166, 12);
+insert into inverter values (60271, '1650385200000', '2022-01-22 23:19:21', 27, 921, 91, 120, -78, 51, 111, 117, 91, 298, 112, 366, 60, 1076, 43, 24);
+insert into inverter values (18972, '1650385800000', '2021-09-22 19:26:07', 2, 2877, 28, 141, 0, 10, 137, 70, 51, 548, 413, 304, 118, 727, 80, 44);
+insert into inverter values (37089, '1650386400000', '2021-07-13 04:28:21', 14, 667, 18, 91, 135, 28, 37, 76, 148, 218, 103, 397, 3, 1383, 78, 75);
+insert into inverter values (70818, '1650387000000', '2021-10-29 09:53:03', 10, 2068, 41, 73, -21, 15, 97, 98, 98, 538, 630, 171, 58, 1448, 163, 18);
+insert into inverter values (86450, '1650387600000', '2021-09-11 22:05:56', 9, 2302, 54, 68, -27, 36, 101, 34, 159, 279, 21, 65, 131, 1121, 41, 89);
+insert into inverter values (95214, '1650388200000', '2021-05-16 01:22:07', 36, 1859, 108, 143, 67, 29, 31, 13, 11, 188, 446, 430, 125, 1226, 140, 65);
+insert into inverter values (76740, '1650388800000', '2021-08-17 13:21:16', 35, 298, 95, 82, -110, 17, 124, 113, 114, 249, 93, 257, 26, 571, 19, 48);
+insert into inverter values (74823, '1650389400000', '2021-05-07 09:18:38', 13, 519, 42, 124, -50, 12, 45, 148, 105, 175, 438, 288, 81, 664, 158, 70);
+insert into inverter values (93038, '1650390000000', '2021-09-21 13:10:58', 13, 729, 81, 2, 127, 34, 86, 134, 43, 179, 632, 222, 37, 1388, 114, 1);
+insert into inverter values (73852, '1650390600000', '2021-04-16 08:42:07', 15, 1643, 119, 88, 27, 11, 98, 31, 126, 92, 615, 539, 60, 1316, 143, 82);
+insert into inverter values (13345, '1650391200000', '2022-01-13 16:15:02', 13, 2108, 139, 23, 31, 48, 87, 26, 121, 417, 397, 418, 60, 1319, 37, 32);
+insert into inverter values (6580, '1650391800000', '2022-02-13 05:48:46', 21, 881, 122, 47, -116, 40, 156, 28, 74, 170, 288, 555, 66, 652, 44, 37);
+insert into inverter values (59668, '1650392400000', '2021-12-19 07:37:10', 12, 2065, 141, 18, -113, 71, 81, 85, 151, 176, 477, 610, 42, 624, 39, 62);
+insert into inverter values (86006, '1650393000000', '2021-11-15 13:12:16', 19, 843, 51, 134, 68, 18, 156, 13, 25, 634, 181, 166, 136, 1345, 108, 8);
+insert into inverter values (38022, '1650393600000', '2021-10-17 20:05:03', 8, 1955, 123, 137, -113, 55, 28, 24, 48, 437, 19, 508, 6, 1184, 57, 40);
+insert into inverter values (76427, '1650394200000', '2021-04-29 03:01:14', 37, 4, 80, 84, 60, 75, 149, 16, 82, 11, 154, 122, 67, 527, 86, 36);
+insert into inverter values (28228, '1650394800000', '2021-04-10 11:16:17', 3, 2956, 132, 44, -7, 92, 49, 124, 125, 165, 401, 91, 74, 26, 172, 12);
+insert into inverter values (10980, '1650395400000', '2022-02-15 11:53:43', 9, 127, 21, 78, -110, 63, 33, 57, 116, 313, 183, 52, 107, 1320, 94, 87);
+insert into inverter values (98955, '1650396000000', '2022-01-31 06:14:22', 34, 948, 0, 13, 9, 4, 51, 64, 148, 387, 87, 320, 17, 49, 9, 23);
+insert into inverter values (5351, '1650396600000', '2021-11-04 03:32:45', 25, 2721, 40, 58, 3, 39, 158, 33, 61, 526, 458, 277, 54, 649, 107, 21);
+insert into inverter values (67078, '1650397200000', '2021-09-24 13:44:02', 7, 1211, 62, 124, 41, 17, 17, 108, 97, 130, 176, 167, 98, 836, 8, 11);
+insert into inverter values (86638, '1650397800000', '2021-06-14 00:05:03', 8, 1505, 46, 100, 19, 87, 74, 150, 40, 454, 380, 595, 115, 821, 163, 19);
+insert into inverter values (82013, '1650398400000', '2021-11-06 09:00:08', 33, 2856, 149, 145, -132, 100, 4, 64, 112, 480, 23, 119, 2, 401, 159, 41);
+insert into inverter values (47830, '1650399000000', '2021-07-03 20:20:17', 22, 2555, 22, 113, 88, 36, 20, 148, 81, 392, 328, 581, 131, 382, 145, 40);
+insert into inverter values (56622, '1650399600000', '2021-12-08 22:18:32', 27, 1107, 148, 127, 5, 54, 85, 64, 21, 61, 524, 27, 69, 949, 146, 80);
+insert into inverter values (7004, '1650400200000', '2021-08-17 21:26:08', 36, 2455, 95, 96, -98, 7, 6, 1, 125, 309, 298, 530, 146, 1020, 97, 53);
+insert into inverter values (6664, '1650400800000', '2021-11-17 05:24:26', 8, 722, 2, 31, 55, 15, 120, 87, 150, 317, 463, 75, 0, 1413, 157, 10);
+insert into inverter values (4553, '1650401400000', '2022-01-26 06:45:17', 8, 356, 51, 44, 87, 6, 92, 13, 2, 460, 549, 107, 40, 1226, 69, 18);
+insert into inverter values (45105, '1650402000000', '2021-04-24 08:42:37', 10, 2277, 31, 63, -104, 82, 48, 105, 26, 636, 425, 471, 68, 885, 129, 5);
+insert into inverter values (22691, '1650402600000', '2022-02-19 16:13:09', 12, 1345, 28, 105, 28, 64, 1, 127, 33, 4, 342, 561, 117, 1288, 105, 24);
+insert into inverter values (83330, '1650403200000', '2021-08-16 03:22:32', 21, 846, 71, 87, -7, 30, 27, 140, 129, 215, 560, 484, 13, 640, 40, 61);
+insert into inverter values (11055, '1650403800000', '2022-01-24 03:39:40', 22, 1710, 29, 120, -93, 23, 143, 65, 41, 495, 46, 198, 48, 897, 182, 1);
+insert into inverter values (53170, '1650404400000', '2022-02-18 11:09:08', 11, 825, 46, 13, -81, 93, 115, 147, 109, 271, 454, 647, 123, 923, 170, 13);
+insert into inverter values (25030, '1650405000000', '2021-09-05 03:35:30', 29, 2406, 2, 11, -82, 96, 1, 101, 54, 607, 229, 426, 32, 439, 126, 96);
+insert into inverter values (80324, '1650405600000', '2021-08-27 08:14:57', 22, 2319, 8, 18, 118, 94, 154, 35, 12, 563, 605, 334, 40, 598, 158, 80);
+insert into inverter values (83611, '1650406200000', '2021-11-04 11:29:51', 32, 47, 55, 14, -37, 24, 43, 131, 150, 23, 574, 222, 32, 443, 180, 54);
+insert into inverter values (58018, '1650406800000', '2021-12-26 10:09:05', 27, 41, 56, 116, -42, 31, 42, 109, 19, 244, 286, 131, 32, 833, 26, 100);
+insert into inverter values (91169, '1650407400000', '2022-01-19 02:00:43', 39, 1408, 41, 36, 30, 93, 133, 73, 116, 27, 567, 325, 127, 125, 143, 87);
+insert into inverter values (40537, '1650408000000', '2021-08-10 23:55:08', 37, 2325, 78, 71, -143, 100, 137, 30, 6, 180, 376, 187, 5, 1308, 148, 86);
+insert into inverter values (25014, '1650408600000', '2021-06-01 11:13:44', 18, 1877, 101, 43, 16, 31, 65, 123, 66, 436, 352, 301, 79, 1463, 84, 6);
+insert into inverter values (7821, '1650409200000', '2021-05-06 21:37:46', 9, 2389, 34, 29, -22, 13, 158, 66, 113, 309, 269, 120, 60, 1081, 27, 52);
+insert into inverter values (4381, '1650409800000', '2021-10-02 00:25:13', 1, 1199, 14, 93, 33, 78, 89, 34, 49, 64, 280, 157, 51, 417, 77, 15);
+insert into inverter values (84515, '1650410400000', '2021-08-04 21:50:40', 17, 1451, 148, 36, -92, 87, 110, 98, 5, 332, 86, 616, 80, 786, 28, 34);
+insert into inverter values (19487, '1650411000000', '2021-12-10 03:29:46', 7, 740, 56, 38, 135, 6, 6, 124, 121, 17, 374, 596, 11, 891, 164, 20);
+insert into inverter values (21912, '1650411600000', '2021-05-24 10:35:29', 20, 2316, 35, 37, -44, 65, 18, 11, 100, 262, 84, 584, 57, 813, 84, 58);
+insert into inverter values (8710, '1650412200000', '2021-04-05 06:50:35', 23, 547, 81, 37, 28, 16, 60, 43, 94, 376, 575, 520, 60, 1293, 141, 33);
+insert into inverter values (18276, '1650412800000', '2021-04-07 01:52:49', 37, 432, 51, 6, 11, 65, 53, 134, 33, 184, 235, 238, 80, 1069, 93, 86);
+insert into inverter values (19865, '1650413400000', '2022-04-06 23:50:53', 16, 2693, 127, 59, -107, 5, 5, 143, 37, 380, 198, 400, 26, 876, 145, 26);
+insert into inverter values (11263, '1650414000000', '2021-07-18 13:50:50', 10, 1682, 115, 96, -41, 32, 61, 107, 147, 403, 135, 338, 48, 279, 157, 67);
+insert into inverter values (33192, '1650414600000', '2021-10-04 09:06:42', 17, 2869, 59, 42, -142, 89, 37, 105, 159, 481, 523, 73, 86, 161, 17, 51);
+insert into inverter values (45943, '1650415200000', '2021-08-24 04:36:44', 33, 960, 135, 40, -97, 13, 160, 46, 54, 462, 504, 355, 31, 1403, 82, 54);
+insert into inverter values (64066, '1650415800000', '2022-01-12 10:27:04', 2, 680, 124, 140, 39, 31, 106, 51, 110, 234, 525, 597, 128, 708, 164, 3);
+insert into inverter values (71255, '1650416400000', '2021-06-28 20:24:25', 4, 623, 43, 117, 127, 16, 82, 139, 141, 230, 412, 31, 147, 616, 46, 36);
+insert into inverter values (15410, '1650417000000', '2021-09-20 13:46:22', 21, 1202, 125, 71, 0, 52, 63, 80, 79, 341, 392, 465, 56, 862, 72, 4);
+insert into inverter values (2462, '1650417600000', '2021-09-02 10:59:01', 11, 1469, 130, 13, 5, 77, 61, 80, 113, 524, 468, 223, 28, 1353, 140, 48);
+insert into inverter values (38682, '1650418200000', '2021-08-14 16:19:38', 3, 944, 138, 75, -119, 82, 86, 58, 56, 606, 471, 611, 133, 170, 98, 84);
+insert into inverter values (95844, '1650418800000', '2022-01-14 06:29:41', 12, 2455, 10, 65, -25, 37, 114, 22, 9, 41, 494, 321, 12, 1135, 61, 3);
+insert into inverter values (98504, '1650419400000', '2021-08-19 05:22:44', 21, 1866, 141, 84, -27, 39, 110, 122, 76, 184, 308, 621, 60, 1063, 31, 33);
+insert into inverter values (6376, '1650420000000', '2021-05-26 08:35:50', 6, 276, 124, 32, -23, 64, 139, 66, 113, 293, 348, 296, 50, 279, 146, 71);
+insert into inverter values (41029, '1650420600000', '2021-09-26 07:14:43', 31, 2064, 129, 122, 3, 35, 76, 50, 19, 296, 598, 139, 141, 1099, 100, 56);
+insert into inverter values (43335, '1650421200000', '2021-06-25 16:36:35', 10, 304, 110, 98, -73, 45, 143, 157, 35, 169, 616, 660, 5, 655, 78, 81);
+insert into inverter values (3416, '1650421800000', '2021-07-15 15:52:44', 7, 2795, 103, 128, -89, 61, 135, 108, 151, 148, 65, 652, 110, 676, 170, 91);
+insert into inverter values (57112, '1650422400000', '2021-07-20 01:58:20', 2, 762, 129, 103, 85, 74, 120, 31, 27, 390, 569, 345, 24, 865, 38, 18);
+insert into inverter values (76587, '1650423000000', '2022-02-05 09:50:18', 19, 1641, 43, 123, -135, 31, 48, 119, 9, 357, 96, 320, 7, 779, 179, 91);
+insert into inverter values (94760, '1650423600000', '2021-04-22 02:45:08', 35, 83, 3, 108, 83, 88, 135, 14, 122, 623, 44, 247, 8, 1144, 171, 68);
+insert into inverter values (5350, '1650424200000', '2021-08-20 05:59:22', 5, 768, 99, 143, -21, 88, 130, 62, 43, 444, 640, 336, 75, 1090, 184, 95);
+insert into inverter values (61994, '1650424800000', '2021-10-14 05:14:00', 24, 1689, 2, 143, 58, 0, 44, 151, 136, 585, 497, 590, 32, 1493, 23, 83);
+insert into inverter values (14776, '1650425400000', '2021-11-20 11:44:04', 19, 1106, 16, 90, 88, 100, 19, 158, 151, 141, 470, 620, 97, 126, 59, 20);
+insert into inverter values (73446, '1650426000000', '2022-03-03 20:37:12', 13, 1075, 115, 114, 40, 47, 128, 72, 85, 532, 537, 351, 148, 593, 153, 85);
+insert into inverter values (2131, '1650426600000', '2021-11-06 23:16:15', 12, 1198, 130, 120, 121, 36, 141, 113, 5, 100, 430, 555, 15, 822, 14, 5);
+insert into inverter values (90801, '1650427200000', '2021-05-15 15:20:43', 21, 926, 84, 110, -111, 74, 110, 14, 112, 480, 183, 7, 129, 681, 5, 52);
+insert into inverter values (52983, '1650427800000', '2021-04-13 15:05:15', 22, 1207, 40, 71, 33, 66, 141, 140, 160, 583, 217, 382, 53, 317, 119, 66);
+insert into inverter values (19799, '1650428400000', '2021-06-02 22:55:58', 36, 1190, 84, 138, -34, 50, 153, 19, 89, 524, 24, 480, 90, 64, 33, 82);
+insert into inverter values (5596, '1650429000000', '2022-03-22 23:50:31', 30, 1039, 76, 127, -19, 15, 117, 83, 36, 49, 433, 71, 26, 279, 113, 66);
+insert into inverter values (17370, '1650429600000', '2021-04-16 09:58:29', 30, 1668, 99, 79, 15, 78, 53, 159, 132, 478, 181, 56, 125, 1458, 25, 46);
+insert into inverter values (67427, '1650430200000', '2021-08-01 10:40:02', 35, 1190, 103, 137, 31, 95, 145, 41, 87, 303, 508, 497, 13, 596, 163, 17);
+insert into inverter values (80006, '1650430800000', '2021-07-23 01:14:21', 14, 76, 135, 21, 125, 1, 97, 152, 157, 278, 328, 607, 13, 211, 3, 38);
+insert into inverter values (25890, '1650431400000', '2021-05-20 09:43:48', 32, 905, 25, 147, -146, 24, 72, 142, 59, 605, 503, 282, 138, 916, 22, 70);
+insert into inverter values (54010, '1650432000000', '2022-02-12 02:29:08', 26, 1020, 134, 14, -77, 69, 97, 146, 85, 382, 565, 227, 143, 847, 155, 68);
+insert into inverter values (41133, '1650432600000', '2021-04-16 06:51:47', 38, 609, 99, 19, 17, 26, 92, 103, 113, 383, 70, 129, 5, 1261, 142, 96);
+insert into inverter values (95618, '1650433200000', '2022-02-09 00:50:53', 1, 1877, 107, 41, 48, 73, 112, 88, 139, 473, 127, 255, 134, 1452, 3, 60);
+insert into inverter values (68247, '1650433800000', '2021-05-25 08:57:14', 11, 2009, 21, 145, -38, 23, 43, 138, 0, 437, 12, 38, 142, 98, 47, 72);
+
+--facility
+insert into facility  values (88854, 1650348000000, '2021-07-14 06:00:45', 449, 374, 96, 23, -36, 83);
+insert into facility  values (19885, 1650348600000, '2021-12-01 13:54:02', 1196, 568, 59, 9, 62, 10);
+insert into facility  values (71350, 1650349200000, '2022-03-29 07:31:07', 167, 1358, -5, -3, 5, 14);
+insert into facility  values (7115, 1650349800000, '2021-10-11 14:33:56', 719, 1287, 67, 1, 30, 44);
+insert into facility  values (50538, 1650350400000, '2021-05-28 15:15:07', 260, 1143, 43, 46, 24, 18);
+insert into facility  values (8423, 1650351000000, '2021-10-18 09:04:49', 238, 920, 53, 36, 41, 37);
+insert into facility  values (62067, 1650351600000, '2022-01-03 03:39:53', 61, 572, 7, 4, 35, 76);
+insert into facility  values (39380, 1650352200000, '2021-10-30 17:17:02', 790, 1362, 78, 9, 48, 83);
+insert into facility  values (46423, 1650352800000, '2021-09-30 05:39:59', 1425, 384, 10, 7, -11, 36);
+insert into facility  values (83497, 1650353400000, '2021-12-31 02:56:45', 383, 661, 70, 7, 74, 10);
+insert into facility  values (25817, 1650354000000, '2021-09-04 23:31:08', 1190, 917, 37, -46, 58, 67);
+insert into facility  values (71761, 1650354600000, '2021-08-10 17:02:01', 1324, 42, 54, -25, -25, 43);
+insert into facility  values (88922, 1650355200000, '2022-02-20 02:32:02', 339, 246, 35, 46, 2, 74);
+insert into facility  values (19154, 1650355800000, '2021-08-12 20:07:37', 1320, 67, -24, -34, 87, 28);
+insert into facility  values (93325, 1650356400000, '2021-10-03 14:53:47', 658, 663, -8, -17, 46, 84);
+insert into facility  values (36814, 1650357000000, '2021-09-16 00:25:53', 719, 160, 66, -33, 88, 98);
+insert into facility  values (89172, 1650357600000, '2021-11-24 22:59:07', 68, 438, -12, 9, 18, 1);
+insert into facility  values (67517, 1650358200000, '2022-03-26 19:49:36', 200, 1042, -1, -23, 42, 76);
+insert into facility  values (66680, 1650358800000, '2021-10-24 13:30:11', 1381, 1037, 93, -20, 80, 13);
+insert into facility  values (94483, 1650359400000, '2021-07-07 23:36:51', 1244, 293, -6, 20, -37, 31);
+insert into facility  values (60118, 1650360000000, '2021-04-07 03:37:53', 1148, 1049, 84, -16, -27, 1);
+insert into facility  values (36973, 1650360600000, '2021-12-05 07:54:09', 164, 597, 44, -35, 10, 41);
+insert into facility  values (28887, 1650361200000, '2021-08-23 17:49:14', 161, 1008, -4, 36, -4, 71);
+insert into facility  values (9458, 1650361800000, '2021-11-28 14:14:17', 293, 1412, -16, -15, 8, 65);
+insert into facility  values (56695, 1650362400000, '2021-09-23 09:02:15', 901, 1194, 14, -8, 47, 82);
+insert into facility  values (46534, 1650363000000, '2021-10-13 13:17:49', 378, 1409, 71, 28, 5, 9);
+insert into facility  values (27991, 1650363600000, '2021-04-15 23:42:22', 862, 702, -22, 11, 49, 92);
+insert into facility  values (64393, 1650364200000, '2021-09-30 02:59:08', 795, 488, 75, 6, 68, 100);
+insert into facility  values (32255, 1650364800000, '2021-11-12 09:18:38', 231, 1004, 4, 4, -17, 90);
+insert into facility  values (20561, 1650365400000, '2021-11-22 10:51:21', 761, 91, 56, -41, 90, 45);
+insert into facility  values (24968, 1650366000000, '2021-05-12 10:49:00', 537, 158, -3, -2, 54, 31);
+insert into facility  values (57458, 1650366600000, '2021-06-21 09:01:07', 774, 1485, -21, 41, 68, 51);
+insert into facility  values (42960, 1650367200000, '2022-03-15 10:02:35', 996, 1407, 20, 4, -17, 22);
+insert into facility  values (65620, 1650367800000, '2021-09-06 02:43:21', 1088, 402, 95, -40, 24, 93);
+insert into facility  values (75113, 1650368400000, '2022-04-03 17:15:54', 1289, 1098, -14, -5, 51, 73);
+insert into facility  values (24294, 1650369000000, '2022-02-08 01:21:48', 471, 443, -39, 38, 18, 19);
+insert into facility  values (33530, 1650369600000, '2021-08-21 01:36:06', 76, 414, 62, 40, -37, 92);
+insert into facility  values (29759, 1650370200000, '2021-12-10 09:41:04', 118, 1366, -13, -20, 35, 71);
+insert into facility  values (46005, 1650370800000, '2022-03-18 11:54:07', 198, 1223, 97, -29, -46, 55);
+insert into facility  values (87320, 1650371400000, '2022-01-26 03:47:46', 1179, 92, 99, -25, 100, 48);
+insert into facility  values (27939, 1650372000000, '2021-06-04 09:39:56', 1332, 256, 90, -18, 11, 64);
+insert into facility  values (97571, 1650372600000, '2021-12-07 18:20:11', 1437, 105, 65, -21, 87, 53);
+insert into facility  values (70063, 1650373200000, '2022-02-27 15:40:35', 855, 1134, 52, 2, -32, 65);
+insert into facility  values (59524, 1650373800000, '2021-09-19 08:33:57', 1488, 1029, 94, -20, 81, 68);
+insert into facility  values (51300, 1650374400000, '2021-08-06 09:33:11', 1410, 497, 90, 18, 22, 76);
+insert into facility  values (78411, 1650375000000, '2021-11-02 20:33:13', 1156, 208, 92, -45, -18, 50);
+insert into facility  values (69343, 1650375600000, '2022-02-13 15:50:19', 964, 657, -12, 5, 39, 99);
+insert into facility  values (91308, 1650376200000, '2021-05-27 15:27:00', 692, 377, -47, 11, -18, 93);
+insert into facility  values (2792, 1650376800000, '2022-04-04 13:08:28', 798, 421, 28, 24, -34, 17);
+insert into facility  values (62187, 1650377400000, '2021-07-19 05:27:10', 108, 194, 77, -50, -38, 75);
+insert into facility  values (79085, 1650378000000, '2021-10-18 14:28:12', 333, 257, 51, -34, -12, 31);
+insert into facility  values (7149, 1650378600000, '2021-04-12 03:28:20', 1163, 992, 75, 10, 38, 73);
+insert into facility  values (50188, 1650379200000, '2021-06-09 08:22:33', 749, 767, -25, 32, -44, 92);
+insert into facility  values (89954, 1650379800000, '2021-05-04 02:42:55', 1171, 1195, -14, -33, 87, 67);
+insert into facility  values (25714, 1650380400000, '2021-12-21 01:56:37', 843, 622, 19, -1, -2, 15);
+insert into facility  values (81885, 1650381000000, '2021-12-27 00:33:35', 7, 1256, 19, 18, -33, 55);
+insert into facility  values (64451, 1650381600000, '2021-07-19 03:12:59', 1357, 964, -44, -4, 55, 76);
+insert into facility  values (75279, 1650382200000, '2021-08-16 00:33:25', 904, 482, 24, -2, 43, 6);
+insert into facility  values (3754, 1650382800000, '2022-03-04 19:17:33', 924, 1135, -33, -33, 21, 91);
+insert into facility  values (16476, 1650383400000, '2022-01-13 06:31:34', 848, 1082, 36, -11, 56, 79);
+insert into facility  values (2568, 1650384000000, '2021-08-23 00:16:10', 606, 672, 31, -46, 38, 57);
+insert into facility  values (54454, 1650384600000, '2021-05-15 21:05:52', 816, 1152, -1, -8, 93, 12);
+insert into facility  values (61364, 1650385200000, '2021-07-22 11:10:30', 754, 937, 97, -49, -28, 89);
+insert into facility  values (65327, 1650385800000, '2021-10-13 20:54:29', 1376, 1014, 72, 8, 34, 95);
+insert into facility  values (33756, 1650386400000, '2021-06-05 08:19:05', 183, 288, -31, 6, 1, 73);
+insert into facility  values (53657, 1650387000000, '2022-03-30 01:21:43', 189, 750, -4, 17, 39, 37);
+insert into facility  values (29001, 1650387600000, '2021-06-23 11:19:01', 1013, 996, -5, 31, 60, 15);
+insert into facility  values (58404, 1650388200000, '2021-04-29 22:57:53', 1377, 445, 24, 48, 67, 5);
+insert into facility  values (37782, 1650388800000, '2021-12-18 13:30:58', 1011, 491, 43, -42, -45, 3);
+insert into facility  values (52295, 1650389400000, '2021-11-02 09:46:44', 969, 567, -10, 29, 42, 41);
+insert into facility  values (77056, 1650390000000, '2021-07-06 16:06:17', 755, 80, 29, -43, 58, 7);
+insert into facility  values (28231, 1650390600000, '2022-01-25 11:18:21', 154, 1284, -27, -36, 78, 83);
+insert into facility  values (75983, 1650391200000, '2022-01-06 19:02:03', 1493, 1219, 92, 25, 76, 76);
+insert into facility  values (23894, 1650391800000, '2022-01-15 17:18:24', 1081, 310, -46, -37, -41, 88);
+insert into facility  values (15867, 1650392400000, '2021-09-08 22:14:46', 881, 758, 43, -24, 93, 56);
+insert into facility  values (10100, 1650393000000, '2021-11-09 18:39:06', 770, 1321, -34, 12, -3, 77);
+insert into facility  values (54318, 1650393600000, '2021-11-08 23:22:10', 938, 991, 37, 7, 51, 99);
+insert into facility  values (27839, 1650394200000, '2021-11-24 16:00:36', 372, 453, -22, 16, 32, 36);
+insert into facility  values (67529, 1650394800000, '2021-12-10 14:47:37', 499, 658, 60, 35, -47, 10);
+insert into facility  values (40027, 1650395400000, '2021-12-26 11:28:55', 562, 239, 68, 5, 19, 29);
+insert into facility  values (11921, 1650396000000, '2021-10-03 22:37:12', 1239, 85, -17, 32, -12, 85);
+insert into facility  values (34198, 1650396600000, '2022-01-29 07:11:27', 168, 1492, -24, 24, 21, 80);
+insert into facility  values (50574, 1650397200000, '2022-01-16 09:18:56', 1324, 1168, -39, 15, 82, 62);
+insert into facility  values (76020, 1650397800000, '2021-09-09 04:06:00', 841, 743, 79, 10, -15, 100);
+insert into facility  values (99092, 1650398400000, '2021-06-12 23:50:49', 217, 996, 8, -3, -9, 14);
+insert into facility  values (46665, 1650399000000, '2021-11-30 01:29:45', 1347, 1012, 8, -8, 32, 68);
+insert into facility  values (32455, 1650399600000, '2021-08-09 01:51:34', 1011, 1380, 0, 35, 33, 99);
+insert into facility  values (63292, 1650400200000, '2022-03-17 19:13:41', 947, 384, -38, 27, -24, 74);
+insert into facility  values (17774, 1650400800000, '2022-04-02 20:10:04', 573, 1222, -47, 47, 11, 51);
+insert into facility  values (58963, 1650401400000, '2022-04-03 19:36:14', 130, 522, 27, -47, -39, 23);
+insert into facility  values (96814, 1650402000000, '2021-12-09 03:35:59', 403, 1266, 80, 39, 48, 28);
+insert into facility  values (71583, 1650402600000, '2021-10-09 17:20:24', 362, 279, -7, -34, -31, 71);
+insert into facility  values (15100, 1650403200000, '2021-05-12 08:34:35', 1341, 274, -45, 26, 25, 24);
+insert into facility  values (71992, 1650403800000, '2022-01-23 17:20:31', 529, 0, -21, 31, 91, 53);
+insert into facility  values (31886, 1650404400000, '2021-09-12 16:38:50', 168, 376, -45, 48, 97, 81);
+insert into facility  values (68681, 1650405000000, '2022-03-14 03:44:54', 896, 267, 31, 38, 86, 60);
+insert into facility  values (53334, 1650405600000, '2021-04-19 21:42:11', 627, 990, 52, 25, 67, 29);
+insert into facility  values (35753, 1650406200000, '2021-09-30 09:20:14', 552, 1059, 79, 4, 61, 75);
+insert into facility  values (79957, 1650406800000, '2021-09-23 12:24:00', 1080, 1196, 18, 40, 60, 36);
+insert into facility  values (95579, 1650407400000, '2021-06-30 16:37:21', 1350, 508, -13, -50, -22, 95);
+insert into facility  values (14193, 1650408000000, '2021-12-16 03:58:18', 1377, 139, 70, -38, 0, 92);
+insert into facility  values (2023, 1650408600000, '2021-12-25 20:17:18', 1195, 151, 50, -9, -44, 65);
+insert into facility  values (26637, 1650409200000, '2021-12-25 13:07:13', 271, 340, 32, 48, -45, 50);
+insert into facility  values (94232, 1650409800000, '2021-12-08 20:44:20', 133, 415, 38, 28, 11, 88);
+insert into facility  values (26928, 1650410400000, '2022-03-29 17:52:07', 433, 1313, -12, 16, -46, 96);
+insert into facility  values (42210, 1650411000000, '2021-07-06 15:10:48', 595, 657, 42, -50, 8, 95);
+insert into facility  values (71153, 1650411600000, '2021-10-20 14:02:06', 853, 516, -38, 12, 27, 100);
+insert into facility  values (50993, 1650412200000, '2022-01-15 09:41:00', 289, 170, 23, 31, 98, 24);
+insert into facility  values (92087, 1650412800000, '2021-04-27 22:25:08', 93, 354, 29, 38, 46, 6);
+insert into facility  values (49216, 1650413400000, '2021-12-30 14:15:49', 1163, 1307, 68, 19, 12, 34);
+insert into facility  values (8691, 1650414000000, '2021-11-22 18:06:21', 12, 1327, 71, 35, 46, 63);
+insert into facility  values (6502, 1650414600000, '2021-08-24 14:11:02', 116, 652, 100, 12, -40, 84);
+insert into facility  values (97029, 1650415200000, '2022-03-16 05:59:24', 1085, 1277, 21, 37, -45, 61);
+insert into facility  values (95688, 1650415800000, '2021-07-07 03:45:20', 1442, 940, 41, -39, 16, 78);
+insert into facility  values (79473, 1650416400000, '2021-09-29 11:12:58', 1057, 273, -7, 18, 20, 15);
+insert into facility  values (17863, 1650417000000, '2021-11-23 18:35:16', 1092, 388, -9, 48, -27, 93);
+insert into facility  values (77124, 1650417600000, '2021-08-14 10:53:03', 803, 1062, -4, 42, 96, 94);
+insert into facility  values (70713, 1650418200000, '2021-12-07 11:55:32', 524, 165, -32, -49, -17, 74);
+insert into facility  values (98865, 1650418800000, '2022-03-01 12:06:23', 265, 1448, -20, 46, 17, 25);
+insert into facility  values (83725, 1650419400000, '2021-07-03 06:17:06', 1270, 613, -29, 14, -12, 5);
+insert into facility  values (51123, 1650420000000, '2021-04-06 07:34:32', 1085, 303, 31, 50, -4, 71);
+insert into facility  values (12021, 1650420600000, '2021-09-30 18:30:24', 96, 916, 49, -40, 52, 89);
+insert into facility  values (93605, 1650421200000, '2021-04-23 09:17:47', 751, 53, 58, -12, -25, 27);
+insert into facility  values (52876, 1650421800000, '2022-03-23 21:05:28', 510, 877, 86, -24, -14, 28);
+insert into facility  values (72642, 1650422400000, '2021-09-07 04:07:38', 582, 45, 59, 31, 91, 87);
+insert into facility  values (92503, 1650423000000, '2021-11-05 15:59:17', 858, 534, 21, 15, 74, 85);
+insert into facility  values (68817, 1650423600000, '2021-07-26 16:52:08', 742, 29, 47, -38, 80, 83);
+insert into facility  values (54542, 1650424200000, '2021-09-09 11:16:44', 1030, 868, -6, -10, 73, 92);
+insert into facility  values (28305, 1650424800000, '2021-11-08 03:45:54', 1095, 357, 11, -10, 46, 50);
+insert into facility  values (23579, 1650425400000, '2021-10-29 16:02:24', 1230, 549, 56, 41, 38, 77);
+insert into facility  values (3907, 1650426000000, '2021-08-20 15:14:12', 1378, 441, -41, -44, 14, 95);
+insert into facility  values (18902, 1650426600000, '2021-08-07 02:14:51', 475, 311, 33, -15, 52, 54);
+insert into facility  values (3387, 1650427200000, '2022-01-02 06:15:56', 631, 1152, 81, -11, 35, 42);
+insert into facility  values (78113, 1650427800000, '2021-09-01 19:19:52', 551, 1123, 80, -20, -50, 48);
+insert into facility  values (10141, 1650428400000, '2022-02-08 13:18:21', 8, 1421, 44, -16, -19, 56);
+insert into facility  values (41059, 1650429000000, '2021-12-12 17:59:54', 1331, 204, 79, -45, 65, 95);
+insert into facility  values (27824, 1650429600000, '2022-01-12 03:11:07', 478, 1109, 67, 7, 80, 62);
+insert into facility  values (33003, 1650430200000, '2021-09-01 22:50:49', 128, 302, 0, 47, 56, 17);
+insert into facility  values (41888, 1650430800000, '2021-12-14 08:22:20', 308, 297, 86, 42, 36, 10);
+insert into facility  values (40071, 1650431400000, '2022-03-02 21:50:17', 1250, 363, 65, -26, -39, 97);
+insert into facility  values (66131, 1650432000000, '2022-01-31 07:26:15', 169, 946, 92, -16, 68, 81);
+insert into facility  values (24641, 1650432600000, '2021-09-07 05:36:27', 829, 627, -32, -39, 98, 31);
+insert into facility  values (11152, 1650433200000, '2021-05-06 00:49:08', 1453, 418, -35, 42, -37, 31);
+insert into facility  values (4931, 1650433800000, '2021-10-13 17:55:05', 323, 865, 43, -12, -20, 49);
+
+
+--pcc
+insert into pcc values (68307, 1650348000000, '2021-06-14 14:18:19', 9318, 816, 111, 1687, 33, -58, -64, -177, 28319, 22921, 25998);
+insert into pcc values (87392, 1650348600000, '2021-12-27 22:41:25', 26234, -4647, 104, -1087, 69, -202, 103, -190, 26989, 26307, 20135);
+insert into pcc values (90241, 1650349200000, '2022-03-24 00:08:55', 82912, -4338, 22, -1443, 94, 130, 122, -3, 28996, 27784, 29750);
+insert into pcc values (65187, 1650349800000, '2021-06-14 14:29:29', 80854, -989, 55, -1032, 65, -100, 115, 43, 23842, 22872, 29602);
+insert into pcc values (76398, 1650350400000, '2022-02-03 17:15:11', 114012, -2507, 94, -956, 5, 33, 241, -70, 20533, 25025, 20268);
+insert into pcc values (84218, 1650351000000, '2021-08-03 17:45:31', 5245, 3168, 18, 315, 62, 57, 10, 126, 26497, 26609, 20244);
+insert into pcc values (96066, 1650351600000, '2021-06-09 07:21:16', 34638, -4042, 36, -1658, 45, -77, 83, -110, 29211, 28319, 26795);
+insert into pcc values (36570, 1650352200000, '2021-12-26 05:59:29', 75717, -4395, 112, 2753, 65, -12, 104, 146, 25719, 26650, 20029);
+insert into pcc values (58123, 1650352800000, '2021-09-21 13:50:32', 64793, -787, 120, 3089, 92, -233, 147, -51, 27329, 22243, 21301);
+insert into pcc values (23463, 1650353400000, '2021-11-07 19:04:27', 91123, 1652, 36, 883, 18, 3, 37, -36, 24597, 27931, 20441);
+insert into pcc values (9963, 1650354000000, '2021-05-24 02:55:44', 20276, 3831, 106, 2611, 34, 18, 207, -126, 27139, 29183, 20543);
+insert into pcc values (87451, 1650354600000, '2021-11-29 02:29:22', 77391, -1340, 64, -862, 69, -221, 155, 204, 26955, 28939, 26176);
+insert into pcc values (73200, 1650355200000, '2021-12-21 19:23:08', 53553, 4179, 129, -2412, 72, -62, 113, -144, 24518, 25230, 27036);
+insert into pcc values (68355, 1650355800000, '2021-06-10 12:40:59', 90120, 4744, 68, -4745, 79, -168, -38, -208, 29432, 22477, 26545);
+insert into pcc values (73249, 1650356400000, '2021-10-06 18:32:21', 85877, -3498, 50, 618, 15, -61, -194, -27, 29751, 20393, 23184);
+insert into pcc values (24063, 1650357000000, '2021-05-31 23:21:29', 45652, 4902, 49, 918, 12, -229, -137, -60, 23803, 29258, 24573);
+insert into pcc values (48330, 1650357600000, '2021-05-04 10:02:31', 77088, -2967, 9, 424, 72, 95, -210, -98, 23840, 27288, 26941);
+insert into pcc values (90118, 1650358200000, '2021-06-28 09:03:37', 76939, -1715, 71, -2662, 99, 19, 231, -249, 24335, 25141, 22294);
+insert into pcc values (52671, 1650358800000, '2022-02-26 05:45:09', 29098, -4594, 138, 4127, 2, -99, -2, 70, 25205, 28616, 28776);
+insert into pcc values (87971, 1650359400000, '2021-06-05 02:24:26', 113297, -2028, 116, 858, 53, -210, -27, 220, 20176, 28909, 28974);
+insert into pcc values (85609, 1650360000000, '2021-08-31 23:30:06', 55621, 2988, 28, -4464, 7, 72, 200, 128, 20678, 25017, 22569);
+insert into pcc values (20633, 1650360600000, '2021-09-11 05:36:21', 23561, -1201, 73, -1229, 95, 179, 123, -136, 22410, 20293, 25433);
+insert into pcc values (92776, 1650361200000, '2021-10-05 16:05:48', 26987, -86, 120, -3725, 81, -118, -149, -33, 21809, 27617, 26573);
+insert into pcc values (96997, 1650361800000, '2022-02-09 14:31:46', 15233, -952, 42, 4553, 59, -87, -205, 111, 27193, 24074, 29760);
+insert into pcc values (81189, 1650362400000, '2022-01-24 17:21:38', 55799, -1873, 97, 2625, 99, 200, -73, 168, 23588, 27617, 22831);
+insert into pcc values (46917, 1650363000000, '2021-06-08 06:45:59', 11911, 422, 73, 1537, 91, 69, -182, 111, 26709, 21396, 22425);
+insert into pcc values (74886, 1650363600000, '2022-03-01 23:33:19', 47342, -1065, 99, -2816, 99, -213, -132, 81, 25941, 20086, 24662);
+insert into pcc values (49368, 1650364200000, '2022-01-27 09:16:37', 67457, 1039, 81, 2223, 86, -1, 100, -5, 25928, 26244, 24357);
+insert into pcc values (20090, 1650364800000, '2021-12-27 11:24:58', 110416, 3181, 94, -565, 21, -5, -189, -57, 21242, 29775, 27196);
+insert into pcc values (65056, 1650365400000, '2021-05-22 12:50:05', 76951, -214, 121, -3129, 25, 74, 227, 46, 20079, 27979, 28787);
+insert into pcc values (97487, 1650366000000, '2021-08-17 10:29:26', 90245, -4113, 144, -4561, 62, 174, 149, -117, 29857, 28837, 21290);
+insert into pcc values (21856, 1650366600000, '2021-12-05 04:41:10', 118654, -2864, 85, -966, 56, 29, -29, 113, 21562, 26077, 26982);
+insert into pcc values (46027, 1650367200000, '2021-06-13 02:19:30', 95889, 42, 89, -2276, 95, 76, 210, 161, 22819, 23783, 29834);
+insert into pcc values (9013, 1650367800000, '2022-01-18 00:53:54', 32730, 669, 52, 3430, 20, -231, 179, -73, 29234, 26282, 26777);
+insert into pcc values (20847, 1650368400000, '2021-11-15 23:59:59', 52525, -3192, 141, -3884, 85, 199, 88, 1, 25165, 29239, 26902);
+insert into pcc values (40091, 1650369000000, '2021-11-26 18:20:30', 63474, -4947, 8, -3391, 77, -109, -139, -59, 25568, 29114, 29537);
+insert into pcc values (86030, 1650369600000, '2021-05-15 15:40:35', 93672, -937, 114, 172, 62, -39, 19, 125, 21013, 29266, 22592);
+insert into pcc values (66344, 1650370200000, '2021-07-25 06:12:23', 100930, -4705, 3, -632, 53, 115, -122, -45, 27180, 29162, 28907);
+insert into pcc values (47210, 1650370800000, '2021-06-09 07:30:30', 19653, -1887, 67, 2088, 77, 203, -175, -146, 21115, 20498, 26596);
+insert into pcc values (5425, 1650371400000, '2021-11-10 04:15:26', 13340, -1784, 119, 3692, 87, 215, 76, 214, 27591, 21056, 22492);
+insert into pcc values (98228, 1650372000000, '2021-05-18 14:04:35', 104115, 35, 142, 829, 59, 126, 120, 147, 22320, 20818, 27270);
+insert into pcc values (38595, 1650372600000, '2021-11-19 17:57:50', 69617, 2578, 22, -3437, 58, 116, -215, 82, 21044, 22546, 22381);
+insert into pcc values (40953, 1650373200000, '2021-06-17 01:23:57', 111112, 3863, 2, -326, 96, -111, -97, -224, 29649, 23715, 28944);
+insert into pcc values (20451, 1650373800000, '2021-10-01 17:02:56', 16854, 2472, 47, 615, 68, -159, -220, -163, 27364, 29152, 26383);
+insert into pcc values (31375, 1650374400000, '2022-03-10 23:51:33', 104732, -3906, 6, -677, 86, -103, -167, 43, 28585, 29632, 28873);
+insert into pcc values (78309, 1650375000000, '2021-09-24 00:29:18', 63418, 1774, 142, 4029, 6, 142, -101, 100, 23301, 22585, 27713);
+insert into pcc values (14824, 1650375600000, '2022-03-11 16:20:27', 42831, 817, 60, -1195, 24, 226, -115, 107, 26025, 28603, 25927);
+insert into pcc values (51518, 1650376200000, '2021-07-22 04:22:16', 9196, 586, 2, 527, 93, 51, -212, -207, 20446, 24254, 23853);
+insert into pcc values (27145, 1650376800000, '2021-09-17 19:27:06', 68024, 118, 34, -1770, 78, -108, 218, 212, 29721, 28746, 22285);
+insert into pcc values (95552, 1650377400000, '2022-03-04 03:14:48', 31884, -133, 37, -1010, 10, 10, -249, -187, 20055, 26341, 29477);
+insert into pcc values (31588, 1650378000000, '2021-05-08 00:30:52', 62481, 4319, 127, 1397, 25, 42, 88, -17, 23464, 29250, 28260);
+insert into pcc values (18573, 1650378600000, '2021-04-12 02:18:52', 61985, -3203, 68, 4168, 91, 31, 121, 127, 28284, 22049, 21366);
+insert into pcc values (37544, 1650379200000, '2021-04-12 07:33:55', 98551, -3638, 3, 2381, 11, 74, -86, 137, 25750, 24377, 24877);
+insert into pcc values (65868, 1650379800000, '2021-12-26 03:20:35', 116717, -3826, 57, 914, 31, 15, -205, -40, 27445, 20601, 20712);
+insert into pcc values (23597, 1650380400000, '2021-07-25 19:27:49', 114043, 4562, 131, -1859, 9, 161, -23, -222, 25172, 22697, 23353);
+insert into pcc values (2481, 1650381000000, '2021-07-06 23:00:38', 38658, -2154, 20, -3700, 81, -156, 16, 172, 27079, 25912, 28129);
+insert into pcc values (80200, 1650381600000, '2022-02-27 17:47:01', 51723, -2203, 115, -3264, 98, 158, 160, 153, 28402, 23784, 20698);
+insert into pcc values (47624, 1650382200000, '2022-02-09 00:26:07', 92290, -3082, 57, -1949, 90, -133, 95, -182, 21909, 24888, 24713);
+insert into pcc values (26805, 1650382800000, '2021-12-17 08:51:27', 42659, 1810, 128, 3392, 94, 98, -183, 33, 29835, 27515, 24809);
+insert into pcc values (99625, 1650383400000, '2021-05-16 06:15:25', 27001, 2456, 129, -1646, 43, -180, 131, 24, 26573, 25623, 21756);
+insert into pcc values (76198, 1650384000000, '2021-09-26 22:35:09', 36983, 3522, 34, 4408, 75, -204, 10, -65, 29282, 26697, 23023);
+insert into pcc values (69038, 1650384600000, '2022-01-18 20:13:57', 51129, -1812, 125, 113, 33, -248, -233, -172, 26400, 20552, 29587);
+insert into pcc values (50006, 1650385200000, '2021-11-11 09:34:42', 35096, 1956, 90, 2322, 11, -109, -229, 227, 21926, 24084, 20469);
+insert into pcc values (7748, 1650385800000, '2021-09-12 20:33:24', 71876, 1830, 44, -218, 74, 79, 20, 2, 24052, 23726, 21536);
+insert into pcc values (43954, 1650386400000, '2021-09-20 00:10:36', 99849, -2190, 9, -12, 2, -241, -44, -206, 20800, 24608, 22824);
+insert into pcc values (50761, 1650387000000, '2022-01-31 22:59:50', 117451, 2856, 16, 1432, 43, 134, 120, 213, 25054, 21653, 21855);
+insert into pcc values (42754, 1650387600000, '2022-01-25 07:35:34', 25134, 3487, 116, -127, 12, 219, -82, 218, 24245, 27445, 29128);
+insert into pcc values (1149, 1650388200000, '2021-05-21 20:58:17', 63705, 3566, 82, 3038, 39, 37, -101, -82, 22800, 24013, 25720);
+insert into pcc values (87757, 1650, '2021-11-04 10:27:19', 61617, 4524, 139, -3478, 82, -92, 215, 167, 26020, 29166, 29416);
+insert into pcc values (64715, 1650348000000, '2021-05-24 16:50:25', 70186, -351, 94, -1894, 78, 52, -116, 64, 20698, 29863, 22429);
+insert into pcc values (96912, 1650348600000, '2021-09-05 05:15:02', 33292, -4906, 25, 3389, 29, -3, -6, 184, 22622, 22224, 26534);
+insert into pcc values (25682, 1650349200000, '2021-05-01 23:49:47', 37900, 524, 122, 2526, 62, -84, -210, -24, 23062, 27396, 21019);
+insert into pcc values (87820, 1650349800000, '2021-07-10 10:12:22', 10989, 4992, 101, 2719, 64, -35, 219, 73, 29836, 26083, 24174);
+insert into pcc values (33626, 1650350400000, '2021-11-07 14:02:50', 118002, -3122, 81, -1327, 48, 193, 139, 153, 26293, 24841, 23157);
+insert into pcc values (85633, 1650351000000, '2022-03-20 10:11:51', 52736, -4590, 87, -135, 73, -55, -147, 118, 25252, 20222, 21160);
+insert into pcc values (99344, 1650351600000, '2022-01-10 08:02:13', 43770, 2442, 39, 3180, 35, -203, -198, -105, 21473, 23552, 20069);
+insert into pcc values (89940, 1650352200000, '2021-11-29 20:00:01', 6215, -3274, 32, -3091, 51, -96, 84, -117, 27118, 27486, 22545);
+insert into pcc values (16608, 1650352800000, '2022-01-03 19:13:52', 114881, 4084, 117, -795, 38, -187, -190, -119, 27963, 24141, 29533);
+insert into pcc values (67239, 1650353400000, '2021-12-06 07:25:25', 76581, 2043, 148, 1137, 14, -146, -8, -225, 21360, 27246, 29863);
+insert into pcc values (1247, 1650354000000, '2021-09-19 16:12:53', 16049, 4127, 38, 3138, 51, -118, 231, -146, 25693, 27619, 21637);
+insert into pcc values (31851, 1650354600000, '2021-08-11 03:18:54', 89491, 3122, 45, -3116, 91, 224, -206, -137, 27037, 24744, 22458);
+insert into pcc values (26269, 1650355200000, '2021-08-12 03:24:10', 84950, -333, 43, -2816, 43, 40, 54, -229, 20506, 23248, 23449);
+insert into pcc values (73686, 1650355800000, '2021-09-30 07:06:53', 13361, 3877, 54, 1602, 13, 193, 217, 154, 22158, 24649, 20952);
+insert into pcc values (1661, 1650356400000, '2021-09-20 21:49:42', 86179, -1261, 68, -594, 48, -47, -107, -126, 21679, 25007, 28876);
+insert into pcc values (65997, 1650357000000, '2021-09-19 09:32:27', 31195, -869, 145, 3019, 84, 97, -50, -170, 27108, 26337, 23593);
+insert into pcc values (35356, 1650357600000, '2021-09-24 11:33:01', 23799, 4070, 117, -1574, 92, -47, 115, -32, 29870, 21168, 22033);
+insert into pcc values (24911, 1650358200000, '2021-08-22 05:31:28', 18603, 1581, 18, -941, 56, 103, -231, 12, 25219, 26458, 23666);
+insert into pcc values (52089, 1650358800000, '2021-10-20 14:39:13', 35299, -3948, 38, 2058, 96, 240, -223, 242, 22606, 24291, 26574);
+insert into pcc values (99148, 1650359400000, '2021-10-27 19:01:49', 118610, 802, 137, 2722, 79, -48, 234, -217, 26738, 22649, 21126);
+insert into pcc values (89098, 1650360000000, '2021-11-05 20:57:51', 103622, -624, 13, -758, 1, -117, 6, 160, 23213, 20156, 21802);
+insert into pcc values (89443, 1650360600000, '2022-02-21 16:55:09', 108040, -1203, 135, -1481, 10, -33, -172, 171, 21134, 24864, 24428);
+insert into pcc values (54795, 1650361200000, '2021-07-18 04:04:13', 91016, 1395, 89, 4155, 43, 219, -146, -217, 22102, 20597, 27910);
+insert into pcc values (58725, 1650361800000, '2022-03-27 13:46:10', 70645, -2864, 64, 1323, 37, -16, 36, 153, 25785, 25849, 29256);
+insert into pcc values (71921, 1650362400000, '2021-06-17 03:06:27', 98394, -3361, 1, 570, 50, -91, -79, 99, 26902, 28068, 26045);
+insert into pcc values (17923, 1650363000000, '2021-06-09 20:44:39', 101625, -4632, 4, 3126, 96, 81, -237, -204, 20513, 27312, 29966);
+insert into pcc values (11521, 1650363600000, '2021-07-03 19:44:59', 20365, -1304, 18, -182, 56, -12, 137, 175, 25889, 28105, 23227);
+insert into pcc values (14939, 1650364200000, '2021-11-01 22:18:44', 59017, -4174, 19, -4107, 50, 79, -184, 193, 27877, 25579, 21299);
+insert into pcc values (12015, 1650364800000, '2021-10-31 01:29:01', 67453, 2235, 15, -4150, 71, -149, 118, 207, 29824, 27085, 23648);
+insert into pcc values (37709, 1650365400000, '2022-02-09 21:08:47', 93292, 556, 112, -2684, 13, 244, -193, 43, 24831, 23903, 28520);
+insert into pcc values (96680, 1650366000000, '2021-05-19 23:25:51', 41568, -4860, 121, 2476, 51, 48, -3, 107, 28802, 29117, 21038);
+insert into pcc values (10213, 1650366600000, '2021-07-16 12:43:00', 11280, -3532, 109, 4650, 42, -214, 99, -192, 29899, 21713, 29706);
+insert into pcc values (22105, 1650367200000, '2021-08-04 05:18:58', 82148, 2464, 41, -563, 53, 159, 201, 179, 26742, 22470, 23338);
+insert into pcc values (95655, 1650367800000, '2021-12-15 15:46:56', 8700, -2365, 62, 678, 43, -55, 214, -66, 20541, 28296, 29219);
+insert into pcc values (50654, 1650368400000, '2021-11-11 23:56:05', 90581, -3964, 39, 192, 9, 86, -164, -182, 27278, 26885, 24604);
+insert into pcc values (55618, 1650369000000, '2021-12-04 08:57:52', 112264, -4783, 127, -1407, 92, 1, -87, -195, 20366, 23448, 23812);
+insert into pcc values (54199, 1650369600000, '2021-06-14 10:37:15', 118700, 4008, 137, 2760, 17, -136, -59, 164, 22720, 22036, 23646);
+insert into pcc values (84816, 1650370200000, '2021-11-24 14:45:09', 104499, 2081, 95, -267, 33, 42, 61, -79, 22231, 22252, 21076);
+insert into pcc values (38780, 1650370800000, '2022-04-04 12:37:23', 75324, 692, 56, 2199, 3, 238, -67, 127, 27393, 20923, 26248);
+insert into pcc values (87093, 1650371400000, '2022-01-30 07:50:18', 51178, 4420, 20, -755, 65, -188, 246, 161, 21733, 20053, 20040);
+insert into pcc values (69091, 1650372000000, '2021-11-05 09:13:20', 15328, 2987, 87, -815, 46, -75, -23, 231, 20274, 21586, 26616);
+insert into pcc values (34835, 1650372600000, '2021-11-06 21:56:37', 106250, 1866, 63, 4600, 63, 239, -126, 170, 27888, 21594, 27983);
+insert into pcc values (58193, 1650373200000, '2021-06-01 21:02:27', 40172, -3417, 43, 3207, 8, 57, 39, 199, 27678, 26209, 20193);
+insert into pcc values (32673, 1650373800000, '2022-03-26 10:08:29', 92350, -2364, 107, 3097, 22, 53, 96, 119, 29934, 28036, 23057);
+insert into pcc values (10856, 1650374400000, '2021-10-21 06:24:03', 66339, 4708, 147, 1873, 14, -201, 235, 246, 26549, 29846, 29781);
+insert into pcc values (77526, 1650375000000, '2021-06-12 00:35:36', 88852, 2672, 133, -3462, 69, -37, 90, -179, 21826, 24664, 21665);
+insert into pcc values (93658, 1650375600000, '2021-12-12 09:53:17', 91409, 1260, 33, -2612, 79, -22, 77, 67, 20003, 25264, 26384);
+insert into pcc values (16803, 1650376200000, '2022-01-10 02:45:18', 58236, -3719, 42, 3414, 43, 118, 170, 16, 25763, 25777, 20318);
+insert into pcc values (82679, 1650376800000, '2022-03-29 15:33:50', 61821, -3541, 135, -1643, 13, 193, 17, -161, 24209, 21865, 29910);
+insert into pcc values (6737, 1650377400000, '2021-11-04 16:29:18', 26220, 2391, 121, -4140, 13, -195, 114, 174, 23303, 28716, 23197);
+insert into pcc values (1169, 1650378000000, '2021-09-19 21:20:33', 44263, -581, 114, -2805, 93, -201, 199, 90, 20823, 23070, 25360);
+insert into pcc values (39073, 1650378600000, '2022-02-04 18:05:20', 116530, -1941, 56, 2441, 73, 124, -152, 173, 25106, 22912, 24786);
+insert into pcc values (84746, 1650379200000, '2021-11-10 06:26:09', 86666, -4865, 135, 2430, 34, 190, -191, 206, 22411, 26853, 24769);
+insert into pcc values (20206, 1650379800000, '2022-03-02 02:20:29', 38535, -2229, 38, -4382, 91, 116, 189, 104, 28986, 24838, 22623);
+insert into pcc values (33861, 1650380400000, '2021-12-03 19:10:30', 107803, 2701, 9, 1340, 37, -222, 236, -152, 25679, 21856, 22818);
+insert into pcc values (20693, 1650381000000, '2022-01-21 03:28:07', 33171, -1213, 65, 3315, 37, 47, -34, -216, 27014, 23668, 23979);
+insert into pcc values (92599, 1650381600000, '2021-07-06 06:06:06', 99856, -591, 14, 1190, 35, -165, -93, 177, 28268, 21754, 29197);
+insert into pcc values (16190, 1650382200000, '2021-07-14 21:45:44', 84277, 2210, 50, -4225, 92, -83, 109, 249, 29653, 23995, 20282);
+insert into pcc values (77820, 1650382800000, '2021-12-03 20:12:46', 12022, 3928, 24, 224, 62, -95, 157, -115, 27425, 26511, 25214);
+insert into pcc values (25345, 1650383400000, '2021-08-23 00:52:58', 2784, 2501, 19, -4079, 3, -107, -36, -192, 29083, 29769, 20161);
+insert into pcc values (44715, 1650384000000, '2021-05-07 13:58:28', 26872, -3994, 93, 3874, 72, 83, -107, 8, 21145, 20467, 29683);
+insert into pcc values (3524, 1650384600000, '2022-03-24 21:19:11', 14938, -3383, 74, -2500, 0, 129, 147, 26, 20737, 21139, 25631);
+insert into pcc values (98982, 1650385200000, '2021-08-18 13:24:02', 110468, 1364, 93, 4137, 35, 56, -203, -151, 20040, 20375, 26404);
+insert into pcc values (64069, 1650385800000, '2021-11-21 18:28:54', 91700, -2877, 130, -3967, 67, 203, -103, -142, 27912, 29948, 21777);
+insert into pcc values (56529, 1650386400000, '2022-01-10 11:22:54', 112717, 4282, 46, -1214, 86, 25, 67, -124, 24545, 26733, 28318);
+insert into pcc values (30439, 1650387000000, '2021-06-13 06:37:58', 98486, 1150, 48, -3169, 18, 217, 134, -30, 29659, 26587, 28551);
+insert into pcc values (85010, 1650387600000, '2022-03-25 15:38:42', 99632, 2611, 117, -40, 91, -157, -242, 180, 26277, 26534, 24923);
+insert into pcc values (48325, 1650388200000, '2021-12-10 20:24:08', 93727, 743, 115, -1789, 86, -90, -141, 51, 25732, 27570, 25040);
+insert into pcc values (24509, 1650, '2022-01-29 04:59:46', 35728, 4574, 77, -465, 44, -80, 172, 1, 29099, 27081, 22286);
+insert into pcc values (80287, 1650348000000, '2021-08-11 01:19:34', 77095, -776, 26, 1768, 77, 134, 3, -226, 25499, 29035, 24099);
+insert into pcc values (48079, 1650348600000, '2022-03-02 10:30:11', 32746, -1475, 15, 4966, 12, -102, -243, 3, 25144, 25869, 22725);
+insert into pcc values (90217, 1650349200000, '2021-06-01 07:45:31', 101173, -617, 61, 4732, 57, 79, -1, 54, 29078, 25757, 21857);
+insert into pcc values (84787, 1650349800000, '2021-10-04 12:59:05', 10014, 816, 72, -893, 16, 1, -44, -81, 22299, 21568, 25478);
+insert into pcc values (64303, 1650350400000, '2021-05-09 09:29:32', 71994, 1928, 11, 2404, 31, -54, -198, 154, 27272, 25286, 29524);
+insert into pcc values (48887, 1650351000000, '2021-04-09 23:48:22', 4633, -2167, 34, 2630, 46, 59, 106, -93, 28437, 21799, 22762);
+
+--feeders
+insert into feeder values (83289, 1650348000000, '2021-04-23 21:22:13', 1, false, -482, 129, 2450, 56, -128, 96, 174, 28303, 24686, 28627);
+insert into feeder values (96988, 1650348600000, '2022-03-28 10:48:58', 2, true, -1025, 36, 1278, 33, 46, -242, -242, 25785, 21697, 24801);
+insert into feeder values (28211, 1650349200000, '2021-06-01 12:30:17', 2, true, -827, 126, 721, 87, 206, -53, -138, 23841, 29765, 21280);
+insert into feeder values (69005, 1650349800000, '2021-09-14 12:08:49', 1, true, -79, 57, 1987, 12, -217, -34, 98, 27409, 29332, 27668);
+insert into feeder values (3600, 1650350400000, '2022-01-22 14:18:42', 2, false, 1786, 38, 1071, 15, 111, -7, -27, 22602, 26809, 28997);
+insert into feeder values (54204, 1650351000000, '2021-08-05 02:44:56', 2, true, -74, 8, -30, 27, 202, -163, 199, 29247, 27810, 21211);
+insert into feeder values (37224, 1650351600000, '2021-11-08 03:57:52', 1, true, -557, 139, 1913, 44, 131, 134, 220, 22372, 29299, 26064);
+insert into feeder values (21649, 1650352200000, '2021-11-07 17:10:23', 2, true, -901, 50, 743, 21, 89, -27, 129, 28695, 26865, 23810);
+insert into feeder values (41902, 1650352800000, '2021-05-18 04:15:36', 1, false, 1915, 36, 1830, 20, -6, 54, -103, 24449, 23489, 26064);
+insert into feeder values (21951, 1650353400000, '2021-09-14 21:29:43', 2, false, 1457, 37, -1390, 73, -63, 55, 85, 23021, 21195, 21702);
+insert into feeder values (33989, 1650354000000, '2021-05-28 15:54:20', 2, true, 1366, 66, 1968, 6, -64, 237, -175, 28519, 21036, 24096);
+insert into feeder values (71069, 1650354600000, '2022-03-25 19:10:06', 1, true, 1178, 68, 502, 60, -21, 21, -211, 28053, 27104, 23643);
+insert into feeder values (70902, 1650355200000, '2021-04-15 03:50:16', 1, false, 1848, 36, 1954, 45, -5, -57, -9, 25481, 21754, 21374);
+insert into feeder values (29911, 1650355800000, '2021-09-07 03:53:40', 1, true, 1272, 83, 858, 70, 45, 125, 19, 20604, 28104, 27010);
+insert into feeder values (89085, 1650356400000, '2022-02-13 16:26:35', 1, false, -2253, 33, 1800, 66, 109, 69, 149, 28225, 27822, 22104);
+insert into feeder values (89990, 1650357000000, '2021-11-02 13:21:41', 2, false, -608, 73, -2485, 34, 22, -211, 83, 26439, 26040, 28295);
+insert into feeder values (73367, 1650357600000, '2021-10-01 22:47:34', 2, false, -1435, 65, 1839, 74, 43, -9, 118, 27569, 28684, 25766);
+insert into feeder values (65168, 1650358200000, '2021-11-02 18:08:03', 1, false, 640, 83, 838, 51, -141, -230, 181, 26222, 20145, 25182);
+insert into feeder values (34791, 1650358800000, '2021-04-26 15:21:57', 2, false, 226, 47, -1701, 51, -132, -31, -153, 24823, 24802, 22938);
+insert into feeder values (65927, 1650359400000, '2021-10-06 03:04:02', 2, false, 1399, 86, -1683, 65, -84, -88, 189, 23645, 28607, 21122);
+insert into feeder values (90864, 1650360000000, '2021-12-13 14:21:52', 1, false, 2419, 58, 656, 66, 228, 212, -239, 27307, 23370, 28419);
+insert into feeder values (91914, 1650360600000, '2021-10-26 06:24:04', 1, false, 1766, 121, -1368, 0, 248, 53, 81, 27587, 28014, 23465);
+insert into feeder values (26267, 1650361200000, '2021-12-03 04:44:00', 2, true, 1963, 79, -211, 19, -28, 60, -205, 28203, 27409, 27344);
+insert into feeder values (19637, 1650361800000, '2021-09-30 04:42:03', 1, true, 365, 71, 1171, 25, 38, 239, 167, 25346, 20850, 20031);
+insert into feeder values (97177, 1650362400000, '2022-01-17 01:24:22', 2, true, -606, 18, 734, 67, -78, -62, 148, 27682, 25058, 28140);
+insert into feeder values (55421, 1650363000000, '2022-01-07 16:52:31', 1, true, -517, 15, 2412, 85, 196, 67, -27, 20281, 29302, 24315);
+insert into feeder values (24303, 1650363600000, '2021-04-06 06:58:10', 2, false, 1418, 68, -1916, 42, 246, 172, 95, 21644, 27577, 24367);
+insert into feeder values (76634, 1650364200000, '2021-07-04 08:19:04', 1, false, 2449, 112, 1202, 61, 137, -49, -87, 25916, 23415, 22900);
+insert into feeder values (99791, 1650364800000, '2021-10-08 05:25:52', 2, false, -2297, 1, -2396, 48, -7, 136, 59, 21692, 29043, 29028);
+insert into feeder values (6054, 1650365400000, '2022-01-27 11:05:49', 1, false, -1927, 78, 187, 18, 105, -151, -182, 26907, 27031, 22822);
+insert into feeder values (77102, 1650366000000, '2021-05-16 09:56:56', 2, false, -172, 40, 1521, 46, 108, -32, 38, 24185, 24867, 28794);
+insert into feeder values (80536, 1650366600000, '2021-06-06 05:47:51', 2, true, 337, 138, 2382, 89, 203, -137, 232, 24927, 28833, 20737);
+insert into feeder values (51638, 1650367200000, '2022-01-08 11:41:42', 2, false, 251, 93, 286, 81, 153, 209, -158, 25976, 23334, 29237);
+insert into feeder values (27646, 1650367800000, '2021-08-24 01:18:38', 1, false, -1184, 39, -541, 97, 127, 70, 150, 20047, 27019, 27223);
+insert into feeder values (27204, 1650368400000, '2022-02-15 07:49:03', 1, false, 691, 134, 1730, 45, 201, 73, -167, 22896, 25898, 20503);
+insert into feeder values (91966, 1650369000000, '2021-04-05 07:49:48', 2, true, 233, 115, 1378, 83, 161, -170, -241, 23516, 21646, 20999);
+insert into feeder values (50849, 1650369600000, '2022-01-28 18:24:39', 1, false, 2449, 68, -1019, 18, -157, 24, 133, 24560, 26572, 25103);
+insert into feeder values (17721, 1650370200000, '2021-05-03 23:14:03', 2, true, -1105, 52, -8, 75, -239, 197, 174, 27492, 21386, 24853);
+insert into feeder values (46819, 1650370800000, '2021-11-11 02:41:47', 1, true, -2385, 146, 1889, 99, -86, 32, -11, 28874, 26768, 26444);
+insert into feeder values (95590, 1650371400000, '2021-10-23 18:05:21', 2, true, 1801, 40, 454, 58, 27, 237, -178, 21061, 23363, 20150);
+insert into feeder values (23143, 1650372000000, '2021-10-11 02:58:41', 2, false, 1905, 141, 38, 39, 36, 157, -130, 20109, 26169, 28535);
+insert into feeder values (30002, 1650372600000, '2022-01-20 22:29:48', 2, false, -331, 90, 1372, 21, 191, -63, 220, 20155, 24718, 21670);
+insert into feeder values (76355, 1650373200000, '2021-11-21 05:04:28', 2, false, 2282, 106, -1596, 80, 219, -139, -108, 26301, 21471, 24112);
+insert into feeder values (96261, 1650373800000, '2022-01-29 06:24:56', 1, true, -1920, 143, -68, 10, -44, -106, -41, 20489, 23449, 21375);
+insert into feeder values (32132, 1650374400000, '2022-02-18 18:55:46', 1, false, -568, 19, -407, 38, -193, 151, 200, 22534, 26414, 21173);
+insert into feeder values (71974, 1650375000000, '2021-04-30 11:29:38', 1, false, -2266, 12, -1474, 77, -152, -185, -126, 29483, 23745, 28552);
+insert into feeder values (14366, 1650375600000, '2021-09-19 19:08:30', 1, true, -130, 85, 1652, 58, -3, 57, -64, 29792, 22816, 25694);
+insert into feeder values (54810, 1650376200000, '2022-01-11 07:44:06', 2, false, -573, 2, -2332, 33, 5, -79, 232, 28050, 28309, 29540);
+insert into feeder values (36867, 1650376800000, '2022-01-25 06:00:07', 2, true, -2436, 118, -1657, 29, 156, -205, -125, 26964, 26528, 21649);
+insert into feeder values (71822, 1650377400000, '2021-06-10 17:49:22', 1, false, -1516, 136, -2489, 66, -95, -127, -223, 28261, 28330, 24488);
+insert into feeder values (12179, 1650378000000, '2022-01-14 15:00:16', 2, true, 1851, 6, -1570, 70, 146, -201, 93, 25177, 26048, 27432);
+insert into feeder values (11995, 1650378600000, '2021-10-13 07:08:56', 2, true, 693, 126, 521, 86, -61, -81, -171, 20213, 25687, 22566);
+insert into feeder values (79603, 1650379200000, '2021-12-11 13:24:58', 1, true, 1058, 146, 2255, 87, -211, 194, -113, 29997, 25863, 24848);
+insert into feeder values (5950, 1650379800000, '2021-12-28 21:24:50', 2, true, 1441, 37, -1198, 37, -88, 100, 73, 21548, 27682, 28570);
+insert into feeder values (44929, 1650380400000, '2021-12-09 01:32:49', 2, true, 2055, 75, -1691, 27, -68, -230, -5, 28143, 23616, 29340);
+insert into feeder values (76559, 1650381000000, '2021-04-23 22:23:06', 1, true, 1108, 63, 2288, 6, 186, -12, 235, 22534, 27575, 28940);
+insert into feeder values (4005, 1650381600000, '2021-07-27 00:16:29', 2, true, 2154, 19, 180, 48, -18, 175, -249, 23344, 24637, 29355);
+insert into feeder values (10581, 1650382200000, '2021-06-15 04:46:48', 1, true, 1065, 125, 2134, 100, -2, 32, -38, 24674, 26931, 22374);
+insert into feeder values (37585, 1650382800000, '2022-02-13 10:20:11', 1, false, -329, 148, -1041, 68, 163, 134, -95, 28046, 23110, 28434);
+insert into feeder values (31106, 1650383400000, '2021-06-22 09:22:49', 1, true, -2378, 92, -1654, 66, 73, 180, -196, 27961, 23609, 29497);
+insert into feeder values (85860, 1650384000000, '2021-04-14 04:12:55', 2, true, 1837, 81, -576, 50, 235, -216, 93, 27037, 27470, 21023);
+insert into feeder values (75144, 1650384600000, '2021-06-12 00:46:30', 1, false, 2225, 77, 1690, 0, 19, 79, -183, 21280, 26862, 20058);
+insert into feeder values (47110, 1650385200000, '2021-07-23 23:07:51', 2, true, -37, 138, -1805, 33, -126, 187, 145, 29333, 28035, 26037);
+insert into feeder values (78089, 1650385800000, '2021-10-31 07:43:42', 1, false, -2457, 73, 1634, 84, 10, -74, 93, 26604, 21623, 25818);
+insert into feeder values (69013, 1650386400000, '2021-05-01 07:29:44', 2, true, -882, 72, 1426, 83, -98, -26, -18, 22587, 22625, 21725);
+insert into feeder values (14999, 1650387000000, '2021-09-09 01:32:29', 2, true, -341, 118, -2325, 91, 117, 98, 58, 23210, 24595, 29773);
+insert into feeder values (15034, 1650387600000, '2022-04-03 14:27:31', 1, false, -79, 136, -1296, 87, 23, 126, 250, 29753, 21614, 28311);
+insert into feeder values (52488, 1650388200000, '2022-03-13 05:29:38', 2, false, 2310, 58, 17, 94, -184, 93, 193, 23403, 22090, 20410);
+insert into feeder values (26304, 1650388800000, '2021-09-08 21:53:40', 2, false, 419, 105, 793, 38, 46, 166, -160, 20931, 29076, 27102);
+insert into feeder values (56300, 1650389400000, '2022-03-29 12:27:43', 2, false, -1565, 13, -918, 20, 164, 177, -148, 22240, 27547, 27213);
+insert into feeder values (45723, 1650390000000, '2022-04-02 17:48:01', 2, true, 2420, 49, -2106, 72, 227, -185, 238, 20219, 25432, 20378);
+insert into feeder values (18001, 1650390600000, '2022-01-27 18:55:20', 2, true, 52, 138, -2336, 46, -237, -235, -184, 27385, 29539, 23351);
+insert into feeder values (51722, 1650391200000, '2022-01-01 23:05:33', 2, true, -79, 123, -2197, 8, 128, -40, 94, 26594, 26594, 24379);
+insert into feeder values (83448, 1650391800000, '2022-02-23 22:15:44', 1, true, -237, 1, -1158, 1, 83, -103, -87, 23288, 21143, 22378);
+insert into feeder values (46290, 1650392400000, '2022-03-26 17:20:36', 2, true, 1218, 98, -1213, 43, 56, 37, -222, 24702, 27827, 26897);
+insert into feeder values (5920, 1650393000000, '2021-11-08 07:03:14', 2, false, -1795, 39, -1718, 98, -207, 105, 115, 28806, 29376, 22710);
+insert into feeder values (49925, 1650393600000, '2021-06-13 21:21:20', 2, false, 46, 104, -2131, 22, -160, 202, 20, 26514, 22737, 21467);
+insert into feeder values (55766, 1650394200000, '2021-09-30 18:27:15', 2, true, -2258, 133, 1829, 53, 55, -223, 56, 26803, 23836, 20711);
+insert into feeder values (70928, 1650394800000, '2022-01-19 03:46:03', 2, false, -555, 138, -2380, 37, -134, 118, -50, 21806, 26096, 25982);
+insert into feeder values (98035, 1650395400000, '2021-05-26 13:56:22', 1, false, -2207, 61, -246, 30, -122, 212, 14, 28806, 22901, 29079);
+insert into feeder values (81024, 1650396000000, '2021-09-18 02:51:51', 2, true, -1700, 100, -938, 32, -159, -221, 133, 27952, 20231, 23012);
+insert into feeder values (60184, 1650396600000, '2022-01-18 13:53:48', 1, false, -617, 43, -777, 71, 178, 77, -229, 26745, 24971, 29404);
+insert into feeder values (61889, 1650397200000, '2021-10-03 07:38:57', 1, true, 692, 80, -2321, 61, 240, 159, 229, 29555, 25252, 26161);
+insert into feeder values (85184, 1650397800000, '2022-02-10 01:34:15', 2, false, -2154, 138, 694, 1, 183, -241, -57, 26004, 23233, 25255);
+insert into feeder values (26721, 1650398400000, '2021-08-12 16:59:22', 2, true, -747, 144, -314, 56, 46, -139, 169, 26371, 22445, 28754);
+insert into feeder values (32319, 1650399000000, '2022-02-17 00:58:02', 1, true, 673, 51, 1316, 69, 129, -39, 199, 26391, 26181, 23706);
+insert into feeder values (63817, 1650399600000, '2022-01-18 16:12:57', 2, false, 717, 90, 727, 2, -56, 88, -95, 22697, 24608, 23520);
+insert into feeder values (28669, 1650400200000, '2021-04-13 19:07:16', 2, true, 630, 56, -230, 76, 31, -230, 246, 20024, 29506, 23757);
+insert into feeder values (83424, 1650400800000, '2021-07-11 11:54:03', 2, false, -1321, 81, -1800, 59, -170, -237, -63, 28492, 25259, 29263);
+insert into feeder values (8199, 1650401400000, '2021-08-23 07:50:34', 2, true, 2070, 98, 1283, 35, -50, 112, -126, 25499, 25832, 23611);
+insert into feeder values (3480, 1650402000000, '2021-12-22 02:21:35', 1, true, -614, 13, 602, 53, -194, 92, -205, 21041, 29578, 29296);
+insert into feeder values (74745, 1650402600000, '2021-07-09 09:38:31', 1, false, -76, 122, 248, 67, 250, 173, 39, 27727, 21195, 20913);
+insert into feeder values (41548, 1650403200000, '2022-02-25 07:02:59', 2, false, 425, 130, -2138, 87, -198, -90, 0, 28557, 21563, 20771);
+insert into feeder values (44711, 1650403800000, '2021-04-09 22:22:27', 2, false, 1768, 41, -1083, 44, -35, -2, 224, 26123, 20778, 25347);
+insert into feeder values (29197, 1650404400000, '2021-10-13 08:07:34', 1, true, 1525, 61, 2440, 62, -155, 63, 66, 23639, 29804, 27203);
+insert into feeder values (5955, 1650405000000, '2021-06-09 01:52:43', 1, true, 151, 45, 225, 82, -118, -118, -60, 25534, 26224, 25434);
+insert into feeder values (63294, 1650405600000, '2021-09-17 08:51:55', 1, true, -389, 34, 800, 97, -21, 66, 59, 25607, 23619, 20247);
+insert into feeder values (7287, 1650406200000, '2022-01-31 01:39:34', 1, false, 84, 29, 1235, 74, 46, -8, 48, 22297, 24131, 27671);
+insert into feeder values (37303, 1650406800000, '2021-12-14 05:49:03', 2, false, -455, 14, -1580, 74, -10, 173, -207, 21309, 22139, 20440);
+insert into feeder values (91577, 1650407400000, '2022-01-19 18:53:44', 1, false, -743, 4, -650, 9, -113, 76, 22, 20806, 25835, 29634);
+insert into feeder values (61656, 1650408000000, '2021-04-06 17:03:18', 2, true, -757, 122, 1219, 26, 136, -72, 111, 24675, 28838, 20101);
+insert into feeder values (86037, 1650408600000, '2021-12-30 14:51:27', 1, false, -1963, 113, 1652, 17, -194, 48, 108, 28995, 20883, 21792);
+insert into feeder values (96877, 1650409200000, '2021-11-12 21:40:36', 1, false, 1912, 139, 2259, 19, 100, 206, 115, 27563, 21542, 29120);
+insert into feeder values (42262, 1650409800000, '2021-11-24 17:56:09', 1, true, -351, 135, 545, 84, -54, 65, -4, 20433, 24289, 24468);
+insert into feeder values (77981, 1650410400000, '2021-12-26 04:05:07', 2, false, 641, 134, -963, 28, -88, -230, -147, 22454, 26518, 23877);
+insert into feeder values (2857, 1650411000000, '2021-06-28 12:27:49', 1, false, -1508, 8, 1110, 55, -126, -136, 195, 26653, 21680, 25032);
+insert into feeder values (39436, 1650411600000, '2021-06-29 00:26:51', 2, true, -513, 91, -1717, 83, 139, 169, -183, 25776, 28372, 28512);
+insert into feeder values (36329, 1650412200000, '2021-04-11 08:37:53', 2, false, -1796, 79, 2328, 10, 118, 1, -239, 25178, 21522, 23756);
+insert into feeder values (38152, 1650412800000, '2022-01-14 07:24:05', 1, false, -1715, 20, -1212, 30, 163, 150, -198, 21163, 28559, 23041);
+insert into feeder values (99068, 1650413400000, '2022-03-07 10:36:34', 1, false, 1892, 130, -364, 73, 86, 183, 23, 22378, 26400, 29108);
+insert into feeder values (14055, 1650414000000, '2021-04-06 14:15:17', 2, true, 1848, 118, 23, 92, 68, 114, 128, 20884, 22597, 23683);
+insert into feeder values (36624, 1650414600000, '2021-09-29 16:30:18', 1, false, -395, 139, 804, 35, 114, 244, 249, 24381, 26910, 29118);
+insert into feeder values (62046, 1650415200000, '2022-03-03 09:40:50', 2, true, 208, 23, 1555, 25, -113, 53, -12, 20797, 27850, 28840);
+insert into feeder values (84455, 1650415800000, '2021-12-21 13:02:54', 2, false, -1350, 108, -226, 90, 127, -185, 190, 21591, 27769, 20771);
+insert into feeder values (47390, 1650416400000, '2022-02-28 11:50:48', 2, true, -1852, 41, 2119, 91, 34, -174, 45, 27560, 29387, 26342);
+insert into feeder values (93062, 1650417000000, '2022-01-29 09:24:22', 1, true, -1957, 59, -2343, 29, -64, -43, 242, 28456, 23223, 21617);
+insert into feeder values (80472, 1650417600000, '2022-03-06 11:33:08', 2, false, 1301, 87, 2126, 91, 10, 21, 203, 24512, 28581, 20996);
+insert into feeder values (29375, 1650418200000, '2021-06-12 10:41:52', 1, false, -129, 128, 5, 11, 50, -104, 78, 24901, 24624, 27946);
+insert into feeder values (85230, 1650418800000, '2021-06-02 14:03:32', 1, true, 661, 78, 1763, 49, 74, -125, 191, 24427, 28841, 21838);
+insert into feeder values (89277, 1650419400000, '2021-04-17 10:27:01', 2, true, 687, 52, 588, 13, 41, 173, 242, 24628, 20896, 24012);
+insert into feeder values (74747, 1650420000000, '2022-02-09 06:48:20', 2, false, 1979, 26, -302, 17, 28, -164, -135, 29847, 22559, 24776);
+insert into feeder values (13474, 1650420600000, '2022-02-05 03:19:02', 1, true, 3, 62, 1719, 38, -200, -235, -92, 24012, 28798, 25870);
+insert into feeder values (33067, 1650421200000, '2021-08-17 13:12:28', 1, false, -294, 13, 1842, 81, 188, 190, 131, 26995, 24028, 25580);
+insert into feeder values (73761, 1650421800000, '2021-05-24 21:27:51', 1, false, -1085, 17, -682, 54, -195, 158, -194, 27590, 20098, 20657);
+insert into feeder values (58576, 1650422400000, '2021-08-26 05:10:38', 1, false, 1889, 29, 71, 12, 215, 175, 120, 28484, 29960, 23497);
+insert into feeder values (95615, 1650423000000, '2021-10-21 22:07:28', 1, false, -1527, 42, -2399, 52, -56, -94, 44, 26914, 20368, 24012);
+insert into feeder values (50820, 1650423600000, '2021-10-19 03:12:59', 2, false, 2452, 109, 2027, 89, 49, 62, -226, 21023, 22417, 27930);
+insert into feeder values (10679, 1650424200000, '2021-09-24 17:14:45', 1, true, -247, 81, -267, 50, -209, 45, -163, 28967, 26361, 27992);
+insert into feeder values (16620, 1650424800000, '2022-03-03 05:42:13', 2, false, -2343, 39, 2134, 35, -61, 233, -108, 26276, 20367, 21567);
+insert into feeder values (58593, 1650425400000, '2021-10-15 22:00:59', 1, true, -2180, 32, -1805, 12, -202, 160, -198, 27701, 25958, 23557);
+insert into feeder values (51682, 1650426000000, '2021-05-03 14:20:36', 1, true, -2259, 90, -825, 66, 121, 121, -180, 23077, 25500, 27368);
+insert into feeder values (49937, 1650426600000, '2021-09-05 06:18:21', 2, false, 1141, 58, 702, 14, -167, 230, 139, 24073, 24472, 28419);
+insert into feeder values (48681, 1650427200000, '2021-04-20 21:02:47', 2, true, -620, 63, -238, 68, -39, -187, 14, 25789, 24398, 23894);
+insert into feeder values (10542, 1650427800000, '2021-11-14 18:15:38', 1, true, 2472, 2, -828, 30, -210, 1, 79, 25721, 23563, 23158);
+insert into feeder values (49932, 1650428400000, '2022-02-10 22:15:52', 2, true, 474, 5, 1371, 25, -226, -29, -175, 24105, 25804, 21686);
+insert into feeder values (35857, 1650429000000, '2021-05-10 11:44:42', 1, false, 291, 100, 895, 24, 75, 192, -17, 29193, 22776, 21837);
+insert into feeder values (77739, 1650429600000, '2022-03-02 13:12:26', 2, false, -873, 145, -1617, 77, 142, -247, 133, 29655, 26660, 23862);
+insert into feeder values (74722, 1650430200000, '2021-04-28 11:09:22', 1, false, -2312, 78, 2372, 93, -131, 208, -206, 23857, 27678, 28672);
+insert into feeder values (8122, 1650430800000, '2021-09-07 01:32:16', 2, false, -580, 18, 2011, 59, -6, 122, 152, 23688, 22931, 21128);
+insert into feeder values (35475, 1650431400000, '2021-08-19 04:44:03', 1, true, -2396, 18, 1070, 31, -92, -66, 185, 21598, 23982, 27390);
+insert into feeder values (42114, 1650432000000, '2021-08-22 06:04:22', 2, true, 1954, 75, -1695, 38, 212, -49, 64, 28120, 23770, 29697);
+insert into feeder values (40256, 1650432600000, '2021-07-29 01:27:52', 2, false, -1250, 15, 886, 63, 80, -234, 95, 21299, 26741, 27681);
+insert into feeder values (21059, 1650433200000, '2021-05-24 05:17:31', 1, true, 480, 124, 1356, 51, 148, -118, 68, 20010, 23807, 22953);
+insert into feeder values (34027, 1650433800000, '2022-01-16 22:03:11', 1, true, 2143, 24, -2219, 25, 185, -224, 19, 23319, 20583, 21783);

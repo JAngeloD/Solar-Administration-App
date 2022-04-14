@@ -22,7 +22,7 @@
         "yaxis": {
             "title": "Temperature ( C )",
             "side": "left",
-            "range": [0, 50]
+            "range": [-30, 60]
         },
         "yaxis2": {
             "title": "Wind Speed ( km / hr )",
@@ -34,7 +34,7 @@
             },
             "overlaying": "y",
             "side": "right",
-            "range": [0, 50]
+            "range": [0, 100]
         },
         "xaxis": {
             "title": "Hours",

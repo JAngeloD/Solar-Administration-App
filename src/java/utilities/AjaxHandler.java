@@ -64,7 +64,7 @@ public class AjaxHandler extends HttpServlet {
         String max = request.getParameter("max");
         String min = request.getParameter("min");
         if ((max != null && min != null) && (!max.equals("") && !min.equals(""))) {
-            if (Double.parseDouble(max) <= data) {
+            if (Double.parseDouble(max) == 0 || Double.parseDouble(max) <= data) {
                 max = String.valueOf(data);
             }
             if (Double.parseDouble(min) >= data || Double.parseDouble(min) == 0.0) {

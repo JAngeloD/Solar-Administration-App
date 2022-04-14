@@ -113,7 +113,7 @@
                     <tbody>
                         <tr>
 
-                            <th scope="row">Solar irradiance (POA)</th>
+                            <th scope="row">Solar irradiance (POA) <span style="color:brown">W/sq m</span></th>
                             <td colspan="4" id="Facility_Get_SolarirridiancePOA" class="realtime">
 
 
@@ -131,7 +131,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Solar irradiance (GHI)</th>
+                            <th scope="row">Solar irradiance (GHI) <span style="color:brown">W/sq m</span></th>
 
 
                             <td colspan="4" id="Facility_Get_SolarirridianceGHI" class="realtime">
@@ -151,7 +151,7 @@
 
 
                         <tr>
-                            <th scope="row">Ambient Temperature</th>
+                            <th scope="row">Ambient Temperature <span style="color:brown">Deg C</span></th>
 
                             <td colspan="4" id="Facility_Get_AmbientTemperature" class="realtime">
 
@@ -171,7 +171,7 @@
 
                         </tr>
                         <tr>
-                            <th scope="row">Wind Speed</th>
+                            <th scope="row">Wind Speed <span style="color:brown">km/hr</span></th>
 
                             <td colspan="4" id="Facility_Get_WindSpeed" class="realtime">
 
@@ -191,7 +191,7 @@
 
                         </tr>
                         <tr>
-                            <th scope="row">Back of Panel Temperature - 1</th>
+                            <th scope="row">Back of Panel Temperature - 1 <span style="color:brown">Dec C</span></th>
 
                             <td colspan="4" id="Facility_Get_BackOfPanelTemperature1" class="realtime">
 
@@ -210,7 +210,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Back of Panel Temperature - 2</th>
+                            <th scope="row">Back of Panel Temperature - 2 <span style="color:brown">Deg C</span></th>
 
                             <td colspan="4" id="Facility_Get_BackOfPanelTemperature2" class="realtime">
 
@@ -228,7 +228,7 @@
                                 0
                             </td>
                         </tr>
-                        <tr> <th scope="row">AC Output</th>
+                        <tr> <th scope="row">AC Output <span style="color:brown">kW</span></th>
 
 
                             <td colspan="4" id="Pcc_Get_AcOutputEnergy" class="realtime">

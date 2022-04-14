@@ -9,6 +9,11 @@ h1 {
     position: fixed;
 }
 
+.alert-info {
+    background: yellow;
+    color: black;
+}
+
 
 li a {
     display: block;

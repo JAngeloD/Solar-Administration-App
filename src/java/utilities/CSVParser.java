@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import services.DBAccess;
 
 /**
@@ -83,6 +84,8 @@ public class CSVParser {
                         continue;
                     }
 
+                    
+                    
                     //If a change has occured in device numbers. Push into complete dataline array
                     String deviceNum = attribute.replaceAll("[^\\d]", "");
                     if (!previousModel.equals("") && !deviceNum.equals("") && Integer.parseInt(deviceNum) != previousDevice) {
@@ -154,14 +157,16 @@ public class CSVParser {
                     foundData = true;
                 }
 
-//                if(foundData) {
-//                    dataLines.add(convertListToArray(dataLine));
-//                    foundData = false;
-//                }
+                if(foundData) {
+                    if(dataLines.isEmpty() || !Arrays.equals(dataLines.get(Math.max(0, dataLines.size() - 1)), dataLine.toArray())) {
+                        dataLines.add(convertListToArray(dataLine));
+                        dataLine.clear();
+                        foundData = false;
+                    }
+                }
 
             }
 
-            dataLines.add(convertListToArray(dataLine)); //Flushes out any remaining lines into the full line
             CSVList.add(convertListToArray(labelLine)); //Label goes in first
             for (int i = 0; i < dataLines.size(); i++) {
                 CSVList.add(dataLines.get(i));

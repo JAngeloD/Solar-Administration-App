@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
@@ -17,8 +12,20 @@ import models.Users;
 import services.DBAccess;
 import utilities.PasswordAuth;
 
+/**
+ * 
+ * @author Steven Tran
+ */
+
 public class LoginServlet extends HttpServlet
 {
+    /**
+     * Generates a nonce, and binds it to the users session. Also handles logouts
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
@@ -57,6 +64,13 @@ public class LoginServlet extends HttpServlet
         }
     }
 
+    /**
+     * Handles the login, verifies their email and password exists in the database. Also checks nonce in the session
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
@@ -74,7 +88,6 @@ public class LoginServlet extends HttpServlet
         
         if( email == null || email.isEmpty() || password == null || password.isEmpty() )
         {
-            System.out.println(1);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
@@ -85,7 +98,6 @@ public class LoginServlet extends HttpServlet
         
         if( user == null )
         {
-            System.out.println(2);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
@@ -95,14 +107,9 @@ public class LoginServlet extends HttpServlet
             session.setAttribute( "email", email );
             session.setAttribute( "accessLevel", user.getTypeId().getAccessLevel() );
             response.sendRedirect( "home" );
-            return;
         } else {
-            System.out.println(3);
             request.setAttribute( "formFeedback", "Invalid username or password" );
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-            return;
         }
-
-        
     }
 }

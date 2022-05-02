@@ -189,6 +189,10 @@
     display: none;
 }
 
+#graphicOptions {
+    display: none;
+}
+
 #pcc, #feeders, #inverters, #weather {
     display: none;
 }

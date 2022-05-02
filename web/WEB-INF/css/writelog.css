@@ -1,24 +1,24 @@
 
-   body { 
-       background: #F5F3E6 !important; 
+body { 
+    background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif !important; 
 
-   }
-     .wrapper5 {
-            text-align: center;
+}
+.wrapper5 {
+    text-align: center;
 
-        }
+}
 
-        .logForm{
-            text-align: center;
-        }
+.logForm{
+    text-align: center;
+}
 
-        .logFormz{
-            position: absolute;
-            top: 40px;
-            left: 5%;
-        }
-        
+.logFormz{
+    position: absolute;
+    top: 20px;
+    left: 5%;
+}
+
 .left {
     float: left;
 }
@@ -36,7 +36,7 @@
     margin-right: 5%;
 }
 
-   input[type=submit]{
+input[type=submit]{
     background-color:#3A2318;
     color: whitesmoke; 
     padding: 16px 32px;
@@ -45,16 +45,16 @@
     cursor: pointer;
     border-radius: 15px;
     width:220px;
-  }
-  input[type=submit]:hover{
+}
+input[type=submit]:hover{
     background-color: darkgray;
     color:black; 
-  }
-  p{
+}
+p{
     font-size: 11px;
 }
 a {
-           
+
     color: white;
     padding: 1.6em 1em;
     text-decoration: none;
@@ -63,44 +63,64 @@ a {
     font-size: 12px;
 }
 b {
-           
+
     color: black;
     padding: 1.6em 1em;
     text-decoration: none;
     text-transform: uppercase;
-font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
 
 .wrapall{
     text-align: center;
     position: relative;
-    margin-left:20%;
+    margin: auto;
+    width: 45%;
 
 }
+
+#logType {
+    background-color: #f3f3f3;
+    border: 3px solid #3A2318;
+    margin-bottom: 0;
+    border-radius: 10px 10px 0px 0px ;
+}
+
+textarea {
+    border: 3px solid #3A2318;
+    border-top: none;
+    background-color: #f3f3f3;
+    border-radius: 0px 0px 10px 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
 .data{
-            border-radius: 1em;
-            border: 2px solid;
-         
-            font: sans-serif;  
-            font-size: 10px;
-            padding: 5px;
-        }
+    border-radius: 1em;
+    border: 2px solid;
 
-        label, input{
-            font-size: 10px;
-            font-weight: bold;
-          
-            border:1;
-            border-width: 2;
-            width: 60px;
-        }
-         a {
-           
-            color: white;
-            padding: 1.6em 1em;
-            text-decoration: none;
-            text-transform: uppercase;
+    font: sans-serif;  
+    font-size: 10px;
+    padding: 5px;
+}
 
-            font-size: 12px;
-        }
+label, input{
+    font-size: 14px;
+    font-weight: bold;
+
+    border:1;
+    border-width: 2;
+    width: 60px;
+}
+a {
+
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 12px;
+}

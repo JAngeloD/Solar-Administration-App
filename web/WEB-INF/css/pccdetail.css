@@ -1,16 +1,18 @@
 
 
 
-   body { 
-       background: #F5F3E6 !important; 
+body { 
+    background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif !important; 
+    overflow-y: hidden;
 
-   }
+}
 h1 {
     font-family: 'Roboto', sans-serif;
 }
 
 .wrapperall{
+    margin-left: 12% !important;
     text-align: center;
     position: relative;
 
@@ -38,7 +40,7 @@ h1 {
 
 
 a {
-           
+
     color: white;
     padding: 1.6em 1em;
     text-decoration: none;
@@ -49,22 +51,22 @@ a {
 
 
 
- .data{
-            border-radius: 1em;
-            border: 2px solid;
-         
-            font: sans-serif;  
-            font-size: 10px;
-            padding: 5px;
-        }
-  label, input{
-            font-size: 10px;
-            font-weight: bold;
-          
-            border:1;
-            border-width: 2;
-            width: 60px;
-        }
+.data{
+    border-radius: 1em;
+    border: 2px solid;
+
+    font: sans-serif;  
+    font-size: 10px;
+    padding: 5px;
+}
+label, input{
+    font-size: 10px;
+    font-weight: bold;
+
+    border:1;
+    border-width: 2;
+    width: 60px;
+}
 .electricDiagram{
     position: relative;
 }
@@ -73,107 +75,107 @@ a {
     position: absolute;
     left: 15.5%;
     top:-6%;
-     text-align: left;
-             font-size:11px;
-           width:190px; 
+    text-align: left;
+    font-size:11px;
+    width:190px; 
 }
 #f2data{
     position: absolute;
     left: 15.5%;
     top: 64%;
-     text-align: left;
-             font-size:11px;
-           width:190px; 
+    text-align: left;
+    font-size:11px;
+    width:190px; 
 }
 #pccdata{
     position: absolute;
     left: 63%;
     top: 24%;
     text-align: left;
-             font-size:11px;
-           width:180px; 
-    
+    font-size:11px;
+    width:180px; 
+
 }
 
 
-        .realtime{
-            font-size:11px;
-            width:48px;
-             padding:0px;
-        }
+.realtime{
+    font-size:11px;
+    width:48px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputPhaseCaVoltage{
-             margin-left:20px;
-              padding:0px;
-        }
+    margin-left:20px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputPhaseBcVoltage{
-             margin-left:20px;
-              padding:0px;
-        }
+    margin-left:20px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputPhaseAbVoltage{
-             margin-left:20px;
-              padding:0px;
-        }
+    margin-left:20px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputPowerFactor{
-             margin-left:14px;
-              padding:0px;
-        }
+    margin-left:14px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputReactivePower{
-             margin-left:2px;
-              padding:0px;
-        }
+    margin-left:2px;
+    padding:0px;
+}
 
 #Pcc_Get_AcOutputRealPower{
-             margin-left:23px;
-              padding:0px;
-        }
+    margin-left:23px;
+    padding:0px;
+}
 
 #Feeder_Get_AcOutputRealPower01{
-             margin-left:27px;
-              padding:0px;
-        }
+    margin-left:27px;
+    padding:0px;
+}
 
 #Feeder_Get_AcOutputReactivePower01{
-             margin-left:5px;
-              padding:0px;
-        }
+    margin-left:5px;
+    padding:0px;
+}
 
 
 #Feeder_Get_AcOutputPowerFactor01{
-             margin-left:15px;
-              padding:0px;
-        }
+    margin-left:15px;
+    padding:0px;
+}
 
 #Feeder_Get_AcOutputPhaseAverageVoltage01{
-             margin-left:43px;
-              padding:0px;
-        }
+    margin-left:43px;
+    padding:0px;
+}
 
 #Feeder_Get_AcOutputRealPower02{
-             margin-left:27px;
-              padding:0px;
-        }
+    margin-left:27px;
+    padding:0px;
+}
 
 #Feeder_Get_AcOutputReactivePower02{
-             margin-left:5px;
-              padding:0px;
-        }
+    margin-left:5px;
+    padding:0px;
+}
 
 
 #Feeder_Get_AcOutputPowerFactor02{
-             margin-left:16px;
-              padding:0px;
-        }
+    margin-left:16px;
+    padding:0px;
+}
 
 
 #Feeder_Get_AcOutputPhaseAverageVoltage02{
-             margin-left:43px;
-              padding:0px;
-        }
+    margin-left:43px;
+    padding:0px;
+}
 
 
 

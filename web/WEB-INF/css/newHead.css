@@ -1,5 +1,5 @@
 h1 {
-  font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -21,104 +21,104 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
-    
-  
-  }
-  
-  div.box{
-  
-  margin-right: 5%;
-  }
-  
 
-  #current{
+
+
+}
+
+div.box{
+
+    margin-right: 5%;
+}
+
+
+#current{
     color:white;
     font-size:18px;
-  } 
-  #buttonMenu1 {
+} 
+#buttonMenu1 {
     color: white;
     font-size:18px;
-  }
+}
 
-  #navigation a:active {
+#navigation a:active {
 
     background-color: rgb(126, 34, 34);
 
 }
 
 
-  #navbarDropdown{
+#navbarDropdown{
     color:white;
     font-size:18px;
-  }
+}
 
 
-  
-  a#navbarDropdown:hover{
+
+a#navbarDropdown:hover{
     background-color: darkgray;
     color: black;
-  }
+}
 
 
-   a#buttonMenu1:hover {
-      
+a#buttonMenu1:hover {
+
     background-color: darkgray;
     color: black;
-  } 
-  
-  li {
+} 
+
+li {
     float: right;
     font-size: larger;
-    
-  }
- 
-  #menuButton1 {
+
+}
+
+#menuButton1 {
     position:relative; 
     /* margin-top:16px; */
     width: 150px;
-  /* margin-left: 20px; */
+    /* margin-left: 20px; */
     background-color: #99582A;
     margin-top:16px;
-    
-  margin-left: 20px;
- 
-             
-  }
-  
-  
-  
-  nav {
+
+    margin-left: 20px;
+
+
+}
+
+
+
+nav {
     list-style-type: none;
     margin: 0;
     padding: 10px;
- 
+
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
     text-align: right;
     width: 100%; 
-     border-bottom: 2px solid #000;
-     
-     
-  }
- 
-  #currentPage{
+    border-bottom: 2px solid #000;
+    z-index: 10;
+
+}
+
+#currentPage{
     position:relative; 
 
-   margin-top:16px;
+    margin-top:16px;
     width: 150px;
-  margin-left: 20px;
-  background-color: #a99a86;
+    margin-left: 20px;
+    background-color: #a99a86;
 }
 
 .navbar-nav > li > .dropdown-menu { 
-  
-  background-color: #99582A; }
-  
+
+    background-color: #99582A; }
+
 .dropdown-item {
 
-  min-width: 180px;
-  
-  z-index: 1;
+    min-width: 180px;
+
+    z-index: 1;
 }
 

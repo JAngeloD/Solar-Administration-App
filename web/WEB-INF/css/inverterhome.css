@@ -4,7 +4,6 @@
 body { 
     background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif !important; 
-
 }
 
 
@@ -21,12 +20,13 @@ buttons{
 
 #buttonsBox {
     float: left;
-    margin-top:110px;
+    margin-top: 15%;
 }
 
 #barBox {
     float: left;
     margin-right: 5%;
+    transform: translate(0, -25px) scale(0.9);
 }
 
 .inverterButton {
@@ -96,8 +96,10 @@ label, input{
 .wrapall{
     text-align: center;
     position: relative;
-    width:80%;
-
+    width:90%;
+}
+td:not([class]), td[id=""] {
+    font-weight: bold;
 }
 
 #table{
@@ -110,9 +112,8 @@ label, input{
     background-color: #a99a86;
 }
 
-
-
 .row{
+    margin-left: 3% !important;
     width:100%;
 }
 

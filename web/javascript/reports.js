@@ -39,3 +39,11 @@ function toggleDisplayCSV() {
         }
     }
 }
+
+function toggleDisplayGraphic() {
+    if (document.getElementById('graphReport').checked) {
+        document.getElementById("graphicOptions").style.display = "block";
+    } else {
+        document.getElementById("graphicOptions").style.display = "none";
+    }
+}

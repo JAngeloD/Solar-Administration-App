@@ -1,25 +1,29 @@
 
-   body { 
-       background: #F5F3E6 !important; 
+body { 
+    background: #F5F3E6 !important; 
     font-family: 'Lato', sans-serif !important; 
-     text-align: right !important; 
 
-   }
-     .wrapper5 {
-            text-align: center;
+}
+.wrapper5 {
+    text-align: center;
 
-        }
+}
 
-        .logForm{
-            text-align: center;
-        }
+.logForm{
+    text-align: center;
+}
 
-        .logFormz{
-            position: absolute;
-            top: 40px;
-            left: 5%;
-        }
-       
+#logType {
+    padding-top: 10%;
+    font-size: 110%;
+}
+
+.logFormz{
+    position: absolute;
+    top: 40px;
+    left: 5%;
+}
+
 
 .left {
     float: left;
@@ -38,7 +42,54 @@
     margin-right: 5%;
 }
 
-   input[type=submit]{
+#form {
+    display: grid;
+    padding: 2%;
+    padding-left: 5%;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto auto;
+    grid-gap: 30px;
+}
+
+#logList, #dateSelect{
+    height: 100%;
+    padding: 5%;
+    border: 3px solid #3A2318;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+}
+
+#dateSelect > div {
+    width: 40%;
+}
+
+#viewLogs {
+    grid-column: span 2;
+}
+
+#viewLogArea {
+    float: left;
+    margin-top: 2%;
+    width: 100%;
+    padding: 5%;
+    padding-top: 4%;
+    padding-left: 10%;
+    border: 3px solid #3A2318;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+}
+
+#textArea {
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 40%;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+
+
+input[type=submit]{
     background-color:#3A2318;
     color: whitesmoke; 
     padding: 16px 32px;
@@ -47,16 +98,16 @@
     cursor: pointer;
     border-radius: 15px;
     width:220px;
-  }
-  input[type=submit]:hover{
+}
+input[type=submit]:hover{
     background-color: darkgray;
     color:black; 
-  }
-  p{
+}
+p{
     font-size: 11px;
 }
 a {
-           
+
     color: white;
     padding: 1.6em 1em;
     text-decoration: none;
@@ -65,76 +116,74 @@ a {
     font-size: 12px;
 }
 b {
-           
+
     color: black;
     padding: 1.6em 1em;
     text-decoration: none;
     text-transform: uppercase;
-font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
 
 .wrapall{
-    text-align: center;
     position: relative;
-    margin-left:10%;
-width:70%;
 }
 .data{
-            border-radius: 1em;
-            border: 2px solid;
-         
-            font: sans-serif;  
-            font-size: 10px;
-            padding: 5px;
-        }
+    border-radius: 1em;
+    border: 2px solid;
 
-        label, input{
-            font-size: 10px;
-            font-weight: bold;
-          
-            border:1;
-            border-width: 2;
-            width: 60px;
-        }
-         a {
-           
-            color: white;
-            padding: 1.6em 1em;
-            text-decoration: none;
-            text-transform: uppercase;
+    font: sans-serif;  
+    font-size: 10px;
+    padding: 5px;
+}
 
-            font-size: 12px;
-        }
-        
-        
-        .form-horizontal .control-label {
-  text-align: left !important; /* !important added for priority in SO snippet. */
+label, input{
+    font-size: 10px;
+    font-weight: bold;
+
+    border:1;
+    border-width: 2;
+    width: 60px;
+}
+a {
+
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 12px;
+}
+
+
+.form-horizontal .control-label {
+    text-align: left !important; /* !important added for priority in SO snippet. */
 }
 .form-floating{
+    
     text-align: left;
 }
 
 
-  .row,
-     [class*="row"] {
-      padding-right: 0%;
-      padding-left: 2%;
-    
-  } 
+.row,
+[class*="row"] {
+    padding-right: 0%;
+    padding-left: 2%;
+
+} 
 
 
-  #table{
-      margin-right: 60px;
+#table{
+    margin-right: 60px;
 
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      table-layout: auto;
-      width: 100%;
-       background-color: #a99a86;
-  }
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    background-color: #a99a86;
+}
 
-  
+
 
 .row{
     width:100%;
@@ -163,12 +212,12 @@ th {
 
 .button{
     width: 100%;
-  
+
     background-color: #3A2318;
     color: white;
     padding: 10px 18px;
     margin: 8px 0px;
-     border: none;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
 }

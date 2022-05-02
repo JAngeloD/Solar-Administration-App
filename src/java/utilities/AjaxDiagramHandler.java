@@ -8,20 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import services.DBAccess;
 
 /**
- * For delivering color data (HEXCODE) to AJAX call. Only used for changing color
- * for both breaker symbols in the home page. Note that in the database breaker status is
- * 0 or 1, not working and working respectively 
- * 
- * Green - working   #00FF00
- * Red - not working #FF0000
+ * For delivering color data (HEXCODE) to AJAX call. Only used for changing color for both breaker symbols in the home page. Note that in the database breaker status is 0 or 1, not working and working respectively
+ *
+ * Green - working #00FF00 Red - not working #FF0000
  *
  * @author Angelo De Vera
  */
 public class AjaxDiagramHandler extends HttpServlet {
 
     /**
-     * Retrieves the breaker status given the breaker deviceID from the AJAX call and returns 
-     * the hexcode value for the correct color.
+     * Retrieves the breaker status given the breaker deviceID from the AJAX call and returns the hexcode value for the correct color.
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +36,8 @@ public class AjaxDiagramHandler extends HttpServlet {
         //Data to be returned back to caller
         try {
             int breakerStatus = (int) DBAccess.FeederGetRecent("BreakerStatus" + deviceID); //TIMESTAMP IS TEMPORARY
-            
+            breakerStatus = (int) Math.round(Math.random()); //temp
+
             switch (breakerStatus) {
                 case 0:
                     finalcolour = red;
@@ -49,16 +46,16 @@ public class AjaxDiagramHandler extends HttpServlet {
                     finalcolour = green;
                     break;
             }
-            
+
         } catch (Exception e) {
 //            e.printStackTrace();
         }
-        
+
         //Changes the stroke color of the style
         //Regex finds the hex code
         styleString = styleString.replaceAll("#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})", finalcolour);
 
-        if(finalcolour.equals("#000000")) {
+        if (finalcolour.equals("#000000")) {
             response.setStatus(400);
         }
         //Send data back

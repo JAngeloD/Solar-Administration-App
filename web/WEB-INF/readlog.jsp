@@ -66,10 +66,10 @@
             <div id="form">
                 
                 <div>
-                    <form method="POST" action="readlog">
+                    <form id="dateSelect" method="POST" action="readlog">
                         
                       
-                        <label class="col-lg-11 col-form-label" style="font-size:25px;">Select dates</label><br />
+                        <label class="col-lg-11 col-form-label" style="font-size:35px;">SELECT DATES</label><br />
                         <div class="form-floating mb-5">
                         <label class="col-lg-11 col-form-label">From: </label>
                         </div>
@@ -103,7 +103,7 @@
                     <br>
                 </div>
                 <div id="logList">
-                    <h3>RESULTS</h3>
+                    <label class="col-lg-11 col-form-label" style="font-size:35px;">RESULTS</label><br />
                  
                        <table id="table" class="table table-hover table-bordered ">
                            <thead>
@@ -136,10 +136,11 @@
                         </table>
                   
                 </div>
-                <div>
+                <div id="viewLogs">
                     <c:if test="${selectedLog ne null}">
-                        <h2>View</h2>
-                        <form action="readlog" method="POST">
+                        
+                        <form id="viewLogArea" action="readlog" method="POST">
+                            <label class="col-lg-11 col-form-label" style="font-size:35px;">VIEW</label><br />
                             <br>
                               <div class="form-floating mb-5">
                             <label class="col-lg-11 col-form-label">Date and time:</label>
@@ -163,12 +164,11 @@
                             <input  class="form-control form-control-lg" type="text" id="selectedEmail"  value='${selectedLog.email.getEmail()}' />
                             </div>
                             <br/>
-                            <textarea style="resize:both" name="contents" rows="20" cols="75">${selectedLog.logText}</textarea><br>
                         </form>
+                            <div id="textArea">
+                                <textarea style="resize:both" name="contents" rows="20" cols="75">${selectedLog.logText}</textarea>
+                            </div>
                         <br>
-                          <br>  <br>
-                          
-                        
                     </c:if>
 
                 </div>

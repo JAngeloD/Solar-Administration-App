@@ -19,7 +19,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js" integrity="sha512-pBoUgBw+mK85IYWlMTSeBQ0Djx3u23anXFNQfBiIm2D8MbVT9lr+IxUccP8AMMQ6LCvgnlhUCK3ZCThaBCr8Ng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="javascript/messageUtil.js"></script>
-        
+
     </head>
     <body>
         <nav  class="navbar navbar-expand-lg navbar-light" style="background-color: #f3f3f3;"> 
@@ -39,9 +39,6 @@
                             <li class="nav-item" id="menuButton1" f>
                                 <a class="nav-link active"  id="buttonMenu1" aria-current="page" href="home">Home</a>
                             </li>
-
-
-
                             <li class="nav-item dropdown" id="menuButton1" >
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Menu
@@ -67,78 +64,82 @@
     <div class="wrapall" id="electricDiagram">
         <div id="form">
             <form method="POST" action="reports">
-                <label class="col-lg-11 col-form-label" style="font-size:25px;">Please select the dates and choose to Display or Export Reports</label>
-
-                <div class="form-floating mb-5">
-
-                    <label class="col-lg-11 col-form-label">From: </label>
-                </div>
-                <br>
-                <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="date" id="fromDT" name="fromDT" required>
-                </div>
-                <br>
-                <div class="form-floating mb-5">
-                    <label class="col-lg-11 col-form-label">To: </label>
-                </div>
-                <br>
-                <div class="col-lg-3">
-                    <input  class="form-control form-control-lg" type="date" id="toDT" name="toDT" required>
-                </div>
-                <br />
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="graphReport" value="graphReport" onclick="toggleDisplayCSV()" name="reportType" required>
+                <div id="choiceContainer">
+                    <div id="firstOptions">
+                        <label class="col-lg-11 col-form-label" style="font-size:25px;">Please select the dates and choose to Display or Export Reports</label>
 
                         <div class="form-floating mb-5">
-                            <label class="col-lg-11 col-form-label">Display Report Type:</label>
+
+                            <label class="col-lg-11 col-form-label">From: </label>
                         </div>
-
-                    </div
-                    <br>
-                    <br>
-
-
-                    <div class="form-floating mb-5container w-25">
-                        <select class="form-select " name="reportChoice" id="reportChoice" default='Anual Energy at PCC'>
-                            <c:if test="${reportChoice == 'Anual Energy at PCC'}">
-                                <option name="anual1" id="anual1" selected>Anual Energy at PCC</option>
-                                <option name="ytoytPCC" id="ytoyatPCC">PCC year to year comparison</option>
-                                <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
-                                <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
-                            </c:if>
-                            <c:if test="${reportChoice == 'PCC year to year comparison'}">
-                                <option name="anual1" id="anual1" >Anual Energy at PCC</option>
-                                <option name="ytoytPCC" id="ytoyatPCC" selected>PCC year to year comparison</option>
-                                <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
-                                <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
-                            </c:if>
-                            <c:if test="${reportChoice == 'Year to date'}">
-                                <option name="anual1" id="anual1" >Anual Energy at PCC</option>
-                                <option name="ytoytPCC" id="ytoyatPCC" >PCC year to year comparison</option>
-                                <option name="yeartodatePCC" id="yeartodatePCC" selected>Year to date</option>
-                                <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
-                            </c:if>
-                            <c:if test="${reportChoice == 'Month comparison in the last 5 years'}">
-                                <option name="anual1" id="anual1" >Anual Energy at PCC</option>
-                                <option name="ytoytPCC" id="ytoyatPCC" >PCC year to year comparison</option>
-                                <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
-                                <option name="monthComparisonOverYears" id="monthComparisonOverYears" selected>Month comparison in the last 5 years</option>
-                            </c:if>
-
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="csvReport" value="csvReport" onclick="toggleDisplayCSV()" name="reportType" required>
-
+                        <br>
+                        <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="date" id="fromDT" name="fromDT" required>
+                        </div>
+                        <br>
                         <div class="form-floating mb-5">
-                            <label class="col-lg-11 col-form-label">Export raw data as csv file. Choose variables:</label>
+                            <label class="col-lg-11 col-form-label">To: </label>
+                        </div>
+                        <br>
+                        <div class="col-lg-3">
+                            <input  class="form-control form-control-lg" type="date" id="toDT" name="toDT" required>
+                        </div>
+
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="graphReport" value="graphReport" onclick="toggleDisplayCSV(); toggleDisplayGraphic();" name="reportType" required>
+
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Display Report Type:</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="csvReport" value="csvReport" onclick="toggleDisplayCSV(); toggleDisplayGraphic();" name="reportType" required>
+
+                                <div class="form-floating mb-5">
+                                    <label class="col-lg-11 col-form-label">Export raw data as csv file. Choose variables:</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <br>
+                    <div id="secondOption">
+                        <div id="graphicOptions">
+                            <div class="form-floating mb-5container w-25">
+                                <select class="form-select " name="reportChoice" id="reportChoice" default='Anual Energy at PCC'>
+                                    <c:if test="${reportChoice == 'Anual Energy at PCC'}">
+                                        <option name="anual1" id="anual1" selected>Anual Energy at PCC</option>
+                                        <option name="ytoytPCC" id="ytoyatPCC">PCC year to year comparison</option>
+                                        <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
+                                        <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
+                                    </c:if>
+                                    <c:if test="${reportChoice == 'PCC year to year comparison'}">
+                                        <option name="anual1" id="anual1" >Anual Energy at PCC</option>
+                                        <option name="ytoytPCC" id="ytoyatPCC" selected>PCC year to year comparison</option>
+                                        <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
+                                        <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
+                                    </c:if>
+                                    <c:if test="${reportChoice == 'Year to date'}">
+                                        <option name="anual1" id="anual1" >Anual Energy at PCC</option>
+                                        <option name="ytoytPCC" id="ytoyatPCC" >PCC year to year comparison</option>
+                                        <option name="yeartodatePCC" id="yeartodatePCC" selected>Year to date</option>
+                                        <option name="monthComparisonOverYears" id="monthComparisonOverYears">Month comparison in the last 5 years</option>
+                                    </c:if>
+                                    <c:if test="${reportChoice == 'Month comparison in the last 5 years'}">
+                                        <option name="anual1" id="anual1" >Anual Energy at PCC</option>
+                                        <option name="ytoytPCC" id="ytoyatPCC" >PCC year to year comparison</option>
+                                        <option name="yeartodatePCC" id="yeartodatePCC">Year to date</option>
+                                        <option name="monthComparisonOverYears" id="monthComparisonOverYears" selected>Month comparison in the last 5 years</option>
+                                    </c:if>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+
                     <div class="csvOptions">
                         <div class="form-check" id="pcc">
                             <input class="form-check-input" type="button" name="pcc" onclick="toggleDisplay('pccBlock')">
@@ -376,7 +377,8 @@
                         </div>                        
                     </div>
                 </div>            
-                <br>
+                    </div>
+                </div>
                 <input class="button" type="submit" onclick="successAlert('Warning: may take a while to create the CSV file.')" value="Create Report">
             </form>
         </div>  

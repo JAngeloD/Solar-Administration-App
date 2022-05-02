@@ -1,60 +1,60 @@
-  body { 
-       background: #F5F3E6 !important; 
-   font-family: 'Lato', sans-serif !important; 
+body { 
+    background: #F5F3E6 !important; 
+    font-family: 'Lato', sans-serif !important; 
+    overflow-y: hidden;
+}
 
-   }
+p{
+    font-size: 11px;
+}
 
-  p{
-            font-size: 11px;
-        }
+a {
 
-        a {
-           
-            color: white;
-            padding: 1.6em 1em;
-            text-decoration: none;
-            text-transform: uppercase;
+    color: white;
+    padding: 1.6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
 
-            font-size: 12px;
-        }
+    font-size: 12px;
+}
 
-         a:active {
-            background-color: black;
-        } 
+a:active {
+    background-color: black;
+} 
 
-    
 
- p{
-text-align: center;
-font-size: larger;
-color: #da3e3e;
+
+p{
+    text-align: center;
+    font-size: larger;
+    color: #da3e3e;
 } 
 
 
 .no-gutters {
     margin-right: 0;
     margin-left: 0px;
-     background-color: #F5F3E6;
+    background-color: #F5F3E6;
 }
-      .row,
-     [class*="row"] {
-      padding-right: 0%;
-      padding-left: 2%;
-    
-  } 
+.row,
+[class*="row"] {
+    padding-right: 0%;
+    padding-left: 2%;
+
+} 
 
 
-  #table{
-      margin-right: 60px;
+#table{
+    margin-right: 60px;
 
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      table-layout: auto;
-      width: 100%;
-       background-color: #a99a86;
-  }
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    background-color: #a99a86;
+}
 
-  
+
 
 .row{
     width:100%;
@@ -78,7 +78,7 @@ th {
     color: white;
 } 
 input[type=text], select {
-    
+
     display: inline-block;
     border: 2px solid rgb(19, 18, 18);
     border-radius: 0%;
@@ -86,8 +86,8 @@ input[type=text], select {
 }
 
 input[type=password], select {
-  
-  
+
+
     display: inline-block;
     border: 2px solid rgb(19, 18, 18);
     border-radius: 0%;
@@ -118,30 +118,30 @@ input[type=reset]:hover {
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
-     border: none;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 input[type=submit] {
     width: 92%;
-    
-     background-color: #3A2318;
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-       border: none;
-     border-radius: 4px;
-     cursor: pointer;
- }
- input[type=reset] {
-     width: 92%;
-     
-     background-color: #3A2318;
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-       border: none;
-     border-radius: 4px;
-     cursor: pointer;
- }
+
+    background-color: #3A2318;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=reset] {
+    width: 92%;
+
+    background-color: #3A2318;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

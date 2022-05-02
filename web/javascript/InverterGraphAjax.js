@@ -1,5 +1,10 @@
+document.getElementsByTagName("html")[0].style.visibility = "hidden";
+
 $(document).ready(function () {
     setIntervalImmediately(6000);
+    setInterval(function () {
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
+    }, 500);
 });
 
 function setIntervalImmediately(interval) {

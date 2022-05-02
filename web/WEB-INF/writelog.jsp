@@ -67,12 +67,11 @@
               <select class="form-select"name="logType" id="logType">
                 <option value="1">Inspection</option>
                 <option value="2">Maintenance</option>
-                <option value="3">Planner Outage</option>
+                <option value="3">Planned Outage</option>
                 <option value="4">Forced Outage</option>
                 <option value="5">Other</option>
               </select>
         </div>
-        <br />
         <textarea style="resize:both" name="log" rows="20" cols="75" placeholder="Start Here"></textarea>
         <br />
         <input type="submit" value="Save Log">

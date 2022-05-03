@@ -77,7 +77,7 @@ label, input{
     top:-6%;
     text-align: left;
     font-size:11px;
-    width:190px; 
+    width:200px;
 }
 #f2data{
     position: absolute;
@@ -85,7 +85,7 @@ label, input{
     top: 64%;
     text-align: left;
     font-size:11px;
-    width:190px; 
+    width:200px;
 }
 #pccdata{
     position: absolute;
@@ -93,14 +93,14 @@ label, input{
     top: 24%;
     text-align: left;
     font-size:11px;
-    width:180px; 
+    width:200px; 
 
 }
 
 
 .realtime{
     font-size:11px;
-    width:48px;
+    width:70px;
     padding:0px;
 }
 
